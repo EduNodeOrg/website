@@ -298,6 +298,7 @@ class NavBar1 extends Component {
               <NavDropdown title="Account" id="account-dropdown">
                 <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                 <NavDropdown.Item href="/account">Profile Setting</NavDropdown.Item>
+                <NavDropdown.Item href="/tutor">Role Request</NavDropdown.Item>
                 <NavDropdown.Item href="/messages">Messages
                 {messageCount >= 0 && (
                 <span

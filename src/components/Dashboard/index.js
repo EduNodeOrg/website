@@ -159,7 +159,7 @@ class Dashboard extends Component {
 
         this.setState({ user: data, preferences: data.preferences });
 
-        
+
       })
       .catch(error => {
         console.error(error);
@@ -257,7 +257,7 @@ class Dashboard extends Component {
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={12} md={12}>
 
-                  {(preferences.length > 0 || skills.length > 0) ? (
+                    {(preferences.length > 0 || skills.length > 0) ? (
                       <div>
                         <h1 style={{ fontSize: '24px', fontWeight: 'bold' }}>
                           These are your preferences and skills:
@@ -277,7 +277,13 @@ class Dashboard extends Component {
                           </p>
                         )}
                       </div>
-                    ) : null}
+                    ) : (
+                      <div>
+                        <h1 style={{ fontSize: '24px', fontWeight: 'bold' }}>
+                          Please fill your profile so we can provide you with a personalised experience !
+                        </h1>
+                      </div>
+                    )}
 
 
                     {(preferences.length > 0 || skills.length > 0) ? (
