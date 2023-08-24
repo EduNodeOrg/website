@@ -215,7 +215,7 @@ class Teach extends Component {
       teachingsProof: this.state.image,
     };
     try {
-      const response = await fetch("http://localhost:5001/api/tutors", {
+      const response = await fetch("https://edunode.herokuapp.com/api/tutors", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
