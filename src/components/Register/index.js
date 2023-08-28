@@ -122,11 +122,13 @@ export class Register extends Component {
 
     const email = values.email
     const password = values.password
+    const name = values.name
 
     // create user object
     const newUser = {
       email,
       password,
+      name
     };
 
     const confirmUser = {

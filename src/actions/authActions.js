@@ -58,14 +58,14 @@ export const loadUser = ({ email }) => (dispatch, getState) => {
 };
 
 // register user
-export const register = ({ email, password, confirmationCode }) => dispatch => {
+export const register = ({ email, password, confirmationCode,name }) => dispatch => {
 
   dispatch({ type: USER_LOADING });
 
 
   // request body
 
-  const body = JSON.stringify({ email, password, confirmationCode });
+  const body = JSON.stringify({ email, password, confirmationCode,name });
 
   fetch('https://edunode.herokuapp.com/api/emailauth/', {
     method: 'POST',
