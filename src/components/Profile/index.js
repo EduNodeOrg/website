@@ -32,6 +32,8 @@ import post from './post.png'
 import PostCard from "../Dashboard/postCard";
 import BlogCard from "../Dashboard/blogCard";
 import CourseCard from "../Dashboard/courseCard";
+import copy from 'clipboard-copy';
+import userimage from './user.png'
 class ProfilePage extends Component {
   constructor(props) {
     super(props);
@@ -74,7 +76,7 @@ class ProfilePage extends Component {
     }
 
   };
-
+ 
 
   componentDidMount() {
     this.fetchFriendsList();
@@ -201,6 +203,7 @@ class ProfilePage extends Component {
               <div>
               <MDBCard className="mb-4">
                 <MDBCardBody className="text-center d-flex justify-content-center flex-column align-items-center">
+                {this.state.user.images && this.state.user.images.length > 0 ? (
                   <MDBCardImage
                     src={this.state.user.images}
                     alt="avatar"
@@ -208,6 +211,15 @@ class ProfilePage extends Component {
                     style={{ width: '150px' }}
                     fluid
                   />
+                  ) : (
+                    <MDBCardImage
+                    src={userimage}
+                    alt="avatar"
+                    className="rounded-circle"
+                    style={{ width: '150px' }}
+                    fluid
+                  />
+                    )}
                   <p className="text-muted mb-1">{this.state.user.name}</p>
 
 
@@ -215,7 +227,7 @@ class ProfilePage extends Component {
                 </MDBCardBody>
               </MDBCard>
 
-              <MDBCard className="mb-4">
+              <MDBCard className="mb-4" style={{ height: "auto" }}>
                 <MDBCardBody className="text-center d-flex justify-content-center flex-column align-items-center">
 
                   {/* List of pending friend requests */}
@@ -251,7 +263,7 @@ class ProfilePage extends Component {
 
 
 
-              <MDBCard className="mb-4">
+              <MDBCard className="mb-4" style={{ height: "auto" }}>
                 <MDBCardBody className="text-center d-flex justify-content-center flex-column align-items-center">
                   <h4>Friends list:</h4>
                   <ul>
@@ -271,34 +283,18 @@ class ProfilePage extends Component {
                 </MDBCardBody>
               </MDBCard>
 
-              <MDBCard className="mb-4 mb-lg-4">
+              <MDBCard className="mb-4 mb-lg-4" style={{ height: "auto" }}>
                 <MDBCardBody className="p-0">
                   <MDBListGroup flush className="rounded-3">
                     <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                       <MDBIcon fas icon="globe fa-lg text-warning" />
-                      <a href={`/profile/${this.state.user._id}`}>Get you Profile link </a>
-                    </MDBListGroupItem>
-                    <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                      <MDBIcon fab icon="github fa-lg" style={{ color: '#333333' }} />
-                      <MDBCardText></MDBCardText>
-                    </MDBListGroupItem>
-                    <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                      <MDBIcon fab icon="twitter fa-lg" style={{ color: '#55acee' }} />
-                      <MDBCardText></MDBCardText>
-                    </MDBListGroupItem>
-                    <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                      <MDBIcon fab icon="instagram fa-lg" style={{ color: '#ac2bac' }} />
-                      <MDBCardText></MDBCardText>
-                    </MDBListGroupItem>
-                    <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                      <MDBIcon fab icon="facebook fa-lg" style={{ color: '#3b5998' }} />
-                      <MDBCardText></MDBCardText>
+                      <a href={`/profile/${this.state.user._id}`}>Get your Profile link </a>
                     </MDBListGroupItem>
                   </MDBListGroup>
                 </MDBCardBody>
               </MDBCard>
 
-              <MDBCard className="mb-4 mb-lg-4">
+              <MDBCard className="mb-4 mb-lg-4" style={{ height: "auto" }}>
                 <MDBCardBody className="p-0">
                   <MDBListGroup flush className="rounded-3">
                     {this.state.user.CoursesTrophy !== 0 && (
