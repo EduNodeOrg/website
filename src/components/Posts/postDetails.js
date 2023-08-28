@@ -12,60 +12,7 @@ import axios from "axios";
 import Navbar from '../Dashboard/Navbar1';
 import TextField from '@mui/material/TextField'
 import { makeStyles } from "@mui/styles";
-import UserContext from './UserContext';
-import profileImage from './user.png'
-import CardMedia from "@mui/material/CardMedia";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-const useStyles = makeStyles((theme) => ({
-  postContainer: {
-    padding: theme.spacing(2),
-    backgroundColor: "#F5F5F5",
-    borderRadius: "10px",
-  },
-  postTitle: {
-    marginBottom: theme.spacing(2),
-    fontWeight: "bold",
-    fontSize: "36px",
-  },
-  postDescription: {
-    marginBottom: theme.spacing(4),
-    fontSize: "20px",
-  },
-  postLink: {
-    fontSize: "20px",
-  },
-  commentsContainer: {
-    marginTop: theme.spacing(4),
-  },
-  commentInput: {
-    marginRight: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-  },
-  commentButton: {
-    marginTop: theme.spacing(2),
-  },
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-  card: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-  },
-  cardMedia: {
-    paddingTop: "56.25%", // 16:9
-  },
-  cardContent: {
-    flexGrow: 1,
-  },
-}));
-
-
+import userImage from './user.png'
 
 
 
@@ -119,7 +66,12 @@ function PostDetails(props) {
           const res = await axios.get(`https://edunode.herokuapp.com/api/users/user/${email}`);
 
           const user = res.data;
-          userImages[email] = user.user.images;
+          if (user.user.images.length === 0) {
+            
+            userImages[email] = userImage
+          } else {
+            userImages[email] = user.user.images;
+          }
           userId[email] = user.user._id;
           console.log('image', userImages)
           console.log('user', res.data)

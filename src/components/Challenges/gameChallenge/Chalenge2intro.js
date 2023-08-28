@@ -14,13 +14,11 @@ import { clearErrors } from '../../../actions/errorActions';
 import { reduxForm } from 'redux-form';
 import Editor from '@monaco-editor/react';
 import "./styles.css"
-import space from './images/space.png'
+import space from './images/ship.png'
 import { useNavigate } from 'react-router-dom';
-import store from './images/1.png'
-import list from './images/list.png'
-import add from './images/add.png'
-import findName from './images/find.png'
-import all from './images/all.png'
+import ship from "./images/ship2.png"
+import ship1 from './images/ship.png'
+import ship2 from './images/ship3.png'
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -92,9 +90,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const stepImages = [
-  all,
-  list,
-  add,
+  ship1,
+  ship,
+  ship2,
 
 ];
 function getSteps() {

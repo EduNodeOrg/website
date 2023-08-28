@@ -1,4 +1,6 @@
 .myDiv {
-    background-image: url("./images/c1.png");
+    background-image: url("./images/code.jpg");
     height: 800px;
+    background-size: cover;
+    background-position: center;
 }

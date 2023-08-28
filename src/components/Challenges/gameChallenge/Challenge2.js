@@ -4,7 +4,9 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
-import challenge1 from "./images/c1.png"
+import challenge1 from "./images/ship2.png"
+import ship from './images/ship.png'
+import ship2 from './images/ship3.png'
 import {
   Button,
 } from 'react-bootstrap';

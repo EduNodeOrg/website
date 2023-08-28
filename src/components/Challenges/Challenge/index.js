@@ -16,7 +16,6 @@ import {
 
 // Import components
 
-import Welcome from './Welcome';
 import Course1 from './Course1';
 
 
@@ -24,10 +23,7 @@ import Navbar1 from '../../Dashboard/Navbar1';
 
 // Import styles
 import './style.css';
-import "./styles.css"
-
-// Import PropTypes for type checking
-import PropTypes from 'prop-types';
+import "./styles.css";
 
 
 

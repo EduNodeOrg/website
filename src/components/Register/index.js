@@ -58,6 +58,7 @@ export class Register extends Component {
     super(props);
     this.state = {
       email: "",
+      name:'',
       password: "",
       confirmPassword: "",
       isLoading: false,
@@ -172,33 +173,6 @@ export class Register extends Component {
 
   render() {
 
-    // const handleCustomLogin = async (e) => {
-    //   e.preventDefault()
-    //   const user = await Moralis.authenticate({
-    //     provider: "web3Auth",
-    //      clientId: process.env.REACT_APP_WEBTHREEAUTH_CLIENT_ID,
-    //   theme: "light",
-    //   loginMethodsOrder: ["github", "twitter", "google", "discord", "facebook",  "reddit",  "twitch", "apple", "linkedin", "email_passwordless"]
-
-    //    })
-
-    //  const currentUser = Moralis.User.current();
-
-
-    //    try {
-
-    //    await this.props.webThreeAuth(currentUser)
-
-
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-
-
-
-
-    //   }
-
     const freighterHandler = async () => {
       if (isConnected()) {
         const publicKey = await getPublicKey();
@@ -285,6 +259,17 @@ export class Register extends Component {
               Login with <Image style={{ width: '75px', marginLeft: '8px' }} src={flogo} />
             </Button>
             <br></br>
+            <div>
+              <Field
+                name="name"
+                type="text"
+                label="Full Name"
+                component={props => this.renderTextField(props)}
+                id="name"
+                value={this.state.name}
+                style={{ width: '300px', marginBottom: '16px' }}
+              />
+            </div>
             <div>
               <Field
                 name="email"
