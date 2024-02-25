@@ -114,7 +114,7 @@ class Dashboard extends Component {
       selectedTags: [],
       selectedRole: '',
       showAlert: false,
-      preference: [],
+       preference: [],
       user: [],
       notifications: [],
       achievement: [],
@@ -343,10 +343,10 @@ class Dashboard extends Component {
                 </Grid>
                 <div style={{ padding: '10px' }}>
 
-                  <h4 style={{ fontSize: "2em", textAlign: "left" }}>Actualities:</h4>
+                  {/* <h4 style={{ fontSize: "2em", textAlign: "left" }}>News:</h4> */}
                   <div>
 
-                    <List sx={{ width: '100%', maxWidth: 1000, bgcolor: 'background.paper' }}>
+                    {/* <List sx={{ width: '100%', maxWidth: 1000, bgcolor: 'background.paper' }}>
                       {notifications.map(notification => {
                         const message = notification.notificationMessage.replace('Congrats! You ', '');
                         return (
@@ -364,7 +364,7 @@ class Dashboard extends Component {
                           </ListItem>
                         );
                       })}
-                    </List>
+                    </List> */}
                     {/**   <List sx={{ width: '100%', maxWidth: 1000, bgcolor: 'background.paper' }}>
                   {achievement.map((notification) => {
                     const message = 'won a challenge game! ';
