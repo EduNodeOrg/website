@@ -260,7 +260,7 @@ class Search extends Component {
                                                     </div>
                                                 ))}
                                         </div>
-                                        <Grid container spacing={3}>
+                                        {/* <Grid container spacing={3}>
                                             {videos.map(video => (
                                                 <Grid item xs={12} sm={6} md={4} key={video.id.videoId}>
                                                     <Card>
@@ -281,7 +281,7 @@ class Search extends Component {
                                                     </Card>
                                                 </Grid>
                                             ))}
-                                        </Grid>
+                                        </Grid> */}
 
                                         <div className="row justify-content-center card-deck d-flex">
                                             {coinGecko.coins && coinGecko.coins.slice(0, 10).map(coin => (
