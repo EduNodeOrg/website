@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./blogPage.css";
 import NavBar from "../NavBar";
-import node from './node.png'
+const node = 'https://cdn.midjourney.com/3a7e9cb6-1b7a-44fb-afe1-9d769d145bdf/0_2.webp'
 function BlogPage() {
   const [blog, setBlog] = useState(null);
   const [nodes, setNodes] = useState([]);
@@ -46,7 +46,7 @@ function BlogPage() {
       <div className="blog-content">
 
         <div align="center">
-          <img src={node} width="400" height="150" />
+          <img src={node} width="600" height="400" />
         </div>
         <br></br>
         <h1 className="blog-title">{blog.title}</h1>
@@ -87,10 +87,10 @@ function BlogPage() {
                   <p className="card-text">{node.isp}</p>
 
                   {/* Extract latitude and longitude from geoData */}
-                  <label style={{ fontSize: '20px' }}>Latitude:</label>
-                  <p className="card-text">{node.geoData.latitude}</p>
-                  <label style={{ fontSize: '20px' }}>Longitude:</label>
-                  <p className="card-text">{node.geoData.longitude}</p>
+                  {/* <label style={{ fontSize: '20px' }}>Latitude:</label> */}
+                  {/* <p className="card-text">{node.geoData.latitude}</p> */}
+                  {/* <label style={{ fontSize: '20px' }}>Longitude:</label> */}
+                  {/* <p className="card-text">{node.geoData.longitude}</p> */}
 
                   <label style={{ fontSize: '20px' }}>Active:</label>
                   <p className="card-text">{node.active.toString()}</p>
