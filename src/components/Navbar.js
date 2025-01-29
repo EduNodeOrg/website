@@ -1,0 +1,1 @@
+{user && <Nav.Link href="/post">New Post</Nav.Link>}
