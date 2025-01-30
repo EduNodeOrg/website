@@ -20,11 +20,7 @@ import {
   const initialState = {
       token: localStorage.getItem("token"),
       isLoading: false,
-      user: {
-        id: null,
-        roles: ['student'], // Default role
-        // ... other user properties
-      }
+      user: null
   };
   
   
