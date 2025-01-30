@@ -66,4 +66,5 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, null)(NavBar);
+const ConnectedNavBar = connect(mapStateToProps, null)(NavBar);
+export default ConnectedNavBar;

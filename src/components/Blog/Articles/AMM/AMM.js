@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Image, Card } from 'react-bootstrap';
 import MetaTags from 'react-meta-tags';
 import { Helmet } from 'react-helmet-async'
-
 import NavBar from '../../../NavBar';
 import me from '../../me.jpg';
 import amm from './AMMs.png';

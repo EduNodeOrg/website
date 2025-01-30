@@ -282,6 +282,7 @@ class NavBar1 extends Component {
           <Nav className="ml-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/search">Search</Nav.Link>
+            <Nav.Link href="/post">New Post</Nav.Link>
             <Nav.Link href="/courses">Courses</Nav.Link>
             <Nav.Link href="/feed">Feed</Nav.Link>
             <Nav.Link href="/certificate">Certificates</Nav.Link>
