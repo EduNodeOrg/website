@@ -101,7 +101,7 @@ export default function Footer() {
                 <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
                 <p>
                   <MDBIcon icon="home" className="me-2" />
-                  Liechtensteinstraße 111/115, 1090 Wien
+                  Widerhofergasse 6, 1090 Wien
                 </p>
                 <p>
                   <MDBIcon icon="envelope" className="me-3" />

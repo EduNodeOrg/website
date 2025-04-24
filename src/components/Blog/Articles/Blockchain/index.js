@@ -113,7 +113,7 @@ export default class index extends Component {
 
 <h4>Location:</h4>
 <a href="https://goo.gl/maps/DjN3cE8EivhBVvZh9"><p>Talent Garden Vienna
-Liechtensteinstraße 111-115, 1090 Wien - Austria</p></a>
+Widerhofergasse 6, 1090 Wien - Austria</p></a>
              <h4>Special thanks to our sponsors</h4>
 
              <br></br>
