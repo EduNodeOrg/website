@@ -2,11 +2,8 @@ import withRouter from '../../withRouter';
 import { clearErrors } from "../../actions/errorActions";
 import { resend, verifyCode } from "../../actions/authActions";
 import Box from '@mui/material/Box';
-import Sidebar from "../Dashboard/Sidebar";
-import Topbar from "../Dashboard/Topbar";
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-
 import { styled } from '@mui/material/styles';
 import { connect } from 'react-redux';
 import React, { Component } from 'react'
@@ -17,7 +14,7 @@ import "./style.css";
 import axios from 'axios';
 import { Navigate } from "react-router-dom";
 import { updateAccount, saveUsernameAlbedo, pkeyGoogleUser } from "../../actions/authActions";
-//import { isConnected, getPublicKey } from "@stellar/freighter-api";
+
 import Navbar1 from '../Dashboard/Navbar1';
 
 class Certificate extends Component {
@@ -288,11 +285,17 @@ class Certificate extends Component {
                     {certificates.length > 0 && (
                       <>
                         <p>Here are your certificates:</p>
+                        {/* Consider using a Grid for better layout instead of ul/li */}
                         <ul>
                           {certificates.map(cert => (
-                            <li key={cert.certificateNumber}>
+                            <li key={cert.certificateNumber} style={{ listStyleType: 'none', marginBottom: '16px' }}> {/* Added some basic styling for list item */}
                               <a href={`/certificates/${cert.certificateNumber}`} target="_blank" rel="noopener noreferrer">
-                                <img src={cert.cid} alt="Certificate" />
+                                {/* Add style to the img tag to control its size */}
+                                <img 
+                                  src={cert.cid} 
+                                  alt={`Certificate ${cert.certificateNumber}`} 
+                                  style={{ maxWidth: '600px', height: 'auto', border: '1px solid #ccc' }} // Example styling: limit width and add a border
+                                />
                               </a>
                             </li>
                           ))}

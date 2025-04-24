@@ -1,20 +1,13 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Provider, connect } from "react-redux";
-import { BrowserRouter } from 'react-router-dom';
-import { useEffect } from "react";
-import axios from "axios";
-import Footer from './components/Footer/Footer';
 import { useLocation, useNavigate } from "react-router-dom";
 import { store } from "./store";
 import './App.css';
-import { StyledChart } from './admin/src/components/chart';
-import ScrollToTop from './admin/src/components/scroll-to-top';
 import Home from "./components/Home";
 import AboutUs from "./components/aboutus";
 import Node from "./components/StellarNodes";
 import Account from "./components/Account"
-//import Dashboard from "./components/Dashboard";
 import Resources from "./components/Resources";
 import Community from "./components/Community";
 import Project from "./components/Community/project";
@@ -223,17 +216,6 @@ function App(props) {
   const [user, setUser] = useState(null);
   const shouldShowFooter = window.location.pathname !== '/certificates/:certificateNumber';
 
-
-{/**  useEffect(() => {
-    const isLoggedIn = Boolean(localStorage.getItem('user'));
-
-    if (!isLoggedIn) {
-      // User is not logged in, redirect to the login page
-      navigate('/login');
-    } else {
-      setUser({ username: 'exampleUser' });
-    }
-  }, [navigate]);*/} 
   
   return (
     <Provider store={store}>
