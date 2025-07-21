@@ -80,7 +80,7 @@ export const register = ({ email, password, confirmationCode,name }) => dispatch
   })
     .then(response => response.json())
     .then((res) => {
-      console.log(res)
+
       if (res.user.email) {
         dispatch({
           type: REGISTER_SUCCESS,
@@ -101,12 +101,12 @@ export const register = ({ email, password, confirmationCode,name }) => dispatch
       }
       localStorage.setItem('jwt', res.user)
       localStorage.setItem('user', JSON.stringify(res.user))
-      console.log('users', res.user)
+
     }
     })
     .catch(
       (err) => {
-        console.log("register failed", err)
+ 
 
         dispatch({
           type: REGISTER_FAIL,
@@ -147,7 +147,7 @@ export const login = ({ email, password }) => dispatch => {
           }
           localStorage.setItem('jwt', data.user);
           localStorage.setItem('user', JSON.stringify(data.user));
-          console.log('users', data.user);
+
           resolve();
         } else {
           reject(new Error('Login failed. Please check your credentials and try again.'));

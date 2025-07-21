@@ -32,8 +32,8 @@ export function AlertDialog() {
 
   };
   const handleButtonClick = () => {
-    const id9 ='646b83386cea9a0294e65253';
-    window.location.href = `/courseDetails/${id9}`;
+    const id10 ='647603a1c8c864e8a6195e00';
+    window.location.href = `/courseDetails/${id10}`;
   };
 
 

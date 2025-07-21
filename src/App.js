@@ -13,6 +13,7 @@ import Community from "./components/Community";
 import Project from "./components/Community/project";
 import Milestones from "./components/Milestones"
 import TermsAndConditions from "./components/Terms";
+
 import Courses from './components/Courses';
 import Questions1 from './components/Courses1/Questions';
 import Questions from './components/Courses/Questions';
@@ -65,6 +66,14 @@ import QuestionsTwo9 from './components/Courses9/QuestionsTwo';
 import QuestionsThree9 from './components/Courses9/QuestionsThree';
 import QuestionsFour9 from './components/Courses9/QuestionsFour';
 import QuestionsFive9 from './components/Courses9/QuestionsFive';
+
+
+import Questions10 from './components/Courses10/Questions';
+import QuestionsTwo10 from './components/Courses10/QuestionsTwo';
+import QuestionsThree10 from './components/Courses10/QuestionsThree';
+import QuestionsFour10 from './components/Courses10/QuestionsFour';
+import QuestionsFive10 from './components/Courses10/QuestionsFive';
+
 import Intro from './components/Courses/One/Intro';
 import Intro1 from './components/Courses1/One/Intro';
 import Intro2 from './components/Courses2/One/Intro';
@@ -75,6 +84,9 @@ import Intro6 from './components/Courses6/One/Intro';
 import Intro7 from './components/Courses7/One/Intro';
 import Intro8 from './components/Courses8/One/Intro';
 import Intro9 from './components/Courses9/One/Intro';
+import Intro10 from './components/Courses10/One/Intro';
+
+
 import Coursedone from "./components/Courses/Coursedone"
 import Coursedone1 from "./components/Courses1/Coursedone"
 import Coursedone2 from "./components/Courses2/Coursedone"
@@ -85,6 +97,9 @@ import Coursedone6 from "./components/Courses6/Coursedone"
 import Coursedone7 from "./components/Courses7/Coursedone"
 import Coursedone8 from "./components/Courses8/Coursedone"
 import Coursedone9 from "./components/Courses9/Coursedone"
+import Coursedone10 from "./components/Courses10/Coursedone"
+
+
 import Challengedone from "./components/Challenges/Challenge/Coursedone"
 import Keybase from "./components/Blog/Articles/Keybase";
 import Issue from "./components/Blog/Articles/Issue";
@@ -159,11 +174,9 @@ import ResetPasswordPage from './components/Login/reset_password'
 import WithParams from './components/Profile/profile'
 import CertificatePage from './components/Certificate/about'
 import ChallengeDetails from './components/Challenges/Challenge/challengeDetails'
-import Routerrr from './admin/routes'
 import ThemeProvider from './admin/src/theme';
 import DashboardLayout from './admin/src/layouts/dashboard';
 import DashboardAdmin from './admin/src/layouts/adminDashboard';
-import SimpleLayout from './admin/src/layouts/simple';
 import BlogPage from './admin/src/pages/BlogPage';
 import UserPage from './admin/src/pages/UserPage';
 import AddedBadges from './admin/src/pages/Badges';
@@ -178,7 +191,6 @@ import DashboardAppPage from './admin/src/pages/DashboardAppPage';
 import DashboardAppAdmin from './admin/src/pages/DashboardAdmin';
 import Messages from './components/Profile/messages'
 import Game from './components/Challenges/gameChallenge/addGame'
-import { ThemeProviders } from './ThemeContext';
 
 const ThemedRoutes = () => (
   <ThemeProvider>
@@ -232,22 +244,25 @@ function App(props) {
         <Route exact path="/community/project" element={<Project />} />
         <Route exact path="/milestones" element={<Milestones />} />
         <Route exact path="/courses" element={<Courses />} />
-        <Route exact path="/courses/101/" element={<Intro />} />
-        <Route exact path="/courses/102/" element={<Intro1 />} />
-        <Route exact path="/courses/103/" element={<Intro2 />} />
-        <Route exact path="/courses/104/" element={<Intro3 />} />
-        <Route exact path="/courses/105/" element={<Intro4 />} />
-        <Route exact path="/courses/106/" element={<Intro5 />} />
+        <Route exact path="/courses/101" element={<Intro />} />
+        <Route exact path="/courses/102" element={<Intro1 />} />
+        <Route exact path="/courses/103" element={<Intro2 />} />
+        <Route exact path="/courses/104" element={<Intro3 />} />
+        <Route exact path="/courses/105" element={<Intro4 />} />
+        <Route exact path="/courses/106" element={<Intro5 />} />
         <Route exact path="/courses/107" element={<Intro6 />} />
         <Route exact path="/courses/108" element={<Intro7 />} />
         <Route exact path="/courses/109" element={<Intro8 />} />
         <Route exact path="/courses/110" element={<Intro9 />} />
+        <Route exact path="/courses/111" element={<Intro10 />} />  
+
         <Route exact path="/courses/101/1" element={<Questions />} />
         <Route exact path="/courses/101/2" element={<QuestionsTwo />} />
         <Route exact path="/courses/101/3" element={<QuestionsThree />} />
         <Route exact path="/courses/101/4" element={<QuestionsFour />} />
         <Route exact path="/courses/101/5" element={<QuestionsFive />} />
         <Route exact path="/courses/101/done" element={<Coursedone />} />
+
         <Route exact path="/courses/102/1" element={<Questions1 />} />
         <Route exact path="/courses/102/2" element={<QuestionsTwo1 />} />
         <Route exact path="/courses/102/3" element={<QuestionsThree1 />} />
@@ -255,12 +270,14 @@ function App(props) {
         <Route exact path="/courses/102/5" element={<QuestionsFive1 />} />
         <Route exact path="/courses/102/6" element={<QuestionsSix1 />} />
         <Route exact path="/courses/102/done" element={<Coursedone1 />} />
+
         <Route exact path="/courses/103/1" element={<Questions2 />} />
         <Route exact path="/courses/103/2" element={<QuestionsTwo2 />} />
         <Route exact path="/courses/103/3" element={<QuestionsThree2 />} />
         <Route exact path="/courses/103/4" element={<QuestionsFour2 />} />
         <Route exact path="/courses/103/5" element={<QuestionsFive2 />} />
         <Route exact path="/courses/103/done" element={<Coursedone2 />} />
+
         <Route exact path="/courses/104/1" element={<Questions3 />} />
         <Route exact path="/courses/104/2" element={<QuestionsTwo3 />} />
         <Route exact path="/courses/104/3" element={<QuestionsThree3 />} />
@@ -297,12 +314,22 @@ function App(props) {
         <Route exact path="/courses/109/4" element={<QuestionsFour8 />} />
         <Route exact path="/courses/109/5" element={<QuestionsFive8 />} />
         <Route exact path="/courses/109/done" element={<Coursedone8 />} />
+
         <Route exact path="/courses/110/1" element={<Questions9 />} />
         <Route exact path="/courses/110/2" element={<QuestionsTwo9 />} />
         <Route exact path="/courses/110/3" element={<QuestionsThree9 />} />
         <Route exact path="/courses/110/4" element={<QuestionsFour9 />} />
         <Route exact path="/courses/110/5" element={<QuestionsFive9 />} />
         <Route exact path="/courses/110/done" element={<Coursedone9 />} />
+
+        <Route exact path="/courses/111/1" element={<Questions10 />} />
+        <Route exact path="/courses/111/2" element={<QuestionsTwo10 />} />
+        <Route exact path="/courses/111/3" element={<QuestionsThree10 />} />
+        <Route exact path="/courses/111/4" element={<QuestionsFour10 />} />
+        <Route exact path="/courses/111/5" element={<QuestionsFive10 />} />
+        <Route exact path="/courses/111/done" element={<Coursedone10 />} />
+
+
         <Route exact path="/blog" element={<Blog />} />
         <Route exact path="/blog/What-is-Keybase" element={<Keybase />} />
         <Route exact path="/blog/How-to-issue" element={<Issue />} />

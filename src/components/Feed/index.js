@@ -53,28 +53,6 @@ class Feed extends Component {
 
   }
 
-  componentDidMount() {
-
-    // const socket = io(ENDPOINT);
-
-    // // const socket = io('ws://localhost:5001');
-    // socket.on('connect', () => {
-    //   console.log("Socket Connected yo!");
-    //   socket.on("tweets", data => {
-    //     console.info(data);
-    //     // let newList = [data].concat(this.state.items.slice(0, 15));
-    //     this.setState({ items: data });
-
-    //     console.log(this)
-    //   });
-    // // });
-    // // socket.on('disconnect', () => {
-    // //   socket.off("tweets")
-    // //   socket.removeAllListeners("tweets");
-    // //   console.log("Socket Disconnected");
-    // });
-  }
-
   componentDidUpdate(prevProps) {
     const { error } = this.props;
     if (error !== prevProps.error) {

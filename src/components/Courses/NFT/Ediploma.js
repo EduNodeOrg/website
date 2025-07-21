@@ -73,6 +73,7 @@ function Ediploma(props) {
   const loggedInUserEmail = props.auth.user.email ? props.auth.user.email : '';
   const courseId = '644bcdd1e1fec0f4f55a7447';
   const [showPopup, setShowPopup] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   async function sendImageToServer(base64Image, props) {
     try {
@@ -114,71 +115,78 @@ function Ediploma(props) {
 
   const handleConfirmDownload = async (e) => {
     e.preventDefault();
-
-    const base64Image = await getCertificateBase64();
-    await sendImageToServer(base64Image, props);
-    console.log(base64Image); // This will log the base64 string of the image in the console
-    // TODO: Send the base64Image to your server using an API
-    exportComponentAsPNG(certificateWrapper, {
-      html2CanvasOptions: { backgroundColor: `url(${dep})`, },
-    });
-    setTimeout(function () {
-      try {
-       // window.location.href = "/";
-      } catch (error) {
-        console.log(error);
-      }
-    }, 2000);
-
-    const formData = {
-      rate: ratingValue,
-      text: Feedback,
-      email: loggedInUserEmail,
-    };
+    if (isGenerating) return; // Prevent double click
+    setIsGenerating(true);
     try {
-      const response = await fetch(`https://edunode.herokuapp.com/api/cours/cours/${courseId}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const base64Image = await getCertificateBase64();
+      await sendImageToServer(base64Image, props);
+      console.log(base64Image); // This will log the base64 string of the image in the console
+      // TODO: Send the base64Image to your server using an API
+      exportComponentAsPNG(certificateWrapper, {
+        html2CanvasOptions: { backgroundColor: `url(${dep})`, },
       });
+      setTimeout(function () {
+        try {
+         // window.location.href = "/";
+        } catch (error) {
+          console.log(error);
+        }
+      }, 2000);
 
-      if (response.ok) {
-        // Handle successful submission
-      } else {
+      const formData = {
+        rate: ratingValue,
+        text: Feedback,
+        email: loggedInUserEmail,
+      };
+      try {
+        const response = await fetch(`https://edunode.herokuapp.com/api/cours/cours/${courseId}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          // Handle successful submission
+        } else {
+          // Handle submission error
+        }
+      } catch (error) {
+        console.error(error);
         // Handle submission error
       }
+
+      const email = loggedInUserEmail;
+
+    fetch('https://edunode.herokuapp.com/api/certificates/increment-trophy', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Failed to increment trophy');
+        }
+      })
+      .then(data => {
+        console.log(data.message); // Success message from the server
+        // Perform any additional actions or display a success message on the frontend
+      })
+      .catch(error => {
+        console.error(error);
+        // Handle any errors that occurred during the request
+      });
     } catch (error) {
-      console.error(error);
-      // Handle submission error
+      // If any error occurs, re-enable the button
+      setIsGenerating(false);
+      return;
     }
-
-    const email = loggedInUserEmail;
-
-  fetch('https://edunode.herokuapp.com/api/certificates/increment-trophy', {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ email }),
-  })
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error('Failed to increment trophy');
-      }
-    })
-    .then(data => {
-      console.log(data.message); // Success message from the server
-      // Perform any additional actions or display a success message on the frontend
-    })
-    .catch(error => {
-      console.error(error);
-      // Handle any errors that occurred during the request
-    });
-
+    setIsGenerating(false); // Optionally, keep it disabled if you want to prevent any further generation
   }
 
 
@@ -224,8 +232,8 @@ function Ediploma(props) {
         )}
         
         
-        <button onClick={handleConfirmDownload}>
-          Confirm and Download
+        <button onClick={handleConfirmDownload} disabled={isGenerating}>
+          {isGenerating ? 'Generating...' : 'Confirm and Download'}
         </button>
       </div>
       <div id="downloadWrapper">

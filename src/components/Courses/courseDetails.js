@@ -134,7 +134,7 @@ function CourseDetails(props) {
             <br></br>
             <div style={{ padding: "10px" }}>
               <div className="post">
-                <h1 style={{ fontSize: '20px', fontWeight: 'bold' }} >Titlee :</h1>
+                <h1 style={{ fontSize: '20px', fontWeight: 'bold' }} >Title :</h1>
 
                 <h2>{course.title}</h2>
                 <br></br>

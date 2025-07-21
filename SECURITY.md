@@ -15,7 +15,7 @@ We take the security of our project seriously. If you believe you have found a s
 
 1. **Do Not** report security vulnerabilities through public GitHub issues.
 
-2. Instead, please send an email to [INSERT SECURITY EMAIL] with:
+2. Instead, please send an email to hi@edunode.org with:
    - A detailed description of the vulnerability
    - Steps to reproduce the issue
    - Possible impacts of the vulnerability

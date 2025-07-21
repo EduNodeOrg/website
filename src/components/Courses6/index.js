@@ -13,7 +13,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import {
   Button,
 } from 'react-bootstrap';
-import courseData from './data.json';
 
 // Import components
 import Sidebar from "../Dashboard/Sidebar";
@@ -47,16 +46,23 @@ class Courses extends Component {
   }
 
   componentDidMount() {
-    // fetch data.json file here and set it to the courseData state
-   try {
     fetch('./data.json')
-    .then(response => response.json())
-    .then(data => this.setState({courseData: data}))
-    .catch(err => console.log(err))
-   } catch (error) {
-    console.log("there was an error!! ;/" + error)
-   }
-    }
+        .then(response => {
+            if (!response.ok) {
+                // Throw an error to be caught by the .catch() block
+                throw new Error(`HTTP error! status: ${response.status}, while fetching ${response.url}`);
+            }
+            return response.json(); // Only parse if response is ok
+        })
+        .then(data => {
+            this.setState({ courseData: data });
+        })
+        .catch(err => {
+            console.error("Failed to fetch or parse course data:", err);
+            // We might want to set an error state here, e.g.,
+            // this.setState({ error: 'Failed to load course data.', loading: false });
+        });
+}
 
   componentDidUpdate(prevProps) {
     const { error } = this.props;

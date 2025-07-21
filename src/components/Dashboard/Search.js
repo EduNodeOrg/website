@@ -19,7 +19,7 @@ class SearchBar extends Component {
   performSearch = () => {
     const { searchQuery } = this.state;
   
-    fetch(`http://localhost:5001/api/search?query=${searchQuery}`)
+    fetch(`https://edunode.herokuapp.com/api/search?query=${searchQuery}`)
       .then(response => response.json())
       .then(data => {
         this.setState({ results: data.results });

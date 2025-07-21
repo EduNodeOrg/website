@@ -17,7 +17,7 @@ class Confirm extends Component {
   // the user has clicked on the link in the email. The link in the email will 
   // look something like this: 
   // 
-  // http://localhost:3000/confirm/5c40d7607d259400989a9d42
+
   // 
   // where 5c40d...a9d42 is the unique id created by Mongo
   componentDidMount = () => {

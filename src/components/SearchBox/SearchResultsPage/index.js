@@ -20,7 +20,7 @@ class SearchResultsPage extends Component {
         "Access-Control-Allow-Headers": "*",
         "Content-Type": "application/json"
       };
-      const {data} = await axios.get(`http://localhost:5001/api/search?q=${this.state.searchTerm}`, {headers});
+      const {data} = await axios.get(`https://edunode.herokuapp.com/api/search?q=${this.state.searchTerm}`, {headers});
       this.setState({ courses: data });
     } catch (error) {
       console.log(error);

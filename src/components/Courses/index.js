@@ -13,15 +13,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import {
   Button,
 } from 'react-bootstrap';
-import courseData from './data.json';
 import Navbar2 from '../Dashboard/Navbar2';
 // Import components
-import Sidebar from "../Dashboard/Sidebar";
-import Topbar from "../Dashboard/Topbar";
-import Welcome from './Welcome';
 import Course1 from './Course1';
-import Course1done from './Course1done';
-import Course1doneclaim from './Course1doneclaim';
 import Course2 from './Course2';
 import Course3 from './Course3';
 import Course4 from './Course4';
@@ -31,17 +25,13 @@ import Course7 from './Course7';
 import Course8 from './Course8';
 import Course9 from './Course9';
 import Course10 from './Course10';
+import Course11 from './Course11';
 import learn from './learn.png'
 import Navbar1 from '../Dashboard/Navbar1';
 
 // Import styles
 import './style.css';
 import "./styles.css"
-
-// Import PropTypes for type checking
-import PropTypes from 'prop-types';
-
-
 
 
 class Courses extends Component {
@@ -57,7 +47,6 @@ class Courses extends Component {
 
   componentDidMount() {
     const { email} = this.state;
-    console.log('email', email)
     fetch(`https://edunode.herokuapp.com/api/users/user?email=${email}`)
     .then(response => response.json())
     .then(data => {
@@ -115,6 +104,7 @@ class Courses extends Component {
     const id8 = '6464e2d58aca412ed2d81bf3';
     const id9 = '646b83386cea9a0294e65253';
     const id10 = '647603a1c8c864e8a6195e00';
+    const id11 = '6841abca38a24bd982c9d70a';
 
 
 
@@ -124,13 +114,7 @@ class Courses extends Component {
 
 
     const {
-      isLoading,
-      isAuthenticated,
       isVerified,
-      hasUsername,
-      googleProfilePic,
-      isGranted,
-      isFirstCourseSelected,
       courseOneDone,
     } = this.props.auth;
 
@@ -140,9 +124,7 @@ class Courses extends Component {
         <Box sx={{ flexGrow: 1 }}>
         
           <Grid container spacing={2}>
-            {/* <Grid item xs={12} sm={4} md={3}>
-            <Item><Sidebar props={email}/></Item>
-          </Grid> */}
+
             <Grid item xs={12} sm={8} md={20}>
             {user.role === 'Learner' && <Navbar2 />}
             {user.role === 'Teacher' && <Navbar1 />}
@@ -181,6 +163,7 @@ class Courses extends Component {
                 <Course10 />
 
                 <br></br>
+                <Course11 />
                 <br></br>
               </div>
 
@@ -234,6 +217,8 @@ class Courses extends Component {
                 <br></br>
                 <Course10 />
 
+                <br></br>
+                <Course11 />
                 <br></br>
               </div>
             </Grid>
@@ -290,6 +275,8 @@ class Courses extends Component {
                 <Course10 />
 
                 <br></br>
+                <Course11 />
+                <br></br>
               </div>
             </Grid>
 
@@ -340,8 +327,15 @@ class Courses extends Component {
                     <Course9 />
                   </a>
                   <br></br>
+                  <a href={`/courseDetails/${id10}`} target="_blank" rel="noopener noreferrer">
+                    <Course10 />
+                  </a>
+                  <br></br>
+                  <a href={`/courseDetails/${id11}`} target="_blank" rel="noopener noreferrer">
+                    <Course11 />
+                  </a>
 
-                </div>
+                </div>  
               </Grid>
 
             </Grid>

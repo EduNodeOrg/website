@@ -2,18 +2,12 @@ import React, { Component } from 'react'
 import { clearErrors } from "../../actions/errorActions";
 import { verifyCode } from "../../actions/authActions";
 import Box from '@mui/material/Box';
-import Sidebar from "../Dashboard/Sidebar";
-import Topbar from "../Dashboard/Topbar";
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-
-import { styled } from '@mui/material/styles';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import PropTypes from 'prop-types'
-import axios from "axios"
 import "./style.css"
 import { Navigate } from "react-router-dom";
 import Alert from '@mui/material/Alert';
@@ -23,8 +17,6 @@ import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import Navbar1 from '../Dashboard/Navbar1';
 import Modal from 'react-modal';
 import dec from './decision-making.png';
-
-
 
 const suggestedQuestions = [
   "What is the Stellar Network?",
@@ -105,17 +97,17 @@ class Chat extends Component {
     this.setState({ loading: true });
 
     // Send the new question to the backend to get the AI's response
-    const response = await fetch('https://edunode.herokuapp.com/api/chat/openai', {
+    const response = await fetch('https://edunode.herokuapp.com/api/chat/genai', {
 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": '*'
       },
-      body: JSON.stringify({ input, email }),
+      body: JSON.stringify({ prompt: input, email }),
     });
     const data = await response.json();
-    const aiResponse = data.msg;
+    const aiResponse = data.text;
 
     // Update the state with the new chat message and set loading to false
     this.setState({ input: '', sessionMessages: [...sessionMessages, { user: input, ai: aiResponse }], loading: false });

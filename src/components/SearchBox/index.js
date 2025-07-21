@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const getResults = async (searchTerm) => {
     try {
-      const response = await axios.get(`http://localhost:5001/api/search?q=${searchTerm}`);
+      const response = await axios.get(`https://edunode.herokuapp.com/api/search?q=${searchTerm}`);
       const data = JSON.parse(response.data);
 const organizedData = {};
 data.forEach(course => {
