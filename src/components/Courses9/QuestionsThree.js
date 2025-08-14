@@ -64,12 +64,13 @@ export default class index extends Component {
   };
 
   onChangeFour = (e) => {
-    this.setState({ checkfour: true });
-    this.setState({ checkone: false });
-    this.setState({ checktwo: false });
-    this.setState({ checkthree: false });
-    this.setState({ checknone: false });
-    this.setState({ checkfour: true });
+    this.setState({ 
+      checkfour: true,
+      checkone: false,
+      checktwo: false,
+      checkthree: false,
+      checknone: false 
+    });
   };
 
   onSubmit = (props, e) => {
@@ -88,14 +89,14 @@ export default class index extends Component {
         <NavBar />
         <LinearProgressWithLabel value={80} />
         <h5>
-        What is the function of an Inbound Oracle?{' '}
+        Sesión 3: Infraestructura Blockchain - ¿Cuál es una función esencial de los contratos inteligentes en la infraestructura blockchain?{' '}
         </h5>
 
         <Form.Group as={Row}>
           <Col sm={10}>
             <Form.Check
               type="checkbox"
-              label="Sends data from smart contracts to the external world"
+              label="Permitir la edición manual de transacciones."
               name="checkone"
               id="form1"
               onChange={this.onChangeOne}
@@ -104,7 +105,7 @@ export default class index extends Component {
             />
             <Form.Check
               type="checkbox"
-              label="Provides smart contracts with data from the external world"
+              label="Automatizar la ejecución de acuerdos sin intermediarios."
               name="checktwo"
               id="form2"
               onChange={this.onChangeTwo}
@@ -113,7 +114,7 @@ export default class index extends Component {
             />
             <Form.Check
               type="checkbox"
-              label="Acts as a legal system for smart contracts"
+              label="Centralizar el control de la red."
               name="checkthree"
               id="form3"
               onChange={this.onChangeThree}
@@ -123,7 +124,7 @@ export default class index extends Component {
 
             <Form.Check
               type="checkbox"
-              label=" Monitors the physical world and relays this information back to the blockchain"
+              label="Almacenar información personal de los usuarios."
               name="checkfour"
               id="form4"
               onChange={this.onChangeFour}

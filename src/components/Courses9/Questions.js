@@ -34,38 +34,43 @@ export default class index extends Component {
   }
 
   onChangeOne = (e) => {
-    this.setState({ checkone: true });
-    this.setState({ checktwo: false });
-    this.setState({ checkthree: false });
-    this.setState({ checkfour: false });
-    this.setState({ checknone: false });
-     
+    this.setState({ 
+      checkone: true,
+      checktwo: false,
+      checkthree: false,
+      checkfour: false,
+      checknone: false 
+    });
   };
+
   onChangeTwo = (e) => {
-    this.setState({ checkone: false });
-    this.setState({ checktwo: true });
-    this.setState({ checkthree: false });
-    this.setState({ checkfour: false });
-    this.setState({ checknone: false });
-      
+    this.setState({ 
+      checkone: false,
+      checktwo: true,
+      checkthree: false,
+      checkfour: false,
+      checknone: false 
+    });
   };
 
   onChangeThree = (e) => {
-    this.setState({ checkone: false });
-    this.setState({ checktwo: false });
-    this.setState({ checkthree: true });
-     this.setState({ checkfour: false });
-    this.setState({ checknone: false });
-       
+    this.setState({ 
+      checkone: false,
+      checktwo: false,
+      checkthree: true,
+      checkfour: false,
+      checknone: false 
+    });
   };
 
   onChangeFour = (e) => {
-    this.setState({ checkfour: true });
-    this.setState({ checkone: false });
-    this.setState({ checktwo: false });
-    this.setState({ checkthree: false });
-    this.setState({ checknone: false });
-  
+    this.setState({ 
+      checkone: false,
+      checktwo: false,
+      checkthree: false,
+      checkfour: true,
+      checknone: false 
+    });
   };
 
   onSubmit = (e) => {
@@ -82,14 +87,14 @@ export default class index extends Component {
         <NavBar />
         <LinearProgressWithLabel value={60} />
         <h5>
-        What is a Blockchain Oracle?{' '}
+        Sesión 1: Introducción a Blockchain y Web3 -¿Qué es una blockchain??{' '}
         </h5>
 
         <Form.Group as={Row}>
           <Col sm={10}>
             <Form.Check
               type="checkbox"
-              label=" A type of blockchain"
+              label="Una base de datos centralizada controlada por una entidad."
               name="checkone"
               id="form1"
               onChange={this.onChangeOne}
@@ -99,7 +104,7 @@ export default class index extends Component {
             />
             <Form.Check
               type="checkbox"
-              label="A smart contract "
+              label="Un sistema de almacenamiento de datos en la nube."
               name="checktwo"
               id="form2"
               onChange={this.onChangeTwo}
@@ -111,7 +116,7 @@ export default class index extends Component {
             />
             <Form.Check
               type="checkbox"
-              label=" A third-party service that provides smart contracts with external information "
+              label="Un registro distribuido e inmutable de transacciones."
               name="checkthree"
               id="form3"
               onChange={this.onChangeThree}
@@ -121,7 +126,7 @@ export default class index extends Component {
             />
             <Form.Check
               type="checkbox"
-              label="A type of cryptocurrency"
+              label="Un software para crear criptomonedas"
               name="checkfour"
               id="form4"
               onChange={this.onChangeFour}

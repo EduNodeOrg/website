@@ -87,47 +87,25 @@ export default function CircularIntegration(props) {
 
     
     if (!loading) {
-
-
-        if (
-          props.state.checknone === true
-        ) {
-          setLoading(false);
-          alert('please select an option');
-        }
-          if (props.state.checkone === true) {
-            timer.current = window.setTimeout(() => {
-              setFail(true);
-              setLoading(false);
-              alert('Wrong answer, please try again!');
-            }, 2000);
-          }
-        if (props.state.checktwo === true) {
-          timer.current = window.setTimeout(() => {
-            setFail(true);
-            setLoading(false);
-            alert('Wrong answer, please try again!');
-          }, 2000);
-   
-        }
-        if (props.state.checkthree === true) {
-          timer.current = window.setTimeout(() => {
-            setSuccess(true);
+      if (props.state.checknone === true) {
+        setLoading(false);
+        alert('please select an option');
+      } else if (props.state.checkthree === true) { 
+        timer.current = window.setTimeout(() => {
+          setSuccess(true);
           setLoading(false);
           alert('Correct answer!');
           setQuestionOneValid(true);
           navigate('/courses/110/2');
         }, 2000);
-      }
-      if (props.state.checkfour === true) {
+      } else {
         timer.current = window.setTimeout(() => {
           setFail(true);
           setLoading(false);
           alert('Wrong answer, please try again!');
         }, 2000);
- 
       }
-      }
+    }
   };
 
   return (

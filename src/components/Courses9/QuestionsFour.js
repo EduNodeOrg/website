@@ -86,14 +86,14 @@ export default class index extends Component {
         <NavBar />
         <LinearProgressWithLabel value={90} />
         <h5>
-        What is the 'Oracle Problem'?{' '}
+        Sesión 4: Finanzas Descentralizadas y Tokens - ¿Qué es un NFT (Token No Fungible)?{' '}
         </h5>
 
         <Form.Group as={Row}>
           <Col sm={10}>
             <Form.Check
               type="checkbox"
-              label="The problem of choosing the right oracle service"
+              label="Una criptomoneda intercambiable como Bitcoin."
               name="checkone"
               id="form1"
               onChange={this.onChangeOne}
@@ -103,7 +103,7 @@ export default class index extends Component {
             />
             <Form.Check
               type="checkbox"
-              label=" The issue of security and trust associated with oracles"
+              label="Un activo digital único que representa propiedad sobre un ítem específico."
               name="checktwo"
               id="form2"
               onChange={this.onChangeTwo}
@@ -115,7 +115,7 @@ export default class index extends Component {
             />
             <Form.Check
               type="checkbox"
-              label="The technical issues associated with developing oracles"
+              label="Un contrato inteligente para préstamos descentralizados."
               name="checkthree"
               id="form3"
               onChange={this.onChangeThree}
@@ -125,7 +125,7 @@ export default class index extends Component {
             />
             <Form.Check
               type="checkbox"
-              label="The problem of integrating oracles with smart contracts"
+              label="Una plataforma de intercambio de criptomonedas"
               name="checkfour"
               id="form4"
               onChange={this.onChangeFour}

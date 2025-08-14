@@ -42,23 +42,26 @@ export default class index extends Component {
     this.setState({ checkone: true });
     this.setState({ checktwo: false });
     this.setState({ checkthree: false });
+    this.setState({ checkfour: false });
     this.setState({ checknone: false });
-        this.setState({ checkfour: false });
+     
   };
   onChangeTwo = (e) => {
     this.setState({ checkone: false });
     this.setState({ checktwo: true });
     this.setState({ checkthree: false });
+    this.setState({ checkfour: false });
     this.setState({ checknone: false });
-        this.setState({ checkfour: false });
+      
   };
 
   onChangeThree = (e) => {
     this.setState({ checkone: false });
     this.setState({ checktwo: false });
     this.setState({ checkthree: true });
+    this.setState({ checkfour: false });
     this.setState({ checknone: false });
-        this.setState({ checkfour: false });
+       
   };
 
   onChangeFour = (e) => {
@@ -67,8 +70,9 @@ export default class index extends Component {
     this.setState({ checktwo: false });
     this.setState({ checkthree: false });
     this.setState({ checknone: false });
-        this.setState({ checkfour: true });
+  
   };
+
 
   onSubmit = (e) => {
     console.log('submit');
@@ -84,14 +88,14 @@ export default class index extends Component {
         <NavBar />
         <LinearProgressWithLabel value={70} />
         <h5>
-        Which of the following is NOT a type of oracle?{' '}
+        Sesión 2: Wallets y Criptomonedas - ¿Qué es una wallet en el contexto de Web3?{' '}
         </h5>
 
         <Form.Group as={Row}>
           <Col sm={10}>
             <Form.Check
               type="checkbox"
-              label="Software Oracle"
+              label="Un tipo de criptomoneda."
               name="checkone"
               id="form1"
               onChange={this.onChangeOne}
@@ -101,7 +105,7 @@ export default class index extends Component {
             />
             <Form.Check
               type="checkbox"
-              label=" Hardware Oracle"
+              label="Una aplicación para almacenar y gestionar claves privadas y activos digitales."
               name="checktwo"
               id="form2"
               onChange={this.onChangeTwo}
@@ -113,7 +117,7 @@ export default class index extends Component {
             />
             <Form.Check
               type="checkbox"
-              label=" Inbound Oracle "
+              label="Un contrato inteligente."
               name="checkthree"
               id="form3"
               onChange={this.onChangeThree}
@@ -123,7 +127,7 @@ export default class index extends Component {
             />
             <Form.Check
               type="checkbox"
-              label=" Blockchain Contract"
+              label="Una plataforma de intercambio centralizada"
               name="checkfour"
               id="form4"
               onChange={this.onChangeFour}

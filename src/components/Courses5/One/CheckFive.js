@@ -93,7 +93,7 @@ export default function CircularIntegration(props) {
           setSuccess(true);
           setLoading(false);
           alert(
-            'Correct answer! Congrats, You have succesfully finished the Hyperledger course!',
+            'Correct answer! Congrats, You have succesfully finished the course!',
           );
           navigate('/courses/106/done');
 

@@ -71,22 +71,25 @@ class QuestionFive extends Component {
   };
 
   onChangeFour = (e) => {
-    this.setState({ checkfour: true });
-    this.setState({ checkone: false });
-    this.setState({ checktwo: false });
-    this.setState({ checkthree: false });
-    this.setState({ checknone: false });
-    this.setState({ checkfour: true });
+    this.setState({ 
+      checkfour: true,
+      checkone: false,
+      checktwo: false,
+      checkthree: false,
+      checknone: false 
+    });
   };
 
   onSubmit = (props, e) => {
-
-    // e.preventDefault();
+    const navigate = useNavigate();
+    
     if (this.state.checknone === true) {
       alert('Please select a value');
+      return;
     }
- 
     
+    // Redirect to done page
+    navigate('/courses/110/done');
   };
 
   render() {
@@ -96,14 +99,14 @@ class QuestionFive extends Component {
         <NavBar />
         <LinearProgressWithLabel value={95} />
         <h5>
-        What type of oracle would be used for monitoring the temperature?{' '}
+        Sesión 5: NFTs, DAOs y Gobernanza - ¿Qué es una DAO (Organización Autónoma Descentralizada)?{' '}
         </h5>
 
         <Form.Group as={Row}>
           <Col sm={10}>
             <Form.Check
               type="checkbox"
-              label=" Hardware Oracle"
+              label="Una empresa tradicional con estructura jerárquica."
               name="checkone"
               id="form1"
               onChange={this.onChangeOne}
@@ -113,7 +116,7 @@ class QuestionFive extends Component {
             />
             <Form.Check
               type="checkbox"
-              label="Software Oracle"
+              label="Un tipo de criptomoneda."
               name="checktwo"
               id="form2"
               onChange={this.onChangeTwo}
@@ -125,7 +128,7 @@ class QuestionFive extends Component {
             />
             <Form.Check
               type="checkbox"
-              label=". Outbound Oracle"
+              label="Una organización gestionada por contratos inteligentes y gobernada por sus miembros."
               name="checkthree"
               id="form3"
               onChange={this.onChangeThree}
@@ -135,7 +138,7 @@ class QuestionFive extends Component {
             />
             <Form.Check
               type="checkbox"
-              label="Inbound Oracle"
+              label="Una aplicación descentralizada para redes sociales."
               name="checkfour"
               id="form4"
               onChange={this.onChangeFour}

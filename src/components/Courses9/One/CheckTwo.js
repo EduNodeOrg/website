@@ -82,54 +82,26 @@ export default function CircularIntegration(props) {
   }, []);
 
   const handleButtonClick = () => {
-
     setLoading(true);
 
-
     if (!loading) {
-
-
-      if (
-        props.state.checknone === true
-      ) {
+      if (props.state.checknone === true) {
         setLoading(false);
         alert('please select an option');
       }
-      if (props.state.checkone === true) {
+      else if (props.state.checktwo === true) {
         timer.current = window.setTimeout(() => {
-        
-          setFail(true);
-          setLoading(false);
-          alert('Wrong answer, please try again!');
-
-        }, 2000);
-      }
-      if (props.state.checktwo === true) {
-        timer.current = window.setTimeout(() => {
-          setFail(true);
-          setLoading(false);
-          alert('Wrong answer, please try again!');
-
-        }, 2000);
-
-      }
-      if (props.state.checkthree === true) {
-        timer.current = window.setTimeout(() => {
-          setFail(true);
-          setLoading(false);
-          alert('Wrong answer, please try again!');
-
-        }, 2000);
-      }
-      if (props.state.checkfour === true) {
-        timer.current = window.setTimeout(() => {
-
           setSuccess(true);
-
           setLoading(false);
           alert('Correct answer!');
           navigate('/courses/110/3');
-
+        }, 2000);
+      }
+      else {
+        timer.current = window.setTimeout(() => {
+          setFail(true);
+          setLoading(false);
+          alert('Wrong answer, please try again!');
         }, 2000);
       }
     }

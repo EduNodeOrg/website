@@ -67,7 +67,7 @@ class VerifyEmail extends Component {
     const user = storedUser ? JSON.parse(storedUser) : null;
     const email = this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : '';
     this.props.loadUser(email);
-    console.log('local',user)
+
     axios.get(`https://edunode.herokuapp.com/api/emaillogin/user/${user.email}`)
     .then(response => {
       const data = response.data;

@@ -125,10 +125,7 @@ export const login = ({ email, password }) => dispatch => {
     fetch('https://edunode.herokuapp.com/api/emaillogin',   {
       method: 'POST',
       headers: {
-        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
-        'Content-Security-Policy': 'script-src',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS'
       },
       body
     })
@@ -176,7 +173,6 @@ export const googleLogin = ({ email, name,image }) => dispatch => {
   fetch('https://edunode.herokuapp.com/api/google', {
     method: 'POST',
     headers: {
-      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json'
     },
     body
@@ -231,7 +227,6 @@ export const confirm = ({ email, confirmationCode }) => (dispatch) => {
   fetch('https://edunode.herokuapp.com/api/confirm', {
     method: 'POST',
     headers: {
-      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json'
     },
     body
@@ -312,7 +307,6 @@ export const verifyCode = ({ email, inputcode, id, next }) => async dispatch => 
   await fetch('https://edunode.herokuapp.com/api/verifycode', {
     method: 'POST',
     headers: {
-      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json'
     },
     body
@@ -377,7 +371,6 @@ export const updateAccount = ({ email,
     const config = {
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
       }
     }
 
@@ -410,7 +403,6 @@ export const verifyGoogleUser = ({ email, lastName, fistName, googleId, googlePr
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
     }
   }
 
@@ -501,7 +493,6 @@ export const verifyTwitterUser = ({ email, lastName, fistName, googleId, googleP
 const config = {
   headers: {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*"
   }
 };
 
@@ -545,7 +536,6 @@ export const saveUsernameAlbedo = ({ pubkey, userName }) => dispatch => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
     }
   }
 
@@ -571,7 +561,6 @@ export const setCourseOne = ({ email, courseOneDone }) => (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
     },
   };
 
@@ -597,7 +586,6 @@ export const setCourseOneGoogle = ({ email, courseOneDone }) => (
   const config = {
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
     },
   };
 
@@ -623,7 +611,6 @@ export const pkeyGoogleUser = ({ email, pkey }) => (
   const config = {
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
     },
   };
 
@@ -657,7 +644,6 @@ export const webThreeAuth = ({
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
     }
   }
 
@@ -690,7 +676,6 @@ export const freighterAuth = (pkey) => dispatch => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
     }
   }
 
@@ -749,7 +734,6 @@ export const metamaskAuth = (accounts) => dispatch => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
     }
   }
 
@@ -788,7 +772,6 @@ export const mozartAuth = (email, pkey, amount, currency) => dispatch => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
     }
   }
 
@@ -817,7 +800,6 @@ export const newPost = ({ email, tags, title, link, description, privatee,image 
   fetch('https://edunode.herokuapp.com/api/post/', {
     method: 'POST',
     headers: {
-      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json'
     },
     body
