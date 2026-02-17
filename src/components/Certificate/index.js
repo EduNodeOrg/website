@@ -14,6 +14,8 @@ import "./style.css";
 import axios from 'axios';
 import { Navigate } from "react-router-dom";
 import { updateAccount, saveUsernameAlbedo, pkeyGoogleUser } from "../../actions/authActions";
+import { Link } from "react-router-dom";
+import Button from '@mui/material/Button';
 
 import Navbar1 from '../Dashboard/Navbar1';
 
@@ -21,84 +23,83 @@ class Certificate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : "",
+      email: this.props.auth?.user?.email || "",
       userName: "",
-      pkey: this.props.auth && this.props.auth.user && this.props.auth.user.pkey ? this.props.auth.user.pkey : "",
+      pkey: this.props.auth?.user?.pkey || "",
       pubkey: "",
       isLoading: false,
       errors: {},
       certificateCount: 0,
-      certificateUrls: [],
-      certificateNumber: [],
       certificates: [],
       issuerPublicKey: '',
       distributorPublicKey: ''
     }
-
-    this.onChange = this.onChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
-
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount() {
     const email = this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : ""
     const pkey = this.props.auth && this.props.auth.user && this.props.auth.user.pkey ? this.props.auth.user.pkey : "anonymous"
     if (email) {
-      axios.get(`https://edunode.herokuapp.com/api/certificates/count/${email}`)
+      axios.get(`https://edunode.herokuapp.com/api/certificates/valid`)
         .then(res => {
-          if (res.data.length > 0) {
-            this.setState({ certificateCount: res.data[0].count });
+          if (res.data && res.data.length > 0) {
+            const userCertificates = res.data.filter(cert => cert.email === email);
+            this.setState({ certificateCount: userCertificates.length });
           }
         })
         .catch(err => {
-          console.error(err);
+          console.error('Error fetching certificate count:', err);
         });
-    } else if (pkey) {
-      axios.get(`https://edunode.herokuapp.com/api/certificates/count/pkey/${pkey}`)
+    } else if (pkey && pkey !== 'anonymous') {
+      axios.get(`https://edunode.herokuapp.com/api/certificates/pkey/${pkey}`)
         .then(res => {
-          if (res.data.length > 0) {
-            this.setState({ certificateCount: res.data[0].count });
+          if (res.data && res.data.length > 0) {
+            this.setState({ certificateCount: res.data.length });
           }
         })
         .catch(err => {
-          console.error(err);
+          console.error('Error fetching certificate count by pkey:', err);
         });
     }
-
-
 
     if (email) {
       axios.get(`https://edunode.herokuapp.com/api/certificates/${email}`)
         .then(res => {
-          if (res.data.length > 0) {
+          if (res.data && res.data.length > 0) {
             const certificates = res.data.map(cert => ({
               certificateNumber: cert.certificateNumber,
               cid: cert.cid,
               distributorPublicKey: cert.distributorPublicKey,
               issuerPublicKey: cert.issuerPublicKey,
+              course: cert.courseType,
+              createdAt: cert.createdAt
             }));
-            this.setState({ certificates: certificates });
-            console.log('hi')
-            console.log(certificates)
-
+            this.setState({ certificates });
           }
         })
-    } else if (pkey) {
-
+        .catch(err => {
+          console.error('Error fetching certificates:', err);
+        });
+    } else if (pkey && pkey !== 'anonymous') {
       axios.get(`https://edunode.herokuapp.com/api/certificates/pkey/${pkey}`)
         .then(res => {
-          if (res.data.length > 0) {
+          if (res.data && res.data.length > 0) {
             const certificates = res.data.map(cert => ({
               certificateNumber: cert.certificateNumber,
-              cid: cert.cid
+              cid: cert.cid,
+              distributorPublicKey: cert.distributorPublicKey,
+              issuerPublicKey: cert.issuerPublicKey,
+              course: cert.courseType,
+              createdAt: cert.createdAt
             }));
-            this.setState({ certificates: certificates });
-            console.log('hi')
-            console.log(res.data)
-            console.log(certificates)
-
+            this.setState({ certificates });
           }
         })
+        .catch(err => {
+          console.error('Error fetching certificates by pkey:', err);
+        });
     }
 
   }
@@ -235,98 +236,42 @@ class Certificate extends Component {
   }
 
   render() {
-
-
-    //console.log(this.props.auth.user)
-    //console.log(this.props.auth.user.pkey)
-    const Item = styled(Paper)(({ theme }) => ({
-      ...theme.typography.body2,
-      padding: theme.spacing(1),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    }));
-    const { pristine, submitting } = this.props
-
-    const {
-      isLoading,
-      isAuthenticated,
-      isVerified,
-      hasUsername,
-      googleProfilePic,
-      isGranted,
-      isFirstCourseSelected,
-      courseOneDone,
-
-    } = this.props.auth;
-    const email = this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : "";
-    const { certificateCount, certificateUrls, certificateNumber, certificates } = this.state;
-
-    if (this.props.auth.user) {
-      return (
-        <>
-          <div>
-            <Box sx={{ flexGrow: 1 }}>
-              <Grid container spacing={2}>
-                
-                <Grid item xs={12} sm={8} md={20}>
-                  <Navbar1 />
-
-                  <div>
-                    <p><h3>Welcome to your Certifications</h3></p>
-                   <a>Learn more about Certifications</a> <b> <a href="about-certificates">here</a></b>
-                    <br></br>
-
-                    {certificateCount > 0 && (
-                      <p>You currently have {certificateCount} certifications:</p>
+    const { certificates } = this.state;
+    
+    return (
+      <div className="certificate-container">
+        <Navbar1 />
+        <Box sx={{ flexGrow: 1, padding: 3 }}>
+          <h1>My Certificates</h1>
+          {certificates.length > 0 ? (
+            <Grid container spacing={3}>
+              {certificates.map((cert, index) => (
+                <Grid item xs={12} md={6} lg={4} key={index}>
+                  <Paper elevation={3} sx={{ padding: 2, height: '100%' }}>
+                    <h3>{cert.course || 'Course Certificate'}</h3>
+                    <p>Certificate #: {cert.certificateNumber}</p>
+                    {cert.createdAt && (
+                      <p>Issued on: {new Date(cert.createdAt).toLocaleDateString()}</p>
                     )}
-                    {certificateCount === 0 && (
-                      <p>You currently have 0 certifications.</p>
+                    {cert.cid && (
+                      <Link 
+                        to={`/certificates/${cert.certificateNumber}`}
+                        className="certificate-button"
+                      >
+                        View Certificate
+                      </Link>
                     )}
-                    {certificates.length > 0 && (
-                      <>
-                        <p>Here are your certificates:</p>
-                        {/* Consider using a Grid for better layout instead of ul/li */}
-                        <ul>
-                          {certificates.map(cert => (
-                            <li key={cert.certificateNumber} style={{ listStyleType: 'none', marginBottom: '16px' }}> {/* Added some basic styling for list item */}
-                              <a href={`/certificates/${cert.certificateNumber}`} target="_blank" rel="noopener noreferrer">
-                                {/* Add style to the img tag to control its size */}
-                                <img 
-                                  src={cert.cid} 
-                                  alt={`Certificate ${cert.certificateNumber}`} 
-                                  style={{ maxWidth: '600px', height: 'auto', border: '1px solid #ccc' }} // Example styling: limit width and add a border
-                                />
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    )}
-                  </div>
-
+                  </Paper>
                 </Grid>
-
-              </Grid>
-              
-            </Box>
-          </div>
-        </>
-      )
-
-    }
-
-
-
-    if (!this.props.auth.isAuthenticated) {
-      return (
-        <Navigate to="/" />
-      );
-    }
-
-
-    //this.props.history.push("/")
+              ))}
+            </Grid>
+          ) : (
+            <p>No certificates found. Complete a course to earn your first certificate!</p>
+          )}
+        </Box>
+      </div>
+    );
   }
-
 }
 
 const mapStateToProps = (state) => ({

@@ -2,84 +2,104 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are currently being supported with security updates.
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.x.x   | :white_check_mark: |
-| < 1.0   | :x:                |
+| Version | Supported          | Status           |
+| ------- | ------------------ | ---------------- |
+| Latest  | :white_check_mark: | Active Support   |
+| 1.x.x   | :white_check_mark: | Security Fixes   |
+| < 1.0   | :x:                | Not Supported    |
 
 ## Reporting a Vulnerability
 
-We take the security of our project seriously. If you believe you have found a security vulnerability, please follow these steps:
+We take the security of EduNode's website and services extremely seriously. If you've discovered a security vulnerability, we appreciate your help in disclosing it to us in a responsible manner.
 
-1. **Do Not** report security vulnerabilities through public GitHub issues.
+### How to Report
 
-2. Instead, please send an email to hi@edunode.org with:
-   - A detailed description of the vulnerability
-   - Steps to reproduce the issue
-   - Possible impacts of the vulnerability
-   - Any potential solutions you may have identified
+1. **Do Not** report security vulnerabilities through public GitHub issues or discussions.
 
-3. You should receive a response within 48 hours. If for some reason you do not, please follow up via email to ensure we received your original message.
+2. Email us at security@edunode.org with the following details:
+   - **Subject Line**: "Security Vulnerability Report - [Brief Description]"
+   - **Description**: Clear explanation of the vulnerability
+   - **Impact**: Potential impact of the vulnerability
+   - **Steps to Reproduce**: Detailed steps to reproduce the issue
+   - **Environment**: Browser/OS versions, if applicable
+   - **Screenshots/Proof of Concept**: If available
+   - **Suggested Fix**: If you have any recommendations
 
-### What to expect:
+### Our Commitment
 
-- We will acknowledge receipt of your vulnerability report
-- We will investigate and determine the potential impact
-- We will keep you informed of our progress
-- We will treat your report with strict confidentiality
+- We will acknowledge receipt of your report within 2 business days
+- We will keep you informed of our progress throughout the process
+- We will confirm the vulnerability and work on a fix
+- We will publicly acknowledge your contribution (unless you prefer to remain anonymous)
+- We will not take legal action against you for security research conducted in good faith
 
 ## Security Best Practices
 
-When using this application:
+### For Users
+- Use strong, unique passwords
+- Enable two-factor authentication (2FA) where available
+- Keep your browser and operating system updated
+- Be cautious of phishing attempts
+- Never share your login credentials
 
-1. Keep all dependencies up to date
-2. Use strong passwords and enable 2FA where available
-3. Never share sensitive credentials or API keys
-4. Follow the principle of least privilege
-5. Regularly audit your security settings
+### For Developers
+- Follow secure coding practices
+- Keep all dependencies updated
+- Implement proper input validation
+- Use environment variables for sensitive data
+- Follow the principle of least privilege
 
 ## Security Features
 
-Our application implements several security measures:
+### Application Security
+- End-to-end HTTPS encryption
+- Content Security Policy (CSP) implementation
+- Cross-Origin Resource Sharing (CORS) policy
+- Security headers (HSTS, X-Content-Type-Options, etc.)
+- Rate limiting and brute force protection
 
-- HTTPS encryption for all network traffic
-- Input validation and sanitization
-- Cross-Site Scripting (XSS) protection
-- Cross-Site Request Forgery (CSRF) protection
-- SQL injection prevention
-- Regular security updates and patches
+### Data Protection
+- Data encryption at rest and in transit
+- Regular security audits and penetration testing
+- Secure session management
+- Regular data backups
 
 ## Third-Party Security
 
-We depend on various third-party services and libraries. We:
+We carefully vet and monitor our third-party services and dependencies:
+- Regular dependency updates using Dependabot
+- Automated vulnerability scanning
+- Security reviews of third-party integrations
+- Compliance with data protection regulations (GDPR, CCPA, etc.)
 
-- Regularly monitor our dependencies for security vulnerabilities
-- Update dependencies promptly when security patches are available
-- Audit third-party integrations for security compliance
+## Responsible Disclosure Policy
 
-## Responsible Disclosure
-
-We kindly ask that you:
-
-- Give us reasonable time to investigate and mitigate an issue before making any information public
-- Make a good faith effort to avoid privacy violations, destruction of data, and interruption or degradation of our service
-- Only interact with accounts you own or with explicit permission of the account holder
+We ask that you:
+- Allow us a reasonable amount of time to address the vulnerability before public disclosure
+- Make a good faith effort to avoid privacy violations and service disruptions
+- Not exploit the vulnerability beyond what's necessary to demonstrate it
+- Keep information about the vulnerability confidential until we've had time to address it
 
 ## Security Updates
 
-Security updates will be released as soon as possible after a vulnerability is confirmed. Updates will be:
+Security updates are released on a rolling basis:
+- Critical vulnerabilities: Patched within 24-48 hours
+- High severity: Patched within 1 week
+- Medium/Low severity: Addressed in the next scheduled update
 
-- Released as patches to the latest stable version
-- Documented in our release notes
-- Communicated to users if action is required
+All security updates are documented in our [Release Notes](https://github.com/EduNodeOrg/website/releases).
+
+## Bug Bounty
+
+While we don't currently have a formal bug bounty program, we may offer rewards for significant security reports at our discretion.
 
 ## Contact
 
-For any security-related questions or concerns, please contact:
-hi@edunode.org
+For security-related inquiries, please contact:
+- **Security Team**: hi@edunode.org
+- **PGP Key**: [Available upon request]
+- **Response Time**: Within 48 hours for initial response
 
 ---
-
-This security policy is subject to change without notice. Please check back regularly for updates. 
+*Last Updated: August 21, 2025*
+*This policy is reviewed quarterly and subject to change. Please check back regularly for updates.*

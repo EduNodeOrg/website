@@ -12,7 +12,6 @@ import {
     ModalFooter
 } from "reactstrap";
 import withRouter from "../../withRouter";
-import { Navigate } from "react-router-dom";
 
 class LogoutModal extends Component {
     constructor(props) {
@@ -25,7 +24,6 @@ class LogoutModal extends Component {
     static propTypes = {
         logout: PropTypes.func.isRequired,
         clearErrors: PropTypes.func.isRequired,
-        isAuthenticated: PropTypes.bool
     };
 
     toggleModal = () => {
@@ -34,14 +32,21 @@ class LogoutModal extends Component {
         }));
     };
 
-    handleLogout = () => {
-        this.props.logout();
-        this.toggleModal();
-        window.location.href = '/';
+    handleLogout = async () => {
+        try {
+            await this.props.logout();
+            this.toggleModal();
+            // Use router.navigate for better UX instead of window.location
+            const { router } = this.props;
+            router.navigate('/');
+        } catch (error) {
+            console.error('Logout error:', error);
+            // Fallback to window.location if router.navigate fails
+            window.location.href = '/';
+        }
     };
 
     render() {
-        const { isAuthenticated } = this.props;
 
         return (
             <>
@@ -72,7 +77,6 @@ class LogoutModal extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    isAuthenticated: state.auth.isAuthenticated,
     error: state.error
 });
 

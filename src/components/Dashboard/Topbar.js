@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './topbar.css';
-import { NotificationsNone, Language, Settings } from '@mui/icons-material';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -12,9 +11,6 @@ import {
   PermIdentity,
   DynamicFeed,
   WorkOutline,
-  MailOutline,
-  ChatBubbleOutline,
-  Timeline,
   Report,
 } from "@mui/icons-material";
 import SearchIcon from '@mui/icons-material/Search';

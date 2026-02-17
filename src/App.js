@@ -87,6 +87,7 @@ import Intro9 from './components/Courses9/One/Intro';
 import Intro10 from './components/Courses10/One/Intro';
 
 
+
 import Coursedone from "./components/Courses/Coursedone"
 import Coursedone1 from "./components/Courses1/Coursedone"
 import Coursedone2 from "./components/Courses2/Coursedone"
@@ -141,7 +142,6 @@ import CodeEditor from "./components/CodeEditor";
 import ContactUs from "./components/contactus";
 import Loggedout from "./components/Loggedout";
 import Membership from "./components/Membership"
-import Checkout from "./components/Membership/Checkout"
 import NewPost from "./components/NewPost";
 import Privacy from './components/Privacy';
 import SubmitPost from "./components/SubmitPost"
@@ -163,8 +163,8 @@ import AiPlugin from './components/AiPlugin'
 import PostDetails from './components/Posts/postDetails'
 import CourseDetails from './components/Courses/courseDetails'
 import { useState } from 'react';
-import Loginn from './components/authentif'
-import Signup from "./components/signup";
+import Loginn from './components/Login';
+import Signup from "./components/Register";
 import Glossary from "./components/Glossary";
 import Badges from './components/Badges'
 import EduNodeGuide from './components/teacher'
@@ -172,6 +172,8 @@ import StudentsPage from "./components/student"
 import PasswordPage from './components/Login/password'
 import ResetPasswordPage from './components/Login/reset_password'
 import WithParams from './components/Profile/profile'
+import ModernProfile from './components/Profile/ModernProfile'
+import ModernMyProfile from './components/Profile/ModernMyProfile'
 import CertificatePage from './components/Certificate/about'
 import ChallengeDetails from './components/Challenges/Challenge/challengeDetails'
 import ThemeProvider from './admin/src/theme';
@@ -255,6 +257,7 @@ function App(props) {
         <Route exact path="/courses/109" element={<Intro8 />} />
         <Route exact path="/courses/110" element={<Intro9 />} />
         <Route exact path="/courses/111" element={<Intro10 />} />  
+
 
         <Route exact path="/courses/101/1" element={<Questions />} />
         <Route exact path="/courses/101/2" element={<QuestionsTwo />} />
@@ -363,7 +366,6 @@ function App(props) {
         <Route exact path="/contactus" element={<ContactUs />} />
         <Route exact path="/loggedout" element={<Loggedout />} />
         <Route exact path="/membership" element={<Membership />} />
-        <Route exact path="/membership/checkout" element={<Checkout />} />
         <Route exact path="/dashboard/newpost" element={<NewPost />} />
         <Route exact path="/privacy" element={<Privacy />} />
         <Route exact path="/submitpost" element={<SubmitPost />} />
@@ -371,8 +373,8 @@ function App(props) {
         <Route exact path="/blog/docker" element={<Docker />} />
         <Route exact path="/blog/ipfs" element={<Ipfs />} />
         <Route exact path="/blog/soroban" element={<soroban />} />
-        <Route exact path="/dashboard/settings" element={<Settings />} />
-        <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/dashboard/settings" element={<Navigate to="/account" replace />} />
+        <Route exact path="/profile" element={<ModernMyProfile />} />
         <Route exact path="/post" element={<Post />} />
         <Route exact path="/notification" element={<Notification />} />
         <Route exact path="/achievement" element={<Achievement />} />
@@ -386,7 +388,7 @@ function App(props) {
         <Route exact path="/.well-known/ai-plugin.json" element={<AiPlugin />} />
         <Route exact path="/postDetails/:_id" element={<PostDetails />} />
         <Route exact path="/courseDetails/:_id" element={<CourseDetails />} />
-        <Route exact path="/profile/:id" element={<WithParams />} />
+        <Route exact path="/profile/:id" element={<ModernProfile />} />
         <Route exact path="/validCertificate" element={<ValidCertificate />} />
         <Route exact path="/messages" element={<Messages />} />
         <Route exact path="/addGame" element={<Game />} />

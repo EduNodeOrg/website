@@ -60,7 +60,7 @@ export function AlertDialog() {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Soroban"}
+          {"System Engineering"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Course9() {
-  const [rating, setRating] = useState();
+  const [rating, setRating] = useState(0);
   const classes = useStyles();
   const courseId = '646b83386cea9a0294e65253';
   const [course, setCourse] = useState({});

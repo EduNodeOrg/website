@@ -14,7 +14,6 @@ import Typography from '@mui/material/Typography';
 import { makeStyles } from '@material-ui/core';
 import Container from '@mui/material/Container';
 //import Link from '@mui/material/Link';
-import Footer from "../Footer";
 import NavBar from "../NavBar";
 import kicon from "./keybaseicon.png"
 //import { Icon } from "@mui/material";
@@ -233,7 +232,7 @@ function Resources() {
                     </Typography>
                     <br></br>
                     <a href="https://keybase.io/team/galactictalk">
-                      <img src={kicon} height={25} width={25} />
+                      <img src={kicon} height={25} width={25} alt="Keybase icon" />
                     </a>
                   </CardContent>
                   <CardActions>
@@ -467,7 +466,7 @@ function Resources() {
                       GraphQL interface to Stellar blockchain
                     </Typography>
                     <a href="https://keybase.io/team/astrograph">
-                      <img src={kicon} height={25} width={25} />
+                      <img src={kicon} height={25} width={25} alt="Keybase icon" />
                     </a>
                   </CardContent>
                   <CardActions>

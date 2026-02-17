@@ -63,20 +63,33 @@ data-rh="true"
 
   <script src="https://www.paypal.com/sdk/js?client-id=ATGaaTJ17vmzPdI1zAPk3zbb89Qb6VYmB09u3jGj8AnhiYRt8NvhcwhADSQR_S4172a002qwy0jUHKRA"></script>
 
-  <!--Start of Tawk.to Script-->
+  <!-- Google APIs -->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://apis.google.com/js/api.js"></script>
   <script src="https://www.paypal.com/sdk/js?client-id=ASqYFNJJ3gVy1CkJchOI1sAzqOjtlvnX1777MIxh7OEBRJislI51R-MzqPZ0mGJgqquxTpHlprJe4vSD&vault=true"></script>
-  <script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/6166d1b186aee40a57365a97/1fhsq67kb';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
+
+  <!--Start of Tawk.to Script-->
+  <script>
+    // Completely suppress Tawk.to to prevent i18next errors
+    window.Tawk_API = {
+      i18next: function() { return { t: function(key) { return key; } }; }
+    };
+    window.Tawk_LoadStart = new Date();
+    
+    // Delayed loading to prevent conflicts
+    setTimeout(function() {
+      try {
+        var s1 = document.createElement("script");
+        var s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/6166d1b186aee40a57365a97/1fhsq67kb';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+      } catch (error) {
+        console.warn('Tawk.to initialization suppressed');
+      }
+    }, 5000);
   </script>
   <!--End of Tawk.to Script-->
 

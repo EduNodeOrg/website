@@ -91,3 +91,45 @@
     margin: auto;
      width: 100%; 
   }
+
+  .certificate-cid {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-top: 1px solid #eee;
+  }
+
+  .certificate-cid p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+    position: static;
+    font-family: Arial, sans-serif;
+  }
+
+  .certificate-cid a {
+    color: #2196f3;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .certificate-cid a:hover {
+    text-decoration: underline;
+  }
+
+  .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    z-index: 100;
+  }

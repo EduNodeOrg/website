@@ -1,17 +1,77 @@
 import React, { Component } from 'react'
 import withRouter from '../../withRouter';
 import { clearErrors } from "../../actions/errorActions";
-import { resend, verifyCode } from "../../actions/authActions";
-import Box from '@mui/material/Box';
-import Footer1 from '../Footer/Footer';
+import { verifyCode } from "../../actions/authActions";
 import { connect } from 'react-redux';
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import { updateAccount, saveUsernameAlbedo, pkeyGoogleUser } from "../../actions/authActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import Navbar1 from '../Dashboard/Navbar1';
 import axios from 'axios';
-import { Card, CardContent, Typography, Grid } from '@mui/material';
+import { Grid, Box, Container, Typography, Fab } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { motion } from 'framer-motion';
+import { KeyboardArrowUp } from '@mui/icons-material';
+
+const SearchContainer = styled(Box)(({ theme }) => ({
+  minHeight: '100vh',
+  background: 'linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)',
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'radial-gradient(circle at 20% 50%, rgba(123, 47, 247, 0.1) 0%, transparent 50%)',
+    pointerEvents: 'none',
+    zIndex: 0,
+  },
+}));
+
+const ContentContainer = styled(Container)(({ theme }) => ({
+  position: 'relative',
+  zIndex: 1,
+  paddingTop: theme.spacing(10),
+  paddingBottom: theme.spacing(4),
+}));
+
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  textAlign: 'center',
+  marginBottom: theme.spacing(4),
+  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+  fontSize: '2.5rem',
+  fontWeight: 'bold',
+}));
+
+const ScrollToTopFab = styled(Fab)(({ theme }) => ({
+  position: 'fixed',
+  bottom: theme.spacing(3),
+  right: theme.spacing(3),
+  background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)',
+  color: 'white',
+  zIndex: 1000,
+  '&:hover': {
+    background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+    transform: 'scale(1.1)',
+  },
+}));
+
+const FloatingParticle = styled(motion.div)(({ theme }) => ({
+  position: 'fixed',
+  width: '4px',
+  height: '4px',
+  background: 'rgba(123, 47, 247, 0.6)',
+  borderRadius: '50%',
+  boxShadow: '0 0 10px rgba(123, 47, 247, 0.8)',
+  pointerEvents: 'none',
+  zIndex: 0,
+}));
 
 
 
@@ -29,13 +89,44 @@ class Search extends Component {
             coinGecko: [],
             wiki: [],
             videos: [],
-
+            showScrollTop: false
         }
 
         this.onChange = this.onChange.bind(this)
-
+        this.handleScroll = this.handleScroll.bind(this);
+        this.scrollToTop = this.scrollToTop.bind(this);
 
     }
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
+        const { email } = this.state;
+        fetch(`https://edunode.herokuapp.com/api/search/${email}`)
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ preferences: data });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll = () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        this.setState({ showScrollTop: scrollTop > 300 });
+    };
+
+    scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
 
     /**
         fetchCoinGeckoData = (searchQuery) => {
@@ -140,236 +231,221 @@ class Search extends Component {
 
 
     render() {
-        const { searchQuery, results, preferences, coinGecko, wiki,videos } = this.state;
-        const email = this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : "";
+        const { searchQuery, results, coinGecko, wiki, showScrollTop } = this.state;
         return (
-            <>
-                <div>
+            <SearchContainer>
+                {/* Floating Particles */}
+                {[...Array(8)].map((_, i) => (
+                    <FloatingParticle
+                        key={i}
+                        initial={{
+                            x: Math.random() * window.innerWidth,
+                            y: Math.random() * window.innerHeight,
+                            scale: Math.random() * 0.5 + 0.5,
+                        }}
+                        animate={{
+                            x: Math.random() * window.innerWidth,
+                            y: Math.random() * window.innerHeight,
+                            scale: Math.random() * 0.5 + 0.5,
+                        }}
+                        transition={{
+                            duration: Math.random() * 20 + 10,
+                            repeat: Infinity,
+                            repeatType: 'reverse',
+                        }}
+                        style={{
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                        }}
+                    />
+                ))}
+
+                <ContentContainer maxWidth="xl">
+                    {/* Welcome Section */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <Box sx={{ textAlign: 'center', mb: 6 }}>
+                            <Typography variant="h3" sx={{ 
+                                color: '#ffffff', 
+                                fontWeight: 'bold', 
+                                mb: 2,
+                                background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                                backgroundClip: 'text',
+                            }}>
+                                Search & Discover
+                            </Typography>
+                            <Typography variant="h6" sx={{ color: '#b8c5d6' }}>
+                                Explore courses, posts, wiki articles, and more
+                            </Typography>
+                        </Box>
+                    </motion.div>
+
                     <Navbar1 />
-                    <br></br>
-                    <br></br>
 
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        <Box sx={{ mb: 4 }}>
+                            <input
+                                type="text"
+                                placeholder="Search..."
+                                value={searchQuery}
+                                onChange={this.handleInputChange}
+                                style={{ 
+                                    border: '1px solid rgba(123, 47, 247, 0.3)', 
+                                    borderRadius: '8px', 
+                                    padding: '12px 16px',
+                                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                    color: '#ffffff',
+                                    fontSize: '16px',
+                                    width: '100%',
+                                    maxWidth: '500px',
+                                    outline: 'none'
+                                }}
+                            />
+                            <button 
+                                onClick={this.performSearch} 
+                                style={{ 
+                                    backgroundColor: 'linear-gradient(45deg, #7b2ff7, #00d4ff)', 
+                                    color: 'white', 
+                                    border: 'none', 
+                                    borderRadius: '8px', 
+                                    padding: '12px 24px',
+                                    fontSize: '16px',
+                                    fontWeight: 'bold',
+                                    cursor: 'pointer',
+                                    marginLeft: '10px',
+                                    transition: 'all 0.3s ease'
+                                }}
+                            >
+                                Search
+                            </button>
+                        </Box>
+                    </motion.div>
 
-                    <Grid container spacing={2}>
-                        {/* <Grid xs={5} sm={3.5} md={2}>
-                                <Item><Sidebar props={email} /></Item>
-                            </Grid> */}
-
-                        <Grid item xs={12} sm={10} md={100}>
-                            <div>
-                                <div>
-                                    <div>
-
-                                        <input
-                                            type="text"
-                                            placeholder="Search..."
-                                            value={searchQuery}
-                                            onChange={this.handleInputChange}
-                                            style={{ border: '1px solid gray', borderRadius: '5px', padding: '5px' }}
-                                        />
-                                        <button onClick={this.performSearch} style={{ backgroundColor: 'blue', color: 'white', border: 'none', borderRadius: '5px', padding: '5px' }} >Search</button>
-
-
-
-
-                                        <div className="row justify-content-center card-deck d-flex">
-                                            {results.courses && results.courses.map(course => (
-                                                <div className="col-md-4 mb-4 h-100" key={course.id}>
-                                                    <div className="card shadow h-100">
-                                                        <div className="card-body">
-                                                            <h6 className="card-title"> Course </h6>
-                                                            <h5 className="card-title">{course.title}</h5>
-                                                            <p className="card-text">{course.description}</p>
-                                                            <p className="card-text">
-
-                                                                <a href={course.link} className="card-link">
-                                                                    <FontAwesomeIcon icon={faLink} className="mr-2" />
-                                                                    {course.link}
-                                                                </a>
-
-                                                            </p>
-                                                            <p className="card-text">
-                                                                <small className="text-muted">
-                                                                    Tags: {course.tags.join(", ")}
-                                                                </small>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                            {results.posts && results.posts.map(post => (
-                                                <div className="col-md-4 mb-4 h-100" key={post.id}>
-                                                    <div className="card shadow h-100">
-                                                        <div className="card-body">
-                                                            <h6 className="card-title"> Post </h6>
-                                                            <h5 className="card-title">{post.title}</h5>
-                                                            <p className="card-text" dangerouslySetInnerHTML={{ __html: post.description }} ></p>
-                                                            <a href={post.link} className="card-link">
-                                                                <FontAwesomeIcon icon={faLink} className="mr-2" />
-                                                                {post.link}
-                                                            </a>
-                                                            <p className="card-text">
-                                                                <small className="text-muted">
-                                                                    Tags: {post.tags.join(", ")}
-                                                                </small>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                            {results.blogs && results.blogs.map(blog => (
-                                                <div className="col-md-4 mb-4 h-100" key={blog.id}>
-                                                    <div className="card shadow h-100">
-                                                        <div className="card-body">
-                                                            <h6 className="card-title"> Blog </h6>
-                                                            <h5 className="card-title">{blog.title}</h5>
-                                                            <p className="card-text">{blog.description}</p>
-                                                            <p className="card-text">
-                                                                <a href={blog.link} className="card-link">
-                                                                    <FontAwesomeIcon icon={faLink} className="mr-2" />
-                                                                    {blog.link}
-                                                                </a>
-
-                                                                <p className="card-text">
-                                                                    <small className="text-muted">
-                                                                        Tags: {blog.tags.join(", ")}
-                                                                    </small>
-                                                                </p>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                        <div className="row justify-content-center card-deck d-flex">
-                                            {wiki[1] &&
-                                                wiki[1].map((title, index) => (
-                                                    <div className="col-md-4 mb-4 h-100" key={index}>
-                                                        <div className="card shadow h-100">
-                                                            <div className="card-body">
-                                                                <h6 className="card-title"> wiki </h6>
-                                                                <h5 className="card-title">{title}</h5>
-                                                                <p className="card-text">
-                                                                    <a href={wiki[3][index]} className="card-link">
-                                                                        <FontAwesomeIcon icon={faLink} className="mr-2" />
-                                                                        {wiki[3][index]}
-                                                                    </a>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                        </div>
-                                        {/* <Grid container spacing={3}>
-                                            {videos.map(video => (
-                                                <Grid item xs={12} sm={6} md={4} key={video.id.videoId}>
-                                                    <Card>
-                                                        <iframe
-                                                            width="100%"
-                                                            height="315"
-                                                            src={`https://www.youtube.com/embed/${video.id.videoId}`}
-                                                            title={video.snippet.title}
-                                                            frameBorder="0"
-                                                            allow="autoplay; encrypted-media"
-                                                            allowFullScreen
-                                                        ></iframe>
-                                                        <CardContent>
-                                                            <Typography variant="h6" component="div">
-                                                                {video.snippet.title}
-                                                            </Typography>
-                                                        </CardContent>
-                                                    </Card>
-                                                </Grid>
-                                            ))}
-                                        </Grid> */}
-
-                                        <div className="row justify-content-center card-deck d-flex">
-                                            {coinGecko.coins && coinGecko.coins.slice(0, 10).map(coin => (
-                                                <div className="col-md-4 mb-4 h-100" key={coin.id}>
-                                                    <div className="card shadow h-100">
-                                                        <div className="card-body">
-                                                            <h6 className="card-title"> Coins </h6>
-                                                            <img src={coin.large}></img>
-                                                            <label>Coin Name:</label>
-                                                            <h5 className="card-title">{coin.name}</h5>
-                                                            <label>Coin Symbol:</label>
-                                                            <p className="card-text">{coin.symbol}</p>
-                                                            <label>Market Rank:</label>
-                                                            <p className="card-text">{coin.market_cap_rank}</p>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                        <div className="row justify-content-center card-deck d-flex">
-                                            {coinGecko.exchanges && coinGecko.exchanges.slice(0, 10).map(exchange => (
-                                                <div className="col-md-4 mb-4 h-100" key={exchange.id}>
-                                                    <div className="card shadow h-100">
-                                                        <div className="card-body">
-                                                            <h6 className="card-title"> Exchanges </h6>
-                                                            <img src={exchange.large}></img>
-                                                            <label>Exchange Name:</label>
-                                                            <h5 className="card-title">{exchange.name}</h5>
-                                                            <label>Market Type:</label>
-                                                            <p className="card-text">{exchange.market_type}</p>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                        <div className="row justify-content-center card-deck d-flex">
-                                            {coinGecko.nfts && coinGecko.nfts.slice(0, 10).map(nft => (
-                                                <div className="col-md-4 mb-4 h-100" key={nft.id}>
-                                                    <div className="card shadow h-100">
-                                                        <div className="card-body">
-                                                            <h6 className="card-title"> Nfts </h6>
-                                                            <img src={nft.thumb}></img>
-                                                            <label>Nft Name:</label>
-                                                            <h5 className="card-title">{nft.name}</h5>
-                                                            <label>Nft Symbol:</label>
-                                                            <p className="card-text">{nft.symbol}</p>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-
-
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-
-
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                    >
+                        <Grid container spacing={3}>
+                            {results.courses && results.courses.map(course => (
+                                <Grid item xs={12} sm={6} md={4} key={course.id}>
+                                    <Box sx={{ 
+                                        p: 2, 
+                                        backgroundColor: 'rgba(255, 255, 255, 0.05)', 
+                                        borderRadius: '12px',
+                                        border: '1px solid rgba(123, 47, 247, 0.2)',
+                                        transition: 'all 0.3s ease'
+                                    }}>
+                                        <Typography variant="h6" sx={{ color: '#00d4ff', mb: 1 }}>
+                                            Course
+                                        </Typography>
+                                        <Typography variant="h5" sx={{ color: '#ffffff', mb: 2 }}>
+                                            {course.title}
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: '#b8c5d6', mb: 2 }}>
+                                            {course.description}
+                                        </Typography>
+                                        <Box sx={{ mt: 2 }}>
+                                            <FontAwesomeIcon icon={faLink} sx={{ mr: 1, color: '#7b2ff7' }} />
+                                            <a 
+                                                href={course.link} 
+                                                style={{ color: '#00d4ff', textDecoration: 'none' }}
+                                            >
+                                                {course.link}
+                                            </a>
+                                        </Box>
+                                    </Box>
+                                </Grid>
+                            ))}
+                            {results.posts && results.posts.map(post => (
+                                <Grid item xs={12} sm={6} md={4} key={post.id}>
+                                    <Box sx={{ 
+                                        p: 2, 
+                                        backgroundColor: 'rgba(255, 255, 255, 0.05)', 
+                                        borderRadius: '12px',
+                                        border: '1px solid rgba(123, 47, 247, 0.2)',
+                                        transition: 'all 0.3s ease'
+                                    }}>
+                                        <Typography variant="h6" sx={{ color: '#00d4ff', mb: 1 }}>
+                                            Post
+                                        </Typography>
+                                        <Typography variant="h5" sx={{ color: '#ffffff', mb: 2 }}>
+                                            {post.title}
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: '#b8c5d6', mb: 2 }} dangerouslySetInnerHTML={{ __html: post.description }}>
+                                        </Typography>
+                                        <Box sx={{ mt: 2 }}>
+                                            <FontAwesomeIcon icon={faLink} sx={{ mr: 1, color: '#7b2ff7' }} />
+                                            <a 
+                                                href={post.link} 
+                                                style={{ color: '#00d4ff', textDecoration: 'none' }}
+                                            >
+                                                {post.link}
+                                            </a>
+                                        </Box>
+                                    </Box>
+                                </Grid>
+                            ))}
+                            {results.blogs && results.blogs.map(blog => (
+                                <Grid item xs={12} sm={6} md={4} key={blog.id}>
+                                    <Box sx={{ 
+                                        p: 2, 
+                                        backgroundColor: 'rgba(255, 255, 255, 0.05)', 
+                                        borderRadius: '12px',
+                                        border: '1px solid rgba(123, 47, 247, 0.2)',
+                                        transition: 'all 0.3s ease'
+                                    }}>
+                                        <Typography variant="h6" sx={{ color: '#00d4ff', mb: 1 }}>
+                                            Blog
+                                        </Typography>
+                                        <Typography variant="h5" sx={{ color: '#ffffff', mb: 2 }}>
+                                            {blog.title}
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: '#b8c5d6', mb: 2 }}>
+                                            {blog.description}
+                                        </Typography>
+                                        <Box sx={{ mt: 2 }}>
+                                            <FontAwesomeIcon icon={faLink} sx={{ mr: 1, color: '#7b2ff7' }} />
+                                            <a 
+                                                href={blog.link} 
+                                                style={{ color: '#00d4ff', textDecoration: 'none' }}
+                                            >
+                                                {blog.link}
+                                            </a>
+                                        </Box>
+                                    </Box>
+                                </Grid>
+                            ))}
                         </Grid>
+                    </motion.div>
+                </ContentContainer>
 
-                    </Grid>
-                    <br></br>
-                    <br></br>
-                    <br></br>
-                    <br></br>
-
-
-
-                </div>
-
-
-
-            </>
-        )
-
-        // if (!this.props.auth.isAuthenticated) {
-        //   return <Redirect to="/" />
-        // }
-
-
+                {/* Scroll to Top Button */}
+                {showScrollTop && (
+                    <ScrollToTopFab
+                        onClick={this.scrollToTop}
+                        aria-label="Scroll to top"
+                        component={motion.div}
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                    >
+                        <KeyboardArrowUp />
+                    </ScrollToTopFab>
+                )}
+            </SearchContainer>
+        );
     }
-
 }
 
 const mapStateToProps = (state) => ({
@@ -389,6 +465,4 @@ export default Search = reduxForm({
     updateAccount,
     saveUsernameAlbedo,
     pkeyGoogleUser
-
 })(withRouter(Search));
-

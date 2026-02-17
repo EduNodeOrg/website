@@ -16,7 +16,6 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 //import { Redirect, BrowserRouter } from "react-router-dom";
 import LinkButton from "./Button"
-import { PayPalButton } from "react-paypal-button-v2";
 import Rec from "./recurring";
 
 const tiers = [

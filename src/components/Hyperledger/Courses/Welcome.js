@@ -1,4 +1,4 @@
-import React, {useEffect, setCount} from 'react';
+import React, {useEffect} from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -70,6 +70,7 @@ export default function Welcome() {
       setOpen(true);
     }, 2000);
 
+    return () => clearTimeout(timer);
   }, []);
  
 

@@ -65,8 +65,8 @@ export function AlertDialog(props) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Are you sure that you want to take this course? <br></br>
-            PS: please fill in your full name in the account so we can provide you with a certification 
+            Are you sure that you want to take this course?
+            PS: please fill in your full name in account so we can provide you with a certification
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Course1(props) {
-  const [rating, setRating] = useState();
+  const [rating, setRating] = useState(0);
   const classes = useStyles();
  
   const courseId = '644bcdd1e1fec0f4f55a7447';

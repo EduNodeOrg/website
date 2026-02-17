@@ -2,7 +2,6 @@ import React, { Component, useContext } from 'react';
 import { connect } from 'react-redux';
 import Grid from '@mui/material/Grid';
 import { verifyCode } from '../../actions/authActions';
-import { TwitterTimelineEmbed, TwitterFollowButton } from 'react-twitter-embed';
 import { Navigate } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 //import Sidebar from './Sidebar';
@@ -13,28 +12,13 @@ import Alert from "@material-ui/lab/Alert";
 import Popup from 'reactjs-popup';
 import axios from "axios";
 import 'reactjs-popup/dist/index.css';
-import Navbar1 from './Navbar1';
 import { makeStyles } from "@material-ui/core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
-import Modal from 'react-modal';
-import tuto from './tutorial.png'
+
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { Popover, Button } from '@mui/material';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import IconButton from '@mui/material/IconButton';
-import PostCard from "./postCard";
-import BlogCard from "./blogCard";
-import CourseCard from "./courseCard";
-import { ThemeContext, ThemeProviders } from '../../ThemeContext';
-import ToggleSwitch from '../../ToggleSwitch';
-import './dashboard.css';
-import { Card, CardContent, Typography } from '@mui/material';
+import { Button } from '@mui/material';
 
+import './dashboard.css';
 
 
 

@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
 import { useEffect, useState } from 'react';
-import { connect } from "react-redux";
+
 import withRouter from '../../withRouter';
 import { reduxForm } from "redux-form";
 import {
   MDBCol,
-  MDBContainer,
   MDBRow,
   MDBCard,
   MDBCardText,
   MDBCardBody,
   MDBCardImage,
-  MDBBtn,
+
   MDBBreadcrumb,
   MDBBreadcrumbItem,
-  MDBProgress,
-  MDBProgressBar,
-  MDBIcon,
   MDBListGroup,
   MDBListGroupItem
 } from 'mdb-react-ui-kit';
@@ -37,10 +33,8 @@ class ProfilePage extends Component {
   constructor(props) {
     super(props);
 
-    const { auth } = this.props;
     this.state = {
       id: this.props.id,
-      email: this.props.user.email,
       user: this.props.user,
       posts: this.props.posts,
       courses: this.props.courses,
@@ -90,7 +84,19 @@ class ProfilePage extends Component {
                   <a href='/'>Edunode</a>
                 </MDBBreadcrumbItem>
                 <MDBBreadcrumbItem>
-                  <a href="#">Users</a>
+                  <button 
+                    onClick={(e) => e.preventDefault()}
+                    style={{ 
+                      background: 'none', 
+                      border: 'none', 
+                      color: '#0066cc', 
+                      textDecoration: 'underline',
+                      cursor: 'pointer',
+                      padding: 0
+                    }}
+                  >
+                    Users
+                  </button>
                 </MDBBreadcrumbItem>
                 <MDBBreadcrumbItem active>{user.name}'s Profile </MDBBreadcrumbItem>
               </MDBBreadcrumb>
@@ -299,7 +305,7 @@ class ProfilePage extends Component {
                           Post link
                         </MDBCardText>
                         <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>
-                          <a>{post.link}</a>
+                          <a href={post.link} target="_blank" rel="noopener noreferrer">{post.link}</a>
                         </MDBCardText>
 
                         <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1.2rem' }}>
@@ -345,7 +351,7 @@ class ProfilePage extends Component {
                           Course link
                         </MDBCardText>
                         <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>
-                          <a>{course.link}</a>
+                          <a href={course.link} target="_blank" rel="noopener noreferrer">{course.link}</a>
                         </MDBCardText>
 
                         <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1.2rem' }}>

@@ -1,30 +1,16 @@
 import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
-import { styled as muiStyled } from '@mui/material/styles';
 import styled from 'styled-components';
 import PropTypes from 'prop-types'
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import NavBar from "../NavBar"
 import { clearErrors } from "../../actions/errorActions";
-//import { newPost } from "../../actions/authActions";
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import Footer from '../Footer/Footer';
 import Box from '@mui/material/Box';
-//import { Editor } from "react-draft-wysiwyg";
-//import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-//import draftToHtml from "draftjs-to-html";
-//import { EditorState, convertToRaw } from 'draft-js';
-//import { convertToHTML } from 'draft-convert';
 import { EditorState } from 'draft-js';
-import { Editor } from 'react-draft-wysiwyg';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { convertToHTML } from 'draft-convert';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Navbar1 from '../Dashboard/Navbar1';
-import Modal from 'react-modal';
 import home from './elearning.png'
 import { TextField } from '@mui/material';
 // Initialize editorState

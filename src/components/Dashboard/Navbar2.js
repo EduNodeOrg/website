@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Button } from '@mui/material';
 import Logout from '../auth/Logout';
-import favicon from "./favicon.png"
 import "./style.css"
 import { NavDropdown } from 'react-bootstrap';
 

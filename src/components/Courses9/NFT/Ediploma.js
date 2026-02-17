@@ -1,4 +1,4 @@
-import React, { useRef, useState,useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { exportComponentAsPNG } from "react-component-export-image";
 import { connect } from "react-redux";
 import { clearErrors } from "../../../actions/errorActions";
@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { isConnected, getPublicKey } from "@stellar/freighter-api";
 import axios from "axios";
 import html2canvas from 'html2canvas';
-import dep from "./9.png";
+import dep from "./9.png"
 import growth from './growth.png';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
@@ -20,9 +20,7 @@ import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied
 import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
-import "./styless.css"
 import Modal from 'react-modal';
-
 
 const StyledRating = styled(Rating)(({ theme }) => ({
   '& .MuiRating-iconEmpty .MuiSvgIcon-root': {
@@ -67,144 +65,170 @@ IconContainer.propTypes = {
 
 
 
-
-
 function Ediploma(props) {
   const certificateWrapper = useRef(null);
   const [ratingValue, setRatingValue] = useState(5);
   const [Name, setName] = useState(props.user && props.user.name ? props.user.name : '');
   const [Feedback, setFeedback] = useState('');
-  const loggedInUserEmail = props.auth.user.email ? props.auth.user.email : ''; 
-  const courseId = '66464e2d58aca412ed2d81bf3';
-  const shareUrl = 'https://edunode.org/blog/How-to-issue';
-  const title = "EduNode certificate"
+  const [certificateCid, setCertificateCid] = useState(null);
+  const loggedInUserEmail = props.auth.user.email ? props.auth.user.email : '';
+  const courseId = '644bcdd1e1fec0f4f55a7447';
   const [showPopup, setShowPopup] = useState(false);
- async function sendImageToServer(base64Image, props) {
-  try {
-    if (props.auth.user.email) {
-      const response = await axios.post("https://edunode.herokuapp.com/api/certificates/diploma7", {
-      
-      pkey: props.auth.user.pkey ? props.auth.user.pkey : null,
-      email: props.auth.user.email ? props.auth.user.email : null,
-      name: Name
-    });
-    console.log('hi'); 
-    console.log(props.auth.user.pkey);
-    console.log(response.data); // Check if the image was saved successfully
-      
-    } else if (props.auth.user.pkey) {
+  const [isGenerating, setIsGenerating] = useState(false);
 
-      const response = await axios.post("https://edunode.herokuapp.com/api/certificates/diploma7", {
-      //image: base64Image,
-      pkey: props.auth.user.pkey,
-      name: Name
-    });
-    console.log(response.data); // Check if the image was saved successfully
-    
+  useEffect(() => {
+    // Automatically generate certificate when component mounts
+    if (Name && !certificateCid) {
+      generateCertificate();
     }
-    
-   
-  } catch (error) {
-    console.error(error);
-  }
-}
+  }, [Name]);
 
-
-
-  async function getCertificateBase64() {
-    const canvas = await html2canvas(certificateWrapper.current, {
-      backgroundColor: `url(${dep})`,
-    });
-    const base64Image = canvas.toDataURL("image/png");
-    return base64Image;
-  }
-
-  const navigate = useNavigate();
-
-  const handleConfirmDownload = async (e) => {
-    e.preventDefault();
-
-    const base64Image = await getCertificateBase64();
-    await sendImageToServer(base64Image, props);
-    console.log(base64Image); // This will log the base64 string of the image in the console
-    // TODO: Send the base64Image to your server using an API
-    exportComponentAsPNG(certificateWrapper, {
-      html2CanvasOptions: { backgroundColor: `url(${dep})`, },
-    });
-    setTimeout(function () {
-      try {
-      window.location.href = "/";
-      } catch (error) {
-        console.log(error);
-      }
-    }, 3000);
-
-    const formData = {
-      rate: ratingValue,
-      text: Feedback,
-      email: loggedInUserEmail,
-    };
+  async function generateCertificate() {
     try {
-      const response = await fetch(`https://edunode.herokuapp.com/api/cours/cours/${courseId}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-  
-      if (response.ok) {
-        // Handle successful submission
-      } else {
-        // Handle submission error
-      }
+      setIsGenerating(true);
+      const base64Image = await captureCertificate();
+      await sendImageToServer(base64Image, props);
     } catch (error) {
-      console.error(error);
-      // Handle submission error
+      console.error('Error generating certificate:', error);
+    } finally {
+      setIsGenerating(false);
     }
-    const email = loggedInUserEmail;
+  }
 
-    fetch('https://edunode.herokuapp.com/api/certificates/increment-trophy', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email }),
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error('Failed to increment trophy');
+  async function captureCertificate() {
+    const canvas = await html2canvas(certificateWrapper.current);
+    return canvas.toDataURL('image/png');
+  }
+
+  async function sendImageToServer(base64Image, props) {
+    try {
+      if (!Name || Name.trim() === '') {
+        console.error('Name is required but was empty');
+        return;
+      }
+
+      const payload = {
+        name: Name.trim(),
+        email: props.auth.user.email || null,
+        pkey: "GABC1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890ABCD"
+      };
+
+      console.log('Sending request with payload:', JSON.stringify(payload, null, 2));
+
+      const response = await axios.post(
+        "https://edunode.herokuapp.com/api/certificates/diploma9",
+        payload,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
         }
-      })
-      .then(data => {
-        console.log(data.message); // Success message from the server
-        // Perform any additional actions or display a success message on the frontend
-      })
-      .catch(error => {
-        console.error(error);
-        // Handle any errors that occurred during the request
-      });
-  
-    }
-  
-  
-  
-  
-  
-    useEffect(() => {
-      setShowPopup(true);
-    }, []);
-  
-    const handleClosePopup = () => {
-      setShowPopup(false);
-    };
+      );
 
+      if (response.data && response.data.cid) {
+        setCertificateCid(response.data.cid);
+      }
+
+      return response.data;
+    } catch (error) {
+      console.error('Error sending image to server:', error);
+      throw error;
+    }
+  }
+
+  async function handleConfirmDownload(e) {
+    e.preventDefault();
+    if (isGenerating) return; // Prevent double click
+    setIsGenerating(true);
+    
+    try {
+      // 1. Generate the certificate image
+      const base64Image = await captureCertificate();
+      
+      // 2. Send certificate data to the server
+      const certificateData = await sendImageToServer(base64Image, props);
+      console.log('Certificate created:', certificateData);
+      
+      // 3. Export the certificate as PNG for download with .png extension
+      exportComponentAsPNG(certificateWrapper, {
+        html2CanvasOptions: { backgroundColor: `url(${dep})` },
+        fileName: `certificate-${Name.replace(/\s+/g, '-').toLowerCase()}.png`,
+      });
+
+      // 4. Submit feedback if provided
+      if (ratingValue || Feedback) {
+        const formData = {
+          rate: ratingValue,
+          text: Feedback,
+          email: loggedInUserEmail,
+        };
+        
+        try {
+          const response = await fetch(`https://edunode.herokuapp.com/api/cours/cours/${courseId}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to submit feedback');
+          }
+          
+          console.log('Feedback submitted successfully');
+        } catch (error) {
+          console.error('Error submitting feedback:', error);
+          // Don't block the user flow if feedback submission fails
+        }
+      }
+
+      // 5. Increment trophy count
+      try {
+        const trophyResponse = await fetch('https://edunode.herokuapp.com/api/certificates/increment-trophy', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: loggedInUserEmail }),
+        });
+
+        if (!trophyResponse.ok) {
+          throw new Error('Failed to update trophy count');
+        }
+        
+        const result = await trophyResponse.json();
+        console.log('Trophy count updated:', result);
+      } catch (error) {
+        console.error('Error updating trophy count:', error);
+        // Don't block the user flow if trophy update fails
+      }
+
+      // 6. Show success popup
+      setShowPopup(true);
+
+    } catch (error) {
+      console.error('Error generating certificate:', error);
+      // You might want to show an error message to the user here
+      alert('Failed to generate certificate. Please try again.');
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+
+
+  useEffect(() => {
+    setShowPopup(true);
+  }, []);
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
   return (
     <div className="App">
       <div className="Meta">
-        <h1>How did you find our Courseee </h1>
+        <h1>How did you find our Course </h1>
         <p>Your feedback is very appreciated </p>
         <StyledRating
           name="highlight-selected-only"
@@ -228,22 +252,48 @@ function Ediploma(props) {
         />
         <br></br>
         <br></br>
-
         {!props.auth.user.name && (
           <p>Please update your name in the profile page so we can provide you with certificate !</p>
         )}
-        <button onClick={handleConfirmDownload}>
-          Confirm and Download
+        
+        
+        <button onClick={handleConfirmDownload} disabled={isGenerating}>
+          {isGenerating ? 'Generating...' : 'Confirm and Download'}
         </button>
       </div>
       <div id="downloadWrapper">
 
         <div id="certificateWrapper" ref={certificateWrapper}>
           <p>{Name}</p>
-          <img src={dep} alt="eCertificate" />
+          {certificateCid ? (
+            <img 
+              src={`https://ipfs.io/ipfs/${certificateCid}`} 
+              alt="eCertificate" 
+              style={{ display: 'block', maxWidth: '100%', height: 'auto' }}
+            />
+          ) : (
+            <img 
+              src="https://i.imgur.com/MxzEwin.png" 
+              alt="eCertificate" 
+              style={{ display: 'block', maxWidth: '100%', height: 'auto' }}
+            />
+          )}
+          {certificateCid && (
+            <div className="certificate-cid">
+              <p>Certificate ID: {certificateCid}</p>
+              <a 
+                href={`https://ipfs.io/ipfs/${certificateCid}`} 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                View on IPFS
+              </a>
+            </div>
+          )}
+          {isGenerating && <div className="loading">Generating certificate...</div>}
         </div>
-
       </div>
+
 
       <Modal
   isOpen={showPopup}
@@ -278,7 +328,6 @@ function Ediploma(props) {
   <button onClick={handleClosePopup}>Close</button>
 </Modal>
     </div>
-    
   );
 }
 

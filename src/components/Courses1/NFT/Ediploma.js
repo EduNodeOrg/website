@@ -1,14 +1,16 @@
-import React, { useRef, useState,useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { exportComponentAsPNG } from "react-component-export-image";
 import { connect } from "react-redux";
 import { clearErrors } from "../../../actions/errorActions";
 import { verifyCode } from "../../../actions/authActions";
 import { reduxForm } from "redux-form";
+import albedo from '@albedo-link/intent'
 import "./styles.css";
-
+import { useNavigate } from "react-router-dom";
+import { isConnected, getPublicKey } from "@stellar/freighter-api";
 import axios from "axios";
 import html2canvas from 'html2canvas';
-import dep from "./2.png"
+import dep from "./newediploma.png"
 import growth from './growth.png';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
@@ -68,33 +70,45 @@ function Ediploma(props) {
   const [ratingValue, setRatingValue] = useState(5);
   const [Name, setName] = useState(props.user && props.user.name ? props.user.name : '');
   const [Feedback, setFeedback] = useState('');
-  const loggedInUserEmail = props.auth.user.email ? props.auth.user.email : ''; 
-  const courseId = '644bcdeee1fec0f4f55a7449';
+  const loggedInUserEmail = props.auth.user.email ? props.auth.user.email : '';
+  const courseId = '644bcdd1e1fec0f4f55a7447';
   const [showPopup, setShowPopup] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
 
-async function sendImageToServer(base64Image, props) {
+  async function sendImageToServer(base64Image, props) {
     try {
-      if (props.auth.user.email) {
-        const response = await axios.post("https://edunode.herokuapp.com/api/certificates/diploma1", {
-          
-          email: props.auth.user.email ? props.auth.user.email : null,
-          name: Name
-        });
-
-      } else if (props.auth.user.pkey) {
-
-        const response = await axios.post("https://edunode.herokuapp.com/api/certificates/diploma1", {
-          
-          pkey: props.auth.user.pkey,
-          name: Name
-        });
-        console.log(response.data); // Check if the image was saved successfully
-
+      if (!Name || Name.trim() === '') {
+        console.error('Name is required but was empty');
+        return;
       }
 
+      const payload = {
+        name: Name.trim(),
+        email: props.auth.user.email || null,
+        pkey: "GABC1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890ABCD"
+      };
 
+      console.log('Sending request with payload:', JSON.stringify(payload, null, 2));
+
+      const response = await axios.post(
+        "https://edunode.herokuapp.com/api/certificates/diploma1",
+        payload,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      
+      console.log('Server response:', response.data);
+      return response.data;
     } catch (error) {
-      console.error(error);
+      console.error('Error sending image to server:', {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status
+      });
+      throw error;
     }
   }
 
@@ -109,46 +123,49 @@ async function sendImageToServer(base64Image, props) {
 
   const handleConfirmDownload = async (e) => {
     e.preventDefault();
-
-    const base64Image = await getCertificateBase64();
-    await sendImageToServer(base64Image, props);
-    console.log(base64Image); // This will log the base64 string of the image in the console
-    // TODO: Send the base64Image to your server using an API
-    exportComponentAsPNG(certificateWrapper, {
-      html2CanvasOptions: { backgroundColor: `url(${dep})`, },
-    });
-    setTimeout(function () {
-      try {
-       // window.location.href = "/";
-      } catch (error) {
-        console.log(error);
-      }
-    }, 3000);
-
-    const formData = {
-      rate: ratingValue,
-      text: Feedback,
-      email: loggedInUserEmail,
-    };
+    if (isGenerating) return; // Prevent double click
+    setIsGenerating(true);
     try {
-      const response = await fetch(`https://edunode.herokuapp.com/api/cours/cours/${courseId}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const base64Image = await getCertificateBase64();
+      await sendImageToServer(base64Image, props);
+      console.log(base64Image); // This will log the base64 string of the image in the console
+      // TODO: Send the base64Image to your server using an API
+      exportComponentAsPNG(certificateWrapper, {
+        html2CanvasOptions: { backgroundColor: `url(${dep})`, },
       });
-  
-      if (response.ok) {
-        // Handle successful submission
-      } else {
+      setTimeout(function () {
+        try {
+         // window.location.href = "/";
+        } catch (error) {
+          console.log(error);
+        }
+      }, 2000);
+
+      const formData = {
+        rate: ratingValue,
+        text: Feedback,
+        email: loggedInUserEmail,
+      };
+      try {
+        const response = await fetch(`https://edunode.herokuapp.com/api/cours/cours/${courseId}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          // Handle successful submission
+        } else {
+          // Handle submission error
+        }
+      } catch (error) {
+        console.error(error);
         // Handle submission error
       }
-    } catch (error) {
-      console.error(error);
-      // Handle submission error
-    }
-    const email = loggedInUserEmail;
+
+      const email = loggedInUserEmail;
 
     fetch('https://edunode.herokuapp.com/api/certificates/increment-trophy', {
       method: 'PUT',
@@ -172,8 +189,18 @@ async function sendImageToServer(base64Image, props) {
         console.error(error);
         // Handle any errors that occurred during the request
       });
-
+    } catch (error) {
+      // If any error occurs, re-enable the button
+      setIsGenerating(false);
+      return;
+    }
+    setIsGenerating(false); // Optionally, keep it disabled if you want to prevent any further generation
   }
+
+
+
+
+
   useEffect(() => {
     setShowPopup(true);
   }, []);
@@ -181,7 +208,6 @@ async function sendImageToServer(base64Image, props) {
   const handleClosePopup = () => {
     setShowPopup(false);
   };
-
   return (
     <div className="App">
       <div className="Meta">
@@ -209,21 +235,23 @@ async function sendImageToServer(base64Image, props) {
         />
         <br></br>
         <br></br>
-
         {!props.auth.user.name && (
           <p>Please update your name in the profile page so we can provide you with certificate !</p>
         )}
-        <button onClick={handleConfirmDownload}>
-          Confirm and Download
+        
+        
+        <button onClick={handleConfirmDownload} disabled={isGenerating}>
+          {isGenerating ? 'Generating...' : 'Confirm and Download'}
         </button>
       </div>
       <div id="downloadWrapper">
 
         <div id="certificateWrapper" ref={certificateWrapper}>
           <p>{Name}</p>
-          <img src={dep} alt="eCertificate" />
+          <img src="https://i.imgur.com/MxzEwin.png" alt="eCertificate" />
         </div>
       </div>
+
 
       <Modal
   isOpen={showPopup}
@@ -257,7 +285,6 @@ async function sendImageToServer(base64Image, props) {
   />
   <button onClick={handleClosePopup}>Close</button>
 </Modal>
-
     </div>
   );
 }

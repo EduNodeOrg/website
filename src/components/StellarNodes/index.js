@@ -46,7 +46,7 @@ function BlogPage() {
       <div className="blog-content">
 
         <div align="center">
-          <img src={node} width="600" height="400" />
+          <img src={node} width="600" height="400" alt="Stellar network node" />
         </div>
         <br></br>
         <h1 className="blog-title">{blog.title}</h1>

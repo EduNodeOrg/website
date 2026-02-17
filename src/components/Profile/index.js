@@ -4,21 +4,16 @@ import withRouter from '../../withRouter';
 import { reduxForm } from "redux-form";
 import {
   MDBCol,
-  MDBContainer,
   MDBRow,
   MDBCard,
   MDBCardText,
   MDBCardBody,
   MDBCardImage,
-  MDBBtn,
   MDBBreadcrumb,
   MDBBreadcrumbItem,
-  MDBProgress,
-  MDBProgressBar,
   MDBIcon,
   MDBListGroup,
-  MDBListGroupItem,
-  MDBModal, MDBModalBody, MDBModalHeader
+  MDBListGroupItem
 } from 'mdb-react-ui-kit';
 import Navbar1 from '../Dashboard/Navbar1';
 import Footer from '../Footer/Footer';
@@ -30,7 +25,6 @@ import course from './course.png'
 import community from './community.png'
 import post from './post.png'
 import PostCard from "../Dashboard/postCard";
-import BlogCard from "../Dashboard/blogCard";
 import CourseCard from "../Dashboard/courseCard";
 import copy from 'clipboard-copy';
 import userimage from './user.png'
@@ -177,13 +171,10 @@ class ProfilePage extends Component {
     const {
       isAuthenticated,
       isVerified,
-      hasUsername,
-      isGranted,
-
     } = this.props.auth;
-    const { posts, courses, user } = this.state;
-    const hasShownPopupChat = localStorage.getItem('shownPopupChat');
+    const { posts, courses } = this.state;
     const { friends, loading, error } = this.state;
+    const hasShownPopupChat = localStorage.getItem('shownPopupChat');
     return (
       <section style={{ backgroundColor: '#eee' }}>
         <Navbar1></Navbar1>

@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import {Navbar} from 'react-bootstrap'
-import {Nav} from 'react-bootstrap'
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Button } from '@mui/material';
@@ -19,45 +17,129 @@ class NavBar extends Component {
     isAuthenticated: false
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isNavExpanded: false
+    }
+  }
+
+  toggleNav = () => {
+    this.setState(prevState => ({
+      isNavExpanded: !prevState.isNavExpanded
+    }));
+  }
 
   render() {
-    const {  isAuthenticated } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
+    const { isNavExpanded } = this.state;
+
     return (
-      <>
-        <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="/">
-            <img src={favicon} alt={"app-logo"} />
-          </Navbar.Brand>
-         
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link href="/resources">Resources</Nav.Link>
-              <Nav.Link href="/community">Community</Nav.Link>
-              <Nav.Link href="/milestones">Milestones</Nav.Link> 
-              <Nav.Link href="/blog">Blog</Nav.Link>
-              <Nav.Link href="/about">About</Nav.Link>
-              <Nav.Link href="/glossary">Glossary</Nav.Link>
-              <Nav.Link href="/stellarnodes">Stellar Nodes</Nav.Link>
-            </Nav>
-            <Nav className="d-flex align-items-center">
-              
-            </Nav>
-            <Nav>
+      <nav className="navigation">
+        <div className="nav-container">
+          <a href="/" className="brand-name">
+            <img src={favicon} alt="EduNode" className="navbar-logo" />
+            EduNode
+          </a>
+          <button
+            className="hamburger"
+            onClick={this.toggleNav}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+          <div
+            className={
+              isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
+            }
+          >
+            <ul>
+              <li>
+                <a href="/resources">Resources</a>
+              </li>
+              <li>
+                <a href="/community">Community</a>
+              </li>
+              <li>
+                <a href="/milestones">Milestones</a>
+              </li>
+              <li>
+                <a href="/blog">Blog</a>
+              </li>
+              <li>
+                <a href="/about">About</a>
+              </li>
+              <li>
+                <a href="/glossary">Glossary</a>
+              </li>
+              <li>
+                {/* <a href="/stellarnodes">Stellar Nodes</a> */}
+              </li>
               {isAuthenticated ? (
-                <div>
-                    <Logout />
-                </div>
+                <>
+                  <li>
+                    <a href="/">Home</a>
+                  </li>
+                  <li>
+                    <a href="/search">Search</a>
+                  </li>
+                  <li>
+                    <a href="/account">Account</a>
+                  </li>
+                  <li>
+                    <a href="/courses">Courses</a>
+                  </li>
+                  <li>
+                    <a href="/feed">Feed</a>
+                  </li>
+                  <li>
+                    <a href="/certificate">Certificates</a>
+                  </li>
+                  <li>
+                    <a href="/post">New Post</a>
+                  </li>
+                  <li>
+                    <a href="/course">Add Course</a>
+                  </li>
+                  <li>
+                    <a href="/chat">Chat</a>
+                  </li>
+                  <li>
+                    <a href="/historyChat">Chat History</a>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => {
+                        window.location.href = "mailto:hi@edunode.org?subject=Reports";
+                      }}
+                    >
+                      Reports
+                    </button>
+                  </li>
+                  <Logout />
+                </>
               ) : (
-                <div>
-                  <Button variant="outlined" href="/login">Log In</Button>
-                  <Button variant="contained" href="/register">Sign Up</Button>
-                </div>
+                <li className="auth-buttons">
+                  <Button variant="outlined" href="/login" className="login-btn">LOG IN</Button>
+                  <Button variant="contained" href="/register" className="signup-btn">SIGN UP</Button>
+                </li>
               )}
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-      </>
+            </ul>
+          </div>
+        </div>
+      </nav>
     );
   }
 };

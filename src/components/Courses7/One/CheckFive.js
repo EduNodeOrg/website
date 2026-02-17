@@ -90,23 +90,22 @@ export default function CircularIntegration(props) {
         timer.current = window.setTimeout(() => {
           const useremail = props.props.email
 
-          setFail(true);
+          setSuccess(true);
           setLoading(false);
-          alert('Wrong answer, please try again!');
+          alert(
+            'Correct answer! Congrats, You have successfully finished the course!',
+          );
+          navigate('/courses/108/done');
 
         }, 2000);
       }
       if (props.state.checktwo === true) {
         timer.current = window.setTimeout(() => {
-          setSuccess(true);
+          setFail(true);
           setLoading(false);
-          alert(
-            'Correct answer! Congrats, You have succesfully finished the course!',
-          );
-          navigate('/courses/108/done');
+          alert('Wrong answer, please try again!');
 
         }, 2000);
-
       }
       if (props.state.checkthree === true) {
         timer.current = window.setTimeout(() => {

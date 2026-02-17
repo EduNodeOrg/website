@@ -1,20 +1,15 @@
 import React from "react";
 import "./style.css";
 import {Button} from '@mui/material';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
 import {Card} from '@mui/material';
 import {CardActions} from '@mui/material';
 import {CardContent} from '@mui/material';
 import {CardMedia} from '@mui/material';
-import CssBaseline from '@mui/material/CssBaseline';
 import {Grid} from '@mui/material';
-import Toolbar from '@mui/material/Toolbar';
 import {Typography} from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import {Container} from '@mui/material';
 import PublishIcon from '@mui/icons-material/Publish';
-import Link from '@mui/material/Link';
-import Footer from "../Footer";
 import NavBar from "../NavBar";
 import kicon from "./keybaseicon.png"
 
@@ -248,7 +243,7 @@ function Projects() {
                     </Typography>
                     <br></br>
                     <a href="https://keybase.io/team/stellarportio">
-                      <img src={kicon} height={25} width={25} />
+                      <img src={kicon} height={25} width={25} alt="Keybase icon" />
                     </a>
                   </CardContent>
                   <CardActions>
@@ -316,7 +311,7 @@ function Projects() {
                     </Typography>
                     <br></br>
                     <a href="https://keybase.io/team/litemintio">
-                      <img src={kicon} height={25} width={25} />
+                      <img src={kicon} height={25} width={25} alt="Keybase icon" />
                     </a>
                   </CardContent>
                   <CardActions>
@@ -352,7 +347,7 @@ function Projects() {
                     </Typography>
                     <br></br>
                     <a href="https://keybase.io/team/dstoq">
-                      <img src={kicon} height={25} width={25} />
+                      <img src={kicon} height={25} width={25} alt="Keybase icon" />
                     </a>
                   </CardContent>
                   <CardActions>
@@ -395,7 +390,7 @@ function Projects() {
                     </Typography>
                     <br></br>
                     <a href="https://keybase.io/team/satoshipay">
-                      <img src={kicon} height={25} width={25} />
+                      <img src={kicon} height={25} width={25} alt="Keybase icon" />
                     </a>
                   </CardContent>
                   <CardActions>
@@ -430,7 +425,7 @@ function Projects() {
                     </Typography>
                     <br></br>
                     <a href="https://keybase.io/team/coinqvest.public">
-                      <img src={kicon} height={25} width={25} />
+                      <img src={kicon} height={25} width={25} alt="Keybase icon" />
                     </a>
                   </CardContent>
                   <CardActions>
@@ -465,7 +460,7 @@ function Projects() {
                     </Typography>
                     <br></br>
                     {/* <a href="https://keybase.io/team/experio">
-                      <img src={kicon} height={25} width={25} />
+                      <img src={kicon} height={25} width={25} alt="Keybase icon" />
                     </a> */}
                   </CardContent>
                   <CardActions>
@@ -574,7 +569,7 @@ function Projects() {
                     </Typography>
                     <br></br>
                     {/* <a href="https://keybase.io/team/experio">
-                      <img src={kicon} height={25} width={25} />
+                      <img src={kicon} height={25} width={25} alt="Keybase icon" />
                     </a> */}
                   </CardContent>
                   <CardActions>

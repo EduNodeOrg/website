@@ -168,7 +168,7 @@ export function VerticalLinearStepper(props) {
 class Intro extends Component {
   navigateTo = () => {
     const navigate = useNavigate();
-    navigate('/courses/110');
+    navigate('/courses/112/done');
   }
   constructor(props) {
     super(props);

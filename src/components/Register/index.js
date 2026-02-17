@@ -131,12 +131,8 @@ export class Register extends Component {
       name
     };
 
-    const confirmUser = {
-      email,
-    }
     console.log(newUser.password)
     // attempt to register
-    const { error } = this.props;
     try {
       await this.props.register(newUser)
       if (this.props.auth.user) {
@@ -347,7 +343,7 @@ Register = connect(
   mapStateToProps, { register, confirm, clearErrors, webThreeAuth }
 )(Register)
 
-export default Register = reduxForm({
+export default reduxForm({
   form: "RegisterReduxForm",
   fields: ['email', 'password', "confirmPassword"],
   register,

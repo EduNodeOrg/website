@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import NavBar from '../NavBar';
-import Footer from '../Footer';
 import CircularIntegration from './One/CheckFive';
 import {
   Form,
@@ -15,11 +14,8 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
-import { setCourseOne } from '../../actions/authActions';
-import { useNavigate } from 'react-router';
 import { connect } from 'react-redux';
-import { clearErrors } from '../../actions/errorActions';
-import { Field, reduxForm } from 'redux-form';
+
 
 class QuestionFive extends Component {
   constructor(props) {
@@ -125,7 +121,7 @@ class QuestionFive extends Component {
             />
             <Form.Check
               type="checkbox"
-              label=". Outbound Oracle"
+              label="Outbound Oracle"
               name="checkthree"
               id="form3"
               onChange={this.onChangeThree}

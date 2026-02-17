@@ -10,16 +10,12 @@ import Button from "@mui/material/Button";
 import Alert from "@material-ui/lab/Alert";
 import CircularProgress from "@mui/material/CircularProgress"
 import withRouter from '../../withRouter'
-//import { useNavigate, BrowserRouter } from "react-router-dom";
 import "./style.css";
 import { styled } from '@mui/material/styles';
 import NavBar from "../NavBar"
-import Navbar1 from "../Dashboard/Navbar1";
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Footer from '../Footer';
 import Paper from '@mui/material/Paper';
-import Topbar from "../Dashboard/Topbar";
 import { Navigate } from "react-router-dom";
 import { loadUser } from '../../actions/authActions';
 import axios from 'axios';

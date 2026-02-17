@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Button } from '@mui/material';
 import Logout from '../auth/Logout';
-import favicon from "./favicon.png"
 import "./style.css"
 import { NavDropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -91,10 +90,8 @@ class NavBar1 extends Component {
    else if (user.role === 'University') {
       return (
           <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="/">
-              <a href="/" className="brand-name">
-                EduNode
-              </a>
+            <Navbar.Brand href="/" className="brand-name">
+              EduNode
             </Navbar.Brand>
   
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -181,10 +178,8 @@ class NavBar1 extends Component {
     else if (user.role === 'Admin') {
       return (
           <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="/">
-              <a href="/" className="brand-name">
-                EduNode
-              </a>
+            <Navbar.Brand href="/" className="brand-name">
+              EduNode
             </Navbar.Brand>
   
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

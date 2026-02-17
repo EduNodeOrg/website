@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@mui/material/Typography";
-import Footer from "../Footer";
 import NavBar from "../NavBar";
 
 const useStyles = makeStyles((theme) => ({

@@ -103,7 +103,7 @@ export default function CircularIntegration(props) {
           alert(
             'Correct answer! Congrats, You have succesfully finished the course!',
           );
-          navigate('/courses/110/done');
+          navigate('/courses/111/done');
 
         }, 2000);
 

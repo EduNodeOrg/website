@@ -4,15 +4,9 @@ import { logout } from '../../actions/authActions';
 import PropTypes from "prop-types";
 import { clearErrors } from "../../actions/errorActions";
 import {
-    Button,
-    Form,
-    Modal,
-    ModalHeader,
-    ModalBody,
-    ModalFooter
+    Button
 } from "reactstrap";
 import withRouter from "../../withRouter";
-import { Navigate } from "react-router-dom";
 
 class LogoutModal extends Component {
     constructor(props) {
@@ -25,7 +19,6 @@ class LogoutModal extends Component {
     static propTypes = {
         logout: PropTypes.func.isRequired,
         clearErrors: PropTypes.func.isRequired,
-        isAuthenticated: PropTypes.bool
     };
 
     toggleModal = () => {
@@ -41,7 +34,6 @@ class LogoutModal extends Component {
     };
 
     render() {
-        const { isAuthenticated } = this.props;
 
         return (
             <>
@@ -57,7 +49,6 @@ class LogoutModal extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    isAuthenticated: state.auth.isAuthenticated,
     error: state.error
 });
 

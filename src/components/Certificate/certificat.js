@@ -61,58 +61,103 @@ import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import { Button } from '@mui/material';
-
-
-
-
-
-
-
-
-
-
+import CircularProgress from '@mui/material/CircularProgress';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 const metaDecorator = require("./metaDecorator.json");
-
-
-
-// const ciid = 'https://edunode.org/blog/automated-market-maker';
 
 function Certificat() {
   const { certificateNumber } = useParams();
   const [certificate, setCertificate] = useState(null);
   const [qrCode, setQRCode] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const title = "E-certification "
   const stellarLab = "https://horizon-futurenet.stellar.org/accounts/?sponsor=GC4MEJJJMNIBIDZSJOZOPVUQQUKR3AARFLPFYKUFXU2D7PHWJP5S4AEI"
   const shareUrl = `https://edunode.org/certificates/${certificateNumber}`;
   const theme = useTheme();
-  console.log('url', shareUrl);
+  
   useEffect(() => {
     const fetchCertificate = async () => {
       try {
-        const response = await axios.get(`https://edunode.herokuapp.com/api/certificates/cert/${certificateNumber}`);
+        setLoading(true);
+        setError(null);
+        const response = await axios.get(`https://edunode.herokuapp.com/api/certificates/cert/${certificateNumber}`, {
+          timeout: 10000 // 10 second timeout
+        });
+        
+        if (!response.data) {
+          throw new Error('No certificate data received');
+        }
+        
         setCertificate(response.data);
-        console.log('certificatttt', response.data)
-        const qrCodeDataURL = await QRCode.toDataURL(shareUrl);
-        setQRCode(qrCodeDataURL);
+        
+        // Generate QR code
+        try {
+          const qrCodeDataURL = await QRCode.toDataURL(shareUrl);
+          setQRCode(qrCodeDataURL);
+        } catch (qrError) {
+          console.error('Error generating QR code:', qrError);
+          // Continue without QR code if generation fails
+        }
       } catch (error) {
-        console.error(error);
+        console.error('Error fetching certificate:', error);
+        setError(error.response?.data?.message || 'Failed to load certificate. Please try again later.');
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchCertificate();
-  }, [certificateNumber]);
+    if (certificateNumber) {
+      fetchCertificate();
+    } else {
+      setError('No certificate number provided');
+      setLoading(false);
+    }
+  }, [certificateNumber, shareUrl]);
 
+  if (loading) {
+    return (
+      <div style={{ textAlign: 'center', padding: '40px' }}>
+        <CircularProgress />
+        <p>Loading your certificate...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div style={{ textAlign: 'center', padding: '40px' }}>
+        <ErrorOutlineIcon color="error" style={{ fontSize: 60 }} />
+        <h3>Error Loading Certificate</h3>
+        <p>{error}</p>
+        <Button 
+          variant="contained" 
+          color="primary" 
+          onClick={() => window.location.reload()}
+          style={{ marginTop: '20px' }}
+        >
+          Try Again
+        </Button>
+        <p style={{ marginTop: '20px' }}>
+          If the problem persists, please contact support.
+        </p>
+      </div>
+    );
+  }
+  
   if (!certificate) {
-    return <div>Loading...</div>;
+    return (
+      <div style={{ textAlign: 'center', padding: '40px' }}>
+        <p>No certificate data available.</p>
+      </div>
+    );
   }
   
   const { cid, distributorPublicKey, issuerPublicKey } = certificate;
-  const ciid = `https://${cid}.ipfs.w3s.link/newdiplomav2.jpg`
-  console.log('cid', cid)
+  const ciid = cid ? `https://${cid}.ipfs.w3s.link/newdiplomav2.jpg` : '';
+  
   return (
-
-
     <div>
       {/*  <MetaDecorator
         description='desc'
@@ -293,7 +338,7 @@ function Certificat() {
 
       </div>
 
-      <img src={ciid} alt="Certificate" />
+
      
       
       <Card sx={{ display: 'flex' }}>
@@ -308,7 +353,7 @@ function Certificat() {
       issuerPublicKey: {issuerPublicKey}
     </Typography>
     <Typography variant="subtitle1" color="text.secondary" component="div">
-      IPFS: <a href={cid}>{cid}</a>
+      IPFS:<a href={`https://copper-deliberate-hippopotamus-402.mypinata.cloud/ipfs/${cid}`}> {cid}</a>
     </Typography>
     <Button
       href={`https://horizon-futurenet.stellar.org/accounts/?sponsor=${issuerPublicKey}`}
@@ -326,7 +371,11 @@ function Certificat() {
   />
 </Card>
 
-
+<img 
+        src={`https://copper-deliberate-hippopotamus-402.mypinata.cloud/ipfs/${cid}`} 
+        alt="Certificate" 
+        style={{ maxWidth: '100%', height: 'auto' }}
+      />
     </div>
   );
 };

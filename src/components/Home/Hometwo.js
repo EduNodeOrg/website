@@ -1,141 +1,49 @@
 import React from "react";
-
-import  CardMedia  from '@mui/material/CardMedia';
-import  Grid  from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import { makeStyles } from '@material-ui/core';
-import {Container} from '@mui/material';
-import Complex from "./Complex"
-import "./style.css";
-import MediaCard from './card';
 import CookieConsent from 'react-cookie-consent';
-import ReactPlayer from 'react-player'
-import Logos from "./logos.png";
-  // import Slider from "react-slick";
-  // import UploadCertificate from "./uploadCertificate";
-import MultipleSelect from './drop'
-import App from './animation.js'
-
-
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  },
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-  card: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  cardMedia: {
-    paddingTop: '56.25%', // 16:9
-  },
-  cardContent: {
-    flexGrow: 1,
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
-  },
-}));
-
-// const cards = [1, 2, 3];
-
+import HeroSection from './sections/HeroSection';
+import FeaturesSection from './sections/FeaturesSection';
+import LazyVideoSection from './components/LazyVideoSection';
+import PartnersSection from './sections/PartnersSection';
 
 function Hometwo() {
-  const classes = useStyles();
-
-  const settings = {
-    className: "center",
-    centerMode: true,
-    infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 3,
-    speed: 500
-  };
-
-    return (
-      <>
-        <Container maxWidth="sm"  style={{ justifyContent: 'center', alignItems: 'center'}}  >
-          <Typography
-            component="h3"
-            variant="h2"
-            align="center"
-            color="textPrimary"
-            gutterBottom
-          >
-            EduNode
-          </Typography>
-          <Typography
-            variant="h5"
-            align="center"
-            color="textSecondary"
-            paragraph
-          >
-          Learn Web3 and Blockchain skills and reach your developing goals.
-          </Typography>
-
-
-          <div  style={{display:'flex', justifyContent: 'center', alignItems: 'center'}} >
-         <MultipleSelect/>
-         </div>
-
-          {/* <section className="chatbot">
-            <div className="chat-input-holder">
-
-              <textarea className="chat-input-textarea" placeholder="type your message here">
-                
-              </textarea>
-
-
-
-            </div>
-
-          </section> */}
-          <div className={classes.heroButtons}>
-            <Grid container spacing={2} justify="center">
-              <Grid item></Grid>
-            </Grid>
-          </div>
-        </Container>
-        <br></br>
-         
-        <br></br>
-        <Container>
-          <Complex />
-          <br></br>
-         
-        <br></br>
-          <Container style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-       <ReactPlayer url='https://www.youtube.com/watch?v=cHnlzwi7DuY' />
-         </Container>
-
-         <br></br>
-    
-         <br></br>
-         <Container style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-         <h3>Partners</h3>
+  return (
+    <>
+      <HeroSection />
+      <FeaturesSection />
+      <LazyVideoSection />
+      <PartnersSection />
       
-          </Container>
-           
-            <h3><img src={Logos}   alt="Partners"/></h3>
-        </Container>
-      
-        <CookieConsent>
-          This website uses cookies to enhance the user experience.
-        </CookieConsent>
-      </>
-    );
+      <CookieConsent
+        style={{
+          background: 'linear-gradient(135deg, #1a1f3a 0%, #2d1b69 100%)',
+          border: '1px solid rgba(123, 47, 247, 0.3)',
+          borderRadius: '10px',
+          padding: '15px 20px',
+          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
+        }}
+        buttonStyle={{
+          background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)',
+          color: 'white',
+          fontSize: '14px',
+          fontWeight: 'bold',
+          borderRadius: '25px',
+          padding: '8px 20px',
+          border: 'none',
+          cursor: 'pointer',
+          transition: 'all 0.3s ease',
+        }}
+        buttonStyleOnHover={{
+          background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+          transform: 'translateY(-2px)',
+          boxShadow: '0 5px 15px rgba(123, 47, 247, 0.4)',
+        }}
+      >
+        <span style={{ color: '#b8c5d6', fontSize: '14px' }}>
+          This website uses cookies to enhance your learning experience. By continuing to use this site, you agree to our use of cookies.
+        </span>
+      </CookieConsent>
+    </>
+  );
 }
 
 export default Hometwo;

@@ -13,6 +13,13 @@ import Footer from '../Footer';
 import { styled } from '@mui/material/styles';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from "redux-form";
+import { motion } from 'framer-motion';
+import { 
+  Container, 
+  Typography,
+  Fab
+} from '@mui/material';
+import { KeyboardArrowUp } from '@mui/icons-material';
 //import { Redirect, BrowserRouter } from "react-router-dom";
 //import Button from "@mui/material/Button"
 import TextField from '@mui/material/TextField'
@@ -26,6 +33,65 @@ import PostList from "./PostList";
 import Navbar1 from '../Dashboard/Navbar1';
 import  { useState } from 'react';
 import UserContext from '../Posts/UserContext';
+
+const FeedContainer = styled(Box)(({ theme }) => ({
+  minHeight: '100vh',
+  background: 'linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)',
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'radial-gradient(circle at 20% 50%, rgba(123, 47, 247, 0.1) 0%, transparent 50%)',
+    pointerEvents: 'none',
+    zIndex: 0,
+  },
+}));
+
+const ContentContainer = styled(Container)(({ theme }) => ({
+  position: 'relative',
+  zIndex: 1,
+  paddingTop: theme.spacing(10),
+  paddingBottom: theme.spacing(4),
+}));
+
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  textAlign: 'center',
+  marginBottom: theme.spacing(4),
+  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+  fontSize: '2.5rem',
+  fontWeight: 'bold',
+}));
+
+const ScrollToTopFab = styled(Fab)(({ theme }) => ({
+  position: 'fixed',
+  bottom: theme.spacing(3),
+  right: theme.spacing(3),
+  background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)',
+  color: 'white',
+  zIndex: 1000,
+  '&:hover': {
+    background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+    transform: 'scale(1.1)',
+  },
+}));
+
+const FloatingParticle = styled(motion.div)(({ theme }) => ({
+  position: 'fixed',
+  width: '4px',
+  height: '4px',
+  background: 'rgba(123, 47, 247, 0.6)',
+  borderRadius: '50%',
+  boxShadow: '0 0 10px rgba(123, 47, 247, 0.8)',
+  pointerEvents: 'none',
+  zIndex: 0,
+}));
 
 const style = {
   height: 30,
@@ -45,13 +111,35 @@ class Feed extends Component {
       isLoading: false,
       errors: {},
       items: Array.from({ length: 20 }),
-    hasMore: true
+      hasMore: true,
+      showScrollTop: false
     }
 
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
 
   }
+
+  componentDidMount() {
+    this.handleScroll();
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    this.setState({ showScrollTop: scrollTop > 300 });
+  };
+
+  scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   componentDidUpdate(prevProps) {
     const { error } = this.props;
@@ -203,7 +291,7 @@ class Feed extends Component {
   render() {
 
     const email= this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : "";
-
+    const { showScrollTop } = this.state;
 
     const Item = styled(Paper)(({ theme }) => ({
       ...theme.typography.body2,
@@ -252,7 +340,7 @@ class Feed extends Component {
     
        
         <hr />
-      
+       
       </div>
          
 </div>
@@ -277,40 +365,108 @@ class Feed extends Component {
   
     <>
 
-<UserContext.Provider value={this.state.email}>
-  <div>
-        <Box sx={{ flexGrow: 1 }}>
-  <Grid container spacing={2}>
- 
-    <Grid item xs={12} sm={8} md={20}>
-    <Navbar1 />
-         
-      <div>
-  
+<FeedContainer>
+        {/* Floating Particles */}
+        {[...Array(8)].map((_, i) => (
+          <FloatingParticle
+            key={i}
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              scale: Math.random() * 0.5 + 0.5,
+            }}
+            animate={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              scale: Math.random() * 0.5 + 0.5,
+            }}
+            transition={{
+              duration: Math.random() * 20 + 10,
+              repeat: Infinity,
+              repeatType: 'reverse',
+            }}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+          />
+        ))}
 
-      <div>
+        <ContentContainer maxWidth="xl">
+          {/* Welcome Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Box sx={{ textAlign: 'center', mb: 6 }}>
+              <Typography variant="h3" sx={{ 
+                color: '#ffffff', 
+                fontWeight: 'bold', 
+                mb: 2,
+                background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
+                Community Feed
+              </Typography>
+              <Typography variant="h6" sx={{ color: '#b8c5d6' }}>
+                Stay connected with the EduNode community and discover the latest updates
+              </Typography>
+            </Box>
+          </motion.div>
 
-   
-    <hr />
-    
-  </div>
-     
-</div>
+          <UserContext.Provider value={this.state.email}>
+            <Box sx={{ flexGrow: 1 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <Navbar1 />
+                  
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                  >
+                    <Box sx={{ mt: 4 }}>
+                      <Tweets />
+                      <Box sx={{ mt: 4 }}>
+                        <hr sx={{ borderColor: 'rgba(123, 47, 247, 0.3)' }} />
+                      </Box>
+                    </Box>
+                  </motion.div>
 
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                  >
+                    <Box sx={{ mt: 4 }}>
+                      <PostList />
+                    </Box>
+                  </motion.div>
+                </Grid>
+              </Grid>
+            </Box>
+          </UserContext.Provider>
+        </ContentContainer>
 
-<PostList />
-      
-    </Grid>
-    
-  </Grid>
-  
-</Box>
-    </div>
-    
-   
-    </UserContext.Provider>
-    
-  </>
+        {/* Scroll to Top Button */}
+        {showScrollTop && (
+          <ScrollToTopFab
+            onClick={this.scrollToTop}
+            aria-label="Scroll to top"
+            component={motion.div}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <KeyboardArrowUp />
+          </ScrollToTopFab>
+        )}
+      </FeedContainer>
+    </>
 )
 
 } 

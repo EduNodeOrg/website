@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Course3() {
-  const [rating, setRating] = useState();
+  const [rating, setRating] = useState(0);
   const classes = useStyles();
   const courseId = '644bce0be1fec0f4f55a744b';
   const [course, setCourse] = useState({});

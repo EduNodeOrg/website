@@ -1,3 +1,5 @@
+/* Modern Dashboard Styles */
+
 .app.light {
     background-color: #fff;
     color: #000;
@@ -8,6 +10,7 @@
     color: #fff;
 }
 
+/* Modern toggle switch */
 .toggle-switch-container {
     display: flex;
     align-items: center;
@@ -34,9 +37,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background: linear-gradient(45deg, #7b2ff7, #00d4ff);
     -webkit-transition: 0.4s;
     transition: 0.4s;
+    border-radius: 34px;
 }
 
 .slider:before {
@@ -49,14 +53,15 @@
     background-color: white;
     -webkit-transition: 0.4s;
     transition: 0.4s;
+    border-radius: 50%;
 }
 
 input:checked+.slider {
-    background-color: #2196f3;
+    background: linear-gradient(45deg, #00d4ff, #7b2ff7);
 }
 
 input:focus+.slider {
-    box-shadow: 0 0 1px #2196f3;
+    box-shadow: 0 0 1px #7b2ff7;
 }
 
 input:checked+.slider:before {
@@ -71,4 +76,78 @@ input:checked+.slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+/* Dashboard specific styles */
+.dashboard-container {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Scroll animations */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for dashboard */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1f3a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #7b2ff7, #00d4ff);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #00d4ff, #7b2ff7);
+}
+
+/* Loading animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-container {
+        padding: 0.5rem;
+    }
 }
