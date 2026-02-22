@@ -4,49 +4,163 @@ import withRouter from '../../withRouter';
 import { reduxForm } from "redux-form";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { TextField } from '@mui/material';
+import { TextField, Button, Typography, Container, Card, CardContent, Avatar } from '@mui/material';
 import PropTypes from 'prop-types'
 import axios from 'axios';
 import { Navigate } from "react-router-dom";
-import styled from 'styled-components';
-import Navbar1 from '../Dashboard/Navbar1';
+import { motion } from 'framer-motion';
+import { styled } from '@mui/material/styles';
 import ImageUploading from "react-images-uploading";
 import Autocomplete from '@mui/material/Autocomplete';
+import ModernNavbar from '../Dashboard/layout/ModernNavbar';
 
 
-const Select = styled.select`
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
-`;
+// Modern styled components matching dashboard theme
+const DashboardContainer = styled(Box)(({ theme }) => ({
+  minHeight: '100vh',
+  background: 'linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)',
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'radial-gradient(circle at 20% 50%, rgba(123, 47, 247, 0.1) 0%, transparent 50%)',
+    pointerEvents: 'none',
+    zIndex: 0,
+  },
+}));
 
-const SelectedTagsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-`;
+const ContentContainer = styled(Container)(({ theme }) => ({
+  position: 'relative',
+  zIndex: 1,
+  paddingTop: theme.spacing(12),
+  paddingBottom: theme.spacing(4),
+}));
 
-const SelectedTag = styled.div`
-  display: flex;
-  align-items: center;
-  margin-right: 0.5rem;
-  background-color: #f5f5f5;
-  color: #333;
-  padding: 0.5rem;
-  border-radius: 5px;
-  font-size: 0.9rem;
-`;
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+  fontSize: '2.5rem',
+  fontWeight: 'bold',
+  textAlign: 'center',
+  marginBottom: theme.spacing(4),
+}));
 
-const RemoveTagButton = styled.button`
-  background-color: transparent;
-  color: #333;
-  border: none;
-  font-size: 0.9rem;
-  margin-left: 0.5rem;
-  cursor: pointer;
-`;
+const AccountCard = styled(Card)(({ theme }) => ({
+  background: 'rgba(26, 31, 58, 0.8)',
+  backdropFilter: 'blur(10px)',
+  border: '1px solid rgba(123, 47, 247, 0.3)',
+  borderRadius: theme.spacing(3),
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+  padding: theme.spacing(3),
+  marginBottom: theme.spacing(3),
+}));
+
+const ProfileAvatar = styled(Avatar)(({ theme }) => ({
+  width: theme.spacing(20),
+  height: theme.spacing(20),
+  border: '3px solid rgba(123, 47, 247, 0.5)',
+  boxShadow: '0 4px 20px rgba(123, 47, 247, 0.4)',
+}));
+
+const StyledTextField = styled(TextField)(({ theme }) => ({
+  '& .MuiOutlinedInput-root': {
+    color: '#ffffff',
+    '& fieldset': {
+      borderColor: 'rgba(123, 47, 247, 0.3)',
+    },
+    '&:hover fieldset': {
+      borderColor: 'rgba(123, 47, 247, 0.5)',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#7b2ff7',
+    },
+  },
+  '& .MuiInputLabel-root': {
+    color: '#b8c5d6',
+  },
+  '& .MuiInputBase-input': {
+    color: '#ffffff',
+  },
+}));
+
+const SubmitButton = styled(Button)(({ theme }) => ({
+  background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)',
+  color: '#ffffff',
+  fontWeight: 'bold',
+  padding: theme.spacing(1.5, 3),
+  borderRadius: theme.spacing(3),
+  transition: 'all 0.3s ease',
+  '&:hover': {
+    background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+    transform: 'scale(1.05)',
+    boxShadow: '0 4px 20px rgba(123, 47, 247, 0.4)',
+  },
+}));
+
+const FloatingParticle = styled(motion.div)(({ theme }) => ({
+  position: 'fixed',
+  width: '4px',
+  height: '4px',
+  background: 'rgba(123, 47, 247, 0.6)',
+  borderRadius: '50%',
+  boxShadow: '0 0 10px rgba(123, 47, 247, 0.8)',
+  pointerEvents: 'none',
+  zIndex: 0,
+}));
+
+const Select = styled('select')(({ theme }) => ({
+  padding: theme.spacing(1),
+  fontSize: '1rem',
+  borderRadius: theme.spacing(1),
+  border: '1px solid rgba(123, 47, 247, 0.3)',
+  marginBottom: theme.spacing(1),
+  backgroundColor: 'rgba(26, 31, 58, 0.8)',
+  color: '#ffffff',
+  '&:focus': {
+    borderColor: '#7b2ff7',
+    outline: 'none',
+  },
+  '& option': {
+    backgroundColor: '#1a1f3a',
+    color: '#ffffff',
+  },
+}));
+
+const SelectedTagsContainer = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexWrap: 'wrap',
+  marginTop: theme.spacing(0.5),
+}));
+
+const SelectedTag = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  marginRight: theme.spacing(0.5),
+  backgroundColor: 'rgba(123, 47, 247, 0.2)',
+  color: '#ffffff',
+  padding: theme.spacing(0.5),
+  borderRadius: theme.spacing(1),
+  fontSize: '0.9rem',
+  border: '1px solid rgba(123, 47, 247, 0.3)',
+}));
+
+const RemoveTagButton = styled('button')(({ theme }) => ({
+  backgroundColor: 'transparent',
+  color: '#ffffff',
+  border: 'none',
+  fontSize: '0.9rem',
+  marginLeft: theme.spacing(0.5),
+  cursor: 'pointer',
+  '&:hover': {
+    color: '#ff4444',
+  },
+}));
 const tagsList = [
 
   "Web3",
@@ -347,110 +461,128 @@ class Account extends Component {
 
 
   render() {
-    const { value, selectedUniversity, universityOptions } = this.state;
-    const { isAuthenticated } = this.props.auth
-    const { imagePreviewUrl,
-      name,
-      status,
-      active } = this.state;
+    const { isAuthenticated } = this.props.auth;
+    const { imagePreviewUrl, name, email, tags, skills, user, images, maxNumber } = this.state;
+    const { isUpdated } = this.state;
+
+    let specifyField = null;
+    if (this.state.showSpecifyField) {
+      specifyField = (
+        <Box sx={{ mt: 2 }}>
+          <Typography variant="body2" sx={{ color: '#b8c5d6', mb: 1 }}>
+            Please specify preferences:
+          </Typography>
+          <StyledTextField
+            name="specify"
+            type="text"
+            placeholder="Please specify"
+            fullWidth
+            value={this.state.specify}
+            onChange={this.handleSpecifyChange}
+          />
+        </Box>
+      );
+    }
+
+    let specify = null;
+    if (this.state.showSpecify) {
+      specify = (
+        <Box sx={{ mt: 2 }}>
+          <Typography variant="body2" sx={{ color: '#b8c5d6', mb: 1 }}>
+            Please specify skills:
+          </Typography>
+          <StyledTextField
+            name="specify2"
+            type="text"
+            placeholder="Please specify"
+            fullWidth
+            value={this.state.specify2}
+            onChange={this.handleSpecifyChange2}
+          />
+        </Box>
+      );
+    }
+
     if (!isAuthenticated) {
       return (
         <Navigate to="/" />
       );
     }
-    const { tags, skills, user, images, maxNumber } = this.state;
-    const { isUpdated } = this.state; // get isUpdated from state
-    const email = this.props.auth.user.email ? this.props.auth.user.email : '';
-
-
-    let specifyField = null;
-  if (this.state.showSpecifyField) {
-    specifyField = (
-      <div>
-        <label>Please specify preferences:</label>
-        <TextField
-          name="specify"
-          type="text"
-          placeholder="Please specify"
-          fullWidth
-          value={this.state.specify}
-          onChange={this.handleSpecifyChange}
-        />
-      </div>
-    );
-  }
-
-  let specify = null;
-  if (this.state.showSpecify) {
-    specify = (
-      <div>
-        <label>Please specify skills:</label>
-        <TextField
-          name="specify"
-          type="text"
-          placeholder="Please specify"
-          fullWidth
-          value={this.state.specify2}
-          onChange={this.handleSpecifyChange2}
-        />
-      </div>
-    );
-  }
 
     return (
-      <>
+      <DashboardContainer>
+        {/* Floating Particles */}
+        {[...Array(15)].map((_, i) => (
+          <FloatingParticle
+            key={i}
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              scale: Math.random() * 0.5 + 0.5,
+            }}
+            animate={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              scale: Math.random() * 0.5 + 0.5,
+            }}
+            transition={{
+              duration: Math.random() * 20 + 10,
+              repeat: Infinity,
+              repeatType: 'reverse',
+            }}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+          />
+        ))}
 
-        <div>
-          <div style={{ z: -1 }} >
-            <Navbar1 />
+        <ModernNavbar />
 
-          </div>
-          <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2}>
-              {/* <Grid item xs={12} sm={4} md={3}>
-            <Sidebar props={email} />
-          </Grid> */}
-              <Grid item xs={12} sm={8} md={9}>
+        <ContentContainer maxWidth="lg">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <SectionTitle variant="h2" component="h1">
+              Account Settings
+            </SectionTitle>
 
-                <div style={{ padding: '10px' }}>
-                  <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                    <h4 style={{ fontSize: "2em", textAlign: "center" }}>Account</h4>
-                    <br></br>
-                    <>
-                      <div>
-                        {/* Other account information */}
-                        <h4>Profile Picture :</h4>
+            <Grid container spacing={4}>
+              <Grid item xs={12} md={8}>
+                <AccountCard>
+                  <CardContent>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                      <ProfileAvatar
+                        src={user.images || imagePreviewUrl}
+                        alt="Profile"
+                        sx={{ mr: 3 }}
+                      />
+                      <Box>
+                        <Typography variant="h5" sx={{ color: '#ffffff', mb: 1 }}>
+                          {name || 'Your Name'}
+                        </Typography>
+                        <Typography variant="body2" sx={{ color: '#b8c5d6' }}>
+                          {email || 'your.email@example.com'}
+                        </Typography>
+                      </Box>
+                    </Box>
 
-                        <div
-                          style={{
-                            width: '100px',
-                            height: '100px',
-                            borderRadius: '50%',
-                            overflow: 'hidden',
-                            display: 'inline-block',
-                          }}
-                        >
-
-                          <img
-                            src={this.state.user.images}
-                            style={{
-                              width: '100%',
-                              height: '100%',
-                              objectFit: 'cover',
-                            }}
-                          />
-
-                        </div>
-                      </div>
-
-                      <p>Please upload only png and jpg</p>
+                    <Box sx={{ mt: 3 }}>
+                      <Typography variant="h6" sx={{ color: '#ffffff', mb: 2 }}>
+                        Profile Picture Upload
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: '#b8c5d6', mt: 1 }}>
+                        Please upload only png and jpg
+                      </Typography>
                       <ImageUploading
                         multiple
                         value={images}
                         onChange={this.onChangeImage}
                         maxNumber={maxNumber}
                         dataURLKey="data_url"
-                        acceptType={["jpg", 'png']}
+                        acceptType={["jpg", "png"]}
                       >
                         {({
                           imageList,
@@ -461,7 +593,8 @@ class Account extends Component {
                           isDragging,
                           dragProps
                         }) => (
-                          // write your building UI
+                          <>
+                            {/* write your building UI */}
                           <div className="upload__image-wrapper">
                             <button
                               style={{
@@ -512,163 +645,147 @@ class Account extends Component {
                               </div>
                             ))}
                           </div>
+                          </>
                         )}
                       </ImageUploading>
 
+                      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+                        <br></br>
+                        <label>Full Name:</label>
+                        <StyledTextField
+                          name="name"
+                          type="text"
+                          placeholder="Name"
+                          fullWidth
+                          value={this.state.user.name}
+                          onChange={this.handleNameChange}
+                        />
+                        <label>Email:</label>
+                        <StyledTextField
+                          disabled
+                          name="email"
+                          type="email"
+                          placeholder={this.props.auth.user.pkey || this.props.auth.user.email}
+                          fullWidth
+                          inputRef={(input) => (this.emailInput = input)}
+                        />
+                        <label>Age:</label>
+                        <StyledTextField
+                          name="age"
+                          type="number"
+                          placeholder="Age"
+                          fullWidth
+                          value={user.age}
+                          onChange={this.handleAgeChange}
+                        />
+                        <label>Bio:</label>
+                        <StyledTextField
+                          name="bio"
+                          multiline
+                          rows={4}
+                          placeholder="My Web3 Journey"
+                          fullWidth
+                          value={user.bio}
+                          onChange={this.handleBioChange}
+                        />
+                        <label>University:</label>
+                        <StyledTextField
+                          name="university"
+                          type="text"
+                          placeholder="university"
+                          fullWidth
+                          value={user.university}
+                          onChange={this.handleUniversityChange}
+                        />
+                        <label>Location:</label>
+                        <StyledTextField
+                          name="location"
+                          type="text"
+                          placeholder="location"
+                          fullWidth
+                          value={user.location}
+                          onChange={this.handleLocationChange}
+                        />
+                        <label>Preferences:</label>
 
+                        <Select fullWidth id="tags" onChange={this.handleTagSelect} style={{ width: '100%' }}>
 
-                      <br></br>
-                      <label>Full Name:</label>
-                      <TextField
-
-                        name="name"
-                        type="text"
-                        placeholder="Name"
-                        fullWidth
-                        value={this.state.user.name}
-                        onChange={this.handleNameChange}
-                      />
-                      <label>Email:</label>
-                      <TextField
-                        disabled
-                        name="email"
-                        type="email"
-                        placeholder={this.props.auth.user.pkey || this.props.auth.user.email}
-                        fullWidth
-                        inputRef={(input) => (this.emailInput = input)}
-                      />
-                      <label>Age:</label>
-                      <TextField
-                        name="age"
-                        type="number"
-                        placeholder="Age"
-                        fullWidth
-                        value={user.age}
-                        onChange={this.handleAgeChange}
-                      />
-                      <label>Bio:</label>
-                      <TextField
-                        name="bio"
-                        multiline
-                        rows={4}
-                        placeholder="My Web3 Journey"
-                        fullWidth
-                        value={user.bio}
-                        onChange={this.handleBioChange}
-                      />
-                      <label>University:</label>
-                      <TextField
-                        name="university"
-                        type="text"
-                        placeholder="university"
-                        fullWidth
-                        value={user.university}
-                        onChange={this.handleUniversityChange}
-                      />
-
-
-
-                     {/**  <Autocomplete
-                        id="combo-box-demo"
-                        options={universityOptions}
-                        fullWidth
-                        value={selectedUniversity || ''}
-                        onChange={this.handleUniversityChange}
-                        renderInput={(params) => (
-                          <TextField {...params} label="Choose University" variant="outlined" fullWidth />
-                        )}
-                      />*/}
-
-
-
-
-
-                      <label>Preferences:</label>
-
-                      <Select fullWidth id="tags" onChange={this.handleTagSelect} style={{ width: '100%' }}>
-
-                        <option value="">
-                          {Array.isArray(user.preferences) && user.preferences.join(' , ')}
-                        </option>
-
-                        {tagsList.map((tag) => (
-                          <option key={tag} value={tag}>
-                            {tag}
+                          <option value="">
+                            {Array.isArray(user.preferences) && user.preferences.join(' , ')}
                           </option>
-                        ))}
-                      </Select>
 
-                      <SelectedTagsContainer>
-                        {tags.map((tag) => (
-                          <SelectedTag key={tag}>
-                            {tag}
-                            <RemoveTagButton onClick={() => this.handleTagRemove(tag)}>
-                              X
-                            </RemoveTagButton>
-                          </SelectedTag>
-                        ))}
-                      </SelectedTagsContainer>
+                          {tagsList.map((tag) => (
+                            <option key={tag} value={tag}>
+                              {tag}
+                            </option>
+                          ))}
+                        </Select>
 
-                      {specifyField}
-                            
-                      <label>Skills:</label>
+                        <SelectedTagsContainer>
+                          {tags.map((tag) => (
+                            <SelectedTag key={tag}>
+                              {tag}
+                              <RemoveTagButton onClick={() => this.handleTagRemove(tag)}>
+                                X
+                              </RemoveTagButton>
+                            </SelectedTag>
+                          ))}
+                        </SelectedTagsContainer>
 
-                      <Select fullWidth id="tags" onChange={this.handleSkillsSelect} style={{ width: '100%' }}>
-                        <option value="">
-                          {Array.isArray(user.skills) && user.skills.join(' , ')}
-                        </option>
-                        {skillsList.map((tag) => (
-                          <option key={tag} value={tag}>
-                            {tag}
+                        {specifyField}
+
+                        <label>Skills:</label>
+
+                        <Select fullWidth id="skills" onChange={this.handleSkillsSelect} style={{ width: '100%' }}>
+
+                          <option value="">
+                            {Array.isArray(user.skills) && user.skills.join(' , ')}
                           </option>
-                        ))}
-                      </Select>
-                      <SelectedTagsContainer>
-                        {skills.map((tag) => (
-                          <SelectedTag key={tag}>
-                            {tag}
-                            <RemoveTagButton onClick={() => this.handleSkillsRemove(tag)}>
-                              X
-                            </RemoveTagButton>
-                          </SelectedTag>
-                        ))}
-                      </SelectedTagsContainer>
 
-                      {specify}
-                    </>
-                    <br></br>
-                    <button
-                      type="submit"
-                      style={{
-                        backgroundColor: "#007bff",
-                        color: "#fff",
-                        border: "none",
-                        borderRadius: "4px",
-                        padding: "10px 20px",
-                        fontSize: "1.2em",
-                        boxShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)"
-                      }}
-                    >
-                      Submit
-                    </button>
+                          {skillsList.map((skill) => (
+                            <option key={skill} value={skill}>
+                              {skill}
+                            </option>
+                          ))}
+                        </Select>
 
+                        <SelectedTagsContainer>
+                          {skills.map((tag) => (
+                            <SelectedTag key={tag}>
+                              {tag}
+                              <RemoveTagButton onClick={() => this.handleSkillsRemove(tag)}>
+                                X
+                              </RemoveTagButton>
+                            </SelectedTag>
+                          ))}
+                        </SelectedTagsContainer>
 
-                  </form>
+                        {specify}
+                        <br></br>
+                        <SubmitButton
+                          type="submit"
+                          variant="contained"
+                        >
+                          Update Profile
+                        </SubmitButton>
+                    </form>
                   <br></br>
                   {isUpdated && (
                     <div style={{ backgroundColor: 'green', color: 'white', padding: '10px', borderRadius: "4px", }}>
                       Account updated successfully!
                     </div>
                   )}
-                </div>
-              </Grid>
-            </Grid>
+                </Box>
+              </CardContent>
+            </AccountCard>
+          </Grid>
+        </Grid>
+      </motion.div>
+      </ContentContainer>
+    </DashboardContainer>
+  );
+}
 
-          </Box>
-        </div>
-      </>
-    )
-  }
 }
 
 const countries = [

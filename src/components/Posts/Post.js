@@ -1,118 +1,154 @@
 import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
 import { styled as muiStyled } from '@mui/material/styles';
-import styled from 'styled-components';
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import NavBar from "../NavBar"
 import { clearErrors } from "../../actions/errorActions";
 import { newPost } from "../../actions/authActions";
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Footer from '../Footer';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { convertToHTML } from 'draft-convert';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Navbar1 from '../Dashboard/Navbar1';
-import UserContext from './UserContext';
-import home from './homework.png'
-import Modal from 'react-modal';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import Chip from '@mui/material/Chip';
 import Alert from '@mui/material/Alert';
+import Modal from '@mui/material/Modal';
+import { motion } from 'framer-motion';
+import { styled } from '@mui/material/styles';
+import ModernNavbar from '../Dashboard/layout/ModernNavbar';
+import UserContext from './UserContext';
+import home from './homework.png';
 
 
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem;
-  width: 100%; // Set the width to 100% or a specific width, e.g., 600px
-  max-width: 600px; // Add a max-width to keep the form from becoming too wide
-  height: auto; // Set the height to auto to adjust according to its content
-  margin: 0 auto; // Center the form within its parent container
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box; // Include padding and border in the form's dimensions
-`;
+// Modern styled components matching dashboard theme
+const DashboardContainer = styled(Box)(({ theme }) => ({
+  minHeight: '100vh',
+  background: 'linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)',
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'radial-gradient(circle at 20% 50%, rgba(123, 47, 247, 0.1) 0%, transparent 50%)',
+    pointerEvents: 'none',
+    zIndex: 0,
+  },
+}));
 
-const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%; // Set the width to 100% to align form fields to the left
-  margin-bottom: 1rem;
-`;
+const ContentContainer = styled(Container)(({ theme }) => ({
+  position: 'relative',
+  zIndex: 1,
+  paddingTop: theme.spacing(12),
+  paddingBottom: theme.spacing(4),
+}));
 
-const Label = styled.label`
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-`;
+const FormContainer = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(4),
+  background: 'rgba(26, 31, 58, 0.8)',
+  backdropFilter: 'blur(10px)',
+  border: '1px solid rgba(123, 47, 247, 0.3)',
+  borderRadius: theme.spacing(2),
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+}));
 
-const Input = styled.input`
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-`;
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+  fontSize: '2.5rem',
+  fontWeight: 'bold',
+  textAlign: 'center',
+  marginBottom: theme.spacing(4),
+}));
 
-const Textarea = styled.textarea`
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-`;
+const StyledTextField = styled(TextField)(({ theme }) => ({
+  '& .MuiOutlinedInput-root': {
+    color: '#b8c5d6',
+    '& fieldset': {
+      borderColor: 'rgba(123, 47, 247, 0.3)',
+    },
+    '&:hover fieldset': {
+      borderColor: 'rgba(123, 47, 247, 0.5)',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#7b2ff7',
+    },
+  },
+  '& .MuiInputLabel-root': {
+    color: '#b8c5d6',
+  },
+  '& .MuiInputBase-input': {
+    color: '#ffffff',
+  },
+}));
 
-const Select = styled.select`
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
-`;
+const StyledSelect = styled(Select)(({ theme }) => ({
+  color: '#ffffff',
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'rgba(123, 47, 247, 0.3)',
+  },
+  '&:hover .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'rgba(123, 47, 247, 0.5)',
+  },
+  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+    borderColor: '#7b2ff7',
+  },
+  '& .MuiSvgIcon-root': {
+    color: '#b8c5d6',
+  },
+}));
 
+const StyledChip = styled(Chip)(({ theme }) => ({
+  background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)',
+  color: '#ffffff',
+  fontWeight: 'bold',
+  '& .MuiChip-deleteIcon': {
+    color: '#ffffff',
+    '&:hover': {
+      color: '#ff4444',
+    },
+  },
+}));
 
-const SelectedTagsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-`;
+const SubmitButton = styled(Button)(({ theme }) => ({
+  background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)',
+  color: '#ffffff',
+  fontWeight: 'bold',
+  padding: theme.spacing(1.5, 4),
+  borderRadius: theme.spacing(3),
+  transition: 'all 0.3s ease',
+  '&:hover': {
+    background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+    transform: 'scale(1.05)',
+    boxShadow: '0 4px 20px rgba(123, 47, 247, 0.4)',
+  },
+}));
 
-const SelectedTag = styled.div`
-  display: flex;
-  align-items: center;
-  margin-right: 0.5rem;
-  background-color: #f5f5f5;
-  color: #333;
-  padding: 0.5rem;
-  border-radius: 5px;
-  font-size: 0.9rem;
-`;
-
-const RemoveTagButton = styled.button`
-  background-color: transparent;
-  color: #333;
-  border: none;
-  font-size: 0.9rem;
-  margin-left: 0.5rem;
-  cursor: pointer;
-`;
-
-const SubmitButton = styled.button`
-  background-color: #0070f3;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  &:hover {
-    background-color: #0061c9;
-  }
-`;
+const FloatingParticle = styled(motion.div)(({ theme }) => ({
+  position: 'fixed',
+  width: '4px',
+  height: '4px',
+  background: 'rgba(123, 47, 247, 0.6)',
+  borderRadius: '50%',
+  boxShadow: '0 0 10px rgba(123, 47, 247, 0.8)',
+  pointerEvents: 'none',
+  zIndex: 0,
+}));
 
 const tagsList = [
   "Web3",
@@ -289,146 +325,251 @@ class Post extends Component {
 
   render() {
     const { editorState } = this.state;
- 
     const { tags, title, link, description, success, showPopup } = this.state;
     const email = this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : "";
     const { errors } = this.state;
+    
     return (
       <UserContext.Provider value={this.state.email}>
-        <div>
-          <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={8} md={20}>
-                <Navbar1 />
-                <br></br>
-                <br></br>
-                <br></br>
-                <div style={{ padding: '10px' }}>
-                  <Form onSubmit={this.handleSubmit}>
-                    <h4 style={{ fontSize: "2em", textAlign: "center" }}>Add Post</h4>
+        <DashboardContainer>
+          {/* Floating Particles */}
+          {[...Array(15)].map((_, i) => (
+            <FloatingParticle
+              key={i}
+              initial={{
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                scale: Math.random() * 0.5 + 0.5,
+              }}
+              animate={{
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                scale: Math.random() * 0.5 + 0.5,
+              }}
+              transition={{
+                duration: Math.random() * 20 + 10,
+                repeat: Infinity,
+                repeatType: 'reverse',
+              }}
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+            />
+          ))}
 
-                    <FormGroup>
-                      <Label htmlFor="tags">Tags:</Label>
-                      <Select id="tags" onChange={this.handleTagSelect}>
-                        <option value="">Select a tag</option>
-                        
-                        {tagsList.map((tag) => (
-                          <option key={tag} value={tag}>
-                            {tag}
-                          </option>
-                        ))}
-                      </Select>
-                      {errors.tags && <Alert severity="error">{errors.tags}</Alert>}
-                      <SelectedTagsContainer>
-                        {tags.map((tag) => (
-                          <SelectedTag key={tag}>
-                            {tag}
-                            <RemoveTagButton onClick={() => this.handleTagRemove(tag)}>
-                              X
-                            </RemoveTagButton>
-                          </SelectedTag>
-                        ))}
-                      </SelectedTagsContainer>
-                    </FormGroup>
-                    <FormGroup>
-                      <Label htmlFor="title">Title:</Label>
-                      <Input
-                        type="text"
-                        id="title"
-                        value={title}
-                        onChange={(e) => this.setState({ title: e.target.value })}
-                      />
-                      {errors.title && <Alert severity="error">{errors.title}</Alert>}
+          <ModernNavbar />
+
+          <ContentContainer maxWidth="md">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <FormContainer>
+                <SectionTitle variant="h2" component="h1">
+                  Create New Post
+                </SectionTitle>
+
+                <Box component="form" onSubmit={this.handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                  {/* Tags Section */}
+                  <Box>
+                    <Typography variant="h6" sx={{ color: '#b8c5d6', mb: 2, fontWeight: 'bold' }}>
+                      Tags:
+                    </Typography>
+                    <StyledSelect
+                      fullWidth
+                      value=""
+                      onChange={(e) => {
+                        const selectedTag = e.target.value;
+                        if (selectedTag && !tags.includes(selectedTag)) {
+                          this.setState({ tags: [...tags, selectedTag] });
+                        }
+                      }}
+                      displayEmpty
+                    >
+                      <MenuItem value="" disabled>Select a tag</MenuItem>
+                      {tagsList.map((tag) => (
+                        <MenuItem key={tag} value={tag}>
+                          {tag}
+                        </MenuItem>
+                      ))}
+                    </StyledSelect>
+                    {errors.tags && <Alert severity="error" sx={{ mt: 1 }}>{errors.tags}</Alert>}
                     
-                    </FormGroup>
-                    <FormGroup>
-                      <Label htmlFor="link">Link:</Label>
-                      <Input
-                        type="text"
-                        id="link"
-                        value={link}
-                        onChange={(e) => this.setState({ link: e.target.value })}
-                      />
-                    </FormGroup>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 2 }}>
+                      {tags.map((tag) => (
+                        <StyledChip
+                          key={tag}
+                          label={tag}
+                          onDelete={() => this.handleTagRemove(tag)}
+                          deleteIcon={<Box component="span" sx={{ cursor: 'pointer' }}>×</Box>}
+                        />
+                      ))}
+                    </Box>
+                  </Box>
 
-                    <FormGroup>
-                      <Label htmlFor="image">Image:</Label>
-                      <Input
-                        type="file"
-                        id="image"
-                        onChange={this.onChangeImage}
-                      />
-                    </FormGroup>
-                    <FormGroup>
-                      <Label htmlFor="description">Description:</Label>
+                  {/* Title Field */}
+                  <StyledTextField
+                    fullWidth
+                    label="Title"
+                    value={title}
+                    onChange={(e) => this.setState({ title: e.target.value })}
+                    variant="outlined"
+                    error={!!errors.title}
+                    helperText={errors.title}
+                  />
 
-                    </FormGroup>
+                  {/* Link Field */}
+                  <StyledTextField
+                    fullWidth
+                    label="Link"
+                    value={link}
+                    onChange={(e) => this.setState({ link: e.target.value })}
+                    variant="outlined"
+                  />
 
-                    <Editor
-                      editorState={editorState}
-                      toolbarClassName="toolbarClassName"
-                      wrapperClassName="wrapperClassName"
-                      editorClassName="editorClassName"
-                      onEditorStateChange={this.onEditorStateChange}
+                  {/* Image Upload */}
+                  <Box>
+                    <Typography variant="h6" sx={{ color: '#b8c5d6', mb: 2, fontWeight: 'bold' }}>
+                      Image:
+                    </Typography>
+                    <input
+                      accept="image/*"
+                      style={{ display: 'none' }}
+                      id="image-upload"
+                      type="file"
+                      onChange={this.onChangeImage}
                     />
-                    <FormControlLabel
-                      value="private"
-                      control={<Switch color="primary" checked={this.state.privatee} onChange={this.handleSwitchChange} />}
-                      label="Private"
-                      labelPlacement="start"
-                    />
-                    {/* Render error messages */}
-                    
-                    {errors.description && <Alert severity="error">{errors.description}</Alert>}
-                    <SubmitButton type="submit">Submit</SubmitButton>
-                    {success && (
-                      <div style={{ backgroundColor: 'green', color: 'white', padding: '10px' }}>
-                        Success! Your post has been submitted.
-                      </div>
-                    )}
-                  </Form>
-                  <hr />
-                  <Modal
-                    isOpen={showPopup}
-                    onRequestClose={this.handleClosePopup}
-                    contentLabel="Congratulations"
-                    style={{
-                      overlay: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                    <label htmlFor="image-upload">
+                      <Button variant="outlined" component="span" sx={{ 
+                        color: '#b8c5d6', 
+                        borderColor: 'rgba(123, 47, 247, 0.3)',
+                        '&:hover': {
+                          borderColor: '#7b2ff7',
+                          backgroundColor: 'rgba(123, 47, 247, 0.1)',
+                        }
+                      }}>
+                        Upload Image
+                      </Button>
+                    </label>
+                  </Box>
+
+                  {/* Description Editor */}
+                  <Box>
+                    <Typography variant="h6" sx={{ color: '#b8c5d6', mb: 2, fontWeight: 'bold' }}>
+                      Description:
+                    </Typography>
+                    <Box sx={{
+                      '& .rdw-editor-wrapper': {
+                        border: '1px solid rgba(123, 47, 247, 0.3)',
+                        borderRadius: '8px',
+                        backgroundColor: 'rgba(26, 31, 58, 0.5)',
                       },
-                      content: {
-                        width: '400px',
-                        height: '400px',
-                        margin: '0 auto',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: '20px',
-                        borderRadius: '8px'
-                      }
-                    }}
-                  >
-                    <h2 style={{ marginBottom: '20px' }}>Congratulations!</h2>
-                    <p style={{ marginBottom: '20px', textAlign: 'center' }}>
-                      Thank you for adding new post.
-                    </p>
-                    <img
-                      src={home}
-                      alt="Trophy"
-                      style={{ width: '150px', marginBottom: '20px' }}
-                    />
-                    <button onClick={this.handleClosePopup}>Close</button>
-                  </Modal>
-                </div>
-              </Grid>
-            </Grid>
+                      '& .rdw-editor-toolbar': {
+                        border: 'none',
+                        borderBottom: '1px solid rgba(123, 47, 247, 0.3)',
+                        backgroundColor: 'rgba(26, 31, 58, 0.8)',
+                      },
+                      '& .rdw-editor-main': {
+                        minHeight: '200px',
+                        padding: '16px',
+                      },
+                      '& .public-DraftEditor-content': {
+                        color: '#ffffff',
+                        minHeight: '200px',
+                      },
+                    }}>
+                      <Editor
+                        editorState={editorState}
+                        toolbarClassName="toolbarClassName"
+                        wrapperClassName="wrapperClassName"
+                        editorClassName="editorClassName"
+                        onEditorStateChange={this.onEditorStateChange}
+                      />
+                    </Box>
+                    {errors.description && <Alert severity="error" sx={{ mt: 1 }}>{errors.description}</Alert>}
+                  </Box>
 
-          </Box>
-        </div>
+                  {/* Private Switch */}
+                  <FormControlLabel
+                    value="private"
+                    control={<Switch color="primary" checked={this.state.privatee} onChange={this.handleSwitchChange} />}
+                    label="Private"
+                    labelPlacement="start"
+                    sx={{ color: '#b8c5d6' }}
+                  />
 
+                  {/* Submit Button */}
+                  <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+                    <SubmitButton type="submit" variant="contained">
+                      Submit Post
+                    </SubmitButton>
+                  </Box>
+
+                  {/* Success Message */}
+                  {success && (
+                    <Alert severity="success" sx={{ mt: 2 }}>
+                      Success! Your post has been submitted.
+                    </Alert>
+                  )}
+                </Box>
+              </FormContainer>
+            </motion.div>
+          </ContentContainer>
+
+          {/* Success Modal */}
+          <Modal
+            open={showPopup}
+            onClose={this.handleClosePopup}
+            aria-labelledby="congratulations-modal"
+            aria-describedby="congratulations-modal-description"
+          >
+            <Box sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: 400,
+              bgcolor: 'rgba(26, 31, 58, 0.95)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(123, 47, 247, 0.3)',
+              borderRadius: 2,
+              boxShadow: 24,
+              p: 4,
+              textAlign: 'center',
+            }}>
+              <Typography id="congratulations-modal" variant="h4" component="h2" sx={{ 
+                background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                mb: 2,
+                fontWeight: 'bold'
+              }}>
+                Congratulations!
+              </Typography>
+              <Typography id="congratulations-modal-description" sx={{ color: '#b8c5d6', mb: 3 }}>
+                Thank you for adding a new post.
+              </Typography>
+              <Box
+                component="img"
+                src={home}
+                alt="Trophy"
+                sx={{ width: 150, mb: 3 }}
+              />
+              <Button onClick={this.handleClosePopup} variant="contained" sx={{
+                background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)',
+                '&:hover': {
+                  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+                }
+              }}>
+                Close
+              </Button>
+            </Box>
+          </Modal>
+        </DashboardContainer>
       </UserContext.Provider>
-
     );
   }
 }

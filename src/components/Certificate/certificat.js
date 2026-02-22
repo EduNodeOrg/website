@@ -57,12 +57,135 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
-import { Button } from '@mui/material';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import Tooltip from '@mui/material/Tooltip';
+import { motion } from 'framer-motion';
+import { styled } from '@mui/material/styles';
+import ModernNavbar from '../Dashboard/layout/ModernNavbar';
+
+// Helper function to truncate long strings
+const truncateString = (str, maxLength = 30) => {
+  if (str.length <= maxLength) return str;
+  return str.substring(0, maxLength) + '...';
+};
+
+// Helper function to copy to clipboard
+const copyToClipboard = async (text) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    // You could add a toast notification here
+  } catch (err) {
+    console.error('Failed to copy text: ', err);
+  }
+};
+
+// Modern styled components matching dashboard theme
+const DashboardContainer = styled(Box)(({ theme }) => ({
+  minHeight: '100vh',
+  background: 'linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)',
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'radial-gradient(circle at 20% 50%, rgba(123, 47, 247, 0.1) 0%, transparent 50%)',
+    pointerEvents: 'none',
+    zIndex: 0,
+  },
+}));
+
+const ContentContainer = styled(Container)(({ theme }) => ({
+  position: 'relative',
+  zIndex: 1,
+  paddingTop: theme.spacing(12),
+  paddingBottom: theme.spacing(4),
+}));
+
+const CertificateDisplayCard = styled(Card)(({ theme }) => ({
+  background: 'rgba(26, 31, 58, 0.8)',
+  backdropFilter: 'blur(10px)',
+  border: '1px solid rgba(123, 47, 247, 0.3)',
+  borderRadius: theme.spacing(3),
+  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+  padding: theme.spacing(4),
+  maxWidth: '800px',
+  margin: '0 auto',
+}));
+
+const CertificateTitle = styled(Typography)(({ theme }) => ({
+  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+  fontSize: '2.5rem',
+  fontWeight: 'bold',
+  textAlign: 'center',
+  marginBottom: theme.spacing(3),
+}));
+
+const CertificateText = styled(Typography)(({ theme }) => ({
+  color: '#b8c5d6',
+  marginBottom: theme.spacing(2),
+  fontSize: '1.1rem',
+}));
+
+const ShareButton = styled(Button)(({ theme }) => ({
+  background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)',
+  color: '#ffffff',
+  fontWeight: 'bold',
+  margin: theme.spacing(0.5),
+  borderRadius: theme.spacing(2),
+  transition: 'all 0.3s ease',
+  '&:hover': {
+    background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+    transform: 'scale(1.05)',
+    boxShadow: '0 4px 20px rgba(123, 47, 247, 0.4)',
+  },
+}));
+
+const FloatingParticle = styled(motion.div)(({ theme }) => ({
+  position: 'fixed',
+  width: '4px',
+  height: '4px',
+  background: 'rgba(123, 47, 247, 0.6)',
+  borderRadius: '50%',
+  boxShadow: '0 0 10px rgba(123, 47, 247, 0.8)',
+  pointerEvents: 'none',
+  zIndex: 0,
+}));
+
+const TruncatedTextContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(1),
+  marginBottom: theme.spacing(1),
+  flexWrap: 'wrap',
+}));
+
+const TruncatedText = styled(Typography)(({ theme }) => ({
+  color: '#b8c5d6',
+  fontFamily: 'monospace',
+  fontSize: '0.9rem',
+  wordBreak: 'break-all',
+  flex: 1,
+  minWidth: 0,
+}));
+
+const CopyButton = styled(IconButton)(({ theme }) => ({
+  color: '#00d4ff',
+  padding: theme.spacing(0.5),
+  '&:hover': {
+    backgroundColor: 'rgba(0, 212, 255, 0.1)',
+    color: '#ffffff',
+  },
+}));
 
 const metaDecorator = require("./metaDecorator.json");
 
@@ -118,39 +241,67 @@ function Certificat() {
 
   if (loading) {
     return (
-      <div style={{ textAlign: 'center', padding: '40px' }}>
-        <CircularProgress />
-        <p>Loading your certificate...</p>
-      </div>
+      <DashboardContainer>
+        <ModernNavbar />
+        <ContentContainer>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            style={{ textAlign: 'center', padding: '4rem 0' }}
+          >
+            <CircularProgress sx={{ color: '#7b2ff7', mb: 2 }} />
+            <CertificateText>Loading your certificate...</CertificateText>
+          </motion.div>
+        </ContentContainer>
+      </DashboardContainer>
     );
   }
 
   if (error) {
     return (
-      <div style={{ textAlign: 'center', padding: '40px' }}>
-        <ErrorOutlineIcon color="error" style={{ fontSize: 60 }} />
-        <h3>Error Loading Certificate</h3>
-        <p>{error}</p>
-        <Button 
-          variant="contained" 
-          color="primary" 
-          onClick={() => window.location.reload()}
-          style={{ marginTop: '20px' }}
-        >
-          Try Again
-        </Button>
-        <p style={{ marginTop: '20px' }}>
-          If the problem persists, please contact support.
-        </p>
-      </div>
+      <DashboardContainer>
+        <ModernNavbar />
+        <ContentContainer>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            style={{ textAlign: 'center', padding: '4rem 0' }}
+          >
+            <ErrorOutlineIcon sx={{ fontSize: 60, color: '#ff4444', mb: 2 }} />
+            <CertificateTitle variant="h3">Error Loading Certificate</CertificateTitle>
+            <CertificateText>{error}</CertificateText>
+            <ShareButton 
+              onClick={() => window.location.reload()}
+              sx={{ mt: 2 }}
+            >
+              Try Again
+            </ShareButton>
+            <CertificateText sx={{ mt: 2 }}>
+              If problem persists, please contact support.
+            </CertificateText>
+          </motion.div>
+        </ContentContainer>
+      </DashboardContainer>
     );
   }
   
   if (!certificate) {
     return (
-      <div style={{ textAlign: 'center', padding: '40px' }}>
-        <p>No certificate data available.</p>
-      </div>
+      <DashboardContainer>
+        <ModernNavbar />
+        <ContentContainer>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            style={{ textAlign: 'center', padding: '4rem 0' }}
+          >
+            <CertificateText>No certificate data available.</CertificateText>
+          </motion.div>
+        </ContentContainer>
+      </DashboardContainer>
     );
   }
   
@@ -158,18 +309,38 @@ function Certificat() {
   const ciid = cid ? `https://${cid}.ipfs.w3s.link/newdiplomav2.jpg` : '';
   
   return (
-    <div>
-      {/*  <MetaDecorator
-        description='desc'
-        title='certificate'
-        imageUrl={ciid}
-        imageAlt='hi'
-  />*/}
+    <DashboardContainer>
+      {/* Floating Particles */}
+      {[...Array(15)].map((_, i) => (
+        <FloatingParticle
+          key={i}
+          initial={{
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            scale: Math.random() * 0.5 + 0.5,
+          }}
+          animate={{
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            scale: Math.random() * 0.5 + 0.5,
+          }}
+          transition={{
+            duration: Math.random() * 20 + 10,
+            repeat: Infinity,
+            repeatType: 'reverse',
+          }}
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+          }}
+        />
+      ))}
+
+      <ModernNavbar />
 
       <MetaTags>
         <meta property="og:image" content={ciid} />
       </MetaTags>
-
 
       <Helmet>
         <title>E-Certification</title>
@@ -182,201 +353,197 @@ function Certificat() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={metaDecorator.twitterUsername} />
         <link rel="canonical" href={shareUrl} />
-
       </Helmet>
-      <h1>Share you certification with others : </h1>
-      <div className="Demo__container">
-        <div className="Demo__some-network">
-          <FacebookShareButton
-            url={shareUrl}
-            quote={title}
-            className="Demo__some-network__share-button"
-          >
-            <FacebookIcon size={32} round />
-          </FacebookShareButton>
 
-          <div>
-            <FacebookShareCount
-              url={shareUrl}
-              className="Demo__some-network__share-count"
-            >
-              {(count) => count}
-            </FacebookShareCount>
-          </div>
-        </div>
+      <ContentContainer maxWidth="lg">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <CertificateTitle variant="h2" component="h1">
+            Certificate Verification
+          </CertificateTitle>
 
-        <div className="Demo__some-network">
-          <FacebookMessengerShareButton
-            url={shareUrl}
-            appId="521270401588372"
-            className="Demo__some-network__share-button"
-          >
-            <FacebookMessengerIcon size={32} round />
-          </FacebookMessengerShareButton>
-        </div>
+          <CertificateDisplayCard>
+            <Box sx={{ 
+              display: 'flex', 
+              flexDirection: { xs: 'column', md: 'row' }, 
+              gap: 4, 
+              alignItems: 'flex-start',
+              minHeight: 300
+            }}>
+              {/* Certificate Information */}
+              <Box sx={{ flex: 1, minWidth: 0 }}>
+                <CertificateText variant="h6" sx={{ mb: 2, fontWeight: 'bold' }}>
+                  Certificate Information:
+                </CertificateText>
+                <CertificateText>
+                  Certificate #: {certificateNumber}
+                </CertificateText>
+                
+                <TruncatedTextContainer>
+                  <CertificateText sx={{ fontWeight: 'bold' }}>
+                    Distributor Public Key:
+                  </CertificateText>
+                  <TruncatedText>
+                    {truncateString(distributorPublicKey, 40)}
+                  </TruncatedText>
+                  <Tooltip title="Copy full key">
+                    <CopyButton 
+                      size="small"
+                      onClick={() => copyToClipboard(distributorPublicKey)}
+                    >
+                      <ContentCopyIcon fontSize="small" />
+                    </CopyButton>
+                  </Tooltip>
+                </TruncatedTextContainer>
 
-        <div className="Demo__some-network">
-          <TwitterShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <TwitterIcon size={32} round />
-          </TwitterShareButton>
+                <TruncatedTextContainer>
+                  <CertificateText sx={{ fontWeight: 'bold' }}>
+                    Issuer Public Key:
+                  </CertificateText>
+                  <TruncatedText>
+                    {truncateString(issuerPublicKey, 40)}
+                  </TruncatedText>
+                  <Tooltip title="Copy full key">
+                    <CopyButton 
+                      size="small"
+                      onClick={() => copyToClipboard(issuerPublicKey)}
+                    >
+                      <ContentCopyIcon fontSize="small" />
+                    </CopyButton>
+                  </Tooltip>
+                </TruncatedTextContainer>
 
-          <div className="Demo__some-network__share-count">
-            &nbsp;
-          </div>
-        </div>
+                <TruncatedTextContainer>
+                  <CertificateText sx={{ fontWeight: 'bold' }}>
+                    IPFS CID:
+                  </CertificateText>
+                  <TruncatedText>
+                    {truncateString(cid, 50)}
+                  </TruncatedText>
+                  <Tooltip title="Copy full CID">
+                    <CopyButton 
+                      size="small"
+                      onClick={() => copyToClipboard(cid)}
+                    >
+                      <ContentCopyIcon fontSize="small" />
+                    </CopyButton>
+                  </Tooltip>
+                  <Box
+                    component="a"
+                    href={`https://copper-deliberate-hippopotamus-402.mypinata.cloud/ipfs/${cid}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{ 
+                      color: '#00d4ff', 
+                      textDecoration: 'none', 
+                      '&:hover': { textDecoration: 'underline' },
+                      fontSize: '0.8rem',
+                      ml: 1
+                    }}
+                  >
+                    View Full
+                  </Box>
+                </TruncatedTextContainer>
+                
+                <ShareButton 
+                  href={`https://horizon-futurenet.stellar.org/accounts/?sponsor=${issuerPublicKey}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{ mt: 2 }}
+                >
+                  Verify on Stellar Laboratory
+                </ShareButton>
+              </Box>
 
-        <div className="Demo__some-network">
-          <TelegramShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <TelegramIcon size={32} round />
-          </TelegramShareButton>
+              {/* QR Code */}
+              <Box sx={{ textAlign: 'center', flexShrink: 0 }}>
+                <CertificateText variant="h6" sx={{ mb: 2, fontWeight: 'bold' }}>
+                  QR Code
+                </CertificateText>
+                <Box
+                  component="img"
+                  src={qrCode}
+                  alt="Certificate QR Code"
+                  sx={{ 
+                    width: 200, 
+                    height: 'auto',
+                    minWidth: 200,
+                    border: '2px solid rgba(123, 47, 247, 0.3)',
+                    borderRadius: 2,
+                    padding: 2,
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    objectFit: 'contain',
+                    display: 'block'
+                  }}
+                />
+              </Box>
+            </Box>
+          </CertificateDisplayCard>
 
-          <div className="Demo__some-network__share-count">
-            &nbsp;
-          </div>
-        </div>
+          {/* Share Section */}
+          <Box sx={{ mt: 4, textAlign: 'center' }}>
+            <CertificateTitle variant="h4" component="h2" sx={{ mb: 3 }}>
+              Share Your Certification
+            </CertificateTitle>
+            
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 2 }}>
+              <FacebookShareButton url={shareUrl} quote={title}>
+                <ShareButton startIcon={<FacebookIcon size={24} />}>Facebook</ShareButton>
+              </FacebookShareButton>
 
-        <div className="Demo__some-network">
-          <WhatsappShareButton
-            url={shareUrl}
-            title={title}
-            separator=":: "
-            className="Demo__some-network__share-button"
-          >
-            <WhatsappIcon size={32} round />
-          </WhatsappShareButton>
+              <TwitterShareButton url={shareUrl} title={title}>
+                <ShareButton startIcon={<TwitterIcon size={24} />}>Twitter</ShareButton>
+              </TwitterShareButton>
 
-          <div className="Demo__some-network__share-count">
-            &nbsp;
-          </div>
-        </div>
+              <TelegramShareButton url={shareUrl} title={title}>
+                <ShareButton startIcon={<TelegramIcon size={24} />}>Telegram</ShareButton>
+              </TelegramShareButton>
 
-        <div className="Demo__some-network">
-          <LinkedinShareButton
-            url={shareUrl}
-            className="Demo__some-network__share-button"
-          >
-            <LinkedinIcon size={32} round />
-          </LinkedinShareButton>
-        </div>
+              <WhatsappShareButton url={shareUrl} title={title}>
+                <ShareButton startIcon={<WhatsappIcon size={24} />}>WhatsApp</ShareButton>
+              </WhatsappShareButton>
 
-        <div className="Demo__some-network">
-          <RedditShareButton
-            url={shareUrl}
-            title={title}
-            windowWidth={660}
-            windowHeight={460}
-            className="Demo__some-network__share-button"
-          >
-            <RedditIcon size={32} round />
-          </RedditShareButton>
+              <LinkedinShareButton url={shareUrl}>
+                <ShareButton startIcon={<LinkedinIcon size={24} />}>LinkedIn</ShareButton>
+              </LinkedinShareButton>
 
-          <div>
-            <RedditShareCount
-              url={shareUrl}
-              className="Demo__some-network__share-count"
-            />
-          </div>
-        </div>
+              <RedditShareButton url={shareUrl} title={title}>
+                <ShareButton startIcon={<RedditIcon size={24} />}>Reddit</ShareButton>
+              </RedditShareButton>
 
-        <div className="Demo__some-network">
-          <TumblrShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <TumblrIcon size={32} round />
-          </TumblrShareButton>
-        </div>
+              <EmailShareButton url={shareUrl} subject={title} body="Check out my certificate!">
+                <ShareButton startIcon={<EmailIcon size={24} />}>Email</ShareButton>
+              </EmailShareButton>
+            </Box>
+          </Box>
 
-        <div className="Demo__some-network">
-          <EmailShareButton
-            url={shareUrl}
-            subject={title}
-            body="body"
-            className="Demo__some-network__share-button"
-          >
-            <EmailIcon size={32} round />
-          </EmailShareButton>
-        </div>
-        <div className="Demo__some-network">
-          <ViberShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <ViberIcon size={32} round />
-          </ViberShareButton>
-        </div>
-
-        <div className="Demo__some-network">
-          <WorkplaceShareButton
-            url={shareUrl}
-            quote={title}
-            className="Demo__some-network__share-button"
-          >
-            <WorkplaceIcon size={32} round />
-          </WorkplaceShareButton>
-        </div>
-
-        <div className="Demo__some-network">
-          <LineShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <LineIcon size={32} round />
-          </LineShareButton>
-        </div>
-
-      </div>
-
-
-     
-      
-      <Card sx={{ display: 'flex' }}>
-  <CardContent sx={{ flex: '1 1 auto' }}>
-    <Typography component="div" variant="h5">
-      Certificate informations:
-    </Typography>
-    <Typography variant="subtitle1" color="text.secondary" component="div">
-      distributorPublicKey: {distributorPublicKey}
-    </Typography>
-    <Typography variant="subtitle1" color="text.secondary" component="div">
-      issuerPublicKey: {issuerPublicKey}
-    </Typography>
-    <Typography variant="subtitle1" color="text.secondary" component="div">
-      IPFS:<a href={`https://copper-deliberate-hippopotamus-402.mypinata.cloud/ipfs/${cid}`}> {cid}</a>
-    </Typography>
-    <Button
-      href={`https://horizon-futurenet.stellar.org/accounts/?sponsor=${issuerPublicKey}`}
-      size="small"
-      color="primary"
-    >
-      Check on the Laboratory
-    </Button>
-  </CardContent>
-  <CardMedia
-    component="img"
-    sx={{ width: 180 }}
-    image={qrCode}
-    alt="qr code"
-  />
-</Card>
-
-<img 
-        src={`https://copper-deliberate-hippopotamus-402.mypinata.cloud/ipfs/${cid}`} 
-        alt="Certificate" 
-        style={{ maxWidth: '100%', height: 'auto' }}
-      />
-    </div>
+          {/* Certificate Image */}
+          {cid && (
+            <Box sx={{ mt: 4, textAlign: 'center' }}>
+              <CertificateTitle variant="h5" component="h3" sx={{ mb: 2 }}>
+                Certificate Image
+              </CertificateTitle>
+              <Box
+                component="img"
+                src={`https://copper-deliberate-hippopotamus-402.mypinata.cloud/ipfs/${cid}`}
+                alt="Certificate"
+                sx={{ 
+                  maxWidth: '100%', 
+                  height: 'auto',
+                  maxHeight: 600,
+                  border: '2px solid rgba(123, 47, 247, 0.3)',
+                  borderRadius: 2,
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+                }}
+              />
+            </Box>
+          )}
+        </motion.div>
+      </ContentContainer>
+    </DashboardContainer>
   );
 };
 
