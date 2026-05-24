@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
 import seps from './seps.PNG';
 import { Button } from 'react-bootstrap';
-import { Redirect, BrowserRouter, Link } from 'react-router-dom';
 
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';

@@ -108,8 +108,7 @@
     "yup": "^1.0.2"
   },
   "scripts": {
-    "start": "node --max-old-space-size=4096 node_modules/react-scripts/scripts/start.js",
-    "start-low": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "buildMax": "node --max-old-space-size=4096 node_modules/react-scripts/scripts/build.js",
     "test": "react-scripts test",
@@ -119,12 +118,7 @@
     "stage": "netlify deploy",
     "prod-deploy": "netlify deploy --prod"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
+  "eslintConfig": {},
   "browserslist": {
     "production": [
       ">0.2%",
@@ -150,6 +144,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unused-imports": "^4.4.1",
     "netlify-cli": "^13.2.2",
     "prettier": "^2.8.4"
   }

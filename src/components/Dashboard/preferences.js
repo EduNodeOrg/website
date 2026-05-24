@@ -1,11 +1,9 @@
-import React, { Component, useContext } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Grid from '@mui/material/Grid';
 import { verifyCode } from '../../actions/authActions';
 import { Navigate } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
 //import Sidebar from './Sidebar';
-import Footer from '../Footer/Footer';
 import NavBar from "../NavBar"
 import withRouter from '../../withRouter';
 import Alert from "@material-ui/lab/Alert";

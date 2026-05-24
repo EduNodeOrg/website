@@ -1,11 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { withFormik } from "formik";
 import * as Yup from "yup";
-import { withStyles } from "@material-ui/core";
-import {useSelector, useDispatch} from 'react-redux'
-import { PropTypes } from "prop-types";
 
-import { clearErrors } from "../../actions/errorActions";
 import NewForm from "./NewForm"
 
 // const styles = () => ({

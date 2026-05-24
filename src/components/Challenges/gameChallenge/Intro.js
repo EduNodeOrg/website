@@ -34,47 +34,30 @@ import dev from './developer.png';
 import {
   FacebookShareCount,
   RedditShareCount,
-  TumblrShareCount,
   FacebookShareButton,
   FacebookMessengerShareButton,
   FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  PinterestShareButton,
-  VKShareButton,
-  OKShareButton,
   TelegramShareButton,
   WhatsappShareButton,
   RedditShareButton,
   EmailShareButton,
   TumblrShareButton,
-  LivejournalShareButton,
-  MailruShareButton,
   ViberShareButton,
   WorkplaceShareButton,
   LineShareButton,
-  WeiboShareButton,
-  PocketShareButton,
-  InstapaperShareButton,
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
-  PinterestIcon,
-  VKIcon,
-  OKIcon,
   TelegramIcon,
   WhatsappIcon,
   RedditIcon,
   TumblrIcon,
-  MailruIcon,
   EmailIcon,
-  LivejournalIcon,
   ViberIcon,
   WorkplaceIcon,
   LineIcon,
-  PocketIcon,
-  InstapaperIcon,
-  WeiboIcon,
 } from "react-share";
 
 const useStyles = makeStyles((theme) => ({
@@ -276,7 +259,7 @@ function VerticalLinearStepper(props) {
     <div className="page-container">
       <div className="split-view">
         <div className="left-panel">
-        <img src={space} style={{ width: '550px', height: '300px' }}></img>
+        <img src={space} style={{ width: '550px', height: '300px' }} alt="space"></img>
 
           <Stepper activeStep={activeStep} orientation="vertical">
             {steps.map((label, index) => (

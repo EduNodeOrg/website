@@ -9,17 +9,12 @@ import {
   Button,
 } from 'react-bootstrap';
 // import { Redirect } from 'react-router-dom';
-import { Redirect, BrowserRouter, Link } from 'react-router-dom';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 // import { setCourseOne } from "../../actions/authActions"
-import Chip from "./Chip.js"
-import albedologo from "./albedo.png"
-import albedo from '@albedo-link/intent'
-import { Image } from 'react-bootstrap';
 
 export function AlertDialog(props) {
   const [open, setOpen] = React.useState(false);

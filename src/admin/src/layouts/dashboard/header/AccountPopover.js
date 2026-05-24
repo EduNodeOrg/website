@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
 // mocks_
-import account from '../../../_mock/account';
 import Logout from '../../../../../components/auth/log-out';
 // ----------------------------------------------------------------------
 

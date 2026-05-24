@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Footer from "../Footer";
 import NavBar from "../NavBar";
 import "./style.css";
 import scf from "./scfwinner.png";
@@ -45,7 +44,7 @@ class Milestones extends Component {
           </p>
 
           <div>
-            <img src={u} className="users" />
+            <img src={u} className="users" alt="users" />
           </div>
 
           <br></br>
@@ -72,7 +71,7 @@ class Milestones extends Component {
             Stellar Global, and Litemint.
           </p>
           <div>
-            <img src={ws} className="ws" />
+            <img src={ws} className="ws" alt="workshop" />
           </div>
           <br></br>
           <h5>Milestone 11</h5>
@@ -80,7 +79,7 @@ class Milestones extends Component {
 
           <div>
             <a href="https://communityfund.stellar.org/">
-              <img src={scf} className="img" />
+              <img src={scf} className="img" alt="SCF" />
             </a>
           </div>
           <br></br>

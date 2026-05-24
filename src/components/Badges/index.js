@@ -1,8 +1,7 @@
 import withRouter from '../../withRouter';
 import { clearErrors } from "../../actions/errorActions";
-import { resend, verifyCode } from "../../actions/authActions";
+import { verifyCode } from "../../actions/authActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { connect } from 'react-redux';
 import React, { Component } from 'react'
@@ -22,7 +21,6 @@ import strong from './strong.png';
 import Container from '@mui/material/Container';
 import tuto from './tutorial.png';
 import dec from './decision-making.png';
-import { ContactsOutlined } from '@material-ui/icons';
 import axios from 'axios';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 

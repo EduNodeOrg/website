@@ -1,60 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import MetaTags from 'react-meta-tags';
-import { useLocation, useParams } from 'react-router-dom';
-import Certificate from './index';
+import { useParams } from 'react-router-dom';
 import QRCode from 'qrcode';
 import {
-  FacebookShareCount,
-  RedditShareCount,
-  TumblrShareCount,
   FacebookShareButton,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  PinterestShareButton,
-  VKShareButton,
-  OKShareButton,
   TelegramShareButton,
   WhatsappShareButton,
   RedditShareButton,
   EmailShareButton,
-  TumblrShareButton,
-  LivejournalShareButton,
-  MailruShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  LineShareButton,
-  WeiboShareButton,
-  PocketShareButton,
-  InstapaperShareButton,
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
-  PinterestIcon,
-  VKIcon,
-  OKIcon,
   TelegramIcon,
   WhatsappIcon,
   RedditIcon,
-  TumblrIcon,
-  MailruIcon,
   EmailIcon,
-  LivejournalIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
-  PocketIcon,
-  InstapaperIcon,
-  WeiboIcon,
 } from "react-share";
 import axios from 'axios';
 import { Helmet } from 'react-helmet-async'
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';

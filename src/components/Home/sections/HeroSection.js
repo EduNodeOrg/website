@@ -27,6 +27,10 @@ const HeroContainer = styled(Box)(({ theme }) => ({
     '0%, 100%': { opacity: 0.3 },
     '50%': { opacity: 0.6 },
   },
+  '@keyframes blink': {
+    '0%, 50%': { opacity: 1 },
+    '51%, 100%': { opacity: 0 },
+  },
 }));
 
 const AnimatedTypography = styled(Typography)(({ theme }) => ({
@@ -90,14 +94,14 @@ const HeroSection = () => {
   const [typingSpeed, setTypingSpeed] = useState(150);
   const navigate = useNavigate();
 
-  const phrases = [
-    'Learn Web3 and Blockchain skills',
-    'Master decentralized development',
-    'Build the future of finance',
-    'Join the blockchain revolution'
-  ];
-
   useEffect(() => {
+    const phrases = [
+      'Learn Web3 and Blockchain skills',
+      'Master decentralized development',
+      'Build the future of finance',
+      'Join the blockchain revolution'
+    ];
+
     const handleType = () => {
       const i = loopNum % phrases.length;
       const fullText = phrases[i];
@@ -116,7 +120,7 @@ const HeroSection = () => {
 
     const timer = setTimeout(handleType, typingSpeed);
     return () => clearTimeout(timer);
-  }, [text, isDeleting, loopNum, typingSpeed, phrases]);
+  }, [text, isDeleting, loopNum, typingSpeed]);
 
   const handleGetStarted = () => {
     navigate('/courses');
@@ -208,13 +212,6 @@ const HeroSection = () => {
           </Box>
         </motion.div>
       </Container>
-
-      <style jsx>{`
-        @keyframes blink {
-          0%, 50% { opacity: 1; }
-          51%, 100% { opacity: 0; }
-        }
-      `}</style>
     </HeroContainer>
   );
 };

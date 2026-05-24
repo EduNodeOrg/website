@@ -5,7 +5,6 @@ import { clearErrors } from "../../../actions/errorActions";
 import { verifyCode } from "../../../actions/authActions";
 import { reduxForm } from "redux-form";
 import  withRouter  from '../../../../withRouter'
-import { Redirect } from "react-router-dom";
 import albedo from '@albedo-link/intent'
 import "./styles.css";
 import { isConnected, getPublicKey } from "@stellar/freighter-api";
@@ -89,7 +88,7 @@ class Ediploma extends Component {
               // img.crossOrigin = 'Anonymous';
               //ipfs upload
               // freighterHandler()
-              exportComponentAsPNG(certificateWrapper, {
+              exportComponentAsPNG(this.certificateWrapper.current, {
                 html2CanvasOptions: { backgroundColor: null }
               })
                   setTimeout(function () {
@@ -114,8 +113,8 @@ class Ediploma extends Component {
         </div>
 {/* <Diploma /> */}
 
-        <div id="downloadWrapper" ref={certificateWrapper}>
-          <div id="certificateWrapper" ref={certificate}>
+        <div id="downloadWrapper" ref={this.certificateWrapper}>
+          <div id="certificateWrapper" ref={this.certificate}>
             <p>{this.state.Name}</p>
             <img src="https://i.imgur.com/MxzEwin.png" alt="eCertificate" />
           </div>

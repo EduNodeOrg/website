@@ -3,7 +3,6 @@ import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { clearErrors } from "../../actions/errorActions";
 import Grid from '@mui/material/Grid';
-import Footer from '../Footer';
 import Box from '@mui/material/Box';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';

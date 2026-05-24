@@ -5,7 +5,6 @@ import { Link, Container, Typography, Divider, Stack, Button } from '@mui/materi
 // hooks
 import useResponsive from '../hooks/useResponsive';
 // components
-import Logo from '../../public/assets/edunode.png';
 import Iconify from '../components/iconify';
 import log from '../../public/assets/illustrations/illustration_login.png'
 // sections

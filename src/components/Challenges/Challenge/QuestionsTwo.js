@@ -6,10 +6,6 @@ import {
   Form,
   Row,
   Col,
-  Image,
-  Card,
-  Modal,
-  Button,
 } from 'react-bootstrap';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';

@@ -10,10 +10,9 @@ import "./style.css";
 import { connect } from 'react-redux';
 import { albedoAuth, metamaskAuth, login, googleLogin, verifyGoogleUser, verifyTwitterUser, webThreeAuth, freighterAuth, mozartAuth } from "../../actions/authActions";
 import NavBar from "../NavBar";
-import { Image } from 'react-bootstrap';
 import { isConnected, getPublicKey } from "@stellar/freighter-api";
 import jwt_decode from 'jwt-decode'
-import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 import Alert from '@mui/material/Alert';
 import { Navigate } from "react-router-dom";
 import albedo from '@albedo-link/intent';

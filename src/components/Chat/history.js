@@ -2,22 +2,18 @@ import React, { Component } from 'react'
 import { clearErrors } from "../../actions/errorActions";
 import { verifyCode } from "../../actions/authActions";
 import Box from '@mui/material/Box';
-import Sidebar from "../Dashboard/Sidebar";
-import Topbar from "../Dashboard/Topbar";
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 
 import { styled } from '@mui/material/styles';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import TextField from '@mui/material/TextField'
 import PropTypes from 'prop-types'
 import "./style.css"
 import { Navigate } from "react-router-dom";
 import Alert from '@mui/material/Alert';
 import Typography from '@mui/material/Typography';
-import { GpsFixed } from '@mui/icons-material';
-import Button from '../Membership/Button';
 import Navbar1 from '../Dashboard/Navbar1';
 
 

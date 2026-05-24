@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import { clearErrors } from "../../actions/errorActions";
 import { resend, verifyCode } from "../../actions/authActions";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import TextField from "@mui/material/TextField";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from '@mui/material/Box';
@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 import { KeyboardArrowUp } from '@mui/icons-material';
 import "./style.css";
 import withRouter from '../../withRouter';
-import { Row, Col, Card, Form, Button } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import SideBar from "../SideBar";
 import { Navigate } from "react-router-dom";
 
@@ -330,11 +330,11 @@ const mapStateToProps = (state) => ({
   error: state.error,
 });
 
-Profile = connect(
+Post = connect(
   mapStateToProps, { verifyCode, clearErrors }
-  )(Profile);
+  )(Post);
 
-export default Profile = reduxForm({
+export default Post = reduxForm({
   form: "profileForm",
   fields: ["firstName", "secondName"],
   validate,

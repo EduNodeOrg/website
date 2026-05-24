@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import NavBar from '../NavBar';
-import Footer from '../Footer';
 import CircularIntegration from './One/Check';
-import { Form, Row, Col, Image, Card, Modal, Button } from 'react-bootstrap';
+import { Form, Row, Col } from 'react-bootstrap';
 import Box from '@material-ui/core/Box';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';

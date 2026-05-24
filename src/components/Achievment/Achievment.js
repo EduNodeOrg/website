@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { styled as muiStyled } from '@mui/material/styles';
 import PropTypes from 'prop-types'
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import NavBar from "../NavBar"
 import { clearErrors } from "../../actions/errorActions";
-import { newPost } from "../../actions/authActions";
 import Footer from "../Footer/Footer";
 import Topbar from "../Dashboard/Navbar1";
 import Grid from '@mui/material/Grid';
@@ -15,7 +13,6 @@ import axios from "axios";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import CommentIcon from '@mui/icons-material/Comment';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import IconButton from '@mui/material/IconButton';
 
@@ -42,9 +39,7 @@ class Achievement extends Component {
       .then((response) => response.json())
       .then((data) => this.setState({ achievement: data }))
       .catch((error) => console.error(error));
-  }
 
-  componentDidMount() {
     const email = this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : ""
     this.fetchNotifications(email);
   }

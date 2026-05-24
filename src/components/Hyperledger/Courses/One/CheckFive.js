@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -8,8 +8,7 @@ import Button from '@mui/material/Button';
 import Fab from '@mui/material/Fab';
 import CheckIcon from '@material-ui/icons/Check';
 import SaveIcon from '@material-ui/icons/Save';
-import {setQuestionOneValid} from "../../../actions/authActions"
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({

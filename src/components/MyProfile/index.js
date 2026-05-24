@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { clearErrors } from "../../actions/errorActions";
-import { resend, verifyCode } from "../../actions/authActions";
-import { Field, reduxForm } from "redux-form";
-import TextField from "@mui/material/TextField"
+import { verifyCode } from "../../actions/authActions";
+import { reduxForm } from "redux-form";
 import Alert from "@material-ui/lab/Alert";
-import AlertTitle from '@material-ui/lab/AlertTitle';
-import CircularProgress from "@mui/material/CircularProgress"
 import withRouter from '../../withRouter'
 //import {  BrowserRouter } from "react-router-dom";
-import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
-import SideBar from "../SideBar";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import NavBar from "../NavBar"
-import Footer from "../Footer"
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import { Link } from 'react-router-dom';

@@ -4,7 +4,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { Form } from "./form";
 import Paper from "@material-ui/core/Paper";
 import * as Yup from "yup";
-import { register } from "../../../actions/authActions";
 
 const styles = theme => ({
   paper: {

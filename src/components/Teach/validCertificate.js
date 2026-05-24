@@ -11,48 +11,10 @@ import Box from '@mui/material/Box';
 import { EditorState } from 'draft-js';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import Navbar1 from '../Dashboard/Navbar1';
-import home from './elearning.png'
 import { TextField } from '@mui/material';
 // Initialize editorState
-{/*const editorState = EditorState.createEmpty();
-
-
-const options = {
-  inlineStyles: {
-    BOLD: { element: 'strong' },
-    ITALIC: { element: 'em' },
-    UNDERLINE: { element: 'u' },
-    STRIKETHROUGH: { element: 'del' },
-  },
-  blockTypes: {
-    'header-one': { element: 'h1' },
-    'header-two': { element: 'h2' },
-    'header-three': { element: 'h3' },
-    'header-four': { element: 'h4' },
-    'header-five': { element: 'h5' },
-    'header-six': { element: 'h6' },
-    'unordered-list-item': { element: 'li', nest: 'ul' },
-    'ordered-list-item': { element: 'li', nest: 'ol' },
-    blockquote: { element: 'blockquote' },
-    'code-block': { element: 'pre' },
-  },
-  entityStyleFn: (entity) => {
-    const entityType = entity.getType().toLowerCase();
-    if (entityType === 'link') {
-      const data = entity.getData();
-      return {
-        element: 'a',
-        attributes: {
-          href: data.url,
-          rel: data.rel,
-          target: data.target,
-        },
-      };
-    }
-    // Add more conditions to preserve other entity types, if necessary
-  },
-};
-*/}
+// const editorState = EditorState.createEmpty();
+// const options = { ... };
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -95,47 +57,6 @@ const Input = styled.input`
   border: 1px solid #ccc;
 `;
 
-const Textarea = styled.textarea`
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-`;
-
-const Select = styled.select`
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
-`;
-
-
-const SelectedTagsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-`;
-
-const SelectedTag = styled.div`
-  display: flex;
-  align-items: center;
-  margin-right: 0.5rem;
-  background-color: #f5f5f5;
-  color: #333;
-  padding: 0.5rem;
-  border-radius: 5px;
-  font-size: 0.9rem;
-`;
-
-const RemoveTagButton = styled.button`
-  background-color: transparent;
-  color: #333;
-  border: none;
-  font-size: 0.9rem;
-  margin-left: 0.5rem;
-  cursor: pointer;
-`;
 
 const SubmitButton = styled.button`
   background-color: #0070f3;
@@ -232,8 +153,7 @@ class ValidCertificate extends Component {
   };
 
   render() {
-    const {  name, URL,image,university,  success } = this.state;
-    const email = this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : "";
+    const {  name, URL,university,  success } = this.state;
     return (
 
       <div>

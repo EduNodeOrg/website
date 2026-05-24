@@ -1,5 +1,4 @@
 import React from "react";
-import Map from "../Map";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -14,7 +13,6 @@ import NavBar from "../NavBar";
 import kicon from "./keybaseicon.png";
 import discord from "./discord.png";
 import "./style.css";
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 
@@ -119,10 +117,10 @@ function Community() {
 
                   </Typography>
                   <a href="https://keybase.io/team/stellar_global">
-                    <img src={kicon} height={25} width={25} />
+                    <img src={kicon} height={25} width={25} alt="keybase" />
                   </a>
                   <a href="https://discord.gg/4FGf3UbuST">
-                    <img src={discord} height={25} width={25} />
+                    <img src={discord} height={25} width={25} alt="discord" />
                   </a>
                 </CardContent>
                 <CardActions>
@@ -226,7 +224,7 @@ function Community() {
                   </Typography>
                   <br></br>
                   <a href="https://keybase.io/team/public_node">
-                    <img src={kicon} height={25} width={25} />
+                    <img src={kicon} height={25} width={25} alt="keybase" />
                   </a>
                 </CardContent>
                 <CardActions>
@@ -261,7 +259,7 @@ function Community() {
                   </Typography>
                   <br></br>
                   <a href="https://keybase.io/team/stellar_battle">
-                    <img src={kicon} height={25} width={25} />
+                    <img src={kicon} height={25} width={25} alt="keybase" />
                   </a>
                 </CardContent>
                 <CardActions>

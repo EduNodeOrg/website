@@ -2,22 +2,9 @@ import React, { Component } from 'react';
 import NavBar from '../../NavBar';
 
 import LinearWithValueLabel from './ProgressBar';
-import ActionsInAccordionSummary from './MultiSelection';
-import FloatingActionButtonZoom from './Floating';
 import CircularIntegration from './Check';
-import Course1 from '../Course1';
-import Course2 from '../Course2';
-import Course3 from '../Course3';
-import { Form, Row, Col, Image, Card } from 'react-bootstrap';
-import { Link, Redirect } from "react-router-dom"; 
-import { makeStyles } from '@material-ui/core';
+import { Form, Row, Col, Card } from 'react-bootstrap';
 // import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 
 
 
@@ -63,16 +50,6 @@ export default class index extends Component {
 
 
   render() {
-
-
-   
-    const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-    });
-    
-     const classes = useStyles();
     if (this.state.questionOneValid === true) {
       return (
         <div>hello</div>
@@ -129,7 +106,6 @@ export default class index extends Component {
             </Form.Group>
           </fieldset>
         </Card>
-        );
         <br></br>
         <br></br>
         <CircularIntegration state={this.state} />

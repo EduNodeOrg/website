@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
-import { sentenceCase } from 'change-case';
 import { useState, useEffect } from 'react';
 
 // @mui
@@ -9,8 +8,6 @@ import {
   Table,
   Stack,
   Paper,
-  Avatar,
-  Button,
   Popover,
   Checkbox,
   TableRow,
@@ -23,9 +20,6 @@ import {
   TableContainer,
   TablePagination,
 } from '@mui/material';
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
 // components
 import Label from '../components/label';
 import Iconify from '../components/iconify';

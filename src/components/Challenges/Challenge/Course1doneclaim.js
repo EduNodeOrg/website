@@ -9,7 +9,6 @@ import {
   Button,
 } from 'react-bootstrap';
 // import { Redirect } from 'react-router-dom';
-import { Redirect, BrowserRouter, Link } from 'react-router-dom';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';

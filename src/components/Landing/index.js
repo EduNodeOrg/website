@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
-import RegisterModal from "../../components/auth/RegisterModal";
-import Spinner from '../../utils/spinner'
 import { store } from "../../store";
-import { Provider } from "react-redux";
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
 import { clearErrors } from "../../actions/errorActions";
-import {
-  Button
-} from "reactstrap";
-import { BrowserRouter as Router, withRouter, Link } from "react-router-dom";
+
+
+import { withRouter } from "react-router-dom";
 import { syncHistoryWithStore } from 'react-router-redux';
 import CircularProgress from "@mui/material/CircularProgress"
 import { browserHistory } from 'react-router';
-import Dashboard from '../Dashboard';
-import Register from '../Register';
 import "./style.css"
 import NavBar from "../NavBar"
 

@@ -1,18 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
 import { clearErrors } from "../../actions/errorActions";
-import { resend, verifyCode } from "../../actions/authActions";
-import { Field, reduxForm } from "redux-form";
-import TextField from "@mui/material/TextField"
-import Alert from "@material-ui/lab/Alert";
-import AlertTitle from '@material-ui/lab/AlertTitle';
-import CircularProgress from "@mui/material/CircularProgress"
+import { verifyCode } from "../../actions/authActions";
+import { reduxForm } from "redux-form";
 import withRouter  from '../../../withRouter'
 //import { Redirect, BrowserRouter } from "react-router-dom";
-import {Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import "./style.css";
-import SideBar from "../SideBar";
 import Main from "/main"
 
 

@@ -33,7 +33,7 @@ function getStyles(name, personName, theme) {
 
 export default function MultipleSelect() {
     const theme = useTheme();
-    const [personName, setPersonName] = React.useState([]);
+    const [personName, setPersonName] = React.useState('');
     const navigate = useNavigate();
 
     const handleChange = (event) => {

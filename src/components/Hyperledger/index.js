@@ -1,21 +1,11 @@
 import React from "react";
 import "./style.css";
 import Button from '@mui/material/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import Footer from "../Footer";
 import NavBar from "../NavBar";
-import { Icon } from "@mui/material";
 import { Helmet } from 'react-helmet';
 
 const useStyles = makeStyles((theme) => ({

@@ -13,7 +13,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import {
   Button,
 } from 'react-bootstrap';
-import courseData from './data.json';
 
 // Import components
 import Sidebar from "../Dashboard/Sidebar";
@@ -25,14 +24,12 @@ import Course1doneclaim from './Course1doneclaim';
 import Course2 from './Course2';
 import Course3 from './Course3';
 import Course4 from './Course4';
-import Footer from '../Footer';
 
 // Import styles
 import './style.css';
 import "./styles.css"
 
 // Import PropTypes for type checking
-import PropTypes from 'prop-types';
 
 
 

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
+import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 // import {Button} from "@material-ui/core"
-import { convertToHTML, convertFromHTML } from 'draft-convert';
 // import HtmlToReactParser from "html-to-react"
 import createHashtagPlugin from "draft-js-hashtag-plugin"
 

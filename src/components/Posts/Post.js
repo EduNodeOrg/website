@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
-import { styled as muiStyled } from '@mui/material/styles';
 import PropTypes from 'prop-types'
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { clearErrors } from "../../actions/errorActions";
 import { newPost } from "../../actions/authActions";
-import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';

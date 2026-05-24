@@ -8,8 +8,6 @@ import {
   Table,
   Stack,
   Paper,
-  Avatar,
-  Button,
   Popover,
   Checkbox,
   TableRow,
@@ -306,7 +304,7 @@ export default function UserPage() {
                         <TableCell align="left">{university}</TableCell>
                         <TableCell align="left">{role}</TableCell>
                         <TableCell align="center">
-                          <a href="#" onClick={() => handleOpenModal(teachingsProof)}>
+                          <a href="#proof" onClick={() => handleOpenModal(teachingsProof)}>
                             link
                           </a>
                         </TableCell>

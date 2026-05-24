@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async';
 import { filter } from 'lodash';
-import { sentenceCase } from 'change-case';
 import { useState, useEffect } from 'react';
 
 // @mui
@@ -9,8 +8,6 @@ import {
   Table,
   Stack,
   Paper,
-  Avatar,
-  Button,
   Popover,
   Checkbox,
   TableRow,
@@ -299,7 +296,7 @@ export default function UserPage() {
                         <TableCell align="left"><p dangerouslySetInnerHTML={{ __html: description }} ></p></TableCell>
 
                         <TableCell align="left">
-                          <a href="#" onClick={() => handleOpenModal(image)}>
+                          <a href="#image" onClick={() => handleOpenModal(image)}>
                             link
                           </a>
                         </TableCell>

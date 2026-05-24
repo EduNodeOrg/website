@@ -8,9 +8,9 @@ import Link from '@mui/material/Link';
 //import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 //import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import { clearErrors } from "../../../actions/errorActions";
-import { resend, verifyCode } from "../../../actions/authActions";
+import { verifyCode } from "../../../actions/authActions";
 import Box from '@mui/material/Box';
 import Sidebar from "../../Dashboard/Sidebar";
 import Topbar from "../../Dashboard/Topbar";
@@ -19,7 +19,7 @@ import {Paper} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from "redux-form";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import {Button} from "@mui/material"
 import {TextField} from '@mui/material'
 import PropTypes from 'prop-types'

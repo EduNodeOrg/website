@@ -1,5 +1,4 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -9,45 +8,57 @@ import CardHeader from '@mui/material/CardHeader';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import StarIcon from '@mui/icons-material/StarBorder';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
-import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
+import { styled } from '@mui/material/styles';
+import NavBar from '../NavBar';
+import Footer from '../Footer/Footer';
 //import { Redirect, BrowserRouter } from "react-router-dom";
-import LinkButton from "./Button"
-import Rec from "./recurring";
 
 const tiers = [
   {
     title: 'Free',
     price: '0',
     description: [
-      
       'Up to 1 User',
-      'Access to FREE educational content and courses.',
+      'Access to FREE educational content and courses',
       'Email support',
     ],
-    buttonText: null,
-    buttonVariant: null,
+    buttonText: 'Get Started',
+    buttonVariant: 'outlined',
     buttonLink: "/"
   },
   {
     title: 'Pro',
     subheader: 'Most popular',
-    price: '29',
+    price: '6.99',
     description: [
-     
-      'All of Free tier',
+      'All of Free tier features',
       'NFT certification for course completion',
       'Priority email support',
-      'Discord Role',
+      'Exclusive Discord Role',
+      'Advanced course materials',
     ],
     buttonText: 'Buy Now',
     buttonVariant: 'contained',
     buttonLink: "/membership/checkout"
   },
- 
+  {
+    title: 'Enterprise',
+    subheader: 'Custom solution',
+    price: 'Custom',
+    description: [
+      'Tailored courses for employees',
+      'Custom NFT certification',
+      'Help center access',
+      'Phone & email priority support',
+      'Dedicated account manager',
+      'Custom integrations',
+    ],
+    buttonText: 'Contact Sales',
+    buttonVariant: 'outlined',
+    buttonLink: 'mailto:hi@ogtechnologies.co?subject=Enterprise Membership Inquiry'
+  },
 ];
 
 // const footers = [
@@ -81,226 +92,202 @@ const CheckoutButton = () => {
   // history.push("/dashboard")
 }
 
+const PricingContainer = styled(Box)(({ theme }) => ({
+  minHeight: '100vh',
+  background: 'linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)',
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'radial-gradient(circle at 20% 50%, rgba(123, 47, 247, 0.1) 0%, transparent 50%)',
+    pointerEvents: 'none',
+    zIndex: 0,
+  },
+}));
+
+const ContentContainer = styled(Container)(({ theme }) => ({
+  position: 'relative',
+  zIndex: 1,
+  paddingTop: theme.spacing(10),
+  paddingBottom: theme.spacing(4),
+}));
+
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  textAlign: 'center',
+  marginBottom: theme.spacing(4),
+  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+  fontWeight: 'bold',
+}));
+
+const PricingCard = styled(Card)(({ theme }) => ({
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+  background: 'rgba(255, 255, 255, 0.05)',
+  backdropFilter: 'blur(10px)',
+  border: '1px solid rgba(123, 47, 247, 0.2)',
+  '&:hover': {
+    transform: 'translateY(-8px)',
+    boxShadow: '0 20px 40px rgba(123, 47, 247, 0.3)',
+    borderColor: 'rgba(123, 47, 247, 0.4)',
+  },
+}));
+
 function PricingContent() {
   return (
-    <React.Fragment>
-      <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
+    <>
       <CssBaseline />
-      <AppBar
-        position="static"
-        color="default"
-        elevation={0}
-        sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
-      >
-        
-      </AppBar>
-      {/* Hero unit */}
-      <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
-        <Typography
-          component="h1"
-          variant="h3"
-          align="center"
-          color="text.primary"
-          gutterBottom
-        >
-          Memberships
-        </Typography>
-        <Typography variant="h5" align="center" color="text.secondary" component="p">
-        We offer flexible pricing for individuals and companies of all types and sizes.
-        </Typography>
-      </Container>
-      {/* End hero unit */}
-      <Container maxWidth="md" component="main" style={{ display: 'flex', flexDirection: 'column', alignItems:"flex-end" }}>
-        <Grid container spacing={5} alignItems="flex-end">
-          {tiers.map((tier) => (
-            // Enterprise card is full width at sm breakpoint
-            <Grid
-              item
-              key={tier.title}
-              xs={12}
-              sm={tier.title === 'Enterprise' ? 12 : 6}
-              md={4}
-            >
-              <Card>
-                <CardHeader
-                  title={tier.title}
-                  subheader={tier.subheader}
-                  titleTypographyProps={{ align: 'center' }}
-                  action={tier.title === 'Pro' ? <StarIcon /> : null}
-                  subheaderTypographyProps={{
-                    align: 'center',
-                  }}
-                  sx={{
-                    backgroundColor: (theme) =>
-                      theme.palette.mode === 'light'
-                        ? theme.palette.grey[200]
-                        : theme.palette.grey[700],
-                  }}
-                />
-                <CardContent>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'baseline',
-                      mb: 2,
-                    }}
-                  >
-                    <Typography component="h2" variant="h3" color="text.primary">
-                    €{tier.price}
-                    </Typography>
-                    <Typography variant="h6" color="text.secondary">
-                      /mo
-                    </Typography>
-                  </Box>
-                  <ul>
-                    {tier.description.map((line) => (
-                      <Typography
-                        component="li"
-                        variant="subtitle1"
-                        align="center"
-                        key={line}
-                      >
-                        {line}
-                      </Typography>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardActions>
-               <Button href='/membership/checkout'
-                  fullWidth variant={tier.buttonVariant}>
-                   {tier.buttonText} 
-                 </Button> 
-                 
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-
-
-
-<Grid
-              item
-              key='Enterprise'
-              xs={12}
-              sm={'Enterprise' ? 12 : 6}
-              md={4}
-            >
-              <Card>
-                <CardHeader
-                  title='Enterprise'
-                  subheader= ''
-                  titleTypographyProps={{ align: 'center' }}
-                  subheaderTypographyProps={{
-                    align: 'center',
-                  }}
-                  sx={{
-                    backgroundColor: (theme) =>
-                      theme.palette.mode === 'light'
-                        ? theme.palette.grey[200]
-                        : theme.palette.grey[700],
-                  }}
-                />
-                <CardContent>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'baseline',
-                      mb: 2,
-                    }}
-                  >
-                    <Typography component="h2" variant="h3" color="text.primary">
-                    €-
-                    </Typography>
-                    <Typography variant="h6" color="text.secondary">
-                      /mo
-                    </Typography>
-                  </Box>
-                  <ul>
-                    
-                      <Typography
-                        component="li"
-                        variant="subtitle1"
-                        align="center"
-                        
-                      >
-                        'Tailored Courses for employees',
-      'Tailored NFT Certification for course completion',
-      'Help center access',
-      'Phone & email support',
-                      </Typography>
-                    
-                  </ul>
-                </CardContent>
-                <CardActions>
-               <Button onClick={
-                 () => {
-                  window.location.href = 'mailto:hi@ogtechnologies.co?subject=Enterprise Membership Inquiry';
-                  
-                }} 
-                  fullWidth variant='outlined'>
+      <NavBar />
+      <PricingContainer>
+        <ContentContainer maxWidth="md" component="main">
+          <SectionTitle
+            component="h1"
+            variant="h3"
+            gutterBottom
+          >
+            Memberships
+          </SectionTitle>
+          <Typography variant="h6" align="center" color="rgba(255, 255, 255, 0.8)" component="p" sx={{ mb: 6 }}>
+            Choose the perfect plan for your learning journey. Start free, upgrade when you're ready.
+          </Typography>
           
-         
-          Get in touch
-                 </Button> 
-          
-                </CardActions>
-              </Card>
-            </Grid>
-
-
-
-
-
-        </Grid>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </Container>
-      {/* Footer */}
-      <Container
-        maxWidth="md"
-        component="footer"
-        sx={{
-          borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-          mt: 8,
-          py: [3, 6],
-        }}
-      >
-        {/* <Grid container spacing={4} justifyContent="space-evenly">
-          {footers.map((footer) => (
-            <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography variant="h6" color="text.primary" gutterBottom>
-                {footer.title}
-              </Typography>
-              <ul>
-                {footer.description.map((item) => (
-                  <li key={item}>
-                    <Link href="#" variant="subtitle1" color="text.secondary">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Grid>
-          ))}
-        </Grid>
-        <Copyright sx={{ mt: 5 }} /> */}
-      </Container>
-      {/* End footer */}
-    </React.Fragment>
+          <Grid container spacing={4} alignItems="flex-end">
+            {tiers.map((tier) => (
+              <Grid
+                item
+                key={tier.title}
+                xs={12}
+                sm={tier.title === 'Enterprise' ? 12 : 6}
+                md={4}
+              >
+                <PricingCard>
+                  <CardHeader
+                    title={tier.title}
+                    subheader={tier.subheader}
+                    titleTypographyProps={{ 
+                      align: 'center',
+                      fontWeight: tier.title === 'Pro' ? 'bold' : 'normal',
+                      color: 'white',
+                    }}
+                    action={tier.title === 'Pro' ? <StarIcon sx={{ color: '#00d4ff' }} /> : null}
+                    subheaderTypographyProps={{
+                      align: 'center',
+                      color: tier.title === 'Pro' ? '#00d4ff' : 'rgba(255, 255, 255, 0.7)',
+                    }}
+                    sx={{
+                      backgroundColor: tier.title === 'Pro'
+                        ? 'rgba(123, 47, 247, 0.2)'
+                        : 'rgba(255, 255, 255, 0.05)',
+                      borderBottom: '1px solid rgba(123, 47, 247, 0.2)',
+                    }}
+                  />
+                  <CardContent sx={{ flexGrow: 1, color: 'white' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'baseline',
+                        mb: 3,
+                      }}
+                    >
+                      <Typography component="h2" variant="h3" color="white" fontWeight="bold">
+                        {tier.price === 'Custom' ? 'Custom' : `€${tier.price}`}
+                      </Typography>
+                      {tier.price !== 'Custom' && (
+                        <Typography variant="h6" color="rgba(255, 255, 255, 0.7)" sx={{ ml: 1 }}>
+                          /mo
+                        </Typography>
+                      )}
+                    </Box>
+                    <ul>
+                      {tier.description.map((line) => (
+                        <Typography
+                          component="li"
+                          variant="subtitle1"
+                          align="center"
+                          key={line}
+                          sx={{ 
+                            mb: 1.5,
+                            color: 'rgba(255, 255, 255, 0.9)',
+                            fontSize: '0.95rem',
+                          }}
+                        >
+                          {line}
+                        </Typography>
+                      ))}
+                    </ul>
+                  </CardContent>
+                  <CardActions sx={{ p: 3 }}>
+                    {tier.buttonLink.startsWith('mailto') ? (
+                      <Button
+                        href={tier.buttonLink}
+                        fullWidth
+                        variant={tier.buttonVariant}
+                        size="large"
+                        sx={{
+                          py: 2,
+                          fontWeight: tier.title === 'Pro' ? 'bold' : 'normal',
+                          background: tier.title === 'Pro' 
+                            ? 'linear-gradient(45deg, #00d4ff, #7b2ff7)'
+                            : 'transparent',
+                          border: tier.title === 'Pro' 
+                            ? 'none'
+                            : '1px solid rgba(123, 47, 247, 0.5)',
+                          color: tier.title === 'Pro' ? 'white' : '#00d4ff',
+                          '&:hover': {
+                            background: tier.title === 'Pro'
+                              ? 'linear-gradient(45deg, #00b8e6, #6b2fd6)'
+                              : 'rgba(123, 47, 247, 0.1)',
+                            transform: 'scale(1.02)',
+                          },
+                        }}
+                      >
+                        {tier.buttonText}
+                      </Button>
+                    ) : (
+                      <Button
+                        href={tier.buttonLink}
+                        fullWidth
+                        variant={tier.buttonVariant}
+                        size="large"
+                        sx={{
+                          py: 2,
+                          fontWeight: tier.title === 'Pro' ? 'bold' : 'normal',
+                          background: tier.title === 'Pro' 
+                            ? 'linear-gradient(45deg, #00d4ff, #7b2ff7)'
+                            : 'transparent',
+                          border: tier.title === 'Pro' 
+                            ? 'none'
+                            : '1px solid rgba(123, 47, 247, 0.5)',
+                          color: tier.title === 'Pro' ? 'white' : '#00d4ff',
+                          '&:hover': {
+                            background: tier.title === 'Pro'
+                              ? 'linear-gradient(45deg, #00b8e6, #6b2fd6)'
+                              : 'rgba(123, 47, 247, 0.1)',
+                            transform: 'scale(1.02)',
+                          },
+                        }}
+                      >
+                        {tier.buttonText}
+                      </Button>
+                    )}
+                  </CardActions>
+                </PricingCard>
+              </Grid>
+            ))}
+          </Grid>
+        </ContentContainer>
+      </PricingContainer>
+      <Footer />
+    </>
   );
 }
 

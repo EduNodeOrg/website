@@ -5,16 +5,11 @@ import {
   Form,
   Row,
   Col,
-  Image,
-  Card,
-  Modal,
-  Button,
 } from 'react-bootstrap';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
-import { setCourseOne } from '../../actions/authActions';
 
 export default class index extends Component {
   constructor(props) {

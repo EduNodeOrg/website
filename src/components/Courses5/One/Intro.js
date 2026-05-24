@@ -12,7 +12,6 @@ import PropTypes from 'prop-types';
 import LinearProgress from '@mui/material/LinearProgress';
 //import ProgressBar from 'react-bootstrap/ProgressBar';
 import Box from '@mui/material/Box';
-import NavBar from '../../NavBar';
 import Navbar from '../../Dashboard/Navbar1';
 import { connect } from 'react-redux';
 import { clearErrors } from '../../../actions/errorActions';

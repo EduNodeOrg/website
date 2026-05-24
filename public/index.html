@@ -68,30 +68,7 @@ data-rh="true"
   <script src="https://apis.google.com/js/api.js"></script>
   <script src="https://www.paypal.com/sdk/js?client-id=ASqYFNJJ3gVy1CkJchOI1sAzqOjtlvnX1777MIxh7OEBRJislI51R-MzqPZ0mGJgqquxTpHlprJe4vSD&vault=true"></script>
 
-  <!--Start of Tawk.to Script-->
-  <script>
-    // Completely suppress Tawk.to to prevent i18next errors
-    window.Tawk_API = {
-      i18next: function() { return { t: function(key) { return key; } }; }
-    };
-    window.Tawk_LoadStart = new Date();
-    
-    // Delayed loading to prevent conflicts
-    setTimeout(function() {
-      try {
-        var s1 = document.createElement("script");
-        var s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/6166d1b186aee40a57365a97/1fhsq67kb';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
-      } catch (error) {
-        console.warn('Tawk.to initialization suppressed');
-      }
-    }, 5000);
-  </script>
-  <!--End of Tawk.to Script-->
+  <!-- Tawk.to script removed due to CORS errors -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-freighter-api/4.0.2/index.min.js"></script>
 

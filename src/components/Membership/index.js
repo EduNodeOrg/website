@@ -1,22 +1,19 @@
 import React, { Component } from 'react'
-import  withRouter  from '../../withRouter';
 import { clearErrors } from "../../actions/errorActions";
-import { resend, verifyCode } from "../../actions/authActions";
+import { verifyCode } from "../../actions/authActions";
 import Box from '@mui/material/Box';
 import Sidebar from "../Dashboard/Sidebar";
 import Topbar from "../Dashboard/Topbar";
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Footer from '../Footer';
 import { styled } from '@mui/material/styles';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from "redux-form";  
+import { reduxForm } from "redux-form";  
 import TextField from '@mui/material/TextField'
 import PropTypes from 'prop-types'
 import "./style.css"
 import { updateAccount, saveUsernameAlbedo, pkeyGoogleUser } from "../../actions/authActions";
 import Pricing from "./Pricing"
-import PayPal from "./paypal"
 import { Navigate } from "react-router-dom";
 
 class Membership extends Component {

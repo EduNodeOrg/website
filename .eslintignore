@@ -1,0 +1,5 @@
+# Minified third-party libraries
+src/components/Identicons/**
+
+# Old backup files
+src/components/Register/old/**

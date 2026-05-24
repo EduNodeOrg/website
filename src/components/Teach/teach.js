@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
-import { styled as muiStyled } from '@mui/material/styles';
 import styled from 'styled-components';
 import PropTypes from 'prop-types'
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import NavBar from "../NavBar"
 import { clearErrors } from "../../actions/errorActions";
 //import { newPost } from "../../actions/authActions";
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Footer from '../Footer';
 import Box from '@mui/material/Box';
 //import { Editor } from "react-draft-wysiwyg";
 //import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -68,12 +64,6 @@ const Input = styled.input`
   border: 1px solid #ccc;
 `;
 
-const Textarea = styled.textarea`
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-`;
 
 const Select = styled.select`
   padding: 0.5rem;
@@ -306,15 +296,8 @@ class Teach extends Component {
 
   render() {
     const { editorState } = this.state;
-    const Item = muiStyled(Paper)(({ theme }) => ({
-      ...theme.typography.body2,
-      padding: theme.spacing(1),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    }));
     const { errors } = this.state;
-    const { tags, title, link, description, success, questions, grade, showPopup } = this.state;
-    const email = this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : "";
+    const { tags, title, link, success, questions, grade, showPopup } = this.state;
     return (
 
       <div>

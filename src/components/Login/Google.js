@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import jwt_decode from 'jwt-decode';
 import { googleLogin } from "../../actions/authActions";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
-import { Field, reduxForm } from 'redux-form'
-import { useNavigate } from 'react-router-dom';
+import { reduxForm } from 'redux-form'
 
 class GoogleLog extends React.Component {
   constructor(props) {

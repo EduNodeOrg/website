@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
-import { styled as muiStyled } from '@mui/material/styles';
 import styled from 'styled-components';
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { clearErrors } from "../../actions/errorActions";
 //import { newPost } from "../../actions/authActions";
@@ -16,7 +15,6 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 
 
 
@@ -57,47 +55,6 @@ const Input = styled.input`
   border: 1px solid #ccc;
 `;
 
-const Textarea = styled.textarea`
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-`;
-
-const Select = styled.select`
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
-`;
-
-
-const SelectedTagsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-`;
-
-const SelectedTag = styled.div`
-  display: flex;
-  align-items: center;
-  margin-right: 0.5rem;
-  background-color: #f5f5f5;
-  color: #333;
-  padding: 0.5rem;
-  border-radius: 5px;
-  font-size: 0.9rem;
-`;
-
-const RemoveTagButton = styled.button`
-  background-color: transparent;
-  color: #333;
-  border: none;
-  font-size: 0.9rem;
-  margin-left: 0.5rem;
-  cursor: pointer;
-`;
 
 const SubmitButton = styled.button`
   background-color: #0070f3;
@@ -113,23 +70,6 @@ const SubmitButton = styled.button`
   }
 `;
 
-const tagsList = [
-  "Web3",
-  "Blockchain",
-  "Crypto",
-  "Smart Contracts",
-  "NFTs",
-  "Soroban",
-  "Solidity",
-  "IT",
-  "Dev",
-  "E-learning",
-  "Programming",
-  "Javascript",
-  "Nodejs",
-  "Reactjs",
-  "Other",
-];
 
 class Teach extends Component {
   constructor(props) {
@@ -260,7 +200,7 @@ class Teach extends Component {
 
   render() {
     const { errors } = this.state;
-    const { email, name, link, university, success, role, showPopup, image } = this.state;
+    const { email, name, link, university, success, role } = this.state;
     return (
 
       <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Container, Typography, Box, Grid } from '@mui/material';
+import { Container, Typography, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Logos from '../logos.png';
 

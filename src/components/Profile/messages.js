@@ -9,7 +9,6 @@ import {
   MDBIcon,
   MDBBtn,
   MDBTypography,
-  MDBTextArea,
   MDBCardHeader,
 } from 'mdb-react-ui-kit';
 import moment from 'moment';
@@ -278,6 +277,7 @@ class Messages extends Component {
                       {!isUserMessage && (
                         <img
                           src={user.images}
+                          alt="avatar"
                           className="rounded-circle d-flex align-self-start me-3 shadow-1-strong"
                           width="60"
                         />
@@ -294,6 +294,7 @@ class Messages extends Component {
                           {message.image !== null && (
                             <img
                               src={message.image}
+                              alt="attachment"
                               style={{ width: '200px', height: 'auto' }}
                             />
                           )}

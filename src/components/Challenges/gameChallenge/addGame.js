@@ -3,12 +3,11 @@ import { Navigate } from "react-router-dom";
 import { styled as muiStyled } from '@mui/material/styles';
 import styled from 'styled-components';
 import PropTypes from 'prop-types'
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { clearErrors } from "../../../actions/errorActions";
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Footer from '../../Footer';
 import Box from '@mui/material/Box';
 import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';

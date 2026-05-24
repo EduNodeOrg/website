@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import "./card.css";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';

@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { styled as muiStyled } from '@mui/material/styles';
 import PropTypes from 'prop-types'
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import NavBar from "../NavBar"
 import { clearErrors } from "../../actions/errorActions";
-import { newPost } from "../../actions/authActions";
 import Footer from "../Footer/Footer";
 import Topbar from "../Dashboard/Navbar1";
 import Grid from '@mui/material/Grid';

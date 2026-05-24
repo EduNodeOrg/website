@@ -22,47 +22,32 @@ import kicon from "../keybaseicon.png"
 import {
   FacebookShareCount,
   RedditShareCount,
-  TumblrShareCount,
   FacebookShareButton,
   FacebookMessengerShareButton,
   FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  PinterestShareButton,
   VKShareButton,
-  OKShareButton,
   TelegramShareButton,
   WhatsappShareButton,
   RedditShareButton,
   EmailShareButton,
   TumblrShareButton,
-  LivejournalShareButton,
-  MailruShareButton,
   ViberShareButton,
   WorkplaceShareButton,
   LineShareButton,
-  WeiboShareButton,
-  PocketShareButton,
-  InstapaperShareButton,
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
-  PinterestIcon,
   VKIcon,
-  OKIcon,
   TelegramIcon,
   WhatsappIcon,
   RedditIcon,
   TumblrIcon,
-  MailruIcon,
   EmailIcon,
-  LivejournalIcon,
   ViberIcon,
   WorkplaceIcon,
   LineIcon,
-  PocketIcon,
-  InstapaperIcon,
-  WeiboIcon,
 } from "react-share";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -146,10 +131,6 @@ const HighLight8 = () => {
 
 
 export default class Kelp extends Component {
-  constructor(props) {
-    super(props);
-
-  }
   render() {
 
     const shareUrl = "https://edunode.netlify.com/blog/kelp"
@@ -604,7 +585,7 @@ export default class Kelp extends Component {
                     </p>
                   </Card.Text>
                   <a href="https://keybase.io/olvis_experio">
-                    <img style={{ width: '25px' }} src={kicon} />
+                    <img style={{ width: '25px' }} src={kicon} alt="keybase" />
                   </a>
                 </Card.Body>
               </Card>

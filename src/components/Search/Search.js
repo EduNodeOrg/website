@@ -210,20 +210,6 @@ class Search extends Component {
             });
     };
 
-
-    componentDidMount() {
-        const { email } = this.state;
-        fetch(`https://edunode.herokuapp.com/api/search/${email}`)
-            .then(response => response.json())
-            .then(data => {
-                this.setState({ preferences: data });
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
-    }
-
     onChange = e => {
         this.setState({ [e.target.name]: e.target.value });
 

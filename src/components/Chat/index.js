@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { clearErrors } from "../../actions/errorActions";
 import { verifyCode } from "../../actions/authActions";
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 import { connect } from 'react-redux';
 import { reduxForm } from "redux-form";
 import TextField from '@mui/material/TextField'
@@ -145,7 +144,6 @@ class Chat extends Component {
       prompt: "",
       isLoading: false,
       errors: {},
-      messages: [], // Add this line
       input: '',
       conversation: [],
       messages: [],

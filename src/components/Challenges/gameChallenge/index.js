@@ -27,7 +27,6 @@ import './style.css';
 import "./styles.css"
 
 // Import PropTypes for type checking
-import PropTypes from 'prop-types';
 
 
 

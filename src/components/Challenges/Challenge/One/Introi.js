@@ -1,6 +1,5 @@
-import React, { useState ,useRef} from 'react';
+import React, { useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Box from '@mui/material/Box';
 import NavBar from '../../../NavBar';
 
 import { connect } from 'react-redux';
@@ -8,7 +7,7 @@ import { clearErrors } from '../../../../actions/errorActions';
 import { reduxForm } from 'redux-form';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
-import Editor, { DiffEditor, useMonaco, loader } from '@monaco-editor/react';
+import Editor from '@monaco-editor/react';
 
 const useStyles = makeStyles((theme) => ({
   root: {

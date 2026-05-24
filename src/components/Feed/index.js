@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
 import  withRouter from '../../withRouter';
-import AlignItemsList from "./Posts.js"
-import Comments from "./Comments"
 import { clearErrors } from "../../actions/errorActions";
-import { resend, verifyCode } from "../../actions/authActions";
+import { verifyCode } from "../../actions/authActions";
 import Box from '@mui/material/Box';
-import Sidebar from "../Dashboard/Sidebar";
-import Topbar from "../Dashboard/Topbar";
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Footer from '../Footer';
 import { styled } from '@mui/material/styles';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import { motion } from 'framer-motion';
 import { 
   Container, 
@@ -26,12 +21,9 @@ import TextField from '@mui/material/TextField'
 import PropTypes from 'prop-types'
 import "./style.css"
 import { updateAccount, saveUsernameAlbedo, pkeyGoogleUser } from "../../actions/authActions";
-import Posts from "./Posts"
-import Card from "./Card"
 import Tweets from './tweets';
 import PostList from "./PostList";
 import Navbar1 from '../Dashboard/Navbar1';
-import  { useState } from 'react';
 import UserContext from '../Posts/UserContext';
 
 const FeedContainer = styled(Box)(({ theme }) => ({

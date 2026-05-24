@@ -2,65 +2,36 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Image, Card } from 'react-bootstrap';
 
 import NavBar from '../../NavBar';
-import issue from "./issue.png"
-import issue1 from "./issue1.PNG"
 // import me from "../me.jpg"
-import lab from "./laboratory.PNG"
-import trust from "./trust.PNG"
-import sign from "./sign.PNG"
-import sign2 from "./sign2.PNG"
-import signed from "./signed.PNG"
-import submitted from "./submitted.PNG"
-import add from "./add.PNG"
-import add2 from "./add2.PNG"
-import newsign from "./newsign.PNG"
-import newsign2 from "./newsign2.PNG"
-import expert from "./expert.PNG"
-import keybase from "./keybaseicon.png"
 import {
   FacebookShareCount,
   RedditShareCount,
-  TumblrShareCount,
   FacebookShareButton,
   FacebookMessengerShareButton,
   FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  PinterestShareButton,
   VKShareButton,
-  OKShareButton,
   TelegramShareButton,
   WhatsappShareButton,
   RedditShareButton,
   EmailShareButton,
   TumblrShareButton,
-  LivejournalShareButton,
-  MailruShareButton,
   ViberShareButton,
   WorkplaceShareButton,
   LineShareButton,
-  WeiboShareButton,
-  PocketShareButton,
-  InstapaperShareButton,
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
-  PinterestIcon,
   VKIcon,
-  OKIcon,
   TelegramIcon,
   WhatsappIcon,
   RedditIcon,
   TumblrIcon,
-  MailruIcon,
   EmailIcon,
-  LivejournalIcon,
   ViberIcon,
   WorkplaceIcon,
   LineIcon,
-  PocketIcon,
-  InstapaperIcon,
-  WeiboIcon,
 } from "react-share";
 import { Helmet } from 'react-helmet-async'
 import "./style.css";
@@ -292,7 +263,7 @@ export default class Albedo extends Component {
 
               <Iframe
                 src="https://codesandbox.io/embed/inspiring-cori-ojs73?fontsize=14&hidenavigation=1&theme=dark"
-                style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+                style={{width:'100%', height:'500px', border:0, borderRadius: '4px', overflow:'hidden'}}
                 title="inspiring-cori-ojs73"
                 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
                 sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"

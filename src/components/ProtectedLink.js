@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import { hasAnyRole } from '../utils/auth';
 import { Nav } from 'react-bootstrap';

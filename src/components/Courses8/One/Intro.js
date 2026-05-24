@@ -12,7 +12,6 @@ import PropTypes from 'prop-types';
 import LinearProgress from '@mui/material/LinearProgress';
 //import ProgressBar from 'react-bootstrap/ProgressBar';
 import Box from '@mui/material/Box';
-import NavBar from '../../NavBar';
 import Navbar from '../../Dashboard/Navbar1';
 import { connect } from 'react-redux';
 import { clearErrors } from '../../../actions/errorActions';
@@ -20,8 +19,6 @@ import { reduxForm } from 'redux-form';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
 import Precourse from "../Precourse.js"
-import { Container } from '@mui/material';
-import ReactPlayer from 'react-player'
 
 
 

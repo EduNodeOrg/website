@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Image, Card } from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap';
 
 import NavBar from '../../../NavBar';
-import me from '../../me.jpg';
 import suave from '../../suave.gif';
-import sc1 from '../../SC.png';
 import Typography from '@mui/material/Typography';
 import {
   FacebookShareCount,
   RedditShareCount,
-  TumblrShareCount,
   FacebookShareButton,
   FacebookMessengerShareButton,
   FacebookMessengerIcon,

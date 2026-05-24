@@ -6,7 +6,6 @@ import { Card, Typography } from '@mui/material';
 import { fShortenNumber } from '../../../utils/formatNumber';
 // components
 import Iconify from '../../../components/iconify';
-import customShadows from '../../../theme/customShadows'
 // ----------------------------------------------------------------------
 
 const StyledIcon = styled('div')(({ theme }) => ({

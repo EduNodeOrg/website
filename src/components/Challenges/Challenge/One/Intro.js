@@ -5,13 +5,10 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
-import NavBar from '../../../NavBar';
 import Navbar from '../../../Dashboard/Navbar1';
 import { connect } from 'react-redux';
 import { clearErrors } from '../../../../actions/errorActions';
@@ -197,7 +194,7 @@ function VerticalLinearStepper(props) {
     <div className="page-container">
       <div className="split-view">
         <div className="left-panel">
-        <img src={space} style={{ width: '550px', height: '300px' }}></img>
+        <img src={space} style={{ width: '550px', height: '300px' }} alt="space"></img>
 
           <Stepper activeStep={activeStep} orientation="vertical">
             {steps.map((label, index) => (

@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
-import { Link, Redirect, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({

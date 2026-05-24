@@ -1,16 +1,5 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@mui/material/Grid';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import Header from '../Header';
-import MainFeaturedPost from '../MainFeaturedPost';
-import FeaturedPost from '../FeaturedPost';
-import Main from '../Main';
-import Sidebar from '../Sidebar';
-import Footer from '../Footer';
-import mb from "./mainblog.png"
 
 
 export default class Article extends Component {

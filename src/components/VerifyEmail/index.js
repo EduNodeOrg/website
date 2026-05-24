@@ -11,11 +11,8 @@ import Alert from "@material-ui/lab/Alert";
 import CircularProgress from "@mui/material/CircularProgress"
 import withRouter from '../../withRouter'
 import "./style.css";
-import { styled } from '@mui/material/styles';
 import NavBar from "../NavBar"
 import Grid from '@mui/material/Grid';
-import Footer from '../Footer';
-import Paper from '@mui/material/Paper';
 import { Navigate } from "react-router-dom";
 import { loadUser } from '../../actions/authActions';
 import axios from 'axios';
@@ -155,15 +152,8 @@ class VerifyEmail extends Component {
   };
 
   render() {
-    const Item = styled(Paper)(({ theme }) => ({
-      ...theme.typography.body2,
-      padding: theme.spacing(1),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    }));
     const { pristine, submitting } = this.props;
     const { isLoading, isVerified, isAuthenticated } = this.props.auth
-    const email = this.props.auth.user ? this.props.auth.user.email : '';
     if (isLoading) {
 
       return <div style={{

@@ -9,13 +9,11 @@ import {
   Button,
 } from 'react-bootstrap';
 // import { Redirect } from 'react-router-dom';
-import { Redirect, BrowserRouter, Link } from 'react-router-dom';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { setCourseOne } from "../../actions/authActions"
 import Chip from "./Chip.js"
 import albedologo from "./albedo.png"
 import albedo from '@albedo-link/intent'

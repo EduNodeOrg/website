@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { verifyGoogleUser } from "../../actions/authActions";
 
 export default class Gcallback extends Component {
     // componentDidMount() {

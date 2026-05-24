@@ -11,7 +11,6 @@ import { Navigate } from "react-router-dom";
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import ImageUploading from "react-images-uploading";
-import Autocomplete from '@mui/material/Autocomplete';
 import ModernNavbar from '../Dashboard/layout/ModernNavbar';
 
 
@@ -206,7 +205,7 @@ class Account extends Component {
       preferences: auth.user && auth.user.preferences ? auth.user.preferences : [],
       age: auth.user && auth.user.age ? auth.user.age : "",
       bio: auth.user && auth.user.bio ? auth.user.bio : "",
-      bio: auth.user && auth.user.university ? auth.user.university : "",
+      university: auth.user && auth.user.university ? auth.user.university : "",
       location: auth.user && auth.user.location ? auth.user.location : "",
       _id: auth.user && auth.user._id ? auth.user._id : "",
       isLoading: false,
@@ -283,14 +282,14 @@ class Account extends Component {
         console.error(error);
       });
     // Fetch the university names from the backend API
-   {/**  fetch('http://localhost:5001/api/universities/universities')
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ universityOptions: data });
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });*/}
+    // fetch('http://localhost:5001/api/universities/universities')
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     this.setState({ universityOptions: data });
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error:', error);
+    //   });
 
   }
 
@@ -305,7 +304,7 @@ class Account extends Component {
       }
     }));
   };
-  handleUniversityChange = (event) => {
+  handleUniversityInputChange = (event) => {
     this.setState(prevState => ({
       user: {
         ...prevState.user,

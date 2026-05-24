@@ -743,7 +743,7 @@ export const metamaskAuth = (accounts) => dispatch => {
   axios
     .post('https://edunode.herokuapp.com/api/metamasklogin', body, config)
     .then((res) => {
-      if (res.isVerified = true) {
+      if (res.isVerified === true) {
         dispatch({
           type: VERIFICATION_SUCCESS,
           payload: res.data,

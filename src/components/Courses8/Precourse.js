@@ -1,4 +1,4 @@
-import React, {useEffect, setCount} from 'react';
+import React, {useEffect} from 'react';
 import { withStyles } from '@material-ui/core';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';

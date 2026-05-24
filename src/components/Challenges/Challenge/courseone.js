@@ -1,32 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { clearErrors } from '../../actions/errorActions';
-import { resend, verifyCode } from '../../actions/authActions';
-import { Field, reduxForm } from 'redux-form';
-import TextField from '@mui/material/TextField';
-import Alert from '@material-ui/lab/Alert';
-import AlertTitle from '@material-ui/lab/AlertTitle';
-import CircularProgress from '@mui/material/CircularProgress';
+import { verifyCode } from '../../actions/authActions';
+import { reduxForm } from 'redux-form';
 import { withRouter } from 'react-router';
-import { Redirect, BrowserRouter } from 'react-router-dom';
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Image,
-  Form,
-  Button,
-} from 'react-bootstrap';
+
+
 import './style.css';
 // import SideBar from './sidebar';
 import NavBar from '../NavBar';
 
-import { Link } from 'react-router-dom';
-import PersonIcon from '@material-ui/icons/Person';
-import keybase from './keybaseicon.png';
-import createStellarIdenticon from 'stellar-identicon-js';
-import SearchBox from '../SearchBox';
 import Course1 from './Course1';
 import Course2 from './Course2';
 import Course3 from './Course3';

@@ -9,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import {
   FacebookShareCount,
   RedditShareCount,
-  TumblrShareCount,
   FacebookShareButton,
   FacebookMessengerShareButton,
   FacebookMessengerIcon,

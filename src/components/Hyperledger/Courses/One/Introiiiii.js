@@ -15,7 +15,7 @@ import NavBar from '../../NavBar';
 
 import { connect } from 'react-redux';
 import { clearErrors } from '../../../actions/errorActions';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { withRouter } from 'react-router';
 
 

@@ -3,11 +3,7 @@ import { Navigate } from "react-router-dom";
 import { styled as muiStyled } from '@mui/material/styles';
 import styled from 'styled-components';
 import PropTypes from 'prop-types'
-import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import NavBar from "../NavBar"
-import { clearErrors } from "../../actions/errorActions";
-import { newPost } from "../../actions/authActions";
 import Sidebar from "../Dashboard/Sidebar";
 import Topbar from "../Dashboard/Topbar";
 import Grid from '@mui/material/Grid';

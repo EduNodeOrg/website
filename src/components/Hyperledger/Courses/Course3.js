@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import anchors from './anchors.PNG';
 import { Button } from 'react-bootstrap';
-import { Redirect, BrowserRouter, Link } from 'react-router-dom';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';

@@ -4,10 +4,8 @@ import { connect } from "react-redux";
 import { clearErrors } from "../../../../actions/errorActions";
 import { verifyCode } from "../../../../actions/authActions";
 import { reduxForm } from "redux-form";
-import albedo from '@albedo-link/intent'
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
-import { isConnected, getPublicKey } from "@stellar/freighter-api";
 import axios from "axios";
 import html2canvas from 'html2canvas';
 import dep from "./rust.png"

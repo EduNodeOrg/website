@@ -118,7 +118,6 @@ import Blockchain from "./components/Blog/Articles/Blockchain";
 import Contracts from './components/Blog/Articles/Contracts';
 import Docker from './components/Blog/Articles/Docker';
 import Ipfs from './components/Blog/Articles/Ipfs';
-import Soroban from './components/Blog/Articles/Soroban';
 import AMM from './components/Blog/Articles/AMM/AMM';
 import Kelp from "./components/Blog/Articles/Kelp";
 import PostgreSQL from "./components/Blog/Articles/Postgresql";
@@ -147,8 +146,6 @@ import Privacy from './components/Privacy';
 import SubmitPost from "./components/SubmitPost"
 import Dashboard from "./components/Dashboard";
 //import Main from "./components/Dashboard/Main";
-import Settings from "./components/Settings";
-import Profile from "./components/Profile";
 import Post from "./components/Posts/Post";
 import Cours from "./components/Teach/teach";
 import Tutor from "./components/Teach/teachRole";
@@ -171,7 +168,6 @@ import EduNodeGuide from './components/teacher'
 import StudentsPage from "./components/student"
 import PasswordPage from './components/Login/password'
 import ResetPasswordPage from './components/Login/reset_password'
-import WithParams from './components/Profile/profile'
 import ModernProfile from './components/Profile/ModernProfile'
 import ModernMyProfile from './components/Profile/ModernMyProfile'
 import CertificatePage from './components/Certificate/about'
@@ -187,12 +183,12 @@ import Users from './admin/src/pages/Users';
 import Glossaires from './admin/src/pages/Glossaires';
 import UserAdmin from './admin/src/pages/UserAdmin';
 import LoginPage from './admin/src/pages/LoginPage';
-import Page404 from './admin/src/pages/Page404';
 import ProductsPage from './admin/src/pages/ProductsPage';
 import DashboardAppPage from './admin/src/pages/DashboardAppPage';
 import DashboardAppAdmin from './admin/src/pages/DashboardAdmin';
 import Messages from './components/Profile/messages'
 import Game from './components/Challenges/gameChallenge/addGame'
+import Pricing from './components/Membership/Pricing'
 
 const ThemedRoutes = () => (
   <ThemeProvider>
@@ -237,6 +233,7 @@ function App(props) {
      
         <Route exact path="/" element={<Home />} />
         <Route exact path="/about" element={<AboutUs />} />
+        <Route exact path="/pricing" element={<Pricing />} />
         <Route exact path="/stellarnodes" element={<Node />} />
         <Route exact path="/account" element={<Account />} />
         <Route exact path="/resources" element={<Resources />} />

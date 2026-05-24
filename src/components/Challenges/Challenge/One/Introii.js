@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -14,7 +14,6 @@ import Box from '@mui/material/Box';
 import NavBar from '../../NavBar';
 import { connect } from 'react-redux';
 import { clearErrors } from '../../../actions/errorActions';
-import { reduxForm } from 'redux-form';
 import { createBrowserHistory } from 'history';
 
 

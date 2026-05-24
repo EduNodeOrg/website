@@ -13,15 +13,12 @@ import {
   Divider,
   IconButton,
   Alert,
-  Paper,
   Tabs,
   Tab,
-  Badge,
   List,
   ListItem,
   ListItemText,
-  ListItemIcon,
-  LinearProgress
+  ListItemIcon
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import {

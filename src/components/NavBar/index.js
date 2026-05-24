@@ -70,6 +70,9 @@ class NavBar extends Component {
                 <a href="/resources">Resources</a>
               </li>
               <li>
+                <a href="/pricing">Pricing</a>
+              </li>
+              <li>
                 <a href="/community">Community</a>
               </li>
               <li>

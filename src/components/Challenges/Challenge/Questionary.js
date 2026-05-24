@@ -1,8 +1,7 @@
-import React, { Component, useState } from 'react';
-import NavBar from '../NavBar';
+import React, { Component } from 'react';
 
 import CircularIntegration from './One/Check';
-import { Form, Row, Col, Image, Card, Modal, Button } from 'react-bootstrap';
+import { Form, Row, Col } from 'react-bootstrap';
 import {LinearWithValueLabel} from "./One/Intro"
 
 

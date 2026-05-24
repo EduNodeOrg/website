@@ -1,16 +1,11 @@
 import React, { Component } from "react";
-import { Navigate } from "react-router-dom";
-import { styled as muiStyled } from '@mui/material/styles';
 import styled from 'styled-components';
 import PropTypes from 'prop-types'
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import NavBar from "../NavBar"
 import { clearErrors } from "../../actions/errorActions";
 import { newPost } from "../../actions/authActions";
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Footer from '../Footer';
 import Box from '@mui/material/Box';
 import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
@@ -59,12 +54,6 @@ const Input = styled.input`
   border: 1px solid #ccc;
 `;
 
-const Textarea = styled.textarea`
-  padding: 0.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-`;
 
 const Select = styled.select`
   padding: 0.5rem;
@@ -202,7 +191,6 @@ class Badge extends Component {
         }
         this.setState({ showPopup: true });
 
-        const email = this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : "anonymous";
         const data = {
             email: this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : "anonymous", // this.props.auth.user.email
             title: this.state.title,
@@ -281,8 +269,7 @@ class Badge extends Component {
     render() {
         const { editorState } = this.state;
 
-        const { tags, title, link, description, success, showPopup, criteria, expiration } = this.state;
-        const email = this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : "";
+        const { tags, title, link, success, showPopup, criteria, expiration } = this.state;
         const { errors } = this.state;
         return (
             <UserContext.Provider value={this.state.email}>

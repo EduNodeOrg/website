@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -22,7 +21,6 @@ import { KeyboardArrowUp } from '@mui/icons-material';
 import Navbar1 from '../Dashboard/Navbar1';
 import Navbar2 from '../Dashboard/Navbar2';
 import CourseList from './CourseList';
-import learn from './learn.png';
 
 // Styles
 import './style.css';

@@ -1,8 +1,7 @@
 import React, {useState} from "react";
-import {Editor, EditorState} from 'draft-js';
+import { EditorState} from 'draft-js';
 import { Button, Modal, Form } from "react-bootstrap";
 import MyEditor from "./myEditor"
-import Feed from "../Feed"
 import "./styles.css"
 
 

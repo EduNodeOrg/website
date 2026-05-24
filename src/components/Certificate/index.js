@@ -1,9 +1,8 @@
 import withRouter from '../../withRouter';
 import { clearErrors } from "../../actions/errorActions";
-import { resend, verifyCode } from "../../actions/authActions";
+import { verifyCode } from "../../actions/authActions";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { connect } from 'react-redux';
 import React, { Component } from 'react'
@@ -14,7 +13,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { motion } from 'framer-motion';
 import axios from 'axios';
-import { Navigate } from "react-router-dom";
 import { updateAccount, saveUsernameAlbedo, pkeyGoogleUser } from "../../actions/authActions";
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';

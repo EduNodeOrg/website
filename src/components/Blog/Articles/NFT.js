@@ -4,19 +4,7 @@ import NavBar from '../../NavBar';
 import snft from './newnft1.png';
 import lite from './litemintlogo.png';
 
-import issue1 from './issue1.PNG';
 import me from '../me.jpg';
-import lab from './laboratory.PNG';
-import trust from './trust.PNG';
-import sign from './sign.PNG';
-import sign2 from './sign2.PNG';
-import signed from './signed.PNG';
-import submitted from './submitted.PNG';
-import add from './add.PNG';
-import add2 from './add2.PNG';
-import newsign from './newsign.PNG';
-import newsign2 from './newsign2.PNG';
-import expert from './expert.PNG';
 import keybase from './keybaseicon.png';
 import nft1 from './nft1.jpg';
 import jack from './jackfirsttweet.jpeg';
@@ -24,47 +12,32 @@ import Typography from '@material-ui/core/Typography';
 import {
   FacebookShareCount,
   RedditShareCount,
-  TumblrShareCount,
   FacebookShareButton,
   FacebookMessengerShareButton,
   FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  PinterestShareButton,
   VKShareButton,
-  OKShareButton,
   TelegramShareButton,
   WhatsappShareButton,
   RedditShareButton,
   EmailShareButton,
   TumblrShareButton,
-  LivejournalShareButton,
-  MailruShareButton,
   ViberShareButton,
   WorkplaceShareButton,
   LineShareButton,
-  WeiboShareButton,
-  PocketShareButton,
-  InstapaperShareButton,
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
-  PinterestIcon,
   VKIcon,
-  OKIcon,
   TelegramIcon,
   WhatsappIcon,
   RedditIcon,
   TumblrIcon,
-  MailruIcon,
   EmailIcon,
-  LivejournalIcon,
   ViberIcon,
   WorkplaceIcon,
   LineIcon,
-  PocketIcon,
-  InstapaperIcon,
-  WeiboIcon,
 } from 'react-share';
 import { Helmet } from 'react-helmet-async'
 import './style.css';
@@ -348,7 +321,7 @@ edunode.org                </a>
                     </p>
                   </Card.Text>
                   <a href="https://keybase.io/olvis_experio">
-                    <img style={{ width: '25px' }} src={keybase} />
+                    <img style={{ width: '25px' }} src={keybase} alt="keybase" />
                   </a>
                 </Card.Body>
               </Card>

@@ -1,6 +1,5 @@
 import React from "react";
 import Chessboard from "chessboardjsx";
-import ThemeSwitcher from "./themeSwitcher";
 class ChessBoardEditor extends React.Component {
   constructor(props) {
     super(props);

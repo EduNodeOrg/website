@@ -6,23 +6,4 @@ class CourseOne extends Component {
   }
 }
 
-
-
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  isAuthenticated: state.auth.isAuthenticated,
-  error: state.error,
-});
-
-Courses = connect(mapStateToProps, { verifyCode, clearErrors })(
-  Courses,
-);
-
-export default Courses = reduxForm({
-  form: '',
-  fields: [''],
-  validate,
-  clearErrors,
-  verifyCode,
-})(withRouter(CourseOne));
-
+export default CourseOne;

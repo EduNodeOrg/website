@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Divider, Avatar, Grid, Paper } from "@mui/material";
+import { Divider, Grid, Paper } from "@mui/material";
 
 import "./styles.css";
 

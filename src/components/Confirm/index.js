@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 // import { notify } from 'react-notify-toast'
-import Spinner from '../../utils/spinner'
 // import { API_URL } from '../config'
 
 class Confirm extends Component {

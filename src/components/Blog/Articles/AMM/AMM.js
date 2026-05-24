@@ -5,12 +5,10 @@ import { Helmet } from 'react-helmet-async'
 import NavBar from '../../../NavBar';
 import me from '../../me.jpg';
 import amm from './AMMs.png';
-import sc1 from '../../SC.png';
 import Typography from '@mui/material/Typography';
 import {
   FacebookShareCount,
   RedditShareCount,
-  TumblrShareCount,
   FacebookShareButton,
   FacebookMessengerShareButton,
   FacebookMessengerIcon,
