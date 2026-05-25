@@ -12,6 +12,7 @@ import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import ImageUploading from "react-images-uploading";
 import ModernNavbar from '../Dashboard/layout/ModernNavbar';
+import EmailPreferences from '../EmailPreferences';
 
 
 // Modern styled components matching dashboard theme
@@ -777,6 +778,9 @@ class Account extends Component {
                 </Box>
               </CardContent>
             </AccountCard>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <EmailPreferences email={this.props.auth.user.email} />
           </Grid>
         </Grid>
       </motion.div>

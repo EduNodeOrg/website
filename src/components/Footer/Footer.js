@@ -18,7 +18,7 @@ export default function Footer() {
          {/**   <a href='' className='me-4 text-reset'>
               <MDBIcon fab icon="facebook-f" />
             </a>*/}
-            <a href='https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Eedunodeorg&screen_name=edunodeorg' className='me-4 text-reset'>
+            <a href='https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fedunode.org%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Eedunodeorg&screen_name=edunodeorg' className='me-4 text-reset'>
               <MDBIcon fab icon="twitter" />
             </a>
             <a href="mailto:hi@ogtechnologies.co?subject=Reports" className='me-4 text-reset'>

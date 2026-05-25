@@ -1,6 +1,6 @@
 # EduNode
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/0eca6af0-abbd-4056-ae63-33dd6a3325e4/deploy-status)](https://app.netlify.com/sites/edunode/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0eca6af0-abbd-4056-ae63-33dd6a3325e4/deploy-status)](https://app.netlify.com/projects/edunode/deploys)
 
 EduNode is an educational platform designed to provide accessible learning resources and interactive educational experiences.
 

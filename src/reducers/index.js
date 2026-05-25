@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import itemReducer from "./itemReducer";
 import errorReducer from "./errorReducer";
 import authReducer from "./authReducer";
+import emailReducer from "./emailReducer";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { routerReducer } from 'react-router-redux';
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     item: itemReducer,
     error: errorReducer,
     auth: authReducer,
+    email: emailReducer,
     routing: routerReducer,
     form: formReducer
 });

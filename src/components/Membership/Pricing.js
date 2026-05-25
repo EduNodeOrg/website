@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -14,6 +16,8 @@ import { styled } from '@mui/material/styles';
 import NavBar from '../NavBar';
 import Footer from '../Footer/Footer';
 //import { Redirect, BrowserRouter } from "react-router-dom";
+
+const API_URL = 'https://edunode.herokuapp.com/api';
 
 const tiers = [
   {
@@ -87,9 +91,7 @@ const tiers = [
 // ];
 
 const CheckoutButton = () => {
-
-
-  // history.push("/dashboard")
+  // Legacy - replaced by handleStripeCheckout in PricingContent
 }
 
 const PricingContainer = styled(Box)(({ theme }) => ({
@@ -142,6 +144,49 @@ const PricingCard = styled(Card)(({ theme }) => ({
 }));
 
 function PricingContent() {
+  const navigate = useNavigate();
+  const token = useSelector((state) => state.auth.token);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  const handleStripeCheckout = async () => {
+    if (!isAuthenticated) {
+      navigate('/login');
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/stripe/create-checkout-session`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        },
+        body: JSON.stringify({
+          successUrl: `${window.location.origin}/membership/success`,
+          cancelUrl: `${window.location.origin}/pricing`,
+        }),
+      });
+
+      if (!response.ok) {
+        const text = await response.text();
+        console.error('Backend error response:', text);
+        console.error('Response status:', response.status);
+        let data;
+        try {
+          data = JSON.parse(text);
+        } catch {
+          data = { message: text };
+        }
+        throw new Error(data.message || data.msg || data.error || `Failed to create checkout session (${response.status})`);
+      }
+
+      const { url } = await response.json();
+      window.location.href = url;
+    } catch (err) {
+      console.error('Stripe checkout error:', err);
+    }
+  };
+
   return (
     <>
       <CssBaseline />
@@ -226,59 +271,34 @@ function PricingContent() {
                     </ul>
                   </CardContent>
                   <CardActions sx={{ p: 3 }}>
-                    {tier.buttonLink.startsWith('mailto') ? (
-                      <Button
-                        href={tier.buttonLink}
-                        fullWidth
-                        variant={tier.buttonVariant}
-                        size="large"
-                        sx={{
-                          py: 2,
-                          fontWeight: tier.title === 'Pro' ? 'bold' : 'normal',
-                          background: tier.title === 'Pro' 
-                            ? 'linear-gradient(45deg, #00d4ff, #7b2ff7)'
-                            : 'transparent',
-                          border: tier.title === 'Pro' 
-                            ? 'none'
-                            : '1px solid rgba(123, 47, 247, 0.5)',
-                          color: tier.title === 'Pro' ? 'white' : '#00d4ff',
-                          '&:hover': {
-                            background: tier.title === 'Pro'
-                              ? 'linear-gradient(45deg, #00b8e6, #6b2fd6)'
-                              : 'rgba(123, 47, 247, 0.1)',
-                            transform: 'scale(1.02)',
-                          },
-                        }}
-                      >
-                        {tier.buttonText}
-                      </Button>
-                    ) : (
-                      <Button
-                        href={tier.buttonLink}
-                        fullWidth
-                        variant={tier.buttonVariant}
-                        size="large"
-                        sx={{
-                          py: 2,
-                          fontWeight: tier.title === 'Pro' ? 'bold' : 'normal',
-                          background: tier.title === 'Pro' 
-                            ? 'linear-gradient(45deg, #00d4ff, #7b2ff7)'
-                            : 'transparent',
-                          border: tier.title === 'Pro' 
-                            ? 'none'
-                            : '1px solid rgba(123, 47, 247, 0.5)',
-                          color: tier.title === 'Pro' ? 'white' : '#00d4ff',
-                          '&:hover': {
-                            background: tier.title === 'Pro'
-                              ? 'linear-gradient(45deg, #00b8e6, #6b2fd6)'
-                              : 'rgba(123, 47, 247, 0.1)',
-                            transform: 'scale(1.02)',
-                          },
-                        }}
-                      >
-                        {tier.buttonText}
-                      </Button>
-                    )}
+                    <Button
+                      {...(tier.title === 'Pro'
+                        ? { onClick: handleStripeCheckout }
+                        : { href: tier.buttonLink }
+                      )}
+                      fullWidth
+                      variant={tier.buttonVariant}
+                      size="large"
+                      sx={{
+                        py: 2,
+                        fontWeight: tier.title === 'Pro' ? 'bold' : 'normal',
+                        background: tier.title === 'Pro' 
+                          ? 'linear-gradient(45deg, #00d4ff, #7b2ff7)'
+                          : 'transparent',
+                        border: tier.title === 'Pro' 
+                          ? 'none'
+                          : '1px solid rgba(123, 47, 247, 0.5)',
+                        color: tier.title === 'Pro' ? 'white' : '#00d4ff',
+                        '&:hover': {
+                          background: tier.title === 'Pro'
+                            ? 'linear-gradient(45deg, #00b8e6, #6b2fd6)'
+                            : 'rgba(123, 47, 247, 0.1)',
+                          transform: 'scale(1.02)',
+                        },
+                      }}
+                    >
+                      {tier.buttonText}
+                    </Button>
                   </CardActions>
                 </PricingCard>
               </Grid>

@@ -189,6 +189,9 @@ import DashboardAppAdmin from './admin/src/pages/DashboardAdmin';
 import Messages from './components/Profile/messages'
 import Game from './components/Challenges/gameChallenge/addGame'
 import Pricing from './components/Membership/Pricing'
+import StripeCheckout from './components/Membership/StripeCheckout'
+import CheckoutSuccess from './components/Membership/CheckoutSuccess'
+import EmailUnsubscribe from './components/EmailUnsubscribe'
 
 const ThemedRoutes = () => (
   <ThemeProvider>
@@ -363,6 +366,8 @@ function App(props) {
         <Route exact path="/contactus" element={<ContactUs />} />
         <Route exact path="/loggedout" element={<Loggedout />} />
         <Route exact path="/membership" element={<Membership />} />
+        <Route exact path="/membership/checkout" element={<StripeCheckout />} />
+        <Route exact path="/membership/success" element={<CheckoutSuccess />} />
         <Route exact path="/dashboard/newpost" element={<NewPost />} />
         <Route exact path="/privacy" element={<Privacy />} />
         <Route exact path="/submitpost" element={<SubmitPost />} />
@@ -411,6 +416,7 @@ function App(props) {
         <Route exact path="/reset-password" element={<ResetPasswordPage />} />
         <Route exact path="/about-certificates" element={<CertificatePage />} />
         <Route exact path="/challengeDetails/:_id" element={<ChallengeDetails />} />
+        <Route exact path="/unsubscribe" element={<EmailUnsubscribe />} />
         <Route path="/*" element={<ThemedRoutes />} />
       </Routes>
 
