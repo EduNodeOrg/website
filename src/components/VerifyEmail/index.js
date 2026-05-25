@@ -26,7 +26,7 @@ const validate = values => {
     }
   });
 
-  if (values.confirmationCode && values.confirmationCode.length < 4) {
+  if (values.confirmationCode && values.confirmationCode.length < 5) {
     errors.confirmationCode = "Confirmation Code must be at least 5 characters";
   }
   return errors;
@@ -45,6 +45,9 @@ class VerifyEmail extends Component {
       isVerified: false,
       email: "",
       user: {},
+      resendMsg: null,
+      verifyError: null,
+      verifySuccess: null,
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -104,14 +107,10 @@ class VerifyEmail extends Component {
   );
 
   resendEmail = () => {
-    // alert("clicked")
-    //e.preventDefault();
     const storedUser = localStorage.getItem('user');
     const user = storedUser ? JSON.parse(storedUser) : null;
-   console.log('resend email',user.email)
     resend(user.email);
-    alert(`A confirmation code has be sent to your email ${this.props.auth.user.email}, please also check your spam folder`);
-    //   };
+    this.setState({ resendMsg: `A confirmation code has been sent to ${this.props.auth.user.email}. Please also check your spam folder.` });
   }
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -142,12 +141,12 @@ class VerifyEmail extends Component {
     try {
       await this.props.verifyCode(verifyUser);
       if (inputcode === vCode) {
-        alert("Verification successful");
+        this.setState({ verifySuccess: "Verification successful! Redirecting...", verifyError: null });
       } else {
-        alert("Verification failed: invalid code");
+        this.setState({ verifyError: "Verification failed: invalid code", verifySuccess: null });
       }
     } catch (error) {
-      console.log("Verification failed:", error);
+      this.setState({ verifyError: "Verification failed. Please try again.", verifySuccess: null });
     }
   };
 
@@ -231,10 +230,26 @@ class VerifyEmail extends Component {
                                 Verify
                               </Button>
                             </div>
-                            <div>
-                              <p>{this.props.error.msg.msg}</p>
-                              <p>{this.props.auth.message}</p>
-                            </div>
+                            {this.state.resendMsg && (
+                              <Alert severity="info" style={{ marginTop: '16px' }}>
+                                {this.state.resendMsg}
+                              </Alert>
+                            )}
+                            {this.state.verifySuccess && (
+                              <Alert severity="success" style={{ marginTop: '16px' }}>
+                                {this.state.verifySuccess}
+                              </Alert>
+                            )}
+                            {this.state.verifyError && (
+                              <Alert severity="error" style={{ marginTop: '16px' }}>
+                                {this.state.verifyError}
+                              </Alert>
+                            )}
+                            {this.props.error.msg.msg && (
+                              <Alert severity="error" style={{ marginTop: '16px' }}>
+                                {this.props.error.msg.msg}
+                              </Alert>
+                            )}
                           </form>
                         </Row>
 

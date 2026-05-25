@@ -104,7 +104,7 @@ import Coursedone10 from "./components/Courses10/Coursedone"
 import Challengedone from "./components/Challenges/Challenge/Coursedone"
 import Keybase from "./components/Blog/Articles/Keybase";
 import Issue from "./components/Blog/Articles/Issue";
-import Register from "./components/Register";
+// Register component is now accessed via /signup route (Signup alias below)
 import Login from "./components/Login";
 import Pref from "./components/Dashboard/preferences";
 import Chat from "./components/Chat";
@@ -336,7 +336,7 @@ function App(props) {
         <Route exact path="/blog" element={<Blog />} />
         <Route exact path="/blog/What-is-Keybase" element={<Keybase />} />
         <Route exact path="/blog/How-to-issue" element={<Issue />} />
-        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/register" element={<Navigate to="/signup" replace />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/chat" element={<Chat />} />
         <Route exact path="/certificate" element={<Certificate />} />

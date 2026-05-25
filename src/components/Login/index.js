@@ -283,10 +283,8 @@ class Login extends Component {
 
     }
     if (isAuthenticated && !isVerified) {
-      //  <p class="loading">Loading...</p> <CircularProgress color="secondary" />
-
       return (
-        <Navigate to="/" />
+        <Navigate to="/VerifyEmail" />
       );
     }
     if (isAuthenticated && isVerified) {
@@ -410,14 +408,22 @@ class Login extends Component {
           <Alert severity="error">Login failed. Please check your credentials and try again!</Alert>
         </div>
       )}
-          <div>
-            <Link to="/">
-              Return
-            </Link>
+          <div style={{ marginTop: '8px' }}>
+            <Typography variant="body2">
+              Don't have an account?{' '}
+              <Link to="/signup">
+                Sign up
+              </Link>
+            </Typography>
           </div>
-          <div>
+          <div style={{ marginTop: '8px' }}>
             <Link to="/forgot_password">
               Forgot your password?
+            </Link>
+          </div>
+          <div style={{ marginTop: '8px' }}>
+            <Link to="/">
+              Return
             </Link>
           </div>
           </Box>

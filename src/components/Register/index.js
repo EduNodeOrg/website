@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
-import { Button,TextField, Typography, Box } from '@mui/material';
+import { Button, TextField, Typography, Box, Alert, InputAdornment, IconButton } from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 import { CircularProgress } from "@mui/material"
 import "./style.css";
@@ -63,7 +64,9 @@ export class Register extends Component {
       confirmPassword: "",
       isLoading: false,
       errors: {},
-      errorMsg: null
+      errorMsg: null,
+      showPassword: false,
+      showConfirmPassword: false
     }
     // this.handleEmailChange = this.handleEmailChange.bind(this)
     this.onChange = this.onChange.bind(this)
@@ -113,8 +116,6 @@ export class Register extends Component {
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(e.target.value)
-
   };
 
   onSubmit = async (values) => {
@@ -131,7 +132,6 @@ export class Register extends Component {
       name
     };
 
-    console.log(newUser.password)
     // attempt to register
     try {
       await this.props.register(newUser)
@@ -156,12 +156,6 @@ export class Register extends Component {
 
     } finally {
       this.setState({ isLoading: false });
-    }
-    if (this.state.errorMsg) {
-      alert(this.state.errorMsg);
-      alert(this.state.errorMsg);
-
-      ;
     }
     // this.setState({ isLoading: false })
     // console.log(this.props)
@@ -208,26 +202,16 @@ export class Register extends Component {
 
     const { pristine, submitting } = this.props
     const { isLoading, isAuthenticated, isVerified } = this.props.auth
-    if (isLoading) {
-
-      return <div style={{
-        position: 'absolute', left: '50%', top: '50%',
-        transform: 'translate(-50%, -50%)'
-      }}> <CircularProgress
-          color="secondary"
-        />
-      </div>
-    }
     if (isAuthenticated && !isVerified) {
 
       return (
-        <Navigate to="/login" />
+        <Navigate to="/VerifyEmail" />
       );
 
     }
     if (isAuthenticated && isVerified) {
       return (
-        <Navigate to="/login" />
+        <Navigate to="/dashboard" />
 
       );
 
@@ -247,14 +231,14 @@ export class Register extends Component {
               onClick={albedoHandler}
               style={{ width: '300px', marginBottom: '16px' }}
             >
-              Login with <Image style={{ width: '45px', marginLeft: '8px' }} src={albedologo} />
+              Sign up with <Image style={{ width: '45px', marginLeft: '8px' }} src={albedologo} />
             </Button>
             <Button
               variant="outlined"
               onClick={freighterHandler}
               style={{ width: '300px', marginBottom: '16px' }}
             >
-              Login with <Image style={{ width: '75px', marginLeft: '8px' }} src={flogo} />
+              Sign up with <Image style={{ width: '75px', marginLeft: '8px' }} src={flogo} />
             </Button>
             <br></br>
             <div>
@@ -282,23 +266,49 @@ export class Register extends Component {
             <div>
               <Field
                 name="password"
-                type="password"
+                type={this.state.showPassword ? 'text' : 'password'}
                 label="Password"
                 component={props => this.renderTextField(props)}
                 id="password"
                 value={this.state.password}
                 style={{ width: '300px', marginBottom: '16px' }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={() => this.setState({ showPassword: !this.state.showPassword })}
+                        edge="end"
+                        size="small"
+                      >
+                        {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }}
               />
             </div>
             <div>
               <Field
                 name="confirmPassword"
-                type="password"
+                type={this.state.showConfirmPassword ? 'text' : 'password'}
                 label="Confirm Password"
                 component={this.renderTextField}
                 id="confirmPassword"
                 value={this.state.confirmPassword}
                 style={{ width: '300px', marginBottom: '16px' }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={() => this.setState({ showConfirmPassword: !this.state.showConfirmPassword })}
+                        edge="end"
+                        size="small"
+                      >
+                        {this.state.showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }}
               />
             </div>
             <div>
@@ -307,21 +317,33 @@ export class Register extends Component {
               color="primary"
               id="button"
               type="submit"
-              disabled={pristine || submitting}
+              disabled={pristine || submitting || isLoading}
               style={{ width: '300px', marginBottom: '16px' }}
             >
-              Register
+              {isLoading ? <CircularProgress size={24} color="inherit" /> : 'Register'}
             </Button>
             </div>
 
-            {/**  <div className="alert alert-danger">{this.state.errorMsg}</div>*/}
+            {this.state.errorMsg && (
+              <Alert severity="error" style={{ width: '300px', marginBottom: '16px' }}>
+                {this.state.errorMsg}
+              </Alert>
+            )}
+            {this.props.error.msg.msg && (
+              <Alert severity="error" style={{ width: '300px', marginBottom: '16px' }}>
+                {this.props.error.msg.msg}
+              </Alert>
+            )}
 
-            <div>
-
-              <p>{this.props.error.msg.msg}</p>
-              <p>{this.props.msg}</p>
+            <div style={{ marginTop: '8px' }}>
+              <Typography variant="body2">
+                Already have an account?{' '}
+                <Link to="/loginn">
+                  Log in
+                </Link>
+              </Typography>
             </div>
-            <div>
+            <div style={{ marginTop: '8px' }}>
               <Link to="/">
                 Return
               </Link>
