@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { useSearchParams } from 'react-router-dom';
 import { checkUnsubscribeStatus, unsubscribeUser } from '../../actions/emailActions';
-import { Box, Container, Typography, Button, Card, CardContent, Select, MenuItem, TextField, Alert, CircularProgress } from '@mui/material';
+import { Box, Typography, Button, Card, CardContent, Select, MenuItem, TextField, Alert, CircularProgress } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 const UnsubscribeContainer = styled(Box)(({ theme }) => ({

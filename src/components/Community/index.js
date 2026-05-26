@@ -1,360 +1,297 @@
-import React from "react";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import { makeStyles } from "@material-ui/core";
-import Container from "@mui/material/Container";
+import React, { useState, useEffect } from 'react';
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography, Container } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 import NavBar from "../NavBar";
 import kicon from "./keybaseicon.png";
 import discord from "./discord.png";
-import "./style.css";
-import { useState, useEffect } from 'react';
 
+const PageContainer = styled(Box)({
+  minHeight: '100vh',
+  background: 'linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)',
+});
 
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
+const GlassCard = styled(Card)({
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  background: 'rgba(255, 255, 255, 0.05)',
+  backdropFilter: 'blur(10px)',
+  border: '1px solid rgba(255, 255, 255, 0.1)',
+  borderRadius: '16px',
+  color: '#b8c5d6',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+  '&:hover': {
+    transform: 'translateY(-4px)',
+    boxShadow: '0 8px 32px rgba(123, 47, 247, 0.2)',
   },
-  heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+  '& .MuiTypography-h5': {
+    color: '#ffffff',
+    fontWeight: 600,
   },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  },
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-  card: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-  },
-  cardMedia: {
-    paddingTop: "56.25%", // 16:9
-  },
-  cardContent: {
-    flexGrow: 1,
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
-  },
+});
+
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  textAlign: 'center',
+  marginBottom: theme.spacing(4),
+  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+  fontWeight: 'bold',
 }));
 
-
+const CommunityLink = styled('a')({
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: '6px',
+  marginRight: '8px',
+  transition: 'opacity 0.2s ease',
+  '&:hover': {
+    opacity: 0.8,
+  },
+});
 
 function Community() {
   const [projects, setProjects] = useState([]);
-  const classes = useStyles();
 
   useEffect(() => {
     fetch('https://edunode.herokuapp.com/api/project/projects')
       .then(res => res.json())
       .then(data => setProjects(data));
   }, []);
+
   return (
     <>
       <NavBar />
-      <div className="resources">
+      <PageContainer>
         <main>
-          <div className={classes.heroContent}>
+          <Box sx={{ pt: 8, pb: 6, textAlign: 'center' }}>
             <Container maxWidth="sm">
-              <Typography
-                component="h1"
-                variant="h4"
-                align="center"
-                color="textPrimary"
-                gutterBottom
-              >
-                Conferences, innitiatives, podcasts and meetups around
-                the world.
+              <SectionTitle variant="h3">
+                Stellar Community Hub
+              </SectionTitle>
+              <Typography variant="h6" sx={{ color: '#b8c5d6', mb: 4 }}>
+                Conferences, initiatives, Discord servers, podcasts, and meetups around the world.
               </Typography>
-              <Typography
-                variant="h5"
-                align="center"
-                color="textSecondary"
-                paragraph
-              ></Typography>
             </Container>
-          </div>
+          </Box>
 
-          <br></br>
-          <Typography gutterBottom variant="h4" component="h2">
-            Community initiatives
-          </Typography>
+          <Container sx={{ pt: 4, pb: 8 }} maxWidth="lg">
+            <Typography variant="h4" sx={{ color: '#ffffff', fontWeight: 'bold', mb: 4, textAlign: 'center' }}>
+              Community Initiatives
+            </Typography>
 
-
-
-
-          <Grid container spacing={4}>
-
-
-            <Grid item xs={12} sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={require('../Resources/stellarglobal.png')}
-                  title="Stellar Global"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
-                  >
-                    Stellar Global
-                  </Typography>
-                  <Typography>
-                    A perfect source for the Stellar Network
-
-
-                  </Typography>
-                  <a href="https://keybase.io/team/stellar_global">
-                    <img src={kicon} height={25} width={25} alt="keybase" />
-                  </a>
-                  <a href="https://discord.gg/4FGf3UbuST">
-                    <img src={discord} height={25} width={25} alt="discord" />
-                  </a>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size="small"
-                    color="primary"
-                    href="https://stellar-global.org/"
-                  >
-                    Learn More
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-
-            <Grid item xs={12} sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={require('../Resources/stellar11.PNG')}
-                  title="Stellar Developers Discord"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
-                  >
-                    Stellar Developers Discord
-                  </Typography>
-                  <Typography>
-                    Stellar is an open financial network built for
-                    speed and efficiency. With over 4 million accounts
-                    and a 5-second ledger close time, Stellar is the
-                    right choice for your financial service or
-                    application.
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size="small"
-                    color="primary"
-                    href="https://podcast.stellar.org/"
-                  >
-                    Learn More
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-
-            <Grid item xs={12} sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={require('../Resources/stellarpodcast.PNG')}
-                  title="Dev Google Group"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
-                  >
-                    The Stellar Podcast
-                  </Typography>
-                  <Typography>
-                    Check out the Stellar Podcast
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size="small"
-                    color="primary"
-                    href="https://discord.gg/stellardev"
-                  >
-                    Learn More
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-
-            <Grid item xs={12} sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={require('../Resources/publicnode1.PNG')}
-                  title="Dev Google Group"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
-                  >
-                    Public Node Podcast
-                  </Typography>
-                  <Typography>
-                    Public Node community members discussing all
-                    aspects of the Stellar ecosystem - from
-                    brainstorming to developer interviews and
-                    everything in between.
-                  </Typography>
-                  <br></br>
-                  <a href="https://keybase.io/team/public_node">
-                    <img src={kicon} height={25} width={25} alt="keybase" />
-                  </a>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size="small"
-                    color="primary"
-                    href="https://podcast.publicnode.org/1083677"
-                  >
-                    Learn More
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-
-            <Grid item xs={12} sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={require('../Projects/stellarbattle1.PNG')}
-                  title="StellarBattle"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
-                  >
-                    StellarBattle
-                  </Typography>
-                  <Typography>
-                    Community funded Stellar Battles
-                  </Typography>
-                  <br></br>
-                  <a href="https://keybase.io/team/stellar_battle">
-                    <img src={kicon} height={25} width={25} alt="keybase" />
-                  </a>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size="small"
-                    color="primary"
-                    href="https://stellarbattle.com/"
-                  >
-                    Learn More
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-
-
-
-            <Grid item xs={12} sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={require('../Projects/Lumenthropy.png')}
-                  title="Lumenthropy"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
-                  >
-                    Lumenthropy
-                  </Typography>
-                  <Typography>
-                    Encouraging nonprofits to accept lumen donations
-                    and inspiring people that hold lumens to donate to
-                    worthy causes.
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size="small"
-                    color="primary"
-                    href="https://lumenthropy.com/"
-                  >
-                    Learn More
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-
-
-            {projects.map(project => (
-              <Grid item xs={12} sm={6} md={4} key={project._id}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={project.image}
-                    title={project.title}
-                  />
-                  <CardContent className={classes.cardContent}>
+            <Grid container spacing={4}>
+              {/* Stellar Global */}
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia sx={{ paddingTop: '56.25%' }} image={require('../Resources/stellarglobal.png')} title="Stellar Global" />
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      {project.title}
+                      Stellar Global
                     </Typography>
-                    <Typography>{project.description}</Typography>
+                    <Typography sx={{ color: '#b8c5d6' }}>
+                      A perfect source for the Stellar Network.
+                    </Typography>
+                    <Box sx={{ mt: 1 }}>
+                      <CommunityLink href="https://discord.gg/4FGf3UbuST" target="_blank" rel="noopener">
+                        <img src={discord} height={25} width={25} alt="discord" />
+                      </CommunityLink>
+                    </Box>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary" href={project.link}>
+                    <Button size="small" href="https://stellarglobal.community" target="_blank" rel="noopener" sx={{ color: '#00d4ff' }}>
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
-            ))}
 
+              {/* Stellar Developers Discord */}
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia sx={{ paddingTop: '56.25%' }} image={require('../Resources/stellar11.PNG')} title="Stellar Developers Discord" />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Stellar Developers Discord
+                    </Typography>
+                    <Typography sx={{ color: '#b8c5d6' }}>
+                      Stellar is an open financial network built for speed and efficiency.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" href="https://discord.gg/Y4AfXeneTA" target="_blank" rel="noopener" sx={{ color: '#00d4ff' }}>
+                      Join Discord
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
 
+              {/* The Stellar Podcast */}
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia sx={{ paddingTop: '56.25%' }} image={require('../Resources/stellarpodcast.PNG')} title="The Stellar Podcast" />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      The Stellar Podcast
+                    </Typography>
+                    <Typography sx={{ color: '#b8c5d6' }}>
+                      Check out the Stellar Podcast.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" href="https://podcast.stellar.org/" target="_blank" rel="noopener" sx={{ color: '#00d4ff' }}>
+                      Listen
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
 
+              {/* Public Node Discord */}
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia sx={{ paddingTop: '56.25%' }} image={require('../Resources/publicnode1.PNG')} title="Public Node Discord" />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Public Node Discord
+                    </Typography>
+                    <Typography sx={{ color: '#b8c5d6' }}>
+                      Join the Public Node Discord server.
+                    </Typography>
+                    <Box sx={{ mt: 1 }}>
+                      <CommunityLink href="https://keybase.io/team/public_node" target="_blank" rel="noopener">
+                        <img src={kicon} height={25} width={25} alt="keybase" />
+                      </CommunityLink>
+                    </Box>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" href="https://discord.gg/zTfTmqtdm9" target="_blank" rel="noopener" sx={{ color: '#00d4ff' }}>
+                      Join Discord
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
 
+              {/* EduNode Discord */}
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      EduNode Discord
+                    </Typography>
+                    <Typography sx={{ color: '#b8c5d6' }}>
+                      Join the EduNode community to learn, share, and grow together in the Web3 space.
+                    </Typography>
+                    <Box sx={{ mt: 1 }}>
+                      <CommunityLink href="https://discord.gg/qBJYQYUK92" target="_blank" rel="noopener">
+                        <img src={discord} height={25} width={25} alt="discord" />
+                      </CommunityLink>
+                    </Box>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" href="https://discord.gg/qBJYQYUK92" target="_blank" rel="noopener" sx={{ color: '#00d4ff' }}>
+                      Join Discord
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
 
+              {/* MozartPay Discord */}
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      MozartPay
+                    </Typography>
+                    <Typography sx={{ color: '#b8c5d6' }}>
+                      A payment platform built on the Stellar network.
+                    </Typography>
+                    <Box sx={{ mt: 1 }}>
+                      <CommunityLink href="https://discord.gg/4VrBFvxr5B" target="_blank" rel="noopener">
+                        <img src={discord} height={25} width={25} alt="discord" />
+                      </CommunityLink>
+                    </Box>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" href="https://discord.gg/4VrBFvxr5B" target="_blank" rel="noopener" sx={{ color: '#00d4ff' }}>
+                      Join Discord
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
 
-          </Grid>
+              {/* Lumenloop */}
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Lumenloop
+                    </Typography>
+                    <Typography sx={{ color: '#b8c5d6' }}>
+                      Exploring the Stellar ecosystem and building tools for the community.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" href="https://lumenloop.com" target="_blank" rel="noopener" sx={{ color: '#00d4ff' }}>
+                      Visit
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
 
-          <h4>Communities of enthusiasts around the world.</h4>
-          <br></br>
-          <p>To open the links, please click for half a second</p>
-          <div>
+              {/* Stellar Austria */}
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Stellar Austria
+                    </Typography>
+                    <Typography sx={{ color: '#b8c5d6' }}>
+                      The Austrian Stellar community hub.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" href="https://linktr.ee/stellaraustria" target="_blank" rel="noopener" sx={{ color: '#00d4ff' }}>
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
 
-          </div>
-          <br></br>
-          <br></br>
-          <p>
-            Would you like us to add your community? feel free to
-            contact us at hi@edunode.org
-          </p>
+              {/* Dynamic Projects */}
+              {projects.map(project => (
+                <Grid item xs={12} sm={6} md={4} key={project._id}>
+                  <GlassCard>
+                    <CardMedia sx={{ paddingTop: '56.25%' }} image={project.image} title={project.title} />
+                    <CardContent sx={{ flexGrow: 1 }}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {project.title}
+                      </Typography>
+                      <Typography sx={{ color: '#b8c5d6' }}>{project.description}</Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small" href={project.link} target="_blank" rel="noopener" sx={{ color: '#00d4ff' }}>
+                        Learn More
+                      </Button>
+                    </CardActions>
+                  </GlassCard>
+                </Grid>
+              ))}
+            </Grid>
+
+            <Box sx={{ mt: 8, textAlign: 'center' }}>
+              <Typography variant="h5" sx={{ color: '#ffffff', fontWeight: 600, mb: 2 }}>
+                Communities of enthusiasts around the world
+              </Typography>
+              <Typography variant="body1" sx={{ color: '#b8c5d6', mb: 3 }}>
+                Would you like us to add your community? Feel free to contact us at{' '}
+                <a href="mailto:hi@edunode.org" style={{ color: '#00d4ff', textDecoration: 'underline' }}>hi@edunode.org</a>.
+              </Typography>
+            </Box>
+          </Container>
         </main>
-      </div>
-
+      </PageContainer>
     </>
   );
 }

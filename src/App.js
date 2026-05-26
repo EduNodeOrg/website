@@ -4,6 +4,9 @@ import { Provider, connect } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { store } from "./store";
 import './App.css';
+import { CookieConsentProvider } from "./hooks/useCookieConsent";
+import CookieBanner from "./components/CookieConsent/Banner";
+import ConsentScripts from "./components/CookieConsent/ConsentScripts";
 import Home from "./components/Home";
 import AboutUs from "./components/aboutus";
 import Node from "./components/StellarNodes";
@@ -232,6 +235,9 @@ function App(props) {
   
   return (
     <Provider store={store}>
+      <CookieConsentProvider>
+        <ConsentScripts />
+        <CookieBanner />
       <Routes location={location} navigate={navigate}>
      
         <Route exact path="/" element={<Home />} />
@@ -419,10 +425,7 @@ function App(props) {
         <Route exact path="/unsubscribe" element={<EmailUnsubscribe />} />
         <Route path="/*" element={<ThemedRoutes />} />
       </Routes>
-
-
-
-
+      </CookieConsentProvider>
     </Provider>
 
   );

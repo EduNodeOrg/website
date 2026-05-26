@@ -31,83 +31,59 @@ class Topbar extends Component {
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav>
                   {/* <NavDropdown title={<Settings />} id="basic-nav-dropdown"> */}
-                    <NavDropdown.Item>
-                      <Link to="/" className="link">
-                        <LineStyle className="sidebarIcon" />
-                        Home
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/search" className="link">
-                        <SearchIcon className="sidebarIcon" />
-                        Search
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/account" className="link">
-                        <PermIdentity className="sidebarIcon" />
-                        Account
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/courses" className="link">
-                        <Storefront className="sidebarIcon" />
-                        Courses
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/feed" className="link">
-                        <DynamicFeed className="sidebarIcon" />
-                        Feed
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/certificate" className="link">
-                        <WorkOutline className="sidebarIcon" />
-                        Certificates
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/post" className="link">
-                        <PublishIcon className="sidebarIcon" />
-                        New Post
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/course" className="link">
-                        <PublishIcon className="sidebarIcon" />
-                        Add Course
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/chat" className="link">
-                        <SmartToyIcon className="sidebarIcon" />
-                        Chat
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <Link to="/historyChat" className="link">
-                        <SmartToyIcon className="sidebarIcon" />
-                        Chat History
-                      </Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
-                      <button
-                        onClick={() => {
-                          window.location.href = "mailto:hi@edunode.org?subject=Reports";
-                        }}
-                      >
-                        <Report className="sidebarIcon" />
-                        Reports
-                      </button>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>
+                    <Nav.Link as={Link} to="/" className="link">
+                      <LineStyle className="sidebarIcon" />
+                      Home
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/search" className="link">
+                      <SearchIcon className="sidebarIcon" />
+                      Search
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/account" className="link">
+                      <PermIdentity className="sidebarIcon" />
+                      Account
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/courses" className="link">
+                      <Storefront className="sidebarIcon" />
+                      Courses
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/feed" className="link">
+                      <DynamicFeed className="sidebarIcon" />
+                      Feed
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/certificate" className="link">
+                      <WorkOutline className="sidebarIcon" />
+                      Certificates
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/post" className="link">
+                      <PublishIcon className="sidebarIcon" />
+                      New Post
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/course" className="link">
+                      <PublishIcon className="sidebarIcon" />
+                      Add Course
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/chat" className="link">
+                      <SmartToyIcon className="sidebarIcon" />
+                      Chat
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/historyChat" className="link">
+                      <SmartToyIcon className="sidebarIcon" />
+                      Chat History
+                    </Nav.Link>
+                    <Nav.Link
+                      href="mailto:hi@edunode.org?subject=Reports"
+                      className="link"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <Report className="sidebarIcon" />
+                      Reports
+                    </Nav.Link>
+                    <div className="link" style={{ display: 'flex', alignItems: 'center', padding: '0.5rem 1rem' }}>
                       <Logout />
-                    </NavDropdown.Item>
-            
+                    </div>
 
-
-                      <NavDropdown.Divider />
+                    <NavDropdown.Divider />
                     {/* </NavDropdown> */}
                   </Nav>
                 </Navbar.Collapse>

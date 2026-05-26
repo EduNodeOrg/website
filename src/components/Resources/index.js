@@ -1,59 +1,60 @@
 import React from "react";
 import "./style.css";
-//import res from './res.png';
 import Button from '@mui/material/Button';
-//import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
-import {CardContent} from '@mui/material';
-import {CardMedia} from '@mui/material';
-//import CssBaseline from '@mui/material/CssBaseline';
+import { CardContent } from '@mui/material';
+import { CardMedia } from '@mui/material';
 import Grid from '@mui/material/Grid';
-//import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { makeStyles } from '@material-ui/core';
+import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-//import Link from '@mui/material/Link';
+import { styled } from '@mui/material/styles';
 import NavBar from "../NavBar";
 import kicon from "./keybaseicon.png"
-//import { Icon } from "@mui/material";
 import { Helmet } from 'react-helmet';
 
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
+const PageContainer = styled(Box)({
+  minHeight: '100vh',
+  background: 'linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)',
+});
+
+const GlassCard = styled(Card)({
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  background: 'rgba(255, 255, 255, 0.05)',
+  backdropFilter: 'blur(10px)',
+  border: '1px solid rgba(255, 255, 255, 0.1)',
+  borderRadius: '16px',
+  color: '#b8c5d6',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+  '&:hover': {
+    transform: 'translateY(-4px)',
+    boxShadow: '0 8px 32px rgba(123, 47, 247, 0.2)',
   },
-  heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+  '& .MuiTypography-h5': {
+    color: '#ffffff',
+    fontWeight: 600,
   },
-  heroButtons: {
-    marginTop: theme.spacing(4),
+  '& .MuiTypography-h4': {
+    color: '#ffffff',
+    fontWeight: 600,
   },
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-  card: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  cardMedia: {
-    paddingTop: '56.25%', // 16:9
-  },
-  cardContent: {
-    flexGrow: 1,
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
-  },
+});
+
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  textAlign: 'center',
+  marginBottom: theme.spacing(4),
+  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+  fontWeight: 'bold',
 }));
 
 
 function Resources() {
-  const classes = useStyles();
   const shareUrl = 'https://edunode.org/resources';
   const title = 'Resources';
  
@@ -73,59 +74,51 @@ function Resources() {
           />
         </Helmet>
       <NavBar />
-      <div className="resources">
+      <PageContainer>
         <main>
-          {/* Hero unit */}
-          <div className={classes.heroContent}>
+          <Box sx={{ pt: 8, pb: 6, textAlign: 'center' }}>
             <Container maxWidth="sm">
-              <Typography
-                component="h1"
-                variant="h4"
-                align="center"
-                color="textPrimary"
-                gutterBottom
-              >
-                Developer resources and community tools
+              <SectionTitle variant="h3">
+                Developer Resources
+              </SectionTitle>
+              <Typography variant="h6" sx={{ color: '#b8c5d6', mb: 4 }}>
+                Community tools, documentation, and learning resources for Web3 and Stellar developers.
               </Typography>
-              <Typography
-                variant="h5"
-                align="center"
-                color="textSecondary"
-                paragraph
-              ></Typography>
-              <div className={classes.heroButtons}>
-                <Grid container spacing={2} justify="center">
-                  <Grid item>
-                    <Button
-                      variant="contained"
-                      href="https://www.stellar.org/developers"
-                    >
-                      Learn more
-                    </Button>
-                  </Grid>
-                </Grid>
-              </div>
+              <Button
+                variant="contained"
+                href="https://www.stellar.org/developers"
+                target="_blank"
+                rel="noopener"
+                sx={{
+                  background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)',
+                  color: 'white',
+                  fontWeight: 'bold',
+                  borderRadius: '25px',
+                  px: 4,
+                  '&:hover': {
+                    background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+                  },
+                }}
+              >
+                Learn more
+              </Button>
             </Container>
-          </div>
-          <Container className={classes.cardGrid} maxWidth="md">
+          </Box>
+          <Container sx={{ pt: 4, pb: 8 }} maxWidth="lg">
             {/* End heo unit */}
             <Grid container spacing={4}>
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/stellarlogo1.png')}
                     title="Dev Google Group"
                   />
-                  <CardContent className={classes.cardContent}>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="h2"
-                    >
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2" sx={{ color: '#ffffff', fontWeight: 600 }}>
                       API Reference
                     </Typography>
-                    <Typography>
+                    <Typography sx={{ color: '#b8c5d6' }}>
                       Horizon is the client-facing API server for the
                       Stellar ecosystem. It acts as the interface
                       between Stellar Core and applications that want
@@ -135,23 +128,25 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
                       href="https://www.stellar.org/developers/reference/"
+                      target="_blank"
+                      rel="noopener"
+                      sx={{ color: '#00d4ff' }}
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/googlegroups1.png')}
                     title="Dev Google Group"
                   />
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -170,22 +165,22 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://groups.google.com/forum/#!forum/stellar-dev"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/ser.png')}
                     title="Stellar StackExchange"
                   />
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -202,22 +197,22 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://stellar.stackexchange.com/"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/gtr.png')}
                     title="GalacticTalk"
                   />
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -238,23 +233,23 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://groups.google.com/forum/#!forum/stellar-dev"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/stellarlogo1.png')}
                     title=" Dev Guides"
                   />
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -274,23 +269,23 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://www.stellar.org/developers/guides/"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/stexr.png')}
                     title="Stellar.Expert"
                   />
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -306,22 +301,22 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://stellar.expert/"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/stellarterm1.png')}
                     title="StellarTerm"
                   />
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -338,23 +333,23 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://stellarterm.com/"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/stellarlogo1.png')}
                     title="Stellar Laboratory"
                   />
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -372,23 +367,23 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://www.stellar.org/laboratory"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/kelp1.png')}
                     title="Kelp"
                   />
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -405,24 +400,24 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://kelpbot.io/"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/stellarbeat.png')}
                     title="Stellarbeat.io"
                   />
 
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -437,24 +432,24 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://stellarbeat.io/"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/astrograph.png')}
                     title="Astrograph"
                   />
 
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -472,24 +467,24 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://astrograph.io/"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/stellarguard.PNG')}
                     title="StellarGuard"
                   />
 
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -504,24 +499,24 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://stellarguard.me/"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/albedo.png')}
                     title="Albedo"
                   />
 
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -536,24 +531,24 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://albedo.link/"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/stellarquest.jpg')}
                     title="Stellar Quest"
                   />
 
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -568,23 +563,23 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://quest.stellar.org/"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/stellarlogo1.png')}
                     title="awesomestellar"
                   />
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -600,23 +595,23 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://www.awesomestellar.com/"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/lumenswap.jpeg')}
                     title="awesomestellar"
                   />
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -631,23 +626,23 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://lumenswap.io/"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/rabet.jpeg')}
                     title="rabet"
                   />
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -662,29 +657,31 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://rabet.io/"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
             </Grid>
           </Container>
 
-          <Container className={classes.cardGrid} maxWidth="md">
-            <h3>Courses</h3>
+          <Container sx={{ pt: 8, pb: 8 }} maxWidth="md">
+            <Typography variant="h4" sx={{ color: '#ffffff', fontWeight: 'bold', mb: 4, textAlign: 'center' }}>
+              Courses
+            </Typography>
             <Grid container spacing={4}>
               <Grid item xs={12} sm={6} md={4}>
                 <br></br>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('./lumen.png')}
                     title="Dev Google Group"
                   />
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -701,24 +698,24 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://www.lumenauts.com/courses/stellar-overview-course"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
                 <br></br>
-                <Card className={classes.card}>
+                <GlassCard>
                   <CardMedia
-                    className={classes.cardMedia}
+                    sx={{ paddingTop: '56.25%' }}
                     image={require('./coinbase2.png')}
                     title="Dev Google Group"
                   />
-                  <CardContent className={classes.cardContent}>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
                       gutterBottom
                       variant="h5"
@@ -735,13 +732,13 @@ function Resources() {
                   <CardActions>
                     <Button
                       size="small"
-                      color="primary"
+                      sx={{ color: '#00d4ff' }}
                       href="https://www.coinbase.com/earn/stellar"
                     >
                       Learn More
                     </Button>
                   </CardActions>
-                </Card>
+                </GlassCard>
               </Grid>
             </Grid>
           </Container>
@@ -749,9 +746,7 @@ function Resources() {
 
         
 
-        <br></br>
-        <br></br>
-      </div>
+      </PageContainer>
     </>
   );
 }

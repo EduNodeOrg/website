@@ -89,18 +89,18 @@ class EmailPreferences extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { email, auth } = this.props;
-    
-    // Load preferences when email changes or when auth user loads
-    if ((email && email !== prevProps.email) || 
-        (auth.user && auth.user.email && (!prevProps.auth.user || prevProps.auth.user.email !== auth.user.email))) {
-      this.props.getEmailPreferences(email || auth.user.email);
+    const { email, emailState, auth } = this.props;
+
+    // Load preferences when email string prop changes
+    if (email && email !== prevProps.email) {
+      this.props.getEmailPreferences(email);
     }
 
-    // Update local state when Redux state changes
-    if (prevProps.email.preferences !== this.props.email.preferences) {
+    // Update local state when Redux email preferences change
+    if (emailState?.preferences &&
+        emailState.preferences !== prevProps.emailState?.preferences) {
       this.setState({
-        preferences: this.props.email.preferences || this.state.preferences
+        preferences: emailState.preferences
       });
     }
   }
@@ -134,9 +134,9 @@ class EmailPreferences extends Component {
 
   render() {
     const { preferences, saving, error, success } = this.state;
-    const { email, email: emailState } = this.props;
+    const { emailState } = this.props;
 
-    const currentPreferences = emailState.preferences || preferences;
+    const currentPreferences = emailState?.preferences || preferences;
 
     return (
       <PreferencesCard>
@@ -232,7 +232,7 @@ class EmailPreferences extends Component {
             {saving ? <CircularProgress size={20} sx={{ color: '#ffffff' }} /> : 'Save Preferences'}
           </SaveButton>
           
-          {emailState.isUnsubscribed && (
+          {emailState?.isUnsubscribed && (
             <Typography variant="body2" sx={{ color: '#ff6b6b' }}>
               Note: You are currently unsubscribed from all emails
             </Typography>
@@ -244,7 +244,7 @@ class EmailPreferences extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  email: state.email,
+  emailState: state.email,
   auth: state.auth,
   error: state.error
 });

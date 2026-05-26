@@ -30,25 +30,24 @@ export default function Sidebar(Email) {
   async function Count(){
     const email = Email.props;
     if (!email) {
-      console.log("Email not found.");
       return;
     }
 
-    //console.log(props.auth);
-    console.log('email in side bar',email);
-   
+    try {
       const response = await axios.get(`https://edunode.herokuapp.com/api/certificates/notification/count/${email}`);
-      if (response.data.length > 0) {
+      if (response.data && response.data.length > 0) {
         setNotificationCount(response.data[0].count);
-        console.log('sidebar',response.data)
       }
-    } 
-  
+    } catch (err) {
+      // Silently ignore 404 or other errors from this endpoint
+      setNotificationCount(0);
+    }
+  }
 
   useEffect(() => {
-    console.log('boooooooo');
     Count();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">

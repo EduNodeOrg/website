@@ -3,6 +3,7 @@ import { MDBFooter, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import './style.css'
+import CookieSettingsButton from '../CookieConsent/CookieSettingsButton';
 
 
 export default function Footer() {
@@ -89,6 +90,9 @@ export default function Footer() {
                   <a href='/privacy' className='text-reset'>
                   Privacy Policy
                   </a>
+                </p>
+                <p>
+                  <CookieSettingsButton style={{ color: '#6c757d' }} />
                 </p>
                 <p>
                   <a href='/resources' className='text-reset'>

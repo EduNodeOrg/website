@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Container, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import { clearErrors } from "../../actions/errorActions";
@@ -8,12 +7,14 @@ import { Field, reduxForm } from "redux-form";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Alert from "@material-ui/lab/Alert";
-import CircularProgress from "@mui/material/CircularProgress"
+import CircularProgress from "@mui/material/CircularProgress";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import withRouter from '../../withRouter'
 import "./style.css";
 import NavBar from "../NavBar"
-import Grid from '@mui/material/Grid';
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { loadUser } from '../../actions/authActions';
 import axios from 'axios';
 
@@ -175,114 +176,81 @@ class VerifyEmail extends Component {
       );
     }
     if (isAuthenticated && !isVerified) {
-
       return (
         <div>
-          <div>
+          <NavBar />
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            minHeight="60vh"
+            px={2}
+          >
+            <Paper elevation={3} sx={{ maxWidth: 480, width: '100%', p: 4, borderRadius: 2 }}>
+              <Typography variant="h5" align="center" gutterBottom>
+                Verify your email
+              </Typography>
+              <Typography variant="body2" color="text.secondary" align="center" sx={{ mb: 3 }}>
+                We sent a verification code to your email. Check your inbox (and spam folder), then enter the code below.
+              </Typography>
 
-              <Grid container spacing={2}>
-                <Grid item={true} xs={7} sm={8.5} md={20}>
-                  <NavBar />
-                  <div>
-                    <div className="centered">
+              <Alert severity="info" sx={{ mb: 3 }}>
+                Didn’t receive it?{' '}
+                <Button
+                  size="small"
+                  onClick={this.resendEmail}
+                  sx={{ textTransform: 'none', fontWeight: 600, p: 0, minWidth: 'auto', verticalAlign: 'baseline' }}
+                >
+                  Resend code
+                </Button>
+              </Alert>
 
-                    </div>
-                    <div className="centered">
+              <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+                <Box display="flex" flexDirection="column" gap={2}>
+                  <Field
+                    component={this.renderTextField}
+                    value={this.state.confirmationCode}
+                    type="text"
+                    label="Confirmation Code"
+                    name="confirmationCode"
+                    id="code"
+                    fullWidth
+                  />
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    disabled={pristine || submitting || isLoading}
+                    fullWidth
+                    size="large"
+                  >
+                    {isLoading ? <CircularProgress size={24} color="inherit" /> : 'Verify'}
+                  </Button>
 
-                    </div>
-                    <div className="centered">
-                      <Container>
-                        <Row>
-                          <Alert className="text-center" severity="warning">
+                  {this.state.resendMsg && (
+                    <Alert severity="info">{this.state.resendMsg}</Alert>
+                  )}
+                  {this.state.verifySuccess && (
+                    <Alert severity="success">{this.state.verifySuccess}</Alert>
+                  )}
+                  {this.state.verifyError && (
+                    <Alert severity="error">{this.state.verifyError}</Alert>
+                  )}
+                  {this.props.error.msg.msg && (
+                    <Alert severity="error">{this.props.error.msg.msg}</Alert>
+                  )}
+                </Box>
+              </form>
 
-                            We have sent a verification a code to your email
-                            , please check your inbox (or
-                            in spam folder) and enter the code below to verify your account or
-                            click{" "}
-                            <Button onClick={this.resendEmail} type="submit">
-                              <b>here</b>
-                            </Button>{" "}
-                            if you would like us to resend the email.{" "}
-                          </Alert>
-                          <br></br>
-                          <br></br>
-
-                          <form id="form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                            <div>
-                              <Field
-                                component={this.renderTextField}
-                                value={this.state.confirmationCode}
-                                type="text"
-                                label="Confirmation Code"
-                                name="confirmationCode"
-                                id="code"
-                                style={{ width: '350px' }}
-                              />
-                            </div>
-                            <div>
-                              <Button
-                                variant="contained"
-                                id="button"
-                                type="submit"
-                                disabled={pristine || submitting}
-                                style={{ width: '350px' }}
-                              >
-                                Verify
-                              </Button>
-                            </div>
-                            {this.state.resendMsg && (
-                              <Alert severity="info" style={{ marginTop: '16px' }}>
-                                {this.state.resendMsg}
-                              </Alert>
-                            )}
-                            {this.state.verifySuccess && (
-                              <Alert severity="success" style={{ marginTop: '16px' }}>
-                                {this.state.verifySuccess}
-                              </Alert>
-                            )}
-                            {this.state.verifyError && (
-                              <Alert severity="error" style={{ marginTop: '16px' }}>
-                                {this.state.verifyError}
-                              </Alert>
-                            )}
-                            {this.props.error.msg.msg && (
-                              <Alert severity="error" style={{ marginTop: '16px' }}>
-                                {this.props.error.msg.msg}
-                              </Alert>
-                            )}
-                          </form>
-                        </Row>
-
-
-                      </Container>
-                    </div>
-                  </div>
-
-                </Grid>
-
-
-
-
-
-
-
-              </Grid>
-              < br />
-              < br />
-              < br />
-              < br />
-              < br />
-              < br />
-              < br />< br />
-              < br />
-              < br />
-              < br />
-              < br />
-              
-            
-          </div>
-          < br />
-
+              <Box textAlign="center" mt={3}>
+                <Typography variant="body2">
+                  <Link to="/" style={{ color: 'inherit' }}>
+                    Return to Home
+                  </Link>
+                </Typography>
+              </Box>
+            </Paper>
+          </Box>
         </div>
       );
     }

@@ -4,7 +4,7 @@ import withRouter from '../../withRouter';
 import { reduxForm } from "redux-form";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { TextField, Button, Typography, Container, Card, CardContent, Avatar } from '@mui/material';
+import { TextField, Button, Typography, Container, Card, CardContent, Avatar, Alert } from '@mui/material';
 import PropTypes from 'prop-types'
 import axios from 'axios';
 import { Navigate } from "react-router-dom";
@@ -13,6 +13,7 @@ import { styled } from '@mui/material/styles';
 import ImageUploading from "react-images-uploading";
 import ModernNavbar from '../Dashboard/layout/ModernNavbar';
 import EmailPreferences from '../EmailPreferences';
+import MembershipManagement from './MembershipManagement';
 
 
 // Modern styled components matching dashboard theme
@@ -212,7 +213,16 @@ class Account extends Component {
       isLoading: false,
       errors: {},
       isUpdated: false,
-      user: {},
+      user: {
+        name: '',
+        age: '',
+        bio: '',
+        university: '',
+        location: '',
+        images: '',
+        preferences: [],
+        skills: [],
+      },
       file: '',
       imagePreviewUrl: 'https://github.com/OlgaKoplik/CodePen/blob/master/profile.jpg?raw=true',
       images: [],
@@ -276,8 +286,9 @@ class Account extends Component {
     axios.get(`https://edunode.herokuapp.com/api/emaillogin/user/${email}`)
       .then(response => {
         const data = response.data;
-        this.setState({ user: data }, () => {
-        });
+        this.setState(prevState => ({
+          user: { ...prevState.user, ...data }
+        }));
       })
       .catch(error => {
         console.error(error);
@@ -348,10 +359,14 @@ class Account extends Component {
     }));
   };
 
-  // handleLocationChange = (event, newValue) => {
-  //   this.setState({ location: newValue ? newValue.label : null  });
-  //   console.log(newValue);
-  // };
+  handleLocationChange = (event) => {
+    this.setState(prevState => ({
+      user: {
+        ...prevState.user,
+        location: event.target.value
+      }
+    }));
+  };
 
 
   componentDidUpdate(prevProps) {
@@ -389,15 +404,12 @@ class Account extends Component {
 
 
   onSubmit = async values => {
-
-    const imageStrings = this.state.images.map(image => image.data_url); // Extract the image data URLs from the state
-    const imagesJoin = imageStrings.join(','); // Convert the image data URLs to a single comma-separated string
-
+    const imageStrings = this.state.images.map(image => image.data_url);
+    const imagesJoin = imageStrings.join(',');
     const images = imagesJoin || this.state.user.images;
-
     const preferences = this.state.preferences;
     const skills = this.state.skills;
-    const { tags, email, specify ,specify2 } = this.state;
+    const { tags, email, specify, specify2 } = this.state;
     const formData = {
       name: this.state.user.name,
       university: this.state.user.university,
@@ -409,46 +421,24 @@ class Account extends Component {
       images: images
     };
     try {
-
-      axios.post('https://edunode.herokuapp.com/api/profile', formData)
-        .then(response => {
-          console.log(response.data);
-          this.setState({ isUpdated: true }); // set isUpdated to true if account is successfully updated
-        })
-        .catch(error => {
-          console.error(error);
-        });
-      axios.post('https://edunode.herokuapp.com/api/users/preferences', { preferences: [...tags, ...(specify ? [specify] : [])], email: email })
-        .then(response => {
-          console.log(response.data); // Log the response from the backend
-        })
-        .catch(error => {
-          console.error(error); // Log any errors that occur
-        });
-
-      axios.post('https://edunode.herokuapp.com/api/users/skills', { skills: [...skills, ...(specify2 ? [specify2] : [])], email: email })
-        .then(response => {
-          console.log(response.data); // Log the response from the backend
-        })
-        .catch(error => {
-          console.error(error); // Log any errors that occur
-        });
-
+      await axios.post('https://edunode.herokuapp.com/api/profile', formData);
+      this.setState({ isUpdated: true });
+      await axios.post('https://edunode.herokuapp.com/api/users/preferences', {
+        preferences: [...tags, ...(specify ? [specify] : [])],
+        email: email
+      });
+      await axios.post('https://edunode.herokuapp.com/api/users/skills', {
+        skills: [...skills, ...(specify2 ? [specify2] : [])],
+        email: email
+      });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
-    // create user object
-
-
   }
 
 
-  // handle form submission
-  onChangeImage = (imageList, addUpdateIndex) => {
-    // data for submit
-    console.log(imageList);
+  onChangeImage = (imageList) => {
     this.setState({ images: imageList });
-    console.log('image', this.state.images)
   };
   handleSpecifyChange = (event) => {
     this.setState({ specify: event.target.value });
@@ -555,7 +545,13 @@ class Account extends Component {
                   <CardContent>
                     <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
                       <ProfileAvatar
-                        src={user.images || imagePreviewUrl}
+                        src={
+                          (Array.isArray(user.images) && user.images.length > 0)
+                            ? user.images[0]
+                            : (typeof user.images === 'string' && user.images)
+                            ? user.images
+                            : imagePreviewUrl
+                        }
                         alt="Profile"
                         sx={{ mr: 3 }}
                       />
@@ -598,47 +594,46 @@ class Account extends Component {
                           <div className="upload__image-wrapper">
                             <button
                               style={{
-                                backgroundColor: "#007bff",
-                                color: "#fff",
-                                border: "none",
-                                borderRadius: "4px",
-                                padding: "5px 10px",
-                                fontSize: "1.2em",
-                                boxShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)",
-
+                                background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)',
+                                color: '#fff',
+                                border: 'none',
+                                borderRadius: '8px',
+                                padding: '8px 16px',
+                                fontSize: '1em',
+                                cursor: 'pointer',
+                                fontWeight: 500,
                               }}
-
                               onClick={onImageUpload}
                               {...dragProps}
                             >
                               Click or Drop here
                             </button>
                             &nbsp;
-
                             {imageList.map((image, index) => (
                               <div key={index} className="image-item">
                                 <img src={image.data_url} alt="" width="100" />
                                 <div className="image-item__btn-wrapper">
                                   <button
                                     style={{
-                                      backgroundColor: "#007bff",
-                                      color: "#fff",
-                                      border: "none",
-                                      borderRadius: "4px",
-                                      padding: "5px 10px",
-                                      fontSize: "1.2em",
-                                      boxShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)"
+                                      background: 'rgba(123, 47, 247, 0.6)',
+                                      color: '#fff',
+                                      border: 'none',
+                                      borderRadius: '6px',
+                                      padding: '4px 10px',
+                                      fontSize: '0.9em',
+                                      cursor: 'pointer',
+                                      marginRight: '4px',
                                     }}
                                     onClick={() => onImageUpdate(index)}>Update</button>
                                   <button
                                     style={{
-                                      backgroundColor: "#007bff",
-                                      color: "#fff",
-                                      border: "none",
-                                      borderRadius: "4px",
-                                      padding: "5px 10px",
-                                      fontSize: "1.2em",
-                                      boxShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)"
+                                      background: 'rgba(255, 68, 68, 0.6)',
+                                      color: '#fff',
+                                      border: 'none',
+                                      borderRadius: '6px',
+                                      padding: '4px 10px',
+                                      fontSize: '0.9em',
+                                      cursor: 'pointer',
                                     }}
                                     onClick={() => onImageRemove(index)}>Remove</button>
                                 </div>
@@ -650,8 +645,7 @@ class Account extends Component {
                       </ImageUploading>
 
                       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                        <br></br>
-                        <label>Full Name:</label>
+                        <Typography variant="body2" sx={{ color: '#b8c5d6', mt: 2, mb: 0.5 }}>Full Name</Typography>
                         <StyledTextField
                           name="name"
                           type="text"
@@ -660,7 +654,7 @@ class Account extends Component {
                           value={this.state.user.name}
                           onChange={this.handleNameChange}
                         />
-                        <label>Email:</label>
+                        <Typography variant="body2" sx={{ color: '#b8c5d6', mt: 2, mb: 0.5 }}>Email</Typography>
                         <StyledTextField
                           disabled
                           name="email"
@@ -669,7 +663,7 @@ class Account extends Component {
                           fullWidth
                           inputRef={(input) => (this.emailInput = input)}
                         />
-                        <label>Age:</label>
+                        <Typography variant="body2" sx={{ color: '#b8c5d6', mt: 2, mb: 0.5 }}>Age</Typography>
                         <StyledTextField
                           name="age"
                           type="number"
@@ -678,7 +672,7 @@ class Account extends Component {
                           value={user.age}
                           onChange={this.handleAgeChange}
                         />
-                        <label>Bio:</label>
+                        <Typography variant="body2" sx={{ color: '#b8c5d6', mt: 2, mb: 0.5 }}>Bio</Typography>
                         <StyledTextField
                           name="bio"
                           multiline
@@ -688,7 +682,7 @@ class Account extends Component {
                           value={user.bio}
                           onChange={this.handleBioChange}
                         />
-                        <label>University:</label>
+                        <Typography variant="body2" sx={{ color: '#b8c5d6', mt: 2, mb: 0.5 }}>University</Typography>
                         <StyledTextField
                           name="university"
                           type="text"
@@ -697,7 +691,7 @@ class Account extends Component {
                           value={user.university}
                           onChange={this.handleUniversityChange}
                         />
-                        <label>Location:</label>
+                        <Typography variant="body2" sx={{ color: '#b8c5d6', mt: 2, mb: 0.5 }}>Location</Typography>
                         <StyledTextField
                           name="location"
                           type="text"
@@ -706,7 +700,7 @@ class Account extends Component {
                           value={user.location}
                           onChange={this.handleLocationChange}
                         />
-                        <label>Preferences:</label>
+                        <Typography variant="body2" sx={{ color: '#b8c5d6', mt: 2, mb: 0.5 }}>Preferences</Typography>
 
                         <Select fullWidth id="tags" onChange={this.handleTagSelect} style={{ width: '100%' }}>
 
@@ -734,7 +728,7 @@ class Account extends Component {
 
                         {specifyField}
 
-                        <label>Skills:</label>
+                        <Typography variant="body2" sx={{ color: '#b8c5d6', mt: 2, mb: 0.5 }}>Skills</Typography>
 
                         <Select fullWidth id="skills" onChange={this.handleSkillsSelect} style={{ width: '100%' }}>
 
@@ -761,25 +755,28 @@ class Account extends Component {
                         </SelectedTagsContainer>
 
                         {specify}
-                        <br></br>
-                        <SubmitButton
+                        <Box sx={{ mt: 3 }}>
+                          <SubmitButton
                           type="submit"
                           variant="contained"
                         >
                           Update Profile
                         </SubmitButton>
+                        </Box>
                     </form>
-                  <br></br>
+                  <Box sx={{ mt: 2 }}>
                   {isUpdated && (
-                    <div style={{ backgroundColor: 'green', color: 'white', padding: '10px', borderRadius: "4px", }}>
+                    <Alert severity="success" sx={{ backgroundColor: 'rgba(46, 125, 50, 0.3)', color: '#69f0ae', border: '1px solid rgba(46, 125, 50, 0.5)' }}>
                       Account updated successfully!
-                    </div>
+                    </Alert>
                   )}
+                  </Box>
                 </Box>
               </CardContent>
             </AccountCard>
           </Grid>
           <Grid item xs={12} md={4}>
+            <MembershipManagement />
             <EmailPreferences email={this.props.auth.user.email} />
           </Grid>
         </Grid>
@@ -788,7 +785,6 @@ class Account extends Component {
     </DashboardContainer>
   );
 }
-
 }
 
 const countries = [

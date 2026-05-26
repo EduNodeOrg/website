@@ -143,7 +143,7 @@ const PricingCard = styled(Card)(({ theme }) => ({
   },
 }));
 
-function PricingContent() {
+function PricingContent({ embedded = false }) {
   const navigate = useNavigate();
   const token = useSelector((state) => state.auth.token);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -190,7 +190,7 @@ function PricingContent() {
   return (
     <>
       <CssBaseline />
-      <NavBar />
+      {!embedded && <NavBar />}
       <PricingContainer>
         <ContentContainer maxWidth="md" component="main">
           <SectionTitle
@@ -306,7 +306,7 @@ function PricingContent() {
           </Grid>
         </ContentContainer>
       </PricingContainer>
-      <Footer />
+      {!embedded && <Footer />}
     </>
   );
 }
