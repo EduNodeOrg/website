@@ -25,6 +25,7 @@ import creator from "./Articles/Web3/creator.png"
 import docker from "./docker1.png"
 import ipfs from "./ipfss.png"
 import postgres from "./postgres.png"
+import zkpimg from "./Articles/zkp_diagram.png"
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
     marginTop: theme.spacing(3),
@@ -203,7 +204,16 @@ const featuredPosts = [
     link: '/blog/postgresql',
     tags:['PostgreSQL']
   },
-   
+  {
+    title: 'Zero-Knowledge Proofs on the Stellar Network',
+    date: '27/05/2026',
+    description:
+      'Explore Zero-Knowledge Proofs on Stellar for enhanced privacy, scalability, and interoperability in financial applications.',
+    image: zkpimg,
+    imageText: 'Zero-Knowledge Proofs',
+    link: '/blog/zero-knowledge-proofs',
+    tags:['ZKP', 'Privacy', 'Stellar']
+  },
 ];
 
 
