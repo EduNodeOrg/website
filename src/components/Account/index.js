@@ -203,7 +203,7 @@ class Account extends Component {
       tags: auth.user && auth.user.preferences ? auth.user.preferences : [],
       skills: auth.user && auth.user.skills ? auth.user.skills : [],
       name: auth.user && auth.user.name ? auth.user.name : "",
-      email: auth.user.email ? auth.user.email : '',
+      email: auth.user && auth.user.email ? auth.user.email : '',
       preferences: auth.user && auth.user.preferences ? auth.user.preferences : [],
       age: auth.user && auth.user.age ? auth.user.age : "",
       bio: auth.user && auth.user.bio ? auth.user.bio : "",
@@ -495,7 +495,7 @@ class Account extends Component {
 
     if (!isAuthenticated) {
       return (
-        <Navigate to="/" />
+        <Navigate to="/login" />
       );
     }
 
