@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import NavBar from '../../NavBar';
-import sc from '../postgres.png';
-import one from '../11.png';
-import two from '../22.png';
-import three from '../33.png';
-import four from '../44.png';
-import five from '../55.png';
-import six from '../66.png';
+import sc from './postgres.png';
+import one from './11.png';
+import two from './22.png';
+import three from './33.png';
+import four from './44.png';
+import five from './55.png';
+import six from './66.png';
 import {
   FacebookShareCount,
   FacebookShareButton,
