@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../NavBar';
-import sc from '../../Dockerr.png';
+import sc from '../Dockerr.png';
 import {
   FacebookShareCount,
   FacebookShareButton,

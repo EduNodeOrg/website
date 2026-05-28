@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import NavBar from '../NavBar';
-import security from '../../cyber-security.png';
-import lobstr from '../../lobstr.png';
-import stellarguard from '../../stellarguard.png';
-import freighter from '../../freighter.PNG';
+import security from '../cyber-security.png';
+import lobstr from '../lobstr.png';
+import stellarguard from '../stellarguard.png';
+import freighter from '../freighter.PNG';
 import {
   FacebookShareCount,
   FacebookShareButton,

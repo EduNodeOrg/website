@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../NavBar';
-import sc from '../../IPFS.png';
+import sc from '../IPFS.png';
 import one from '../1.png';
 import two from '../2.png';
 import three from '../3.png';
