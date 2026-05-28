@@ -7,6 +7,8 @@
 [build.environment]
   NODE_VERSION = "18.16.0"
   NPM_FLAGS = "--legacy-peer-deps"
+  CI = "false"
+  GENERATE_SOURCEMAP = "false"
 
 [[redirects]]
   from = "/*"
