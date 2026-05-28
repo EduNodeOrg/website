@@ -1,2 +1,24 @@
-/* 
-  Access-Control-Allow-Origin: *
+/*
+  # Strict Transport Security — enforce HTTPS for 1 year, include subdomains
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # Clickjacking protection — only allow framing from same origin
+  X-Frame-Options: SAMEORIGIN
+
+  # MIME-type sniffing protection
+  X-Content-Type-Options: nosniff
+
+  # XSS filter (legacy browsers)
+  X-XSS-Protection: 1; mode=block
+
+  # Referrer policy — send origin only on same-origin requests
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Permissions policy — restrict access to sensitive browser APIs
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(self "https://www.paypal.com"), usb=(), accelerometer=(), gyroscope=()
+
+  # Content Security Policy — restrict script/style/font/image sources
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://apis.google.com https://accounts.google.com https://www.googletagmanager.com https://www.paypal.com https://use.fontawesome.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://use.fontawesome.com; font-src 'self' https://fonts.gstatic.com https://use.fontawesome.com; img-src 'self' data: https:; connect-src 'self' https://api.edunode.org https://www.paypal.com wss:; frame-src https://www.paypal.com; object-src 'none'; base-uri 'self'; form-action 'self'
+
+  # CORS — restrict to edunode.org and its app subdomain only
+  Access-Control-Allow-Origin: https://edunode.org

@@ -1,79 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="utf-8" data-rh="true" />
+  <title>EduNode</title>
 
-<title>EduNode</title> 
-  <meta name="title" 
-  content="EduNode"
-  data-rh="true"
-   
-/>
-
-<meta 
-name="description" 
-content="Your educational platform for becoming a blockchain developer." 
-data-rh="true"
-/>
-<meta charset="utf-8" data-rh="true" />
+  <!-- ── Primary Meta ──────────────────────────────────────────────────── -->
+  <meta name="title" content="EduNode" data-rh="true" />
+  <meta name="description" content="Your educational platform for becoming a blockchain developer." data-rh="true" />
   <meta name="viewport" content="width=device-width, initial-scale=1" data-rh="true" />
   <meta name="theme-color" content="#000000" />
+
+  <!-- ── Security Meta ─────────────────────────────────────────────────── -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://apis.google.com https://accounts.google.com https://www.googletagmanager.com https://www.paypal.com https://use.fontawesome.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://use.fontawesome.com; font-src 'self' https://fonts.gstatic.com https://use.fontawesome.com; img-src 'self' data: https:; connect-src 'self' https://api.edunode.org https://www.paypal.com wss:; frame-src https://www.paypal.com; object-src 'none'; base-uri 'self'; form-action 'self'" />
+
+  <!-- ── Canonical & Icons ─────────────────────────────────────────────── -->
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <link rel="canonical" href="https://edunode.org/"} />
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" data-rh="true">
-  <meta property="og:url" content="https://edunode.org/" data-rh="true">
-  <meta property="og:title" content="EduNode" data-rh="true">
-  <meta property="og:description" content="Your educational platform for becoming a blockchain developer" data-rh="true">
-  <meta property="og:image" content="public/en.png" data-rh="true"> 
-  <meta property="og:image" content="./en.png" data-rh="true"> 
-  <meta property="og:image" content="%PUBLIC_URL%/en.png" data-rh="true"> 
-  <!-- Twitter -->
-  <!-- <meta property="twitter:card" content="%PUBLIC_URL%/en.png"> -->
-  <meta property="twitter:card" content="%PUBLIC_URL%/en.png" data-rh="true">
-  <meta property="twitter:card" content="./en.png" data-rh="true">
-  <meta property="twitter:url" content="https://edunode.org/" data-rh="true">
-  <meta property="twitter:title" content="EduNode" data-rh="true">
-  <meta property="twitter:description" content="Your educational platform for becoming a blockchain developer" data-rh="true">
-  <meta property="twitter:image" content="./en.png" data-rh="true">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+  <link rel="canonical" href="https://edunode.org/" />
 
+  <!-- ── Open Graph ────────────────────────────────────────────────────── -->
+  <meta property="og:type" content="website" data-rh="true" />
+  <meta property="og:url" content="https://edunode.org/" data-rh="true" />
+  <meta property="og:title" content="EduNode" data-rh="true" />
+  <meta property="og:description" content="Your educational platform for becoming a blockchain developer" data-rh="true" />
+  <meta property="og:image" content="%PUBLIC_URL%/en.png" data-rh="true" />
 
-    <!-- Google  -->
-    <script
-    src="https://apis.google.com/js/platform.js" 
-    async
-    defer
-     ></script>
+  <!-- ── Twitter Card ──────────────────────────────────────────────────── -->
+  <meta property="twitter:card" content="summary_large_image" data-rh="true" />
+  <meta property="twitter:url" content="https://edunode.org/" data-rh="true" />
+  <meta property="twitter:title" content="EduNode" data-rh="true" />
+  <meta property="twitter:description" content="Your educational platform for becoming a blockchain developer" data-rh="true" />
+  <meta property="twitter:image" content="%PUBLIC_URL%/en.png" data-rh="true" />
 
+  <!-- ── Third-Party Scripts (with Subresource Integrity where available) -->
+
+  <!-- Socket.IO 4.3.2 — SRI enforced -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"
+    integrity="sha384-tj2WlIjHYEyQmjJpHzljbFeuNlzjawRI4FXnglkrsFi+MAZZeNtK7Ou6vSUaz8GI"
+    crossorigin="anonymous"></script>
+
+  <!-- Google Identity Services (Sign-In) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 
-  <!-- Google Analytics loader (initialization gated by consent in React app) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169884801-1"></script>  
+  <!-- Google APIs -->
+  <script src="https://apis.google.com/js/api.js" async defer></script>
 
+  <!-- Google Analytics — UA-169884801-1 (initialization gated by consent in React app) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169884801-1"></script>
 
+  <!-- PayPal SDK (production client-id) -->
   <script src="https://www.paypal.com/sdk/js?client-id=ATGaaTJ17vmzPdI1zAPk3zbb89Qb6VYmB09u3jGj8AnhiYRt8NvhcwhADSQR_S4172a002qwy0jUHKRA"></script>
 
-  <!-- Google APIs -->
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <script src="https://apis.google.com/js/api.js"></script>
+  <!-- PayPal SDK (vault/subscription client-id) -->
   <script src="https://www.paypal.com/sdk/js?client-id=ASqYFNJJ3gVy1CkJchOI1sAzqOjtlvnX1777MIxh7OEBRJislI51R-MzqPZ0mGJgqquxTpHlprJe4vSD&vault=true"></script>
 
-  <!-- Tawk.to script removed due to CORS errors -->
+  <!-- Stellar Freighter API 4.0.2 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-freighter-api/4.0.2/index.min.js" crossorigin="anonymous"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-freighter-api/4.0.2/index.min.js"></script>
-
-<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
-<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <!-- Font Awesome 5.15.4 (upgraded from 5.0.6 — security & bug fixes) — SRI enforced -->
+  <script
+    defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"
+    integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+    crossorigin="anonymous"></script>
 
 </head>
-
 <body>
-
-  </script>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
-
 </body>
-
 </html>

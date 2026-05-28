@@ -52,10 +52,15 @@ We take the security of EduNode's website and services extremely seriously. If y
 ## Security Features
 
 ### Application Security
-- End-to-end HTTPS encryption
-- Content Security Policy (CSP) implementation
-- Cross-Origin Resource Sharing (CORS) policy
-- Security headers (HSTS, X-Content-Type-Options, etc.)
+- End-to-end HTTPS encryption enforced via HSTS (`max-age=31536000; includeSubDomains; preload`)
+- Content Security Policy (CSP) — enforced via HTTP headers (`netlify.toml`, `_headers`) and `<meta>` fallback
+- Cross-Origin Resource Sharing (CORS) — restricted to `https://edunode.org` (wildcard `*` removed)
+- `X-Frame-Options: SAMEORIGIN` — clickjacking protection
+- `X-Content-Type-Options: nosniff` — MIME-type sniffing prevention
+- `Referrer-Policy: strict-origin-when-cross-origin` — privacy-preserving referrer control
+- `Permissions-Policy` — camera, microphone, geolocation, and USB access restricted
+- Subresource Integrity (SRI) on CDN-loaded scripts (Socket.IO, Font Awesome)
+- Font Awesome upgraded from 5.0.6 to 5.15.4 (security and bug fixes)
 - Rate limiting and brute force protection
 
 ### Data Protection
@@ -101,5 +106,5 @@ For security-related inquiries, please contact:
 - **Response Time**: Within 48 hours for initial response
 
 ---
-*Last Updated: August 21, 2025*
+*Last Updated: May 28, 2026*
 *This policy is reviewed quarterly and subject to change. Please check back regularly for updates.*
