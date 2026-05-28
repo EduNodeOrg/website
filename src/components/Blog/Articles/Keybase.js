@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../../NavBar';
+import profilePicImg from '../mepic.png';
 import kbt from './keybaseicon.png';
 import {
   FacebookShareCount,
@@ -40,7 +41,7 @@ export default class Keybase extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/What-is-Keybase';
     const title = 'What is Keybase and how to use it with Stellar?';
-    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    const profilePic = profilePicImg;
     
 
     return (

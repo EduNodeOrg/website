@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../../../NavBar';
+import profilePicImg from '../../mepic.png';
 import creator from './creator.png';
 import {
   FacebookShareCount,
@@ -40,7 +41,7 @@ export default class Web3 extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/the-web3-revolution';
     const title = 'The Web3 Revolution And The New Creator Economy';
-    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    const profilePic = profilePicImg;
 
     return (
       <div style={styles.page}>

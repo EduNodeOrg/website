@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../../NavBar';
+import profilePicImg from '../mepic.png';
 import issue from './issue.png';
 import {
   FacebookShareCount,
@@ -40,7 +41,7 @@ export default class Issue extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/How-to-issue';
     const title = 'How to issue assets on the Stellar Network';
-    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    const profilePic = profilePicImg;
     
 
     return (

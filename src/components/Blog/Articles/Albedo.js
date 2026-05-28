@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../../NavBar';
+import profilePicImg from '../mepic.png';
 import albedo from './albedo.png';
 import albedo1 from './albedo1.png';
 import albedo2 from './albedo2.png';
@@ -43,7 +44,7 @@ export default class Albedo extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/albedo-identity';
     const title = 'Identity verification with Albedo';
-    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    const profilePic = profilePicImg;
     
 
     return (

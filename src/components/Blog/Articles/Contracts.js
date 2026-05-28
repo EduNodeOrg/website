@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../../NavBar';
+import profilePicImg from '../mepic.png';
 import sc from '../smartcontract.png';
 import {
   FacebookShareCount,
@@ -40,7 +41,7 @@ export default class Contracts extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/smart-contracts';
     const title = 'What are Smart Contracts and how you can build them on Stellar?';
-    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    const profilePic = profilePicImg;
     
 
     return (

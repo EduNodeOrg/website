@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../../NavBar';
+import profilePicImg from '../mepic.png';
 import economics from './economics.png';
 import nodes from './nodes.PNG';
 import {
@@ -41,7 +42,7 @@ export default class Stellarnomics extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/stellarnomics';
     const title = 'Stellarnomics: Understanding the Stellar Network Economics';
-    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    const profilePic = profilePicImg;
     
 
     return (

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../../../NavBar';
+import profilePicImg from '../../mepic.png';
 import suave from './stellarglobal.png';
 import tag from './tag.png';
 import lite from './lite.png';
@@ -42,7 +43,7 @@ export default class Blockchain extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/learn-about-blockchain';
     const title = 'Workshop: Learn about Blockchain and how to apply it to your day-to-day business life';
-    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    const profilePic = profilePicImg;
 
     return (
       <div style={styles.page}>

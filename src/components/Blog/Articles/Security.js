@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../../NavBar';
+import profilePicImg from '../mepic.png';
 import security from '../cyber-security.png';
 import lobstr from '../lobstr.png';
 import stellarguard from '../stellarguard.png';
@@ -43,7 +44,7 @@ export default class Security extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/security-tools';
     const title = 'How to keep your lumens safe | Tips and security tools';
-    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    const profilePic = profilePicImg;
     
 
     return (

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../../NavBar';
+import profilePicImg from '../mepic.png';
 import snft from './newnft1.png';
 import lite from './litemintlogo.png';
 import keybase from './keybaseicon.png';
@@ -44,7 +45,7 @@ export default class NFT extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/minting-nfts';
     const title = 'What are NFTs and how to mint them using the Stellar Network?';
-    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    const profilePic = profilePicImg;
     
 
     return (

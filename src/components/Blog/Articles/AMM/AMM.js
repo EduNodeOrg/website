@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../../../NavBar';
+import profilePicImg from '../../mepic.png';
 import amm from './AMMs.png';
 import aqua from './aquaimg.png';
 import {
@@ -40,7 +41,7 @@ export default class AMM extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/automated-market-maker';
     const title = 'DeFi Explained: What is an Automated Market Maker?';
-    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    const profilePic = profilePicImg;
     const ammy = "https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/2JYSUKBZKJDLPAOVBQT2EH2IHI.png";
     const off = "https://media0.giphy.com/media/SEWEmCymjv8XDbsb8I/giphy.gif";
     const sc = "https://media0.giphy.com/media/idKeY3nvmdIsM/giphy.gif?cid=ecf05e47m4lxujqwiffgwaoopcey55b4lmhv4xtu24r1cev3&rid=giphy.gif&ct=g";

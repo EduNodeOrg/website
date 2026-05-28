@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../../NavBar';
+import profilePicImg from '../mepic.png';
 import zkpimg from './zkp_diagram.png';
 import {
   FacebookShareCount,
@@ -167,7 +168,7 @@ export default class ZKP extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/zero-knowledge-proofs';
     const title = 'Zero-Knowledge Proofs on the Stellar Network: The Future of Privacy';
-    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    const profilePic = profilePicImg;
 
     const useCases = [
       {

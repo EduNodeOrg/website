@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../../NavBar';
+import profilePicImg from '../mepic.png';
 import sc from './postgres.png';
 import one from './11.png';
 import two from './22.png';
@@ -46,7 +47,7 @@ export default class Postgresql extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/postgresql';
     const title = 'What is PostgreSQL and how you can use it?';
-    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    const profilePic = profilePicImg;
     
 
     return (
@@ -62,8 +63,8 @@ export default class Postgresql extends Component {
           <div style={styles.tag}>PostgreSQL · Blockchain · Database</div>
           <h1 style={styles.title}>{title}</h1>
           <div style={styles.meta}>
-            <img src={profilePic} style={styles.avatar} alt="Olvis Gil" />
-            <span><strong>Olvis Gil</strong> &nbsp;·&nbsp; EduNode &nbsp;·&nbsp; 5 min read</span>
+            <img src={profilePic} style={styles.avatar} alt="EduNode Team" />
+            <span><strong>EduNode Team</strong> &nbsp;·&nbsp; EduNode &nbsp;·&nbsp; 5 min read</span>
           </div>
           <hr style={styles.divider} />
           <div style={styles.body}>
@@ -113,10 +114,10 @@ export default class Postgresql extends Component {
             </div>
           </div>
           <div style={styles.authorCard}>
-            <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
+            <img src={profilePic} style={styles.authorAvatar} alt="EduNode Team" />
             <div>
-              <div style={styles.authorName}>Olvis Gil</div>
-              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Full-stack developer and database architect based in Vienna, Austria.</p>
+              <div style={styles.authorName}>EduNode Team</div>
+              <p style={styles.authorBio}>The EduNode editorial team — building Web3 education resources for developers and learners worldwide.</p>
             </div>
           </div>
         </div>
