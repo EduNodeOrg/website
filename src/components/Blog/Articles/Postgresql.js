@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../../NavBar';
-import profilePicImg from '../mepic.png';
+import profilePicImg from './edunode-logo.jpg';
 import sc from './postgres.png';
 import one from './11.png';
 import two from './22.png';
@@ -63,7 +63,7 @@ export default class Postgresql extends Component {
           <div style={styles.tag}>PostgreSQL · Blockchain · Database</div>
           <h1 style={styles.title}>{title}</h1>
           <div style={styles.meta}>
-            <img src={profilePic} style={styles.avatar} alt="EduNode Team" />
+            <img src={profilePic} style={styles.avatar} alt="EduNode Logo" />
             <span><strong>EduNode Team</strong> &nbsp;·&nbsp; EduNode &nbsp;·&nbsp; 5 min read</span>
           </div>
           <hr style={styles.divider} />
@@ -114,7 +114,7 @@ export default class Postgresql extends Component {
             </div>
           </div>
           <div style={styles.authorCard}>
-            <img src={profilePic} style={styles.authorAvatar} alt="EduNode Team" />
+            <img src={profilePic} style={styles.authorAvatar} alt="EduNode Logo" />
             <div>
               <div style={styles.authorName}>EduNode Team</div>
               <p style={styles.authorBio}>The EduNode editorial team — building Web3 education resources for developers and learners worldwide.</p>
