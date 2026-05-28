@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from '../NavBar';
+import NavBar from '../../NavBar';
 import albedo from './albedo.png';
 import albedo1 from './albedo1.png';
 import albedo2 from './albedo2.png';

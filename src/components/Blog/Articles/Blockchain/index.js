@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from '../../NavBar';
+import NavBar from '../../../NavBar';
 import suave from './stellarglobal.png';
 import tag from './tag.png';
 import lite from './lite.png';

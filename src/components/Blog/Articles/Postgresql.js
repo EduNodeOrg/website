@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from '../NavBar';
+import NavBar from '../../NavBar';
 import sc from '../postgres.png';
 import one from '../11.png';
 import two from '../22.png';

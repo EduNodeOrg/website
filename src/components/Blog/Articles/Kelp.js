@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from '../NavBar';
+import NavBar from '../../NavBar';
 import kelp from './sdf_stellar.png';
 import {
   FacebookShareCount,

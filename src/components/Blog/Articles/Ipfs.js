@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from '../NavBar';
+import NavBar from '../../NavBar';
 import sc from '../IPFS.png';
 import one from '../1.png';
 import two from '../2.png';

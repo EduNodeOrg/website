@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from '../NavBar';
+import NavBar from '../../NavBar';
 import economics from './economics.png';
 import nodes from './nodes.PNG';
 import {

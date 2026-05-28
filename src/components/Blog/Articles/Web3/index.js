@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from '../../NavBar';
+import NavBar from '../../../NavBar';
 import creator from './creator.png';
 import {
   FacebookShareCount,

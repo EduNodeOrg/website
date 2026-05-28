@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from '../NavBar';
+import NavBar from '../../NavBar';
 import snft from './newnft1.png';
 import lite from './litemintlogo.png';
 import keybase from './keybaseicon.png';
