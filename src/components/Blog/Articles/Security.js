@@ -1,439 +1,123 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Image, Card } from 'react-bootstrap';
-import NavBar from '../../NavBar';
-
-import security from '../cyber-security.png';
-import lobstr from '../lobstr.png';
-import stellarguard from '../stellarguard.png';
-import me from '../me.jpg';
-import freighter from '../freighter.PNG'
-import kicon from '../keybaseicon.png';
+import NavBar from '../NavBar';
+import security from '../../cyber-security.png';
+import lobstr from '../../lobstr.png';
+import stellarguard from '../../stellarguard.png';
+import freighter from '../../freighter.PNG';
 import {
   FacebookShareCount,
-  RedditShareCount,
   FacebookShareButton,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  VKShareButton,
-  TelegramShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
-  EmailShareButton,
-  TumblrShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  LineShareButton,
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
-  VKIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  RedditIcon,
-  TumblrIcon,
-  EmailIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
 } from 'react-share';
+import { Helmet } from 'react-helmet-async';
 
+const styles = {
+  page: { background: '#f8f9fc', minHeight: '100vh', fontFamily: "'Inter', 'Segoe UI', sans-serif" },
+  hero: { width: '100%', maxHeight: '420px', objectFit: 'cover', display: 'block' },
+  wrapper: { maxWidth: '780px', margin: '0 auto', padding: '40px 24px 80px' },
+  tag: { display: 'inline-block', background: 'linear-gradient(135deg, #6B48FF, #00C6FF)', color: '#fff', fontSize: '12px', fontWeight: '700', letterSpacing: '1.2px', textTransform: 'uppercase', padding: '4px 12px', borderRadius: '20px', marginBottom: '16px' },
+  title: { fontSize: '2.4rem', fontWeight: '800', lineHeight: '1.25', color: '#0d0d2b', marginBottom: '12px' },
+  meta: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px', color: '#666', fontSize: '14px' },
+  avatar: { width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #6B48FF' },
+  divider: { border: 'none', borderTop: '1px solid #e4e8f0', margin: '32px 0' },
+  body: { fontSize: '1.05rem', lineHeight: '1.85', color: '#2d2d3a' },
+  h4: { fontSize: '1.3rem', fontWeight: '700', color: '#0d0d2b', marginTop: '36px', marginBottom: '12px', paddingBottom: '6px', borderBottom: '3px solid #6B48FF', display: 'inline-block' },
+  callout: { background: 'linear-gradient(135deg, #f0ecff, #e8f7ff)', borderLeft: '4px solid #6B48FF', borderRadius: '8px', padding: '16px 20px', margin: '24px 0', fontSize: '1rem', color: '#2d2d3a', lineHeight: '1.7' },
+  inlineImg: { width: '100%', borderRadius: '12px', margin: '20px 0', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' },
+  codeImg: { width: '100%', borderRadius: '8px', margin: '16px 0', border: '1px solid #e4e8f0' },
+  shareSection: { marginTop: '40px', paddingTop: '24px', borderTop: '1px solid #e4e8f0' },
+  shareLabel: { fontSize: '13px', fontWeight: '600', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' },
+  shareButtons: { display: 'flex', gap: '10px', alignItems: 'center' },
+  authorCard: { display: 'flex', alignItems: 'center', gap: '20px', background: '#fff', border: '1px solid #e4e8f0', borderRadius: '16px', padding: '24px', marginTop: '48px', boxShadow: '0 4px 20px rgba(107,72,255,0.08)' },
+  authorAvatar: { width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #6B48FF', flexShrink: 0 },
+  authorName: { fontWeight: '700', fontSize: '1.1rem', color: '#0d0d2b', marginBottom: '4px' },
+  authorBio: { fontSize: '0.9rem', color: '#555', lineHeight: '1.5', margin: 0 },
+  refLink: { color: '#6B48FF', textDecoration: 'none', wordBreak: 'break-all' },
+};
 
-
-export default class Kelp extends Component {
+export default class Security extends Component {
   render() {
-    const shareUrl =
-      'https://edunode.netlify.com/blog/security-tools';
-    const title =
-      'How to keep your lumens safe | Tips and security tools';
-    const exampleImage = security;
+    const shareUrl = 'https://edunode.org/blog/security-tools';
+    const title = 'How to keep your lumens safe | Tips and security tools';
+    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    
 
     return (
-      <div>
+      <div style={styles.page}>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{title}</title>
+          <link rel="canonical" href={shareUrl} />
+        </Helmet>
         <NavBar />
-
-        <Container>
-          <h2>
-            How to keep your lumens safe | Tips and security tools
-          </h2>
-          <Image src={security} className="header-image" fluid />
-          <Row>
-            <Col xs={12} sm={8} className="main-section">
-              <p>
-                Trying to keep your assets safe from “bad actors” is
-                one of the main challenges that blockchain and
-                cryptocurrencies face right now. This is why it is
-                paramount, when dealing with cryptocurrencies, to
-                learn and use the best tools to keep your funds safe.
-              </p>
-
-              <p>
-                Lately, the community has been experiencing an
-                increasing amount of these “bad actors” who have been
-                trying to scam some members of the Stellar Community,
-                for this reason, I have created this blog where I lay
-                out some tips and security tools you can have in mind.
-              </p>
-              <p>
-                As the community grows and more companies and
-                individuals get aware of the network, there will be a
-                small minority of people that will try to steal your
-                Lumens. For example, a scammer might send you an
-                e-mail spoofing SDF or a company that you trust,
-                promising you a “stacking” or a “giveaway” offer. If
-                you receive an e-mail asking for your secret key in
-                order to claim lumens, it is certainly a scam.
-                Remember that the SDF will never ask for your secret
-                keys, always make sure to double-check the domain of
-                the Email sender.{' '}
-              </p>
-              <p>
-                Another way is by sending you “stroops” or small
-                amounts of lumens, with a link attached to the memo of
-                the transaction. Spoofing community members have also
-                been one of the ways bad actors try to steal your
-                funds by sending you messages via Discord or Keybase.
-                If you are using Discord, make sure to check the
-                user's profile and check that the user sending you the
-                message is the person they say they are.
-              </p>
-
-              <p>
-                <iframe
-                  src="https://giphy.com/embed/TjvSaA58qr9XbFyV5n"
-                  width="480"
-                  height="254"
-                  frameBorder="0"
-                  className="giphy-embed"
-                  allowFullScreen
-                  title="security animation"
-                ></iframe>
-              </p>
-
-              <p>
-                There are also some tips you can have in mind if you
-                are currently developing an application on Stellar.
-                For example: make sure to use always{' '}
-                <a href="https://letsencrypt.org/docs/certificates-for-localhost/">
-                  SSL for Localhost development
-                </a>{' '}
-                and make sure you use a password manager (like{' '}
-                <a href="https://www.lastpass.com/">Lastpass</a>
-                ). Using a hardware wallet is one of the best ways to
-                keep your lumens safe, I recommend you to use{' '}
-                <a href="https://www.ledger.com/start/">Ledger</a>,
-                which is a really easy-to-use hardware wallet.
-              </p>
-              <p> </p>
-              <br></br>
-              <h4>Custodial vs Non-Custodial Wallets</h4>
-              <p></p>
-              <p>
-                A Custodial wallet keeps your assets and sets measures
-                to keep your assets safe. If you are a beginner in
-                crypto, a Custodial Wallet will probably be the best
-                option for you (For example:{' '}
-                <a href="https://www.binance.com/">Binance</a>,
-                <a href="https://www.coinbase.com/">Coinbase</a>,
-                <a href="https://www.kraken.com/">Kraken</a>, etc).
-              </p>
-
-              <p>
-                If you are looking for a trusted and secure Custodial
-                Wallet, then LOBSTR is the right wallet for your.
-              </p>
-              <h4>LOBSTR Vault</h4>
-              <br></br>
-              <Image src={lobstr} fluid />
-              <p>
-                <a href="https://lobstr.co/">LOBSTR</a> allows you to
-                easily add security measures like multi-sig to your
-                stellar account. They offer a mobile app that can be
-                accessed from Google Play or from the Apple Store.
-              </p>
-              <h4>Freighter</h4>
-              <p>
-                If you care alot about security, it makes sense to
-                securely manage your assets using a Non-Custodial
-                wallet, this way you have absolute control over the
-                private key, and hence, your assets.
-              </p>
-              <p></p>
-              <p>
-                <a href="https://www.freighter.app/">Freighter </a>
-                is a non-custodial wallet developed by the Stellar
-                Development Foundation. It works similar to the way{' '}
-                <a href="albedo.link/">Albedo</a> works, and it allows
-                you to perform operations on the network, without
-                exposing your private keys. If you would like to learn
-                more about Albedo,{' '}
-                <a href="https://edunode.org/blog/albedo">here</a> you
-                can find a link to my previous blog.
-              </p>
-              <Image src={freighter} fluid />
-              <p>
-                Freighter is a non-custodial wallet extension that
-                enables you to sign Stellar transactions via your
-                browser. It's a safer alternative to copying and
-                pasting private keys for use with web applications.
-              </p>
-
-              <br></br>
-              <h4>StellarGuard</h4>
-              <p>
-                And lastly,{' '}
-                <a href="https://stellarguard.me/">StellarGuard </a>{' '}
-                provides a very easy to use Web platform where you can
-                add security to your day-to-day transactions by adding
-                multi-signature, and validation using an Authenticator
-                App.
-              </p>
-              <br></br>
-              <Image src={stellarguard} fluid />
-              <br></br>
-              <p>
-                StellarGuard uses the Stellar's built in
-                multi-signature technology to require a transaction to
-                be signed both by you and by StellarGuard before it is
-                considered valid.
-              </p>
-
-              <h4>Conclusion</h4>
-
-              <p>
-                I hope that you have enjoyed reading this blog post as
-                much as I enjoyed writting it, and I hope it was
-                helpful. Please keep in mind that this is not
-                investment advise and if you have any question, please
-                feel free to reach us on{' '}
-                <a href="https://discord.gg/MCCEv2DU">Discord</a> or
-                on{' '}
-                <a href="https://twitter.com/edunodeorg">Twitter</a>.{' '}
-              </p>
-              <p></p>
-              <br></br>
-              <h3>Resources</h3>
-
-              <p>
-                [1] Stellar | Security Guide - How To Protect Yourself
-                From Scammers:{' '}
-                <a href="https://www.stellar.org/blog/stellar-security-guide-protect-scammers">
-                  https://www.stellar.org/blog/stellar-security-guide-protect-scammers
-                </a>{' '}
-              </p>
-              <p>
-                [2] Albedo | a security-centric, developer-friendly,
-                and easy-to-use delegated signer for Stellar Network
-                From Scammers:{' '}
-                <a href="https://stellar.expert/blog/introducing-albedo-delegated-signer">
-                  https://stellar.expert/blog/introducing-albedo-delegated-signer
-                </a>{' '}
-              </p>
-              <p>
-                [3] Ledger | The original hardware wallet. Easily
-                start your crypto journey: buy crypto, secure your
-                assets and manage them in one single-app:
-                <a href="https://www.ledger.com/">
-                  https://ledger.com/
-                </a>{' '}
-              </p>
-              <p>
-                [4] freighter | A Stellar wallet for every website:
-                <a href="https://www.freighter.app/">
-                  https://www.freighter.app/
-                </a>{' '}
-              </p>
-              <br></br>
-              <br></br>
-            </Col>
-            <Col xs={12} sm={4} className="sidebar-section">
-              <Card style={{ width: '9rem' }}>
-                <Card.Img variant="top" src={me} />
-                <Card.Body>
-                  <Card.Title>Olvis Gil</Card.Title>
-                  <Card.Text>
-                    <p>
-                      Economist, Entrepreneur and self-taught
-                      Developer.
-                    </p>
-                  </Card.Text>
-                  <a href="https://keybase.io/olvis_experio">
-                    <img style={{ width: '25px' }} src={kicon} alt="keybase" />
-                  </a>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-          </Row>
-          <div className="Demo__container">
-            <div className="Demo__some-network">
-              <FacebookShareButton
-                url={shareUrl}
-                quote={title}
-                className="Demo__some-network__share-button"
-              >
-                <FacebookIcon size={32} round />
-              </FacebookShareButton>
-
-              <div>
-                <FacebookShareCount
-                  url={shareUrl}
-                  className="Demo__some-network__share-count"
-                >
-                  {(count) => count}
-                </FacebookShareCount>
-              </div>
+        <img src={security} style={styles.hero} alt="Stellar Security Tools" />
+        <div style={styles.wrapper}>
+          <div style={styles.tag}>Stellar · Security · Wallets</div>
+          <h1 style={styles.title}>{title}</h1>
+          <div style={styles.meta}>
+            <img src={profilePic} style={styles.avatar} alt="Olvis Gil" />
+            <span><strong>Olvis Gil</strong> &nbsp;·&nbsp; EduNode &nbsp;·&nbsp; 5 min read</span>
+          </div>
+          <hr style={styles.divider} />
+          <div style={styles.body}>
+            <p>
+              Security is the foundation of trust in any financial system — and blockchain is no different. In this guide, we cover the best practices and tools to keep your Stellar lumens (XLM) and other assets safe.
+            </p>
+            <div style={styles.callout}>
+              <strong>Golden rule:</strong> Not your keys, not your coins. The most important security principle in crypto is to control your own private keys. Never share them with anyone, and never store them online.
             </div>
-
-            <div className="Demo__some-network">
-              <FacebookMessengerShareButton
-                url={shareUrl}
-                appId="521270401588372"
-                className="Demo__some-network__share-button"
-              >
-                <FacebookMessengerIcon size={32} round />
-              </FacebookMessengerShareButton>
-            </div>
-
-            <div className="Demo__some-network">
-              <TwitterShareButton
-                url={shareUrl}
-                title={title}
-                className="Demo__some-network__share-button"
-              >
-                <TwitterIcon size={32} round />
-              </TwitterShareButton>
-
-              <div className="Demo__some-network__share-count">
-                &nbsp;
-              </div>
-            </div>
-
-            <div className="Demo__some-network">
-              <TelegramShareButton
-                url={shareUrl}
-                title={title}
-                className="Demo__some-network__share-button"
-              >
-                <TelegramIcon size={32} round />
-              </TelegramShareButton>
-
-              <div className="Demo__some-network__share-count">
-                &nbsp;
-              </div>
-            </div>
-
-            <div className="Demo__some-network">
-              <WhatsappShareButton
-                url={shareUrl}
-                title={title}
-                separator=":: "
-                className="Demo__some-network__share-button"
-              >
-                <WhatsappIcon size={32} round />
-              </WhatsappShareButton>
-
-              <div className="Demo__some-network__share-count">
-                &nbsp;
-              </div>
-            </div>
-
-            <div className="Demo__some-network">
-              <LinkedinShareButton
-                url={shareUrl}
-                className="Demo__some-network__share-button"
-              >
-                <LinkedinIcon size={32} round />
-              </LinkedinShareButton>
-            </div>
-
-            <div className="Demo__some-network">
-              <RedditShareButton
-                url={shareUrl}
-                title={title}
-                windowWidth={660}
-                windowHeight={460}
-                className="Demo__some-network__share-button"
-              >
-                <RedditIcon size={32} round />
-              </RedditShareButton>
-
-              <div>
-                <RedditShareCount
-                  url={shareUrl}
-                  className="Demo__some-network__share-count"
-                />
-              </div>
-            </div>
-
-            <div className="Demo__some-network">
-              <TumblrShareButton
-                url={shareUrl}
-                title={title}
-                className="Demo__some-network__share-button"
-              >
-                <TumblrIcon size={32} round />
-              </TumblrShareButton>
-            </div>
-
-            <div className="Demo__some-network">
-              <EmailShareButton
-                url={shareUrl}
-                subject={title}
-                body="body"
-                className="Demo__some-network__share-button"
-              >
-                <EmailIcon size={32} round />
-              </EmailShareButton>
-            </div>
-            <div className="Demo__some-network">
-              <ViberShareButton
-                url={shareUrl}
-                title={title}
-                className="Demo__some-network__share-button"
-              >
-                <ViberIcon size={32} round />
-              </ViberShareButton>
-            </div>
-
-            <div className="Demo__some-network">
-              <WorkplaceShareButton
-                url={shareUrl}
-                quote={title}
-                className="Demo__some-network__share-button"
-              >
-                <WorkplaceIcon size={32} round />
-              </WorkplaceShareButton>
-            </div>
-
-            <div className="Demo__some-network">
-              <LineShareButton
-                url={shareUrl}
-                title={title}
-                className="Demo__some-network__share-button"
-              >
-                <LineIcon size={32} round />
-              </LineShareButton>
-            </div>
-
-            <div className="Demo__some-network">
-              <VKShareButton
-                url={shareUrl}
-                image={`${String(window.location)}/${exampleImage}`}
-                className="Demo__some-network__share-button"
-              >
-                <VKIcon size={32} round />
-              </VKShareButton>
+            <h4 style={styles.h4}>Choose the Right Wallet</h4>
+            <p>
+              Your wallet is your gateway to the Stellar network. There are several excellent options, each with different security trade-offs:
+            </p>
+            <img src={freighter} style={styles.inlineImg} alt="Freighter wallet" />
+            <p>
+              <strong>Freighter</strong> is a browser extension wallet developed by the Stellar Development Foundation. It is open-source, non-custodial, and integrates seamlessly with Soroban dApps.
+            </p>
+            <img src={lobstr} style={styles.inlineImg} alt="LOBSTR wallet" />
+            <p>
+              <strong>LOBSTR</strong> is a mobile-first Stellar wallet known for its clean interface and built-in exchange. It supports multi-signature accounts and is available on iOS and Android.
+            </p>
+            <h4 style={styles.h4}>Enable Multi-Signature</h4>
+            <p>
+              Multi-signature (multisig) requires multiple private keys to authorize a transaction. This is one of the most effective ways to protect large holdings. Stellar's native multisig support allows you to require 2-of-3 or any combination of signers.
+            </p>
+            <img src={stellarguard} style={styles.inlineImg} alt="StellarGuard" />
+            <h4 style={styles.h4}>Best Practices</h4>
+            <p>
+              • Never share your secret key or seed phrase with anyone<br/>
+              • Use a hardware wallet for large holdings<br/>
+              • Enable two-factor authentication on all exchange accounts<br/>
+              • Verify URLs carefully before connecting your wallet<br/>
+              • Keep your software and wallet apps up to date<br/>
+              • Use a dedicated device for crypto transactions
+            </p>
+            <h4 style={styles.h4}>Resources</h4>
+            <p>[1] <a href="https://www.freighter.app" style={styles.refLink}>Freighter — Stellar Browser Wallet</a></p>
+            <p>[2] <a href="https://lobstr.co" style={styles.refLink}>LOBSTR — Stellar Mobile Wallet</a></p>
+            <p>[3] <a href="https://developers.stellar.org/docs/encyclopedia/signatures-multisig" style={styles.refLink}>Multisig on Stellar — Developer Docs</a></p>
+          </div>
+          <div style={styles.shareSection}>
+            <div style={styles.shareLabel}>Share this article</div>
+            <div style={styles.shareButtons}>
+              <FacebookShareButton url={shareUrl} quote={title}><FacebookIcon size={36} round /></FacebookShareButton>
+              <FacebookShareCount url={shareUrl}>{(count) => (count > 0 ? <span style={{ fontSize: '12px', color: '#888' }}>{count}</span> : null)}</FacebookShareCount>
+              <TwitterShareButton url={shareUrl} title={title}><TwitterIcon size={36} round /></TwitterShareButton>
+              <LinkedinShareButton url={shareUrl}><LinkedinIcon size={36} round /></LinkedinShareButton>
             </div>
           </div>
-        </Container>
-
-       
+          <div style={styles.authorCard}>
+            <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
+            <div>
+              <div style={styles.authorName}>Olvis Gil</div>
+              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Cybersecurity advocate and payment technology expert based in Vienna, Austria.</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

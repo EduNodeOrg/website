@@ -1,334 +1,120 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Image, Card } from 'react-bootstrap';
-import NavBar from '../../NavBar';
+import NavBar from '../NavBar';
 import snft from './newnft1.png';
 import lite from './litemintlogo.png';
-
-import me from '../me.jpg';
 import keybase from './keybaseicon.png';
 import nft1 from './nft1.jpg';
 import jack from './jackfirsttweet.jpeg';
-import Typography from '@material-ui/core/Typography';
 import {
   FacebookShareCount,
-  RedditShareCount,
   FacebookShareButton,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  VKShareButton,
-  TelegramShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
-  EmailShareButton,
-  TumblrShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  LineShareButton,
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
-  VKIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  RedditIcon,
-  TumblrIcon,
-  EmailIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
 } from 'react-share';
-import { Helmet } from 'react-helmet-async'
-import './style.css';
+import { Helmet } from 'react-helmet-async';
 
-export default class Issue extends Component {
-  constructor(props) {
-    super(props);
+const styles = {
+  page: { background: '#f8f9fc', minHeight: '100vh', fontFamily: "'Inter', 'Segoe UI', sans-serif" },
+  hero: { width: '100%', maxHeight: '420px', objectFit: 'cover', display: 'block' },
+  wrapper: { maxWidth: '780px', margin: '0 auto', padding: '40px 24px 80px' },
+  tag: { display: 'inline-block', background: 'linear-gradient(135deg, #6B48FF, #00C6FF)', color: '#fff', fontSize: '12px', fontWeight: '700', letterSpacing: '1.2px', textTransform: 'uppercase', padding: '4px 12px', borderRadius: '20px', marginBottom: '16px' },
+  title: { fontSize: '2.4rem', fontWeight: '800', lineHeight: '1.25', color: '#0d0d2b', marginBottom: '12px' },
+  meta: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px', color: '#666', fontSize: '14px' },
+  avatar: { width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #6B48FF' },
+  divider: { border: 'none', borderTop: '1px solid #e4e8f0', margin: '32px 0' },
+  body: { fontSize: '1.05rem', lineHeight: '1.85', color: '#2d2d3a' },
+  h4: { fontSize: '1.3rem', fontWeight: '700', color: '#0d0d2b', marginTop: '36px', marginBottom: '12px', paddingBottom: '6px', borderBottom: '3px solid #6B48FF', display: 'inline-block' },
+  callout: { background: 'linear-gradient(135deg, #f0ecff, #e8f7ff)', borderLeft: '4px solid #6B48FF', borderRadius: '8px', padding: '16px 20px', margin: '24px 0', fontSize: '1rem', color: '#2d2d3a', lineHeight: '1.7' },
+  inlineImg: { width: '100%', borderRadius: '12px', margin: '20px 0', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' },
+  codeImg: { width: '100%', borderRadius: '8px', margin: '16px 0', border: '1px solid #e4e8f0' },
+  shareSection: { marginTop: '40px', paddingTop: '24px', borderTop: '1px solid #e4e8f0' },
+  shareLabel: { fontSize: '13px', fontWeight: '600', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' },
+  shareButtons: { display: 'flex', gap: '10px', alignItems: 'center' },
+  authorCard: { display: 'flex', alignItems: 'center', gap: '20px', background: '#fff', border: '1px solid #e4e8f0', borderRadius: '16px', padding: '24px', marginTop: '48px', boxShadow: '0 4px 20px rgba(107,72,255,0.08)' },
+  authorAvatar: { width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #6B48FF', flexShrink: 0 },
+  authorName: { fontWeight: '700', fontSize: '1.1rem', color: '#0d0d2b', marginBottom: '4px' },
+  authorBio: { fontSize: '0.9rem', color: '#555', lineHeight: '1.5', margin: 0 },
+  refLink: { color: '#6B48FF', textDecoration: 'none', wordBreak: 'break-all' },
+};
 
-    this.state = {
-      isAuthenticated: null,
-    };
-  }
+export default class NFT extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/minting-nfts';
     const title = 'What are NFTs and how to mint them using the Stellar Network?';
-    const exampleImage = snft;
+    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    
 
     return (
-      <div>
+      <div style={styles.page}>
         <Helmet>
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
-          
-          <meta
-            name="description"
-            content="Have you ever of NFTs? I would say probably, it is right now all over the internet"
-          />
         </Helmet>
         <NavBar />
-
-        <Image src={snft} className="header-image" fluid />
-        <Container>
-        <Typography
-                component="h1"
-                variant="h4"
-                align="left"
-                color="textPrimary"
-                gutterBottom
-              >
-                What are NFTs and how to mint them using the Stellar Network?
-              </Typography>
-      
-
-          <Row>
-          <b></b>
-         <b></b>
-         <b></b>
-         <b></b>
-            <Col xs={12} sm={8} className="main-section">
-              <p>
-              Have you ever heard of "NFTs"? I would say probably, it is right now all over the internet, and it is one of the most fascinating things that happened to the blockchain/crypto industry.</p>
-              <p>
-              The abbreviation "NFT" stands for "non-fungible token", and it represents a unit of data stored on a digital ledger, which is normally referred to as a blockchain. This ledger can be used as proof that certifies the ownership of a digital asset.</p>
-              
-              <p>
-              This ability makes NFTs particularly attractive for artists looking into finding a market for their artworks because it allows them to prove and track the ownership of their paintings.</p>
-              <Image src={nft1} fluid />
-              <p>By pikisuperstar</p>
-              <p>
-              Almost everything can be turned into an NFT (paintings, gifs, images, music, etc), and there is currently a huge interest from companies, artists, and art collectors looking into creating, buying, and selling those amazing collectibles.</p>
-              <h4>But then, what are fungible tokens?</h4>
-<p>You might be wondering if NFTs are non-fungible, then which type of assets are fungible tokens?, regular fiat money is fungible, shares of a company are fungible (there is no difference between a share of the company and another share of the same company), and even Stellar Lumens are fungible (1 Lumen = 1 Lumen).</p>              
-             <h4>Origins</h4>
-              <p>
-              NFTs are all over the place, and it is being used today to help artists find customers for their artworks. In June 2017, a crypto art project called CryptoPunks was created (by Larva Labs) and is considered as an inspiration for the ERC-721 standard for issuing NFTs on the Ethereum blockchain. Then in November 2017, CryptoKittes was released (by Dapper Labs), going immediately viral, and making them be known worldwide for their easy-to-use platform which allows anyone to easily buy, sell and breed virtual cats.</p>
-        
-              <p>More recently, big names like Jack Dorsey, Elon Musk, Mark Cuban, and Gary Vaynerchuk have jumped into the NFT rabbit hole. For example, Twitter CEO Jack Dorsey's first tweet sold for $2.9 million.
-</p>
-
-
-<Image src={jack} fluid />
-<h4>How to mint your own NFTs using the Stellar Network</h4>
-<Image src={lite} fluid />
-<p>If you are looking for an easy-to-use platform for issuing your own NFTs on Stellar, <a href="https://litemint.com/">Litemint </a> is the platform you need. It leverages the advantages of the Stellar Network, allowing the issuance of NFTs in a fast, secure, and with near-zero fees.</p>
-
-<p>In the case that you are a bit more technical and are interested in creating an NFT on the Stellar Network, feel free to check out the following <a href="https://www.reddit.com/r/Stellar/comments/m9mklm/stepbystep_creating_an_nft_on_stellar_network/">step-by-step guide </a> written by the Reddit user /u/citystates, about how you can easily create an NFT on Stellar using the Stellar Laboratory.</p>
-<p>I hope that you enjoyed this blog post, if you liked it, please share it with your friends, and feel free to join us on <a href="https://discord.gg/Tv5Y5JW9fq">Discord </a>.</p>
-
-
-<h4>Resources</h4>
-<p> [1] NFTs on Stellar{' '}
-                <a href="https://www.stellar.org/events/nfts-on-stellar">
-                https://www.stellar.org/events/nfts-on-stellar
-                </a>{' '}
-              </p>
-              <p> [2] Tradable, Breedable, Non-Fungible Tokens Now Available on Stellar with Litemint{' '}
-                <a href="https://blog.litemint.com/tradable-breedable-non-fungible-tokens-now-available-on-stellar-with-litemint/">
-                https://blog.litemint.com/tradable-breedable-non-fungible-tokens-now-available-on-stellar-with-litemint/
-                </a>{' '}
-              </p>
-              <p> [3] This ethereum-based project could change how we think about digital art{' '}
-                <a href="https://mashable.com/2017/06/16/cryptopunks-ethereum-art-collectibles/">
-                https://mashable.com/2017/06/16/cryptopunks-ethereum-art-collectibles
-                </a>{' '}
-              </p>
-              <p> [4] Twitter CEO Jack Dorsey’s first tweet NFT sells for $2.9 million{' '}
-                <a href="https://www.cnbc.com/2021/03/22/twitter-ceo-jack-dorseys-first-tweet-nft-sells-for-2point9-million.html">
-                https://www.cnbc.com/2021/03/22/twitter-ceo-jack-dorseys-first-tweet-nft-sells-for-2point9-million.html
-                </a>{' '}
-              </p>
-              <p> [5] Step-By-Step: Creating an NFT on Stellar Network{' '}
-                <a href="https://www.reddit.com/r/Stellar/comments/m9mklm/stepbystep_creating_an_nft_on_stellar_network/">
-                https://www.reddit.com/r/Stellar/comments/m9mklm/stepbystep_creating_an_nft_on_stellar_network/
-                </a>{' '}
-              </p>
-              <div className="Demo__container">
-                <div className="Demo__some-network">
-                  <FacebookShareButton
-                    url={shareUrl}
-                    quote={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <FacebookIcon size={32} round />
-                  </FacebookShareButton>
-
-                  <div>
-                    <FacebookShareCount
-                      url={shareUrl}
-                      className="Demo__some-network__share-count"
-                    >
-                      {(count) => count}
-                    </FacebookShareCount>
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <FacebookMessengerShareButton
-                    url={shareUrl}
-                    appId="521270401588372"
-                    className="Demo__some-network__share-button"
-                  >
-                    <FacebookMessengerIcon size={32} round />
-                  </FacebookMessengerShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TwitterShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TwitterIcon size={32} round />
-                  </TwitterShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TelegramShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TelegramIcon size={32} round />
-                  </TelegramShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <WhatsappShareButton
-                    url={shareUrl}
-                    title={title}
-                    separator=":: "
-                    className="Demo__some-network__share-button"
-                  >
-                    <WhatsappIcon size={32} round />
-                  </WhatsappShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <LinkedinShareButton
-                    url={shareUrl}
-                    className="Demo__some-network__share-button"
-                  >
-                    <LinkedinIcon size={32} round />
-                  </LinkedinShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <RedditShareButton
-                    url={shareUrl}
-                    title={title}
-                    windowWidth={660}
-                    windowHeight={460}
-                    className="Demo__some-network__share-button"
-                  >
-                    <RedditIcon size={32} round />
-                  </RedditShareButton>
-
-                  <div>
-                    <RedditShareCount
-                      url={shareUrl}
-                      className="Demo__some-network__share-count"
-                    />
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TumblrShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TumblrIcon size={32} round />
-                  </TumblrShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <EmailShareButton
-                    url={shareUrl}
-                    subject={title}
-                    body="body"
-                    className="Demo__some-network__share-button"
-                  >
-                    <EmailIcon size={32} round />
-                  </EmailShareButton>
-                </div>
-                <div className="Demo__some-network">
-                  <ViberShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <ViberIcon size={32} round />
-                  </ViberShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <WorkplaceShareButton
-                    url={shareUrl}
-                    quote={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <WorkplaceIcon size={32} round />
-                  </WorkplaceShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <LineShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <LineIcon size={32} round />
-                  </LineShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <VKShareButton
-                    url={shareUrl}
-                    image={`${String(
-                      window.location,
-                    )}/${exampleImage}`}
-                    className="Demo__some-network__share-button"
-                  >
-                    <VKIcon size={32} round />
-                  </VKShareButton>
-                </div>
-              </div>
-            </Col>
-            <Col xs={12} sm={4} className="sidebar-section">
-              <Card style={{ width: '9rem' }}>
-                <Card.Img variant="top" src={me} />
-                <Card.Body>
-                  <Card.Title>Olvis Gil</Card.Title>
-                  <Card.Text>
-                    <p>
-                      Founder at <a href="https://www.mozartpay.com/">
-mozartpay.com                </a> and <a href="https://edunode.org/">
-edunode.org                </a>
-                    </p>
-                  </Card.Text>
-                  <a href="https://keybase.io/olvis_experio">
-                    <img style={{ width: '25px' }} src={keybase} alt="keybase" />
-                  </a>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-        
+        <img src={snft} style={styles.hero} alt="NFTs on Stellar Network" />
+        <div style={styles.wrapper}>
+          <div style={styles.tag}>Stellar · NFTs · Litemint</div>
+          <h1 style={styles.title}>{title}</h1>
+          <div style={styles.meta}>
+            <img src={profilePic} style={styles.avatar} alt="Olvis Gil" />
+            <span><strong>Olvis Gil</strong> &nbsp;·&nbsp; EduNode &nbsp;·&nbsp; 5 min read</span>
+          </div>
+          <hr style={styles.divider} />
+          <div style={styles.body}>
+            <p>
+              Non-Fungible Tokens (NFTs) have taken the digital world by storm. But what exactly are they, and how can you mint your own on the Stellar Network? In this guide, we break it all down.
+            </p>
+            <div style={styles.callout}>
+              <strong>What is an NFT?</strong> An NFT (Non-Fungible Token) is a unique digital asset verified using blockchain technology. Unlike regular cryptocurrencies, each NFT is one-of-a-kind and cannot be replicated or exchanged on a like-for-like basis.
+            </div>
+            <h4 style={styles.h4}>Fungible vs Non-Fungible</h4>
+            <p>
+              A fungible asset is interchangeable — one dollar is worth the same as any other dollar. A non-fungible asset is unique — a specific painting by Picasso is not interchangeable with any other painting. NFTs bring this concept of uniqueness to the digital world.
+            </p>
+            <img src={nft1} style={styles.inlineImg} alt="NFT concept" />
+            <h4 style={styles.h4}>NFTs on Stellar</h4>
+            <p>
+              The Stellar network supports NFTs through its native asset issuance mechanism. By issuing an asset with a maximum supply of 1 and locking the issuing account, you create a truly unique, non-fungible token. This approach is simple, cost-effective, and leverages Stellar's fast settlement times.
+            </p>
+            <img src={jack} style={styles.inlineImg} alt="First tweet NFT" />
+            <h4 style={styles.h4}>Minting with Litemint</h4>
+            <p>
+              Litemint is one of the leading NFT marketplaces built on the Stellar network. It provides a user-friendly interface for minting, buying, and selling NFTs. You can visit their platform at <a href="https://litemint.com" style={styles.refLink}>litemint.com</a> to get started.
+            </p>
+            <img src={lite} style={styles.inlineImg} alt="Litemint marketplace" />
+            <h4 style={styles.h4}>Step-by-Step: Minting Your First NFT</h4>
+            <p>
+              1. Create a Stellar wallet (Freighter or Albedo)<br/>
+              2. Fund your account with XLM<br/>
+              3. Connect your wallet to Litemint<br/>
+              4. Upload your digital artwork<br/>
+              5. Set your price and mint!
+            </p>
+            <h4 style={styles.h4}>Resources</h4>
+            <p>[1] <a href="https://litemint.com" style={styles.refLink}>Litemint — NFT Marketplace on Stellar</a></p>
+            <p>[2] <a href="https://developers.stellar.org/docs/issuing-assets/anatomy-of-an-asset" style={styles.refLink}>Anatomy of an Asset — Stellar Developers</a></p>
+          </div>
+          <div style={styles.shareSection}>
+            <div style={styles.shareLabel}>Share this article</div>
+            <div style={styles.shareButtons}>
+              <FacebookShareButton url={shareUrl} quote={title}><FacebookIcon size={36} round /></FacebookShareButton>
+              <FacebookShareCount url={shareUrl}>{(count) => (count > 0 ? <span style={{ fontSize: '12px', color: '#888' }}>{count}</span> : null)}</FacebookShareCount>
+              <TwitterShareButton url={shareUrl} title={title}><TwitterIcon size={36} round /></TwitterShareButton>
+              <LinkedinShareButton url={shareUrl}><LinkedinIcon size={36} round /></LinkedinShareButton>
+            </div>
+          </div>
+          <div style={styles.authorCard}>
+            <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
+            <div>
+              <div style={styles.authorName}>Olvis Gil</div>
+              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Web3 educator and digital asset specialist based in Vienna, Austria.</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,369 +1,113 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Image, Card } from 'react-bootstrap';
-import MetaTags from 'react-meta-tags';
-import { Helmet } from 'react-helmet-async'
 import NavBar from '../../../NavBar';
-import me from '../../me.jpg';
 import amm from './AMMs.png';
-import Typography from '@mui/material/Typography';
+import aqua from './aquaimg.png';
 import {
   FacebookShareCount,
-  RedditShareCount,
   FacebookShareButton,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  VKShareButton,
   FacebookIcon,
-  TelegramShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
-  EmailShareButton,
-  TumblrShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  LineShareButton,
   TwitterIcon,
   LinkedinIcon,
-  VKIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  RedditIcon,
-  TumblrIcon,
-  EmailIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
-
 } from 'react-share';
-// import { Helmet } from 'react-helmet';
-import '../style.css';
-import aqua from "./aquaimg.png"
+import { Helmet } from 'react-helmet-async';
 
+const styles = {
+  page: { background: '#f8f9fc', minHeight: '100vh', fontFamily: "'Inter', 'Segoe UI', sans-serif" },
+  hero: { width: '100%', maxHeight: '420px', objectFit: 'cover', display: 'block' },
+  wrapper: { maxWidth: '780px', margin: '0 auto', padding: '40px 24px 80px' },
+  tag: { display: 'inline-block', background: 'linear-gradient(135deg, #6B48FF, #00C6FF)', color: '#fff', fontSize: '12px', fontWeight: '700', letterSpacing: '1.2px', textTransform: 'uppercase', padding: '4px 12px', borderRadius: '20px', marginBottom: '16px' },
+  title: { fontSize: '2.4rem', fontWeight: '800', lineHeight: '1.25', color: '#0d0d2b', marginBottom: '12px' },
+  meta: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px', color: '#666', fontSize: '14px' },
+  avatar: { width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #6B48FF' },
+  divider: { border: 'none', borderTop: '1px solid #e4e8f0', margin: '32px 0' },
+  body: { fontSize: '1.05rem', lineHeight: '1.85', color: '#2d2d3a' },
+  h4: { fontSize: '1.3rem', fontWeight: '700', color: '#0d0d2b', marginTop: '36px', marginBottom: '12px', paddingBottom: '6px', borderBottom: '3px solid #6B48FF', display: 'inline-block' },
+  callout: { background: 'linear-gradient(135deg, #f0ecff, #e8f7ff)', borderLeft: '4px solid #6B48FF', borderRadius: '8px', padding: '16px 20px', margin: '24px 0', fontSize: '1rem', color: '#2d2d3a', lineHeight: '1.7' },
+  inlineImg: { width: '100%', borderRadius: '12px', margin: '20px 0', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' },
+  shareSection: { marginTop: '40px', paddingTop: '24px', borderTop: '1px solid #e4e8f0' },
+  shareLabel: { fontSize: '13px', fontWeight: '600', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' },
+  shareButtons: { display: 'flex', gap: '10px', alignItems: 'center' },
+  authorCard: { display: 'flex', alignItems: 'center', gap: '20px', background: '#fff', border: '1px solid #e4e8f0', borderRadius: '16px', padding: '24px', marginTop: '48px', boxShadow: '0 4px 20px rgba(107,72,255,0.08)' },
+  authorAvatar: { width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #6B48FF', flexShrink: 0 },
+  authorName: { fontWeight: '700', fontSize: '1.1rem', color: '#0d0d2b', marginBottom: '4px' },
+  authorBio: { fontSize: '0.9rem', color: '#555', lineHeight: '1.5', margin: 0 },
+  refLink: { color: '#6B48FF', textDecoration: 'none', wordBreak: 'break-all' },
+};
 
 export default class AMM extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isAuthenticated: null,
-    };
-  }
   render() {
-   
-  const author = "Olvis E. Gil Ríos"
-  const datePublished = "13/12/2021"
-  const description = 'What are AMMs? Why are they useful? And how they are being used in decentralized finance.'
     const shareUrl = 'https://edunode.org/blog/automated-market-maker';
     const title = 'DeFi Explained: What is an Automated Market Maker?';
-    const exampleImage = amm;
-     const sc = "https://media0.giphy.com/media/idKeY3nvmdIsM/giphy.gif?cid=ecf05e47m4lxujqwiffgwaoopcey55b4lmhv4xtu24r1cev3&rid=giphy.gif&ct=g"
-     const off = "https://media0.giphy.com/media/SEWEmCymjv8XDbsb8I/giphy.gif"
-     const ammy = "https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/2JYSUKBZKJDLPAOVBQT2EH2IHI.png"
-    //  const jsonLdData = {
-    //   '@context': 'https://schema.org',
-    //   '@type': 'BlogPosting',
-    //   headline: title,
-    //   datePublished: datePublished,
-    //   // dateModified: dateModified,
-    //   author: {
-    //     '@type': 'Person',
-    //     name: author,
-    //   },
-    //   description: description,
-    //   // articleBody: content,
-    //   image: amm,
-    // };
-    return (
-      <div>
-        
-      <MetaTags>
-      <title>{title}</title>
-      <meta name="description" content="DeFi Explained: What is an Automated Market Maker?" />
-      <meta property="og:title" content="DeFi Explained: What is an Automated Market Maker?" />
-        <meta property="og:image" content={amm} />
-        <meta property="og:image" content="https://i.imgur.com/LvD6RFi.png" />
-        <meta property="twitter:image" content={amm}></meta>
-        
-      </MetaTags>
+    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    const ammy = "https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/2JYSUKBZKJDLPAOVBQT2EH2IHI.png";
+    const off = "https://media0.giphy.com/media/SEWEmCymjv8XDbsb8I/giphy.gif";
+    const sc = "https://media0.giphy.com/media/idKeY3nvmdIsM/giphy.gif?cid=ecf05e47m4lxujqwiffgwaoopcey55b4lmhv4xtu24r1cev3&rid=giphy.gif&ct=g";
 
+    return (
+      <div style={styles.page}>
         <Helmet>
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
           <meta name="description" content="What are AMMs? Why are they useful? And how they are being used in decentralized finance." />
-          <meta property="og:title" content="DeFi Explained: What is an Automated Market Maker?" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://i.imgur.com/LvD6RFi.png" />
-<meta property="og:url" content="https://edunode.org/blog/automated-market-maker" />
-<meta property="og:image" key="og:image" content={amm}/> 
-<meta property="twitter:image" content="https://i.imgur.com/LvD6RFi.png"></meta>
-      
         </Helmet>
         <NavBar />
-
-        <Image src={amm} className="header-image centerimg" fluid />
-        <Container>
-        <Typography
-                component="h1"
-                variant="h4"
-                align="left"
-                color="textPrimary"
-                gutterBottom
-              >
-                DeFi Explained: What is an Automated Market Maker?
-              </Typography>
-      
-
-          <Row>
-          <b></b>
-         <b></b>
-         <b></b>
-         <b></b>
-         <p></p>
-            <Col xs={12} sm={8} className="main-section">
-     
-              <p>One of the most interesting ideas in DeFi is the concept of AMMs, so I thought it would be a good idea to talk about; What are AMMs? Why are they useful? And how they are being used in decentralized finance.  </p>
-             <h4>What are AMMs?</h4>
-            <p>AMM stands for “Automated Market Maker” and we can describe them as a tool used to provide liquidity to decentralized applications.</p>
-            <p>AMMs are basically a “<a href="https://edunode.org/blog/smart-contracts">Smart Contracts</a>” where the supply and the demand of the assets involved, are determined by a mathematical algorithm.</p>
-             
-             <Image src={sc} fluid />
-             <b></b>
-             <p>An AMM allows traders to buy and sell certain assets or tokens using an algorithm that dictates how expensive something should be, based on how much of it, there is. As someone buys one asset, it gets more expensive, because there is less of it. And as they give it another asset, it gets cheaper, because of course, there is more of it.  This way of facilitating trades differs from the classical order book way of handling trades.</p>
-             
-             <Image src={ammy} fluid />
-             <b></b>
-             <p>This is unlike traditional Market Makers, which are usually managed by one person or a group of people. </p>
-             <Image src={off} fluid />
-              <br>
-          </br>
-          <br></br>
-             <h4>State of the Art</h4>
-             <p>There are several popular decentralized and permission-less exchanges that allow the trading of tokens, such as Uniswap and Aave. Uniswap in particular,  was one of the first widely used DApps that implemented AMMs for the trade of ERC-20 tokens. Uniswap and other DeFi Exchanges, use a simple x*y=k equation to set the mathematical relationship between the particular assets held in the liquidity pools. <a href="https://defipulse.com/">Here</a> you can find details about the DApps with the most locked Value.</p>
-
-<p></p>
-
-
-             <h4>AMMs on Stellar</h4>
-             <p>The release of protocol 18 on November 3rd, brought the long-awaited AMM functionality to the Stellar network. This release is particularly exciting because it is a new way to bring liquidity by leveraging liquidity pools on the network.</p> 
-             
-             <p>Liquidity providers earn a 0.3% fee on all trades proportional to their share of the pool. Fees are added to the pool and are accumulated in real time. Fees can be claimed by withdrawing your liquidity. You can find more details in <a href="https://stellar.org/blog/introducing-automated-market-makers-on-stellar"> this blog post </a> written by Justin Rice.</p>
-             <p>AMMs are being used significantly, and one of the projects leveraging this new functionality on Stellar is called StellarX. On this <a href="https://medium.com/stellarxhq/amms-on-stellarx-b0f9c493936c">blog post</a>, written by Dima from the StellarX team, you can learn how you can create liquidity pools.</p>
-<p>Another project leveraging AMMs on Stellar is Aquarius, a liquidity management layer for the Stellar Network. Aquarius is designed to supercharge trading on Stellar, bring more liquidity and give control over how it is distributed across various market pairs. It adds incentives for SDEX traders ("market maker rewards") and rewards for AMM liquidity providers. Aquarius also allows the community to set rewards for selected markets through on-chain voting. You can find more details of their Website: <a href="https://aqua.network/">https://aqua.network/</a></p>
-<Image src={aqua} fluid />
-             <p></p>
-             
-           
-            <h4>Conclusion</h4>
-
-             <p>AMMs are one of the most popular applications in decentralized finance and it has proven to work as one of the best ways of generating liquidity in a great range of DeFi projects. We look forward to the future of AMMs, specially on the Stellar Network, where it seems that it has begun to gain momentum.</p>
-
-             <p>If you enjoy this blog post, feel free to share it with your friends and if you wish you are welcome to join our Discord server: <a href="https://discord.gg/pcenYYjPmd">https://discord.gg/pcenYYjPmd</a></p>
-             <h4>Resources</h4>
-             <p> [1] Introducing Automated Market Makers on Stellar{' '}
-                <a href="https://stellar.org/blog/introducing-automated-market-makers-on-stellar">
-                https://stellar.org/blog/introducing-automated-market-makers-on-stellar
-                </a>{' '}
-              </p>
-              <p> [2] AMMs on StellarX{' '}
-                <a href="https://medium.com/stellarxhq/amms-on-stellarx-b0f9c493936c">
-                https://medium.com/stellarxhq/amms-on-stellarx-b0f9c493936c
-                </a>{' '}
-              </p>
-              <p> [3] What Is an Automated Market Maker?{' '}
-                <a href="https://www.coindesk.com/learn/2021/08/20/what-is-an-automated-market-maker/">
-                https://www.coindesk.com/learn/2021/08/20/what-is-an-automated-market-maker/
-                </a>{' '}
-              </p>
-              <p> [4] AMMs in the Stellar Ecosystem{' '}
-                <a href="https://stellar.org/blog/amms-in-the-stellar-ecosystem">
-                https://stellar.org/blog/amms-in-the-stellar-ecosystem
-                </a>{' '}
-              </p>
-              <div className="Demo__container">
-                <div className="Demo__some-network">
-                  <FacebookShareButton
-                    url={shareUrl}
-                    quote={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <FacebookIcon size={32} round />
-                  </FacebookShareButton>
-
-                  <div>
-                    <FacebookShareCount
-                      url={shareUrl}
-                      className="Demo__some-network__share-count"
-                    >
-                      {(count) => count}
-                    </FacebookShareCount>
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <FacebookMessengerShareButton
-                    url={shareUrl}
-                    appId="521270401588372"
-                    className="Demo__some-network__share-button"
-                  >
-                    <FacebookMessengerIcon size={32} round />
-                  </FacebookMessengerShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TwitterShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TwitterIcon size={32} round />
-                  </TwitterShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TelegramShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TelegramIcon size={32} round />
-                  </TelegramShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <WhatsappShareButton
-                    url={shareUrl}
-                    title={title}
-                    separator=":: "
-                    className="Demo__some-network__share-button"
-                  >
-                    <WhatsappIcon size={32} round />
-                  </WhatsappShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <LinkedinShareButton
-                    url={shareUrl}
-                    className="Demo__some-network__share-button"
-                  >
-                    <LinkedinIcon size={32} round />
-                  </LinkedinShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <RedditShareButton
-                    url={shareUrl}
-                    title={title}
-                    windowWidth={660}
-                    windowHeight={460}
-                    className="Demo__some-network__share-button"
-                  >
-                    <RedditIcon size={32} round />
-                  </RedditShareButton>
-
-                  <div>
-                    <RedditShareCount
-                      url={shareUrl}
-                      className="Demo__some-network__share-count"
-                    />
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TumblrShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TumblrIcon size={32} round />
-                  </TumblrShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <EmailShareButton
-                    url={shareUrl}
-                    subject={title}
-                    body="body"
-                    className="Demo__some-network__share-button"
-                  >
-                    <EmailIcon size={32} round />
-                  </EmailShareButton>
-                </div>
-                <div className="Demo__some-network">
-                  <ViberShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <ViberIcon size={32} round />
-                  </ViberShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <WorkplaceShareButton
-                    url={shareUrl}
-                    quote={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <WorkplaceIcon size={32} round />
-                  </WorkplaceShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <LineShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <LineIcon size={32} round />
-                  </LineShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <VKShareButton
-                    url={shareUrl}
-                    image={`${String(
-                      window.location,
-                    )}/${exampleImage}`}
-                    className="Demo__some-network__share-button"
-                  >
-                    <VKIcon size={32} round />
-                  </VKShareButton>
-                </div>
-              </div>
-              
-            </Col>
-            <Col xs={12} sm={4} className="sidebar-section">
-              <Card style={{ width: '15rem' }}>
-                <Card.Img variant="top" src={me} />
-                <Card.Body>
-                  <Card.Title>Olvis E. Gil Ríos</Card.Title>
-                  <Card.Text>
-                    <p>
-                      Founder at OG Technologies EU
-                    </p>
-                  </Card.Text>
-                  
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-       
+        <img src={amm} style={styles.hero} alt="Automated Market Maker" />
+        <div style={styles.wrapper}>
+          <div style={styles.tag}>Stellar · DeFi · AMM</div>
+          <h1 style={styles.title}>{title}</h1>
+          <div style={styles.meta}>
+            <img src={profilePic} style={styles.avatar} alt="Olvis Gil" />
+            <span><strong>Olvis Gil</strong> &nbsp;·&nbsp; EduNode &nbsp;·&nbsp; 5 min read</span>
+          </div>
+          <hr style={styles.divider} />
+          <div style={styles.body}>
+            <p>One of the most interesting ideas in DeFi is the concept of AMMs, so I thought it would be a good idea to talk about: What are AMMs? Why are they useful? And how they are being used in decentralized finance.</p>
+            <h4 style={styles.h4}>What are AMMs?</h4>
+            <p>AMM stands for "Automated Market Maker" and we can describe them as a tool used to provide liquidity to decentralized applications. AMMs are basically a <a href="https://edunode.org/blog/smart-contracts" style={styles.refLink}>Smart Contract</a> where the supply and the demand of the assets involved are determined by a mathematical algorithm.</p>
+            <img src={sc} style={styles.inlineImg} alt="Smart contract diagram" />
+            <div style={styles.callout}>
+              <strong>How it works:</strong> An AMM allows traders to buy and sell certain assets or tokens using an algorithm that dictates how expensive something should be, based on how much of it there is. As someone buys one asset, it gets more expensive because there is less of it — and as they give another asset, it gets cheaper because there is more of it.
+            </div>
+            <img src={ammy} style={styles.inlineImg} alt="AMM price curve" />
+            <p>This is unlike traditional Market Makers, which are usually managed by one person or a group of people.</p>
+            <img src={off} style={styles.inlineImg} alt="Traditional vs AMM comparison" />
+            <h4 style={styles.h4}>State of the Art</h4>
+            <p>There are several popular decentralized and permission-less exchanges that allow the trading of tokens, such as Uniswap and Aave. Uniswap in particular was one of the first widely used DApps that implemented AMMs for the trade of ERC-20 tokens. Uniswap and other DeFi Exchanges use a simple <strong>x*y=k</strong> equation to set the mathematical relationship between the particular assets held in the liquidity pools. <a href="https://defipulse.com/" style={styles.refLink}>Here</a> you can find details about the DApps with the most locked value.</p>
+            <h4 style={styles.h4}>AMMs on Stellar</h4>
+            <p>The release of protocol 18 on November 3rd brought the long-awaited AMM functionality to the Stellar network. This release is particularly exciting because it is a new way to bring liquidity by leveraging liquidity pools on the network.</p>
+            <p>Liquidity providers earn a <strong>0.3% fee</strong> on all trades proportional to their share of the pool. Fees are added to the pool and accumulated in real time. Fees can be claimed by withdrawing your liquidity. You can find more details in <a href="https://stellar.org/blog/introducing-automated-market-makers-on-stellar" style={styles.refLink}>this blog post</a> written by Justin Rice.</p>
+            <p>AMMs are being used significantly, and one of the projects leveraging this new functionality on Stellar is called StellarX. On this <a href="https://medium.com/stellarxhq/amms-on-stellarx-b0f9c493936c" style={styles.refLink}>blog post</a>, written by Dima from the StellarX team, you can learn how you can create liquidity pools.</p>
+            <p>Another project leveraging AMMs on Stellar is <strong>Aquarius</strong>, a liquidity management layer for the Stellar Network. Aquarius is designed to supercharge trading on Stellar, bring more liquidity, and give control over how it is distributed across various market pairs. It adds incentives for SDEX traders ("market maker rewards") and rewards for AMM liquidity providers. <a href="https://aqua.network/" style={styles.refLink}>https://aqua.network/</a></p>
+            <img src={aqua} style={styles.inlineImg} alt="Aquarius on Stellar" />
+            <h4 style={styles.h4}>Conclusion</h4>
+            <p>AMMs are one of the most popular applications in decentralized finance and have proven to work as one of the best ways of generating liquidity across a great range of DeFi projects. We look forward to the future of AMMs, especially on the Stellar Network, where it has begun to gain serious momentum.</p>
+            <p>If you enjoy this blog post, feel free to share it with your friends and join our Discord server: <a href="https://discord.gg/pcenYYjPmd" style={styles.refLink}>https://discord.gg/pcenYYjPmd</a></p>
+            <h4 style={styles.h4}>Resources</h4>
+            <p>[1] <a href="https://stellar.org/blog/introducing-automated-market-makers-on-stellar" style={styles.refLink}>Introducing Automated Market Makers on Stellar</a></p>
+            <p>[2] <a href="https://medium.com/stellarxhq/amms-on-stellarx-b0f9c493936c" style={styles.refLink}>AMMs on StellarX</a></p>
+            <p>[3] <a href="https://www.coindesk.com/learn/2021/08/20/what-is-an-automated-market-maker/" style={styles.refLink}>What Is an Automated Market Maker? — CoinDesk</a></p>
+            <p>[4] <a href="https://stellar.org/blog/amms-in-the-stellar-ecosystem" style={styles.refLink}>AMMs in the Stellar Ecosystem</a></p>
+          </div>
+          <div style={styles.shareSection}>
+            <div style={styles.shareLabel}>Share this article</div>
+            <div style={styles.shareButtons}>
+              <FacebookShareButton url={shareUrl} quote={title}><FacebookIcon size={36} round /></FacebookShareButton>
+              <FacebookShareCount url={shareUrl}>{(count) => (count > 0 ? <span style={{ fontSize: '12px', color: '#888' }}>{count}</span> : null)}</FacebookShareCount>
+              <TwitterShareButton url={shareUrl} title={title}><TwitterIcon size={36} round /></TwitterShareButton>
+              <LinkedinShareButton url={shareUrl}><LinkedinIcon size={36} round /></LinkedinShareButton>
+            </div>
+          </div>
+          <div style={styles.authorCard}>
+            <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
+            <div>
+              <div style={styles.authorName}>Olvis Gil</div>
+              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Web3 educator, DeFi enthusiast, and payment technology expert based in Vienna, Austria.</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

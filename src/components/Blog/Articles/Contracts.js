@@ -1,344 +1,112 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Image, Card } from 'react-bootstrap';
-
-import NavBar from '../../NavBar';
-import me from '../mepic.png';
-import sc from '../smartcontract.png';
-import sc1 from '../SC.png';
-import Typography from '@material-ui/core/Typography';
+import NavBar from '../NavBar';
+import sc from '../../smartcontract.png';
 import {
   FacebookShareCount,
-  RedditShareCount,
   FacebookShareButton,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  VKShareButton,
   FacebookIcon,
-  TelegramShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
-  EmailShareButton,
-  TumblrShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  LineShareButton,
   TwitterIcon,
   LinkedinIcon,
-  VKIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  RedditIcon,
-  TumblrIcon,
-  EmailIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
-
 } from 'react-share';
-import { Helmet } from 'react-helmet-async'
-import './style.css';
+import { Helmet } from 'react-helmet-async';
 
-export default class Contract extends Component {
-  constructor(props) {
-    super(props);
+const styles = {
+  page: { background: '#f8f9fc', minHeight: '100vh', fontFamily: "'Inter', 'Segoe UI', sans-serif" },
+  hero: { width: '100%', maxHeight: '420px', objectFit: 'cover', display: 'block' },
+  wrapper: { maxWidth: '780px', margin: '0 auto', padding: '40px 24px 80px' },
+  tag: { display: 'inline-block', background: 'linear-gradient(135deg, #6B48FF, #00C6FF)', color: '#fff', fontSize: '12px', fontWeight: '700', letterSpacing: '1.2px', textTransform: 'uppercase', padding: '4px 12px', borderRadius: '20px', marginBottom: '16px' },
+  title: { fontSize: '2.4rem', fontWeight: '800', lineHeight: '1.25', color: '#0d0d2b', marginBottom: '12px' },
+  meta: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px', color: '#666', fontSize: '14px' },
+  avatar: { width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #6B48FF' },
+  divider: { border: 'none', borderTop: '1px solid #e4e8f0', margin: '32px 0' },
+  body: { fontSize: '1.05rem', lineHeight: '1.85', color: '#2d2d3a' },
+  h4: { fontSize: '1.3rem', fontWeight: '700', color: '#0d0d2b', marginTop: '36px', marginBottom: '12px', paddingBottom: '6px', borderBottom: '3px solid #6B48FF', display: 'inline-block' },
+  callout: { background: 'linear-gradient(135deg, #f0ecff, #e8f7ff)', borderLeft: '4px solid #6B48FF', borderRadius: '8px', padding: '16px 20px', margin: '24px 0', fontSize: '1rem', color: '#2d2d3a', lineHeight: '1.7' },
+  inlineImg: { width: '100%', borderRadius: '12px', margin: '20px 0', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' },
+  codeImg: { width: '100%', borderRadius: '8px', margin: '16px 0', border: '1px solid #e4e8f0' },
+  shareSection: { marginTop: '40px', paddingTop: '24px', borderTop: '1px solid #e4e8f0' },
+  shareLabel: { fontSize: '13px', fontWeight: '600', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' },
+  shareButtons: { display: 'flex', gap: '10px', alignItems: 'center' },
+  authorCard: { display: 'flex', alignItems: 'center', gap: '20px', background: '#fff', border: '1px solid #e4e8f0', borderRadius: '16px', padding: '24px', marginTop: '48px', boxShadow: '0 4px 20px rgba(107,72,255,0.08)' },
+  authorAvatar: { width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #6B48FF', flexShrink: 0 },
+  authorName: { fontWeight: '700', fontSize: '1.1rem', color: '#0d0d2b', marginBottom: '4px' },
+  authorBio: { fontSize: '0.9rem', color: '#555', lineHeight: '1.5', margin: 0 },
+  refLink: { color: '#6B48FF', textDecoration: 'none', wordBreak: 'break-all' },
+};
 
-    this.state = {
-      isAuthenticated: null,
-    };
-  }
+export default class Contracts extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/smart-contracts';
     const title = 'What are Smart Contracts and how you can build them on Stellar?';
-    const exampleImage = sc;
+    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    
 
     return (
-      <div>
+      <div style={styles.page}>
         <Helmet>
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
-          
-          <meta
-            name="description"
-            content="A SC is basically a computer program which contains certain types of rules, actions and events which are intended to be automatically executed according to the terms agreed in that particular contract."
-          />
         </Helmet>
         <NavBar />
-
-        <Image src={sc1} className="header-image" fluid />
-        <Container>
-        <Typography
-                component="h1"
-                variant="h4"
-                align="left"
-                color="textPrimary"
-                gutterBottom
-              >
-                What are Smart Contracts and how you can build them on Stellar?
-              </Typography>
-      
-
-          <Row>
-          <b></b>
-         <b></b>
-         <b></b>
-         <b></b>
-         <p></p>
-            <Col xs={12} sm={8} className="main-section">
-            <p>  
-              
-              
-              <p>A very relevant concept in the blockchain space, is the concept of Smart Contracts (SC). In the following blog post, we will talk about them, its early days, and how you can get started building SCs on the Stellar Network.</p>
-<br></br>
-<h4>What is a Smart Contract?</h4>
-
- <p>An SC is a computer program that contains certain types of rules, actions, and events that are intended to be automatically executed according to the terms agreed in that particular contract. An SC is like a regular contract (usually written on paper), with the difference that the contracts are stored on a digital ledger, which allows an easy audit of the transactions. </p>
-<br></br>
-
-<h4>Smart Contract Platform</h4>
-<p>The term was first used in 1997 by computer scientist, lawyer, and cryptographer <a href="https://en.wikipedia.org/wiki/Nick_Szabo">Nick Szabo</a> (before the creation of <a href="https://wikipedia.org/wiki/Bitcoin">Bitcoin</a>). The term found mainstream recognition with the launch of <a href="https://en.wikipedia.org/wiki/Ethereum">Ethereum</a> (2015), a decentralized, open-source blockchain with smart contract functionality which uses a virtual machine to guarantee <a href="https://en.wikipedia.org/wiki/Turing_completeness">Turing Complete</a>  contract execution. This gave a lot of flexibility to developers building on top of the Network. However, the high use of the Ethereum <a href="https://en.wikipedia.org/wiki/Virtual_machine">virtual machine</a>, created scalability issues which are currently being translated into high transactions fees. </p>
-<br></br>
-<p><h4>Does Stellar support Smart Contracts?</h4></p>
-
-
-<p>The short answer for that is not yet. However, Stellar offers several mechanisms which allow you to create "smart contract-like" functionalities. For more information about smart contracts on Stellar, check out the following blog post titled <a href="https://medium.com/stellar-community/understanding-stellar-smart-contracts-23ebe1568b6">"Understanding Stellar Smart Contracts"</a>. Projects like <a href="https://rabet.io/">Rabet</a> and <a href="https://pendulumchain.org/">Pendulum</a> are working to bridge the gap between Stellar and DeFi.</p>
-<br></br>
-
-<h4> Project Jump Cannon </h4>
-
-
-<p>A very interesting project bringing Smart Contracts to the Stellar Network is called <b>Project Jump Cannon</b>. Project Jump Cannon is being built on a WebAssembly (WASM) runtime and aims to build native on-chain smart contracts for Stellar.  The project was named after Annie Jump Cannon, an astronomer whose cataloging work was instrumental in the development of contemporary stellar classification still used to this day. If you would like to learn more about the project, feel free to join the <a href="https://discord.gg/k7dkCeMJxx">Stellar Developers Discord server</a> where you will find their dedicated channel.</p>
-<br></br>
-<h4>Turrets</h4>
-
-
-<p>Another interesting project trying to bring Smart Contracts on the Stellar Network is called <a href="https://tss.stellar.org/"> Turrets (Prev. TSS)</a>. Turrets aims to build a decentralized, Turing Complete network for the secure, cost-effective, creation and signing of Stellar transactions. 
-
-Projects experimenting and researching Turrets include <a href="https://www.mozartpay.com/">MozartPay</a>, <a href="https://litemint.com/">Litemint</a>, <a href="https://www.script3.io/">Script3</a>, and <a href="https://answap.io/">AnSwap.</a> </p>
-
-
-
-
-<br></br>
-<h4>Technologies for building decentralized applications</h4>
-<p>If you are looking into building a decentralized application that is compatible with DeFi blockchains, it is key to take into consideration technologies (particulary programming languages) that have proven to be high performer, safe and efficient when it comes down to handling complex systems. This is important in order to facilitate interoperability and compatibility with popular DeFi products like <a href="https://edunode.org/blog/minting-nfts">NFTs</a>, AMMs, and Liquidity Pools, which are currently being offered by smart contract providers (like Ethereum, Polkadot, Solana, etc). In general, you can build SCs with basically any programming language, popular programming languages for building decentralized applications are C++, Solidy, Rust, Typescript, GO, Java, and others.</p>
-<p>I personally like <a href="https://en.wikipedia.org/wiki/Rust_(programming_language)">Rust</a>, which was developed by Graydon Hoare while at <a href="https://www.mozilla.org/">Mozilla</a>, and is currently being used in many blockchain protocols for the logic of their core functionality. Besides its robustness as a programming language, it is compatible with <a href="https://en.wikipedia.org/wiki/WebAssembly">WebAssembly</a> (an open standard that defines a portable binary-code format for executable programs), enabling high-performance applications on web pages and opening a new world of possibilities for building decentralized applications. This is a very fascinating topic, which we will discuss in more detail in future blog posts.</p>
-             <p>I hope that you enjoyed this blog post, if you liked it, please share it with your friends, and feel free to join us on <a href="https://discord.gg/Tv5Y5JW9fq">Discord </a>.</p>
-
-
-<h4>Resources</h4>
-<p> [1] Stellar Turrets: Smart contract protocol for Stellar{' '}
-                <a href="https://tss.stellar.org/">
-                https://tss.stellar.org/
-                </a>{' '}
-              </p>
-              <p> [2] Project Jump Cannon: Choosing WASM{' '}
-                <a href="https://stellar.org/blog/project-jump-cannon-choosing-wasm?locale=en">
-                https://stellar.org/blog/project-jump-cannon-choosing-wasm?locale=en
-                </a>{' '}
-              </p>
-              <p> [3] Understanding Stellar Smart Contracts{' '}
-                <a href="https://medium.com/stellar-community/understanding-stellar-smart-contracts-23ebe1568b6">
-                https://medium.com/stellar-community/understanding-stellar-smart-contracts-23ebe1568b6
-                </a>{' '}
-              </p>
-              <p> [4] The Idea of Smart Contracts by Nick Szabo{' '}
-                <a href="https://nakamotoinstitute.org/the-idea-of-smart-contracts/">
-                https://nakamotoinstitute.org/the-idea-of-smart-contracts/
-                </a>{' '}
-              </p>
-
-              <p> [5] Distributed Trustless Workers with Stellar{' '}
-                <a href="https://medium.com/lumenauts/distributed-trustless-workers-with-stellar-e197fd1b77f6">
-                https://medium.com/lumenauts/distributed-trustless-workers-with-stellar-e197fd1b77f6
-                </a>{' '}
-              </p>
-             
-              <div className="Demo__container">
-                <div className="Demo__some-network">
-                  <FacebookShareButton
-                    url={shareUrl}
-                    quote={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <FacebookIcon size={32} round />
-                  </FacebookShareButton>
-
-                  <div>
-                    <FacebookShareCount
-                      url={shareUrl}
-                      className="Demo__some-network__share-count"
-                    >
-                      {(count) => count}
-                    </FacebookShareCount>
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <FacebookMessengerShareButton
-                    url={shareUrl}
-                    appId="521270401588372"
-                    className="Demo__some-network__share-button"
-                  >
-                    <FacebookMessengerIcon size={32} round />
-                  </FacebookMessengerShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TwitterShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TwitterIcon size={32} round />
-                  </TwitterShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TelegramShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TelegramIcon size={32} round />
-                  </TelegramShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <WhatsappShareButton
-                    url={shareUrl}
-                    title={title}
-                    separator=":: "
-                    className="Demo__some-network__share-button"
-                  >
-                    <WhatsappIcon size={32} round />
-                  </WhatsappShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <LinkedinShareButton
-                    url={shareUrl}
-                    className="Demo__some-network__share-button"
-                  >
-                    <LinkedinIcon size={32} round />
-                  </LinkedinShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <RedditShareButton
-                    url={shareUrl}
-                    title={title}
-                    windowWidth={660}
-                    windowHeight={460}
-                    className="Demo__some-network__share-button"
-                  >
-                    <RedditIcon size={32} round />
-                  </RedditShareButton>
-
-                  <div>
-                    <RedditShareCount
-                      url={shareUrl}
-                      className="Demo__some-network__share-count"
-                    />
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TumblrShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TumblrIcon size={32} round />
-                  </TumblrShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <EmailShareButton
-                    url={shareUrl}
-                    subject={title}
-                    body="body"
-                    className="Demo__some-network__share-button"
-                  >
-                    <EmailIcon size={32} round />
-                  </EmailShareButton>
-                </div>
-                <div className="Demo__some-network">
-                  <ViberShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <ViberIcon size={32} round />
-                  </ViberShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <WorkplaceShareButton
-                    url={shareUrl}
-                    quote={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <WorkplaceIcon size={32} round />
-                  </WorkplaceShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <LineShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <LineIcon size={32} round />
-                  </LineShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <VKShareButton
-                    url={shareUrl}
-                    image={`${String(
-                      window.location,
-                    )}/${exampleImage}`}
-                    className="Demo__some-network__share-button"
-                  >
-                    <VKIcon size={32} round />
-                  </VKShareButton>
-                </div>
-              </div>
-              </p>
-            </Col>
-            <Col xs={12} sm={4} className="sidebar-section">
-              <Card style={{ width: '9rem' }}>
-                <Card.Img variant="top" src={me} />
-                <Card.Title>Olvis E. Gil Ríos</Card.Title>
-                <Card.Body>
-
-                  <Card.Text>
-                    <p>
-                      Founder of <a href="https://edunode.org/">edunode.org</a>
-                    </p>
-                  </Card.Text>
-                  
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-       
+        <img src={sc} style={styles.hero} alt="Smart Contracts on Stellar" />
+        <div style={styles.wrapper}>
+          <div style={styles.tag}>Stellar · Smart Contracts · Soroban</div>
+          <h1 style={styles.title}>{title}</h1>
+          <div style={styles.meta}>
+            <img src={profilePic} style={styles.avatar} alt="Olvis Gil" />
+            <span><strong>Olvis Gil</strong> &nbsp;·&nbsp; EduNode &nbsp;·&nbsp; 5 min read</span>
+          </div>
+          <hr style={styles.divider} />
+          <div style={styles.body}>
+            <p>
+              Smart contracts are self-executing contracts with the terms of the agreement directly written into code. They run on blockchain networks and automatically execute when predetermined conditions are met — no intermediary required.
+            </p>
+            <div style={styles.callout}>
+              <strong>Analogy:</strong> Think of a smart contract like a vending machine. You put in money, select your item, and the machine automatically dispenses it. No cashier, no trust required — just code.
+            </div>
+            <h4 style={styles.h4}>What are Smart Contracts?</h4>
+            <p>
+              A smart contract is a program stored on a blockchain that runs when predetermined conditions are met. They are used to automate the execution of an agreement so that all participants can be immediately certain of the outcome, without any intermediary's involvement or time loss.
+            </p>
+            <h4 style={styles.h4}>Smart Contracts on Stellar with Soroban</h4>
+            <p>
+              Soroban is Stellar's smart contract platform, designed to be developer-friendly, scalable, and interoperable. Built in Rust, Soroban contracts are compiled to WebAssembly (WASM) and run on the Stellar network. This makes them fast, secure, and highly efficient.
+            </p>
+            <p>
+              Key features of Soroban include: a developer-friendly SDK, predictable and low fees, built-in testing tools, and seamless integration with Stellar's existing payment infrastructure.
+            </p>
+            <h4 style={styles.h4}>Building Your First Smart Contract</h4>
+            <p>
+              To get started with Soroban, you need to install the Rust toolchain and the Soroban CLI. Once set up, you can write, test, and deploy contracts directly to the Stellar testnet. The Soroban documentation at <a href="https://soroban.stellar.org" style={styles.refLink}>soroban.stellar.org</a> provides comprehensive guides and examples.
+            </p>
+            <h4 style={styles.h4}>Use Cases</h4>
+            <p>
+              Smart contracts on Stellar can be used for: decentralized exchanges (DEX), lending and borrowing protocols, tokenized assets, escrow services, and automated payment systems. The combination of Stellar's speed and Soroban's programmability opens up an entirely new world of financial applications.
+            </p>
+            <h4 style={styles.h4}>Resources</h4>
+            <p>[1] <a href="https://soroban.stellar.org" style={styles.refLink}>Soroban — Stellar Smart Contracts Platform</a></p>
+            <p>[2] <a href="https://stellar.org/blog/developers/project-jump-cannon-soroban-is-now-live-on-mainnet" style={styles.refLink}>Soroban is now live on Mainnet</a></p>
+          </div>
+          <div style={styles.shareSection}>
+            <div style={styles.shareLabel}>Share this article</div>
+            <div style={styles.shareButtons}>
+              <FacebookShareButton url={shareUrl} quote={title}><FacebookIcon size={36} round /></FacebookShareButton>
+              <FacebookShareCount url={shareUrl}>{(count) => (count > 0 ? <span style={{ fontSize: '12px', color: '#888' }}>{count}</span> : null)}</FacebookShareCount>
+              <TwitterShareButton url={shareUrl} title={title}><TwitterIcon size={36} round /></TwitterShareButton>
+              <LinkedinShareButton url={shareUrl}><LinkedinIcon size={36} round /></LinkedinShareButton>
+            </div>
+          </div>
+          <div style={styles.authorCard}>
+            <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
+            <div>
+              <div style={styles.authorName}>Olvis Gil</div>
+              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Blockchain educator and smart contract developer based in Vienna, Austria.</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

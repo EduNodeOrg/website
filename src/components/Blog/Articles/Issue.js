@@ -1,198 +1,109 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Image, Card } from 'react-bootstrap';
+import NavBar from '../NavBar';
+import issue from './issue.png';
+import {
+  FacebookShareCount,
+  FacebookShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  LinkedinIcon,
+} from 'react-share';
+import { Helmet } from 'react-helmet-async';
 
-import NavBar from '../../NavBar';
-import issue from "./issue.png"
-import issue1 from "./issue1.PNG"
-import me from "../me.jpg"
-import lab from "./laboratory.PNG"
-import trust from "./trust.PNG"
-import sign from "./sign.PNG"
-import sign2 from "./sign2.PNG"
-import signed from "./signed.PNG"
-import submitted from "./submitted.PNG"
-import add from "./add.PNG"
-import add2 from "./add2.PNG"
-import newsign from "./newsign.PNG"
-import newsign2 from "./newsign2.PNG"
-import expert from "./expert.PNG"
-import keybase from "./keybaseicon.png"
-
-
-import { Helmet } from 'react-helmet-async'
-import "./style.css"
+const styles = {
+  page: { background: '#f8f9fc', minHeight: '100vh', fontFamily: "'Inter', 'Segoe UI', sans-serif" },
+  hero: { width: '100%', maxHeight: '420px', objectFit: 'cover', display: 'block' },
+  wrapper: { maxWidth: '780px', margin: '0 auto', padding: '40px 24px 80px' },
+  tag: { display: 'inline-block', background: 'linear-gradient(135deg, #6B48FF, #00C6FF)', color: '#fff', fontSize: '12px', fontWeight: '700', letterSpacing: '1.2px', textTransform: 'uppercase', padding: '4px 12px', borderRadius: '20px', marginBottom: '16px' },
+  title: { fontSize: '2.4rem', fontWeight: '800', lineHeight: '1.25', color: '#0d0d2b', marginBottom: '12px' },
+  meta: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px', color: '#666', fontSize: '14px' },
+  avatar: { width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #6B48FF' },
+  divider: { border: 'none', borderTop: '1px solid #e4e8f0', margin: '32px 0' },
+  body: { fontSize: '1.05rem', lineHeight: '1.85', color: '#2d2d3a' },
+  h4: { fontSize: '1.3rem', fontWeight: '700', color: '#0d0d2b', marginTop: '36px', marginBottom: '12px', paddingBottom: '6px', borderBottom: '3px solid #6B48FF', display: 'inline-block' },
+  callout: { background: 'linear-gradient(135deg, #f0ecff, #e8f7ff)', borderLeft: '4px solid #6B48FF', borderRadius: '8px', padding: '16px 20px', margin: '24px 0', fontSize: '1rem', color: '#2d2d3a', lineHeight: '1.7' },
+  inlineImg: { width: '100%', borderRadius: '12px', margin: '20px 0', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' },
+  codeImg: { width: '100%', borderRadius: '8px', margin: '16px 0', border: '1px solid #e4e8f0' },
+  shareSection: { marginTop: '40px', paddingTop: '24px', borderTop: '1px solid #e4e8f0' },
+  shareLabel: { fontSize: '13px', fontWeight: '600', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' },
+  shareButtons: { display: 'flex', gap: '10px', alignItems: 'center' },
+  authorCard: { display: 'flex', alignItems: 'center', gap: '20px', background: '#fff', border: '1px solid #e4e8f0', borderRadius: '16px', padding: '24px', marginTop: '48px', boxShadow: '0 4px 20px rgba(107,72,255,0.08)' },
+  authorAvatar: { width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #6B48FF', flexShrink: 0 },
+  authorName: { fontWeight: '700', fontSize: '1.1rem', color: '#0d0d2b', marginBottom: '4px' },
+  authorBio: { fontSize: '0.9rem', color: '#555', lineHeight: '1.5', margin: 0 },
+  refLink: { color: '#6B48FF', textDecoration: 'none', wordBreak: 'break-all' },
+};
 
 export default class Issue extends Component {
-  constructor(props) {
-    super(props);
- 
-    this.state = {
-      isAuthenticated: null,
-    };
-
-    
-  }
   render() {
     const shareUrl = 'https://edunode.org/blog/How-to-issue';
-    const title = "How to issue assets on the Stellar Network"
-    const exampleImage = issue
+    const title = 'How to issue assets on the Stellar Network';
+    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    
 
     return (
-      <div>
+      <div style={styles.page}>
         <Helmet>
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
-          <meta name="title" content="How to issue assets on the Stellar Network" />
-          <meta
-            name="description"
-            content="One of the advantages of the Stellar network is that can be used to track, hold, and transfer any type of asset: dollars, euros, bitcoin, stocks, gold, and other tokens of value. Assets on the Stellar network represent a credit from a particular issuer of the asset."
-          />
         </Helmet>
         <NavBar />
-
-        <Image src={issue} className="header-image" fluid />
-        <Container>
-          <h2>How to issue assets on the Stellar Network</h2>
-          <Row>
-            <Col xs={12} sm={8} className="main-section">
-              <p>
-                One of the advantages of the Stellar network is that
-                can be used to track, hold, and transfer any type of
-                asset: dollars, euros, bitcoin, stocks, gold, and
-                other tokens of value. Assets on the Stellar network
-                represent a credit from a particular issuer of the
-                asset.
-              </p>
-              <p>
-                If you are planning to issue an asset on Stellar I
-                have great news for you, creating an asset on the
-                Stellar Network is as easy as performing a few
-                operations, whether using the Stellar Laboratory,
-                alternatively doing the calls directly using one of
-                the currently available{' '}
-                <a href="https://www.stellar.org/developers/reference/">
-                  libraries
-                </a>
-                .{' '}
-              </p>
-
-              <h3>Creating issuer and distribution accounts</h3>
-
-              <p>
-                The first step when creating an asset is by generating
-                a distribution account and an issuer account. You can
-                achieve this using the{' '}
-                <a href="https://laboratory.stellar.org/#account-creator?network=test">
-                  Stellar Laboratory
-                </a>{' '}
-                , going to “Create Account” and by clickling on
-                “generate keypair”.
-              </p>
-              <Image src={lab} fluid />
-              <p>
-                Once both accounts are created, make sure to fund the
-                accounts with some lumens, since technically Stellar
-                accounts does not exist until they have some lumens on
-                it. If you are using the Stellar testnet, you can use
-                the Friendbot, which will automatically generate
-                10,000 XLM so you can easily start performing test
-                operations.
-              </p>
-
-              <h3>Creating an asset</h3>
-              <p>
-                In order to create an asset, you need to open a
-                trustline to the issuer account. To do this with the
-                Laboratory, you will need to create a transaction
-                coming from the "distribution account". You can leave
-                out the “Base Fee” and Memo as default.{' '}
-              </p>
-              <Image src={issue1} fluid />
-              <p>
-                {' '}
-                At the bottom, select the “Change Trust” in the
-                Operation Type field. Select Asset 4 Alphanumeric and
-                proceed to add the name of the asset (in our case we
-                will create the test asset "XEDU"). Then add the
-                Issuer Account in the "Issuer Account field".
-              </p>
-              <Image src={trust} fluid />
-              <p>
-                You can leave Trust Limit and Source Account fields as
-                default and proceed to Sign in the transaction with
-                the Transaction Signer.{' '}
-              </p>
-              <Image src={sign} fluid />
-              <p>
-                Then Add the Secret Key of the Distribuitor Account
-                and submit it with the Transaction Submitter.
-              </p>
-              <Image src={sign2} fluid />
-              <Image src={signed} fluid />
-              <p>
-                Then proceed to post the transaction with the
-                Transaction Post endpoint. Now the transaction should
-                have been created.{' '}
-              </p>
-              <Image src={submitted} fluid />
-              <p>
-                Now you need to add the Tokens created to the
-                Distribution Account. To do this, you need to create a
-                payment operation coming from the Issuer Account (you
-                will need to fetch the “Transaction Sequence Number”
-                once again).
-              </p>
-              <Image src={add} fluid />
-              <p>
-                Below you will need to add payment as Operation Type,
-                then select the Distribution as the Destination, add
-                the Asset name once again, the amount that you wish to
-                "generate" and proceed to sign the transaction.
-              </p>
-              <Image src={add2} fluid />
-              <Image src={newsign} fluid />
-              <Image src={newsign2} fluid />
-              <br></br>
-              <p>
-                Congratulations, you have succesfully created a new
-                asset on the Stellar network. Almost instantly, you
-                will be able to see the balance of the newly created
-                asset on one of the Stellar Explorer. In this case, we
-                will use{' '}
-                <a href="https://stellar.expert/">Stellar.Expert</a>.{' '}
-              </p>
-              <Image src={expert} fluid />
-              <p>
-                As you can see the new test asset named "XEDU" was
-                created and is available on the distribution account.
-              </p>
-              <p>
-                If you found this article useful, please share it and
-                follow us on social media
-              </p>
-              
-            </Col>
-            <Col xs={12} sm={4} className="sidebar-section">
-              <Card style={{ width: '9rem' }}>
-                <Card.Img variant="top" src={me} />
-                <Card.Body>
-                  <Card.Title>Olvis Gil</Card.Title>
-                  <Card.Text>
-                    <p>
-                      Economist, Entrepreneur and self-taught
-                      Developer
-                    </p>
-                  </Card.Text>
-                  <a href="https://keybase.io/olvis_experio">
-                    <img style={{ width: '25px' }} src={keybase} alt="keybase" />
-                  </a>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-       
+        <img src={issue} style={styles.hero} alt="How to Issue Assets on Stellar" />
+        <div style={styles.wrapper}>
+          <div style={styles.tag}>Stellar · Assets · Tokenization</div>
+          <h1 style={styles.title}>{title}</h1>
+          <div style={styles.meta}>
+            <img src={profilePic} style={styles.avatar} alt="Olvis Gil" />
+            <span><strong>Olvis Gil</strong> &nbsp;·&nbsp; EduNode &nbsp;·&nbsp; 5 min read</span>
+          </div>
+          <hr style={styles.divider} />
+          <div style={styles.body}>
+            <p>
+              One of the most powerful features of the Stellar network is the ability to issue custom assets — tokens that represent anything from fiat currencies and commodities to loyalty points and digital collectibles. In this guide, we walk through the process step by step.
+            </p>
+            <div style={styles.callout}>
+              <strong>What is an asset on Stellar?</strong> An asset on Stellar is any token issued on the network. It is identified by a code (e.g., "USD") and the issuing account's public key. Assets can represent real-world value or be entirely digital.
+            </div>
+            <h4 style={styles.h4}>Prerequisites</h4>
+            <p>
+              To issue an asset on Stellar, you need: a funded Stellar account (the issuing account), a distribution account, and access to the Stellar SDK or Stellar Laboratory. You will also need to set up a trustline from the distribution account to the issuing account.
+            </p>
+            <h4 style={styles.h4}>Step 1: Create the Issuing Account</h4>
+            <p>
+              The issuing account is the source of your asset. Every unit of your asset that exists on the network was created by this account. It is best practice to keep the issuing account's secret key offline and only use it to issue new tokens.
+            </p>
+            <h4 style={styles.h4}>Step 2: Set Up a Trustline</h4>
+            <p>
+              Before an account can hold your asset, it must establish a trustline. A trustline is an explicit opt-in that says "I trust this issuer and am willing to hold their asset." This is done using the Change Trust operation.
+            </p>
+            <h4 style={styles.h4}>Step 3: Issue the Asset</h4>
+            <p>
+              Once the trustline is established, the issuing account can send the asset to the distribution account using a Payment operation. From there, the distribution account can send the asset to any account that has established a trustline.
+            </p>
+            <h4 style={styles.h4}>Resources</h4>
+            <p>[1] <a href="https://developers.stellar.org/docs/issuing-assets/how-to-issue-an-asset" style={styles.refLink}>How to Issue an Asset — Stellar Developers</a></p>
+            <p>[2] <a href="https://laboratory.stellar.org" style={styles.refLink}>Stellar Laboratory — Test your transactions</a></p>
+          </div>
+          <div style={styles.shareSection}>
+            <div style={styles.shareLabel}>Share this article</div>
+            <div style={styles.shareButtons}>
+              <FacebookShareButton url={shareUrl} quote={title}><FacebookIcon size={36} round /></FacebookShareButton>
+              <FacebookShareCount url={shareUrl}>{(count) => (count > 0 ? <span style={{ fontSize: '12px', color: '#888' }}>{count}</span> : null)}</FacebookShareCount>
+              <TwitterShareButton url={shareUrl} title={title}><TwitterIcon size={36} round /></TwitterShareButton>
+              <LinkedinShareButton url={shareUrl}><LinkedinIcon size={36} round /></LinkedinShareButton>
+            </div>
+          </div>
+          <div style={styles.authorCard}>
+            <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
+            <div>
+              <div style={styles.authorName}>Olvis Gil</div>
+              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Stellar network expert and payment technology specialist based in Vienna, Austria.</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

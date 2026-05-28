@@ -1,280 +1,113 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Image, Card } from 'react-bootstrap';
-
-import NavBar from '../../NavBar';
-import me from "../me.jpg"
-import nodes from "./nodes.PNG"
-import economics from "./economics.png";
-import MetaTags from 'react-meta-tags';
-import kicon from "./keybaseicon.png"
+import NavBar from '../NavBar';
+import economics from './economics.png';
+import nodes from './nodes.PNG';
 import {
   FacebookShareCount,
-  RedditShareCount,
   FacebookShareButton,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  VKShareButton,
-  TelegramShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
-  EmailShareButton,
-  TumblrShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  LineShareButton,
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
-  VKIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  RedditIcon,
-  TumblrIcon,
-  EmailIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
-} from "react-share";
+} from 'react-share';
+import { Helmet } from 'react-helmet-async';
+
+const styles = {
+  page: { background: '#f8f9fc', minHeight: '100vh', fontFamily: "'Inter', 'Segoe UI', sans-serif" },
+  hero: { width: '100%', maxHeight: '420px', objectFit: 'cover', display: 'block' },
+  wrapper: { maxWidth: '780px', margin: '0 auto', padding: '40px 24px 80px' },
+  tag: { display: 'inline-block', background: 'linear-gradient(135deg, #6B48FF, #00C6FF)', color: '#fff', fontSize: '12px', fontWeight: '700', letterSpacing: '1.2px', textTransform: 'uppercase', padding: '4px 12px', borderRadius: '20px', marginBottom: '16px' },
+  title: { fontSize: '2.4rem', fontWeight: '800', lineHeight: '1.25', color: '#0d0d2b', marginBottom: '12px' },
+  meta: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px', color: '#666', fontSize: '14px' },
+  avatar: { width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #6B48FF' },
+  divider: { border: 'none', borderTop: '1px solid #e4e8f0', margin: '32px 0' },
+  body: { fontSize: '1.05rem', lineHeight: '1.85', color: '#2d2d3a' },
+  h4: { fontSize: '1.3rem', fontWeight: '700', color: '#0d0d2b', marginTop: '36px', marginBottom: '12px', paddingBottom: '6px', borderBottom: '3px solid #6B48FF', display: 'inline-block' },
+  callout: { background: 'linear-gradient(135deg, #f0ecff, #e8f7ff)', borderLeft: '4px solid #6B48FF', borderRadius: '8px', padding: '16px 20px', margin: '24px 0', fontSize: '1rem', color: '#2d2d3a', lineHeight: '1.7' },
+  inlineImg: { width: '100%', borderRadius: '12px', margin: '20px 0', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' },
+  codeImg: { width: '100%', borderRadius: '8px', margin: '16px 0', border: '1px solid #e4e8f0' },
+  shareSection: { marginTop: '40px', paddingTop: '24px', borderTop: '1px solid #e4e8f0' },
+  shareLabel: { fontSize: '13px', fontWeight: '600', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' },
+  shareButtons: { display: 'flex', gap: '10px', alignItems: 'center' },
+  authorCard: { display: 'flex', alignItems: 'center', gap: '20px', background: '#fff', border: '1px solid #e4e8f0', borderRadius: '16px', padding: '24px', marginTop: '48px', boxShadow: '0 4px 20px rgba(107,72,255,0.08)' },
+  authorAvatar: { width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #6B48FF', flexShrink: 0 },
+  authorName: { fontWeight: '700', fontSize: '1.1rem', color: '#0d0d2b', marginBottom: '4px' },
+  authorBio: { fontSize: '0.9rem', color: '#555', lineHeight: '1.5', margin: 0 },
+  refLink: { color: '#6B48FF', textDecoration: 'none', wordBreak: 'break-all' },
+};
 
 export default class Stellarnomics extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isAuthenticated: null,
-    };
-
-
-
-  }
   render() {
-
-    const shareUrl = "https://edunode.netlify.com/blog/Stellarnomics"
-    const title = "How to Issue assets on the Stellar Network"
-    const exampleImage = economics
+    const shareUrl = 'https://edunode.org/blog/stellarnomics';
+    const title = 'Stellarnomics: Understanding the Stellar Network Economics';
+    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    
 
     return (
-      <div>
-      
-      <MetaTags>
-        {/* <title>Page 1</title> */}
-        <meta id="meta-description" name="description" content="Monetary aspects of the Stellar Consensus Protocol and its steps towards decentralization" />
-        <meta id="og-title" property="og:title" content="Stellarnomics: Monetary aspects of the Stellar Consensus Protocol" />
-        <meta id="og-image" property="og:image" content="fd" />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://edunode.netlify.app/blog/stellarnomics" />
-        <meta property="twitter:title" content="Stellarnomics" />
-        <meta property="twitter:description" content="Monetary aspects of the Stellar Consensus Protocol and its steps towards decentralization" />
-        <meta property="twitter:image" content="" />
-      </MetaTags>
-
+      <div style={styles.page}>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{title}</title>
+          <link rel="canonical" href={shareUrl} />
+        </Helmet>
         <NavBar />
-        <br></br>
-        <Image src={economics} className="header-image" fluid />
-        <br></br>
-        <Container>
-          <br></br>
-          <h2>Stellarnomics: Monetary aspects of the Stellar Consensus Protocol</h2>
-          <br></br>
-          <Row>
-            <Col xs={12} sm={8} className="main-section">
-
-
-              <p> Since the invention of the Internet, our lives have started to experience radical changes in many areas such as; how we communicate, how we learn, and how we spend our free time.  Back in the 16th century, when gold was still the most predominant commodity in the world, the system of commodity money eventually evolved into a system of representative money, where the first issuing banks appeared in northern Europe. Now with the invention of technologies like <a href="https://www.stellar.org/">Stellar</a> , the way we transact has radically changed. The system is slowly but steadily evolving into a decentralized system where trust is ensured by mathematics and cryptography. </p>
-              <p>In order to grasp the economic aspects of the Stellar Consensus Protocol -or how I like to refer to it, the “Stellarnomic” aspects- proper analizes of how consensus work are fundamental. Decentralized consensus reigns all the actions that take place in cryptoeconomic systems. Consensus can be defined as a decision-making process in which participants of a particular system (in this case: Nodes) agree to support (or not) a decision, in order to reach an agreement (concensus). </p>
-              <p>The underlying consensus mechanism in which <a href="https://bitcoin.org/">Bitcoin</a> operates is called Proof-of-work (PoW), this consensus mechanism secures all transactions in the Bitcoin network and was the inspiration for the development of Stellar. The way it works is that users create cryptographically secure transactions and broadcast them to the network. Miners collect as many transactions as they can and fit them into a block, and then they have to solve highly complex mathematical algorithms which allows them to verify each block and move it to the list of historic blocks. This is key in order to make sure that there are not invalid or fraudulent transactions.</p>
-              <Image src={nodes} fluid />
-              <p>Nodes visualization by <a href="https://stellarbeat.io/">https://stellarbeat.io/</a> </p>
-              <h3>
-                <p>
-                  "Understanding the behavior of the participants within decentralized systems (or networks) is vital not only for Stellar but for any blockchain or distributed ledger."
-       </p>
-
-              </h3>
-
-
-              <br></br>
-              <p>
-                On the other hand, the Stellar Consensus Protocol is a decentralized global consensus, differentiates itself from the other consensus mechanisms (like POW) because the nodes which validate the transactions work without mining. Each validator or node defines sets of other nodes that it needs to agree with. These sets are called quorum slices and when you look at the quorum slices of all validator nodes they define a global network of trust relationships between these nodes (above you can see how the current relationships look like). For example, if the configuration for a quorum set is (α, β, γ) with a threshold of 2, then either (α, β), (β, γ) or (γ, α) must agree before the node can proceed. (α, β), (β, γ) or (γ, α) are all quorum slices. In the article <a href="https://medium.com/stellar-developers-blog/intuitive-stellar-consensus-protocol-d7fbf99a60ce">“Intuitive Stellar Consensus Protocol”</a>  by Marta Lokhava, she mentions that “everything begins with statements” and that distributed systems “need a consensus mechanism in order to agree on different statements”. This in particular is achieved via federated voting. We can also describe these models of behavior as Game Theory of distribuded systems.
-       </p>
-              <p>If you would like to know more about the Stellar Concensus Protocol, check out the <a href="https://www.stellar.org/papers/stellar-consensus-protocol">Whitepaper</a>, which was designed by David Mazières. This academic research is fundamental and constitutes a hugh step towards adoption.</p>
-              <p></p>
-              <p></p>
-              <div className="Demo__container">
-        <div className="Demo__some-network">
-          <FacebookShareButton
-            url={shareUrl}
-            quote={title}
-            className="Demo__some-network__share-button"
-          >
-            <FacebookIcon size={32} round />
-          </FacebookShareButton>
-
-          <div>
-            <FacebookShareCount url={shareUrl} className="Demo__some-network__share-count">
-              {count => count}
-            </FacebookShareCount>
+        <img src={economics} style={styles.hero} alt="Stellar Network Economics" />
+        <div style={styles.wrapper}>
+          <div style={styles.tag}>Stellar · Economics · XLM</div>
+          <h1 style={styles.title}>{title}</h1>
+          <div style={styles.meta}>
+            <img src={profilePic} style={styles.avatar} alt="Olvis Gil" />
+            <span><strong>Olvis Gil</strong> &nbsp;·&nbsp; EduNode &nbsp;·&nbsp; 5 min read</span>
+          </div>
+          <hr style={styles.divider} />
+          <div style={styles.body}>
+            <p>
+              Understanding the economics of the Stellar network is essential for anyone building on it. From the role of XLM as the native currency to the fee structure and inflation mechanism, Stellar's economic design is carefully crafted to enable fast, low-cost global payments.
+            </p>
+            <div style={styles.callout}>
+              <strong>Key fact:</strong> Stellar was designed from the ground up to facilitate cross-border payments. With transaction fees as low as 0.00001 XLM and settlement times of 3-5 seconds, it is one of the most efficient payment networks in existence.
+            </div>
+            <h4 style={styles.h4}>The Role of XLM</h4>
+            <p>
+              Lumens (XLM) are the native currency of the Stellar network. They serve three primary purposes: as a bridge currency for cross-asset transactions, as a spam prevention mechanism (each transaction requires a small fee), and as a minimum balance requirement for accounts (currently 1 XLM base reserve).
+            </p>
+            <img src={economics} style={styles.inlineImg} alt="Stellar economics diagram" />
+            <h4 style={styles.h4}>The Stellar Network Structure</h4>
+            <p>
+              The Stellar network is maintained by a decentralized network of nodes. Each node participates in the Stellar Consensus Protocol (SCP), a federated Byzantine agreement system that allows nodes to reach consensus without a central authority. This makes the network both decentralized and highly efficient.
+            </p>
+            <img src={nodes} style={styles.inlineImg} alt="Stellar network nodes" />
+            <h4 style={styles.h4}>Transaction Fees</h4>
+            <p>
+              Every transaction on Stellar requires a small fee, currently set at 100 stroops (0.00001 XLM) as the base fee. This fee serves as a spam prevention mechanism. During periods of high network activity, users can set higher fees to prioritize their transactions.
+            </p>
+            <h4 style={styles.h4}>Anchors and the Bridge Currency Model</h4>
+            <p>
+              Anchors are entities that bridge the gap between traditional finance and the Stellar network. They accept deposits in fiat currency and issue equivalent tokens on the Stellar network. When you want to send USD to someone in Europe as EUR, Stellar uses XLM as an intermediate bridge currency, converting automatically through the decentralized exchange.
+            </p>
+            <h4 style={styles.h4}>Resources</h4>
+            <p>[1] <a href="https://stellar.org/learn/intro-to-stellar" style={styles.refLink}>Introduction to Stellar — stellar.org</a></p>
+            <p>[2] <a href="https://developers.stellar.org/docs/fundamentals-and-concepts/lumens" style={styles.refLink}>Lumens (XLM) — Stellar Developer Docs</a></p>
+          </div>
+          <div style={styles.shareSection}>
+            <div style={styles.shareLabel}>Share this article</div>
+            <div style={styles.shareButtons}>
+              <FacebookShareButton url={shareUrl} quote={title}><FacebookIcon size={36} round /></FacebookShareButton>
+              <FacebookShareCount url={shareUrl}>{(count) => (count > 0 ? <span style={{ fontSize: '12px', color: '#888' }}>{count}</span> : null)}</FacebookShareCount>
+              <TwitterShareButton url={shareUrl} title={title}><TwitterIcon size={36} round /></TwitterShareButton>
+              <LinkedinShareButton url={shareUrl}><LinkedinIcon size={36} round /></LinkedinShareButton>
+            </div>
+          </div>
+          <div style={styles.authorCard}>
+            <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
+            <div>
+              <div style={styles.authorName}>Olvis Gil</div>
+              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Stellar network economist and payment technology expert based in Vienna, Austria.</p>
+            </div>
           </div>
         </div>
-
-        <div className="Demo__some-network">
-          <FacebookMessengerShareButton
-            url={shareUrl}
-            appId="521270401588372"
-            className="Demo__some-network__share-button"
-          >
-            <FacebookMessengerIcon size={32} round />
-          </FacebookMessengerShareButton>
-        </div>
-
-        <div className="Demo__some-network">
-          <TwitterShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <TwitterIcon size={32} round />
-          </TwitterShareButton>
-
-          <div className="Demo__some-network__share-count">&nbsp;</div>
-        </div>
-
-        <div className="Demo__some-network">
-          <TelegramShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <TelegramIcon size={32} round />
-          </TelegramShareButton>
-
-          <div className="Demo__some-network__share-count">&nbsp;</div>
-        </div>
-
-        <div className="Demo__some-network">
-          <WhatsappShareButton
-            url={shareUrl}
-            title={title}
-            separator=":: "
-            className="Demo__some-network__share-button"
-          >
-            <WhatsappIcon size={32} round />
-          </WhatsappShareButton>
-
-          <div className="Demo__some-network__share-count">&nbsp;</div>
-        </div>
-
-        <div className="Demo__some-network">
-          <LinkedinShareButton url={shareUrl} className="Demo__some-network__share-button">
-            <LinkedinIcon size={32} round />
-          </LinkedinShareButton>
-        </div>
-
-
-        <div className="Demo__some-network">
-          <RedditShareButton
-            url={shareUrl}
-            title={title}
-            windowWidth={660}
-            windowHeight={460}
-            className="Demo__some-network__share-button"
-          >
-            <RedditIcon size={32} round />
-          </RedditShareButton>
-
-          <div>
-            <RedditShareCount url={shareUrl} className="Demo__some-network__share-count" />
-          </div>
-        </div>
-
-        <div className="Demo__some-network">
-          <TumblrShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <TumblrIcon size={32} round />
-          </TumblrShareButton>
-
-          
-        </div>
-
-        <div className="Demo__some-network">
-          <EmailShareButton
-            url={shareUrl}
-            subject={title}
-            body="body"
-            className="Demo__some-network__share-button"
-          >
-            <EmailIcon size={32} round />
-          </EmailShareButton>
-        </div>
-        <div className="Demo__some-network">
-          <ViberShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <ViberIcon size={32} round />
-          </ViberShareButton>
-        </div>
-
-        <div className="Demo__some-network">
-          <WorkplaceShareButton
-            url={shareUrl}
-            quote={title}
-            className="Demo__some-network__share-button"
-          >
-            <WorkplaceIcon size={32} round />
-          </WorkplaceShareButton>
-        </div>
-
-        <div className="Demo__some-network">
-          <LineShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <LineIcon size={32} round />
-          </LineShareButton>
-        </div>
-
-        <div className="Demo__some-network">
-          <VKShareButton
-            url={shareUrl}
-            image={`${String(window.location)}/${exampleImage}`}
-            className="Demo__some-network__share-button"
-          >
-            <VKIcon size={32} round />
-          </VKShareButton>
-
-        </div>
-
       </div>
-            </Col>
-            <Col xs={12} sm={4} className="sidebar-section">
-
-            <Card style={{ width: '9rem' }}>
-                <Card.Img variant="top" src={me} />
-                <Card.Body>
-                  <Card.Title>Olvis Gil</Card.Title>
-                  <Card.Text>
-                    <p>Economist, Entrepreneur and self-taught Developer</p>
-                  </Card.Text>
-                  <a href="https://keybase.io/olvis_experio">
-                  <img style={{ width: '25px' }} src={kicon} alt="keybase" />
-                  </a>
-                </Card.Body>
-                
-              </Card>
-
-            </Col>
-          </Row>
-        </Container>
-        
-      </div>
-    )
+    );
   }
 }

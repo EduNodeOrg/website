@@ -1,332 +1,109 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Image, Card } from 'react-bootstrap';
-
-import NavBar from '../../NavBar';
-import me from '../sara.jpg';
-import sc from '../Dockerr.png';
-import Typography from '@material-ui/core/Typography';
+import NavBar from '../NavBar';
+import sc from '../../Dockerr.png';
 import {
   FacebookShareCount,
-  RedditShareCount,
   FacebookShareButton,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  VKShareButton,
   FacebookIcon,
-  TelegramShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
-  EmailShareButton,
-  TumblrShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  LineShareButton,
   TwitterIcon,
   LinkedinIcon,
-  VKIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  RedditIcon,
-  TumblrIcon,
-  EmailIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
-
 } from 'react-share';
-import { Helmet } from 'react-helmet-async'
-import './style.css';
+import { Helmet } from 'react-helmet-async';
+
+const styles = {
+  page: { background: '#f8f9fc', minHeight: '100vh', fontFamily: "'Inter', 'Segoe UI', sans-serif" },
+  hero: { width: '100%', maxHeight: '420px', objectFit: 'cover', display: 'block' },
+  wrapper: { maxWidth: '780px', margin: '0 auto', padding: '40px 24px 80px' },
+  tag: { display: 'inline-block', background: 'linear-gradient(135deg, #6B48FF, #00C6FF)', color: '#fff', fontSize: '12px', fontWeight: '700', letterSpacing: '1.2px', textTransform: 'uppercase', padding: '4px 12px', borderRadius: '20px', marginBottom: '16px' },
+  title: { fontSize: '2.4rem', fontWeight: '800', lineHeight: '1.25', color: '#0d0d2b', marginBottom: '12px' },
+  meta: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px', color: '#666', fontSize: '14px' },
+  avatar: { width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #6B48FF' },
+  divider: { border: 'none', borderTop: '1px solid #e4e8f0', margin: '32px 0' },
+  body: { fontSize: '1.05rem', lineHeight: '1.85', color: '#2d2d3a' },
+  h4: { fontSize: '1.3rem', fontWeight: '700', color: '#0d0d2b', marginTop: '36px', marginBottom: '12px', paddingBottom: '6px', borderBottom: '3px solid #6B48FF', display: 'inline-block' },
+  callout: { background: 'linear-gradient(135deg, #f0ecff, #e8f7ff)', borderLeft: '4px solid #6B48FF', borderRadius: '8px', padding: '16px 20px', margin: '24px 0', fontSize: '1rem', color: '#2d2d3a', lineHeight: '1.7' },
+  inlineImg: { width: '100%', borderRadius: '12px', margin: '20px 0', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' },
+  codeImg: { width: '100%', borderRadius: '8px', margin: '16px 0', border: '1px solid #e4e8f0' },
+  shareSection: { marginTop: '40px', paddingTop: '24px', borderTop: '1px solid #e4e8f0' },
+  shareLabel: { fontSize: '13px', fontWeight: '600', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' },
+  shareButtons: { display: 'flex', gap: '10px', alignItems: 'center' },
+  authorCard: { display: 'flex', alignItems: 'center', gap: '20px', background: '#fff', border: '1px solid #e4e8f0', borderRadius: '16px', padding: '24px', marginTop: '48px', boxShadow: '0 4px 20px rgba(107,72,255,0.08)' },
+  authorAvatar: { width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #6B48FF', flexShrink: 0 },
+  authorName: { fontWeight: '700', fontSize: '1.1rem', color: '#0d0d2b', marginBottom: '4px' },
+  authorBio: { fontSize: '0.9rem', color: '#555', lineHeight: '1.5', margin: 0 },
+  refLink: { color: '#6B48FF', textDecoration: 'none', wordBreak: 'break-all' },
+};
 
 export default class Docker extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isAuthenticated: null,
-    };
-  }
   render() {
     const shareUrl = 'https://edunode.org/blog/docker';
     const title = 'What is Docker and how you can use it?';
-    const exampleImage = sc;
+    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    
 
     return (
-      <div>
+      <div style={styles.page}>
         <Helmet>
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
-          
-          <meta
-            name="description"
-            content="Docker is a popular containerization platform that allows developers to package, distribute, and run their applications in a portable and scalable way."
-          />
         </Helmet>
         <NavBar />
-
-        <Image src={sc} className="header-image" fluid />
-        <Container>
-        <Typography
-                component="h1"
-                variant="h4"
-                align="left"
-                color="textPrimary"
-                gutterBottom
-              >
-                What is Docker and how you can use it?
-              </Typography>
-      
-
-          <Row>
-          <b></b>
-         <b></b>
-         <b></b>
-         <b></b>
-         <p></p>
-            <Col xs={12} sm={8} className="main-section">
-            <p>  
-              
-              
-              <p>Docker is a popular containerization platform that allows developers to package, distribute, and run their applications in a portable and scalable way. Docker containers are lightweight, standalone, and executable packages that include all the necessary software, libraries, and dependencies to run an application.
-
-In this blog, we'll explore what Docker is, how it can be used in blockchain, and a short example of how it can be used.</p>
-<br></br>
-<h4>What is Docker?</h4>
-
- <p>Docker is a containerization platform that allows developers to create and deploy applications in a containerized environment. Containers are lightweight and portable, making them ideal for running applications on multiple platforms and environments.
-
-Docker containers are built from Docker images, which are essentially snapshots of an application's code, dependencies, and configuration files. Docker images can be shared and distributed through a Docker registry, such as Docker Hub, making it easy for developers to collaborate and deploy applications across different environments.
-
-The main benefits of using Docker include:
-
-Consistency: Docker ensures that applications run the same way in different environments, eliminating the "works on my machine" problem.
-Portability: Docker containers can run on any platform that supports Docker, from laptops to data centers and cloud providers.
-Scalability: Docker allows applications to scale horizontally by spinning up multiple instances of containers.
-Security: Docker containers are isolated from each other and the host system, providing an extra layer of security.</p>
-<br></br>
-
-<h4>How Docker can be used in Blockchain?</h4>
-<p>Blockchain is a decentralized technology that allows multiple parties to share a tamper-proof ledger of transactions. Docker can be used to create blockchain networks and deploy blockchain applications in a containerized environment.
-
-Using Docker for blockchain offers several advantages, including:
-
-Simplified deployment: Docker containers can be easily deployed to different nodes in a blockchain network, making it easy to set up and manage the network.
-Consistent environment: Docker ensures that all nodes in the network are running the same software and configuration, ensuring consistency and reliability.
-Scalability: Docker allows blockchain networks to scale horizontally by adding more nodes to the network.
-Isolation: Docker containers are isolated from each other and the host system, providing an extra layer of security for blockchain networks. </p>
-<br></br>
-<p><h4>How it can be used?</h4></p>
-
-
-<p>Let's consider a simple example of how Docker can be used in blockchain. Suppose we want to create a private blockchain network using Hyperledger Fabric, a popular blockchain platform for building enterprise-grade applications.
-
-To create the network, we can use Docker to spin up multiple containers, each running a different component of the blockchain network, such as the orderer, peer, and client. Docker ensures that all containers are running the same version of the software and configuration, making it easy to set up and manage the network.
-
-We can also use Docker to deploy and run blockchain applications in a containerized environment. This allows us to easily test and deploy blockchain applications across different environments, such as development, staging, and production.</p>
-<br></br>
-
-<h4> Conclusion </h4>
-
-
-<p>Docker is a powerful containerization platform that offers many benefits for blockchain development and deployment. By using Docker, developers can easily create and manage blockchain networks, deploy and run blockchain applications, and ensure consistency and reliability across different environments.
-
-Whether you're building a private blockchain network for enterprise applications or a decentralized application for a public blockchain, Docker can help simplify the development and deployment process, and ensure that your applications run consistently and reliably across different platforms and environments.</p>
-<br></br>
-
-
-
-
-
-
-
-
-
-             
-              <div className="Demo__container">
-                <div className="Demo__some-network">
-                  <FacebookShareButton
-                    url={shareUrl}
-                    quote={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <FacebookIcon size={32} round />
-                  </FacebookShareButton>
-
-                  <div>
-                    <FacebookShareCount
-                      url={shareUrl}
-                      className="Demo__some-network__share-count"
-                    >
-                      {(count) => count}
-                    </FacebookShareCount>
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <FacebookMessengerShareButton
-                    url={shareUrl}
-                    appId="521270401588372"
-                    className="Demo__some-network__share-button"
-                  >
-                    <FacebookMessengerIcon size={32} round />
-                  </FacebookMessengerShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TwitterShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TwitterIcon size={32} round />
-                  </TwitterShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TelegramShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TelegramIcon size={32} round />
-                  </TelegramShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <WhatsappShareButton
-                    url={shareUrl}
-                    title={title}
-                    separator=":: "
-                    className="Demo__some-network__share-button"
-                  >
-                    <WhatsappIcon size={32} round />
-                  </WhatsappShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <LinkedinShareButton
-                    url={shareUrl}
-                    className="Demo__some-network__share-button"
-                  >
-                    <LinkedinIcon size={32} round />
-                  </LinkedinShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <RedditShareButton
-                    url={shareUrl}
-                    title={title}
-                    windowWidth={660}
-                    windowHeight={460}
-                    className="Demo__some-network__share-button"
-                  >
-                    <RedditIcon size={32} round />
-                  </RedditShareButton>
-
-                  <div>
-                    <RedditShareCount
-                      url={shareUrl}
-                      className="Demo__some-network__share-count"
-                    />
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TumblrShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TumblrIcon size={32} round />
-                  </TumblrShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <EmailShareButton
-                    url={shareUrl}
-                    subject={title}
-                    body="body"
-                    className="Demo__some-network__share-button"
-                  >
-                    <EmailIcon size={32} round />
-                  </EmailShareButton>
-                </div>
-                <div className="Demo__some-network">
-                  <ViberShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <ViberIcon size={32} round />
-                  </ViberShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <WorkplaceShareButton
-                    url={shareUrl}
-                    quote={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <WorkplaceIcon size={32} round />
-                  </WorkplaceShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <LineShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <LineIcon size={32} round />
-                  </LineShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <VKShareButton
-                    url={shareUrl}
-                    image={`${String(
-                      window.location,
-                    )}/${exampleImage}`}
-                    className="Demo__some-network__share-button"
-                  >
-                    <VKIcon size={32} round />
-                  </VKShareButton>
-                </div>
-              </div>
-              </p>
-            </Col>
-            <Col xs={12} sm={4} className="sidebar-section">
-              <Card style={{ width: '9rem' }}>
-                <Card.Img variant="top" src={me} />
-                <Card.Title>Sarah Jedlaoui</Card.Title>
-                <Card.Body>
-
-                  <Card.Text>
-                    <p>
-                     Software Developer
-                    </p>
-                  </Card.Text>
-                  
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-        
+        <img src={sc} style={styles.hero} alt="Docker for Blockchain Development" />
+        <div style={styles.wrapper}>
+          <div style={styles.tag}>Docker · DevOps · Blockchain</div>
+          <h1 style={styles.title}>{title}</h1>
+          <div style={styles.meta}>
+            <img src={profilePic} style={styles.avatar} alt="Olvis Gil" />
+            <span><strong>Olvis Gil</strong> &nbsp;·&nbsp; EduNode &nbsp;·&nbsp; 5 min read</span>
+          </div>
+          <hr style={styles.divider} />
+          <div style={styles.body}>
+            <p>
+              Docker is one of the most powerful tools in a modern developer's toolkit. It allows you to package applications and their dependencies into portable containers that run consistently across any environment — from your laptop to a cloud server.
+            </p>
+            <div style={styles.callout}>
+              <strong>Analogy:</strong> Think of Docker containers like shipping containers. Just as a shipping container can be loaded onto any ship, truck, or train regardless of its contents, a Docker container can run on any machine that has Docker installed — regardless of the underlying operating system.
+            </div>
+            <h4 style={styles.h4}>What is Docker?</h4>
+            <p>
+              Docker is an open-source platform that enables developers to build, ship, and run applications in containers. A container is a lightweight, standalone, executable package that includes everything needed to run a piece of software: code, runtime, system tools, libraries, and settings.
+            </p>
+            <h4 style={styles.h4}>Docker vs Virtual Machines</h4>
+            <p>
+              Unlike virtual machines (VMs), which virtualize an entire operating system, Docker containers share the host OS kernel and isolate the application processes. This makes containers much lighter, faster to start, and more resource-efficient than VMs.
+            </p>
+            <h4 style={styles.h4}>Docker in Blockchain Development</h4>
+            <p>
+              Docker is widely used in blockchain development for running local blockchain nodes, setting up development environments, and deploying decentralized applications. For Stellar development, you can run a local Stellar network using Docker to test your applications before deploying to the mainnet.
+            </p>
+            <h4 style={styles.h4}>Getting Started with Docker</h4>
+            <p>
+              To get started, download Docker Desktop from <a href="https://www.docker.com" style={styles.refLink}>docker.com</a>. Once installed, you can pull and run any container with a single command: <code>docker run hello-world</code>. From there, you can explore Docker Hub for thousands of pre-built images, including blockchain nodes, databases, and development tools.
+            </p>
+            <h4 style={styles.h4}>Resources</h4>
+            <p>[1] <a href="https://docs.docker.com/get-started/" style={styles.refLink}>Docker — Get Started Guide</a></p>
+            <p>[2] <a href="https://hub.docker.com/" style={styles.refLink}>Docker Hub — Container Registry</a></p>
+          </div>
+          <div style={styles.shareSection}>
+            <div style={styles.shareLabel}>Share this article</div>
+            <div style={styles.shareButtons}>
+              <FacebookShareButton url={shareUrl} quote={title}><FacebookIcon size={36} round /></FacebookShareButton>
+              <FacebookShareCount url={shareUrl}>{(count) => (count > 0 ? <span style={{ fontSize: '12px', color: '#888' }}>{count}</span> : null)}</FacebookShareCount>
+              <TwitterShareButton url={shareUrl} title={title}><TwitterIcon size={36} round /></TwitterShareButton>
+              <LinkedinShareButton url={shareUrl}><LinkedinIcon size={36} round /></LinkedinShareButton>
+            </div>
+          </div>
+          <div style={styles.authorCard}>
+            <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
+            <div>
+              <div style={styles.authorName}>Olvis Gil</div>
+              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. IT consultant and blockchain developer based in Vienna, Austria.</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,346 +1,125 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Image, Card } from 'react-bootstrap';
-import NavBar from '../../NavBar';
-import me from '../sara.jpg';
-import sc from './postgres.png';
-import one from './11.png';
-import two from './22.png';
-import three from './33.png';
-import four from './44.png';
-import five from './55.png';
-import six from './66.png';
-
-import Typography from '@material-ui/core/Typography';
+import NavBar from '../NavBar';
+import sc from '../postgres.png';
+import one from '../11.png';
+import two from '../22.png';
+import three from '../33.png';
+import four from '../44.png';
+import five from '../55.png';
+import six from '../66.png';
 import {
   FacebookShareCount,
-  RedditShareCount,
   FacebookShareButton,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  VKShareButton,
   FacebookIcon,
-  TelegramShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
-  EmailShareButton,
-  TumblrShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  LineShareButton,
   TwitterIcon,
   LinkedinIcon,
-  VKIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  RedditIcon,
-  TumblrIcon,
-  EmailIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
-
 } from 'react-share';
-import { Helmet } from 'react-helmet-async'
-import './style.css';
+import { Helmet } from 'react-helmet-async';
 
-export default class PostgreSql extends Component {
-  constructor(props) {
-    super(props);
+const styles = {
+  page: { background: '#f8f9fc', minHeight: '100vh', fontFamily: "'Inter', 'Segoe UI', sans-serif" },
+  hero: { width: '100%', maxHeight: '420px', objectFit: 'cover', display: 'block' },
+  wrapper: { maxWidth: '780px', margin: '0 auto', padding: '40px 24px 80px' },
+  tag: { display: 'inline-block', background: 'linear-gradient(135deg, #6B48FF, #00C6FF)', color: '#fff', fontSize: '12px', fontWeight: '700', letterSpacing: '1.2px', textTransform: 'uppercase', padding: '4px 12px', borderRadius: '20px', marginBottom: '16px' },
+  title: { fontSize: '2.4rem', fontWeight: '800', lineHeight: '1.25', color: '#0d0d2b', marginBottom: '12px' },
+  meta: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px', color: '#666', fontSize: '14px' },
+  avatar: { width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #6B48FF' },
+  divider: { border: 'none', borderTop: '1px solid #e4e8f0', margin: '32px 0' },
+  body: { fontSize: '1.05rem', lineHeight: '1.85', color: '#2d2d3a' },
+  h4: { fontSize: '1.3rem', fontWeight: '700', color: '#0d0d2b', marginTop: '36px', marginBottom: '12px', paddingBottom: '6px', borderBottom: '3px solid #6B48FF', display: 'inline-block' },
+  callout: { background: 'linear-gradient(135deg, #f0ecff, #e8f7ff)', borderLeft: '4px solid #6B48FF', borderRadius: '8px', padding: '16px 20px', margin: '24px 0', fontSize: '1rem', color: '#2d2d3a', lineHeight: '1.7' },
+  inlineImg: { width: '100%', borderRadius: '12px', margin: '20px 0', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' },
+  codeImg: { width: '100%', borderRadius: '8px', margin: '16px 0', border: '1px solid #e4e8f0' },
+  shareSection: { marginTop: '40px', paddingTop: '24px', borderTop: '1px solid #e4e8f0' },
+  shareLabel: { fontSize: '13px', fontWeight: '600', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' },
+  shareButtons: { display: 'flex', gap: '10px', alignItems: 'center' },
+  authorCard: { display: 'flex', alignItems: 'center', gap: '20px', background: '#fff', border: '1px solid #e4e8f0', borderRadius: '16px', padding: '24px', marginTop: '48px', boxShadow: '0 4px 20px rgba(107,72,255,0.08)' },
+  authorAvatar: { width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #6B48FF', flexShrink: 0 },
+  authorName: { fontWeight: '700', fontSize: '1.1rem', color: '#0d0d2b', marginBottom: '4px' },
+  authorBio: { fontSize: '0.9rem', color: '#555', lineHeight: '1.5', margin: 0 },
+  refLink: { color: '#6B48FF', textDecoration: 'none', wordBreak: 'break-all' },
+};
 
-    this.state = {
-      isAuthenticated: null,
-    };
-  }
+export default class Postgresql extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/postgresql';
     const title = 'What is PostgreSQL and how you can use it?';
-    const exampleImage = sc;
+    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    
 
     return (
-      <div>
+      <div style={styles.page}>
         <Helmet>
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
-          
-          <meta
-            name="description"
-            content="PostgreSQL is a popular open-source relational database management system "
-          />
         </Helmet>
         <NavBar />
-
-        <Image src={sc} className="header-image" fluid />
-        <Container>
-        <Typography
-                component="h1"
-                variant="h4"
-                align="left"
-                color="textPrimary"
-                gutterBottom
-              >
-                What is PostgreSQL and how you can use it?
-              </Typography>
-      
-
-          <Row>
-          <b></b>
-         <b></b>
-         <b></b>
-         <b></b>
-         <p></p>
-            <Col xs={12} sm={8} className="main-section">
-            <p>  
-            <h4>Introduction to PostgreSQL:</h4>
-            <br></br>
-              <p>PostgreSQL is a popular open-source relational database management system that provides a robust platform for data storage, retrieval, and manipulation. It is widely used in various applications, including blockchain technology. In this blog, we will explore how to use PostgreSQL in blockchain applications.</p>
-<br></br>
-<h4>As a software student, I have worked with PostgreSQL and blockchain technology, and I would like to share my knowledge and experience with you.</h4>
-<br></br>
- <p>Setting up PostgreSQL:<br></br>
-
- Before we start using PostgreSQL in blockchain applications, we need to set it up. The first step is to download and install PostgreSQL on our system. Once PostgreSQL is installed, we need to create a database and a user with the necessary permissions to access the database. We can use the following commands to create a database and a user in PostgreSQL.</p>
-<br></br>
-<Image src={one} fluid />
-<br></br>
-<h4>Next, we need to grant the necessary permissions to the user.</h4>
-<br></br>
-<Image src={two} fluid />
-<br></br>
-<p>Connecting to PostgreSQL:<br></br>
-Now that we have set up PostgreSQL, we can connect to it from our blockchain application. We can use the following code snippet to connect to PostgreSQL in our blockchain application.
-<br></br>
-<Image src={three} fluid />
-
-Once we have established a connection to PostgreSQL, we can perform various database operations, such as inserting, updating, and retrieving data.<br></br>
-<br></br>
-
-
-Storing blockchain data in PostgreSQL:
-<br></br>
-In a blockchain application, we need to store various types of data, such as transactions, blocks, and accounts. We can use PostgreSQL to store this data.
-<br></br>
-For example, to store transactions in PostgreSQL, we can create a table with the following schema.
-<Image src={four} fluid />
-
-
-
-
-We can then use SQL queries to insert transactions into the table.<br></br>
-<Image src={five} fluid />
-
-
-Retrieving blockchain data from PostgreSQL:<br></br>
-In a blockchain application, we also need to retrieve data from the database. We can use SQL queries to retrieve data from PostgreSQL.<br></br>
-For example, to retrieve all transactions from the transactions table, we can use the following SQL query.<br></br>
-<Image src={six} fluid />
-
-We can also use various SQL clauses, such as WHERE and ORDER BY, to filter and sort the data.<br></br>
-
-</p>
-<br></br>
-<p><h4>Conclusion</h4></p>
-<br></br>
-<p>PostgreSQL is a powerful database management system that can be used in blockchain applications to store and retrieve data. In this blog, we have explored how to use PostgreSQL in a blockchain application. We have covered setting up PostgreSQL, connecting to PostgreSQL, storing blockchain data in PostgreSQL, and retrieving blockchain data from PostgreSQL. I hope this blog has been informative and helpful in understanding how to use PostgreSQL in a blockchain application.</p>
-<br></br>
-
-
-<br></br>
-
-
-
-
-
-
-
-
-
-             
-              <div className="Demo__container">
-                <div className="Demo__some-network">
-                  <FacebookShareButton
-                    url={shareUrl}
-                    quote={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <FacebookIcon size={32} round />
-                  </FacebookShareButton>
-
-                  <div>
-                    <FacebookShareCount
-                      url={shareUrl}
-                      className="Demo__some-network__share-count"
-                    >
-                      {(count) => count}
-                    </FacebookShareCount>
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <FacebookMessengerShareButton
-                    url={shareUrl}
-                    appId="521270401588372"
-                    className="Demo__some-network__share-button"
-                  >
-                    <FacebookMessengerIcon size={32} round />
-                  </FacebookMessengerShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TwitterShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TwitterIcon size={32} round />
-                  </TwitterShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TelegramShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TelegramIcon size={32} round />
-                  </TelegramShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <WhatsappShareButton
-                    url={shareUrl}
-                    title={title}
-                    separator=":: "
-                    className="Demo__some-network__share-button"
-                  >
-                    <WhatsappIcon size={32} round />
-                  </WhatsappShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <LinkedinShareButton
-                    url={shareUrl}
-                    className="Demo__some-network__share-button"
-                  >
-                    <LinkedinIcon size={32} round />
-                  </LinkedinShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <RedditShareButton
-                    url={shareUrl}
-                    title={title}
-                    windowWidth={660}
-                    windowHeight={460}
-                    className="Demo__some-network__share-button"
-                  >
-                    <RedditIcon size={32} round />
-                  </RedditShareButton>
-
-                  <div>
-                    <RedditShareCount
-                      url={shareUrl}
-                      className="Demo__some-network__share-count"
-                    />
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TumblrShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TumblrIcon size={32} round />
-                  </TumblrShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <EmailShareButton
-                    url={shareUrl}
-                    subject={title}
-                    body="body"
-                    className="Demo__some-network__share-button"
-                  >
-                    <EmailIcon size={32} round />
-                  </EmailShareButton>
-                </div>
-                <div className="Demo__some-network">
-                  <ViberShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <ViberIcon size={32} round />
-                  </ViberShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <WorkplaceShareButton
-                    url={shareUrl}
-                    quote={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <WorkplaceIcon size={32} round />
-                  </WorkplaceShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <LineShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <LineIcon size={32} round />
-                  </LineShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <VKShareButton
-                    url={shareUrl}
-                    image={`${String(
-                      window.location,
-                    )}/${exampleImage}`}
-                    className="Demo__some-network__share-button"
-                  >
-                    <VKIcon size={32} round />
-                  </VKShareButton>
-                </div>
-              </div>
-              </p>
-            </Col>
-            <Col xs={12} sm={4} className="sidebar-section">
-              <Card style={{ width: '9rem' }}>
-                <Card.Img variant="top" src={me} />
-                <Card.Title>Sarah Jedlaoui</Card.Title>
-                <Card.Body>
-
-                  <Card.Text>
-                    <p>
-                     Software Developer
-                    </p>
-                  </Card.Text>
-                  
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-       
+        <img src={sc} style={styles.hero} alt="PostgreSQL for Blockchain" />
+        <div style={styles.wrapper}>
+          <div style={styles.tag}>PostgreSQL · Blockchain · Database</div>
+          <h1 style={styles.title}>{title}</h1>
+          <div style={styles.meta}>
+            <img src={profilePic} style={styles.avatar} alt="Olvis Gil" />
+            <span><strong>Olvis Gil</strong> &nbsp;·&nbsp; EduNode &nbsp;·&nbsp; 5 min read</span>
+          </div>
+          <hr style={styles.divider} />
+          <div style={styles.body}>
+            <p>
+              PostgreSQL is one of the most powerful and widely-used open-source relational database management systems in the world. In the context of blockchain and Web3 development, PostgreSQL plays a crucial role as the off-chain data layer for decentralized applications.
+            </p>
+            <div style={styles.callout}>
+              <strong>Why PostgreSQL for blockchain?</strong> While blockchain stores immutable transaction records, most dApps need a fast, queryable database for user data, application state, and analytics. PostgreSQL provides the perfect complement to on-chain storage.
+            </div>
+            <h4 style={styles.h4}>Introduction to PostgreSQL</h4>
+            <p>
+              PostgreSQL is a popular open-source relational database management system that provides a robust platform for data storage, retrieval, and manipulation. It is widely used in various applications, including blockchain technology. In this blog, we will explore how to use PostgreSQL in blockchain applications.
+            </p>
+            <img src={one} style={styles.codeImg} alt="PostgreSQL setup step 1" />
+            <h4 style={styles.h4}>Setting Up PostgreSQL</h4>
+            <p>
+              Setting up PostgreSQL is straightforward. On Ubuntu, you can install it with: <code>sudo apt-get install postgresql postgresql-contrib</code>. Once installed, you can connect to the default database using: <code>sudo -u postgres psql</code>.
+            </p>
+            <img src={two} style={styles.codeImg} alt="PostgreSQL setup step 2" />
+            <img src={three} style={styles.codeImg} alt="PostgreSQL setup step 3" />
+            <h4 style={styles.h4}>Connecting to PostgreSQL</h4>
+            <p>
+              Next, we need to grant the necessary permissions to the user and create a database for our blockchain application. This involves creating a new PostgreSQL role, setting a password, and granting the appropriate privileges.
+            </p>
+            <img src={four} style={styles.codeImg} alt="PostgreSQL connection" />
+            <h4 style={styles.h4}>Storing Blockchain Data</h4>
+            <p>
+              When building a Stellar application, you might want to store transaction history, account balances, or application-specific data in PostgreSQL. This allows for fast queries and complex analytics that would be impractical to perform directly on the blockchain.
+            </p>
+            <img src={five} style={styles.codeImg} alt="Storing blockchain data" />
+            <img src={six} style={styles.codeImg} alt="Querying blockchain data" />
+            <h4 style={styles.h4}>Conclusion</h4>
+            <p>
+              PostgreSQL is a powerful database management system that can be used in blockchain applications to store and retrieve data efficiently. The combination of PostgreSQL's robust querying capabilities with Stellar's fast settlement makes for a powerful application stack.
+            </p>
+            <h4 style={styles.h4}>Resources</h4>
+            <p>[1] <a href="https://www.postgresql.org/docs/" style={styles.refLink}>PostgreSQL — Official Documentation</a></p>
+            <p>[2] <a href="https://developers.stellar.org/docs/data/horizon" style={styles.refLink}>Horizon API — Stellar Data Layer</a></p>
+          </div>
+          <div style={styles.shareSection}>
+            <div style={styles.shareLabel}>Share this article</div>
+            <div style={styles.shareButtons}>
+              <FacebookShareButton url={shareUrl} quote={title}><FacebookIcon size={36} round /></FacebookShareButton>
+              <FacebookShareCount url={shareUrl}>{(count) => (count > 0 ? <span style={{ fontSize: '12px', color: '#888' }}>{count}</span> : null)}</FacebookShareCount>
+              <TwitterShareButton url={shareUrl} title={title}><TwitterIcon size={36} round /></TwitterShareButton>
+              <LinkedinShareButton url={shareUrl}><LinkedinIcon size={36} round /></LinkedinShareButton>
+            </div>
+          </div>
+          <div style={styles.authorCard}>
+            <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
+            <div>
+              <div style={styles.authorName}>Olvis Gil</div>
+              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Full-stack developer and database architect based in Vienna, Austria.</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

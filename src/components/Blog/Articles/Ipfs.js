@@ -1,364 +1,126 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Image, Card } from 'react-bootstrap';
-
-import NavBar from '../../NavBar';
-import me from '../sara.jpg';
-import sc from '../IPFS.png';
-import one from './1.png';
-import two from './2.png';
-import three from './3.png';
-import four from './4.png';
-import five from './5.png';
-import six from './6.png';
-import seven from './7.png';
-import eight from './8.png';
-import nine from './9.png'
-import Typography from '@material-ui/core/Typography';
+import NavBar from '../NavBar';
+import sc from '../../IPFS.png';
+import one from '../1.png';
+import two from '../2.png';
+import three from '../3.png';
+import four from '../4.png';
+import five from '../5.png';
+import six from '../6.png';
+import seven from '../7.png';
+import eight from '../8.png';
 import {
   FacebookShareCount,
-  RedditShareCount,
   FacebookShareButton,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  VKShareButton,
   FacebookIcon,
-  TelegramShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
-  EmailShareButton,
-  TumblrShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  LineShareButton,
   TwitterIcon,
   LinkedinIcon,
-  VKIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  RedditIcon,
-  TumblrIcon,
-  EmailIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
-
 } from 'react-share';
-import { Helmet } from 'react-helmet-async'
-import './style.css';
+import { Helmet } from 'react-helmet-async';
 
-export default class IPFS extends Component {
-  constructor(props) {
-    super(props);
+const styles = {
+  page: { background: '#f8f9fc', minHeight: '100vh', fontFamily: "'Inter', 'Segoe UI', sans-serif" },
+  hero: { width: '100%', maxHeight: '420px', objectFit: 'cover', display: 'block' },
+  wrapper: { maxWidth: '780px', margin: '0 auto', padding: '40px 24px 80px' },
+  tag: { display: 'inline-block', background: 'linear-gradient(135deg, #6B48FF, #00C6FF)', color: '#fff', fontSize: '12px', fontWeight: '700', letterSpacing: '1.2px', textTransform: 'uppercase', padding: '4px 12px', borderRadius: '20px', marginBottom: '16px' },
+  title: { fontSize: '2.4rem', fontWeight: '800', lineHeight: '1.25', color: '#0d0d2b', marginBottom: '12px' },
+  meta: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px', color: '#666', fontSize: '14px' },
+  avatar: { width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #6B48FF' },
+  divider: { border: 'none', borderTop: '1px solid #e4e8f0', margin: '32px 0' },
+  body: { fontSize: '1.05rem', lineHeight: '1.85', color: '#2d2d3a' },
+  h4: { fontSize: '1.3rem', fontWeight: '700', color: '#0d0d2b', marginTop: '36px', marginBottom: '12px', paddingBottom: '6px', borderBottom: '3px solid #6B48FF', display: 'inline-block' },
+  callout: { background: 'linear-gradient(135deg, #f0ecff, #e8f7ff)', borderLeft: '4px solid #6B48FF', borderRadius: '8px', padding: '16px 20px', margin: '24px 0', fontSize: '1rem', color: '#2d2d3a', lineHeight: '1.7' },
+  inlineImg: { width: '100%', borderRadius: '12px', margin: '20px 0', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' },
+  codeImg: { width: '100%', borderRadius: '8px', margin: '16px 0', border: '1px solid #e4e8f0' },
+  shareSection: { marginTop: '40px', paddingTop: '24px', borderTop: '1px solid #e4e8f0' },
+  shareLabel: { fontSize: '13px', fontWeight: '600', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' },
+  shareButtons: { display: 'flex', gap: '10px', alignItems: 'center' },
+  authorCard: { display: 'flex', alignItems: 'center', gap: '20px', background: '#fff', border: '1px solid #e4e8f0', borderRadius: '16px', padding: '24px', marginTop: '48px', boxShadow: '0 4px 20px rgba(107,72,255,0.08)' },
+  authorAvatar: { width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #6B48FF', flexShrink: 0 },
+  authorName: { fontWeight: '700', fontSize: '1.1rem', color: '#0d0d2b', marginBottom: '4px' },
+  authorBio: { fontSize: '0.9rem', color: '#555', lineHeight: '1.5', margin: 0 },
+  refLink: { color: '#6B48FF', textDecoration: 'none', wordBreak: 'break-all' },
+};
 
-    this.state = {
-      isAuthenticated: null,
-    };
-  }
+export default class Ipfs extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/ipfs';
     const title = 'What is IPFS and how you can use it?';
-    const exampleImage = sc;
+    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    
 
     return (
-      <div>
+      <div style={styles.page}>
         <Helmet>
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
-          
-          <meta
-            name="description"
-            content="IPFS is a decentralized protocol and network for storing and sharing hypermedia in a peer-to-peer fashion. It allows users to store and access files in a distributed and decentralized manner."
-          />
         </Helmet>
         <NavBar />
-
-        <Image src={sc} className="header-image" fluid />
-        <Container>
-        <Typography
-                component="h1"
-                variant="h4"
-                align="left"
-                color="textPrimary"
-                gutterBottom
-              >
-                What is IPFS and how you can use it?
-              </Typography>
-      
-
-          <Row>
-          <b></b>
-         <b></b>
-         <b></b>
-         <b></b>
-         <p></p>
-            <Col xs={12} sm={8} className="main-section">
-            <p>  
-            <h4>Introduction to IPFS:</h4>
-            <br></br>
-              <p>InterPlanetary File System (IPFS) is a distributed protocol and network for storing and sharing hypermedia in a peer-to-peer (P2P) fashion. IPFS is a decentralized alternative to the World Wide Web (WWW) and is built on top of it. The protocol was initially designed by Juan Benet, and it was first released in 2015.
-
-IPFS allows users to store and access files in a distributed and decentralized manner, which means that files are not stored on a central server. Instead, files are broken down into smaller pieces, and each piece is stored on different nodes on the network. This makes it much more difficult for any individual or organization to censor or control access to the data.</p>
-<br></br>
-<h4>What is IPFS used for?:</h4>
-<br></br>
- <p>IPFS has several use cases, including:<br></br>
-
-*File sharing: IPFS can be used to share files between users in a decentralized and secure manner. This means that users can share files without relying on centralized servers.<br></br>
-
-*Decentralized websites: IPFS can be used to host websites in a decentralized manner. This means that websites can be accessed even if the server hosting them is offline or if there is no centralized server.<br></br>
-
-*Decentralized applications: IPFS can be used as a storage layer for decentralized applications, allowing users to access data in a decentralized and secure manner.<br></br>
-
-*Permanent storage: IPFS can be used to store files permanently, ensuring that they are always available and cannot be deleted.</p>
-<br></br>
-
-<h4>How to Upload Images on IPFS?:</h4>
-<br></br>
-<p>Uploading images on IPFS is a simple process that can be done in a few steps.<br></br>
-*Step 1: Install IPFS<br></br>
-To upload images on IPFS, you need to have IPFS installed on your computer. You can download IPFS from the official website and follow the installation instructions.<br></br>
-*Step 2: Add Images to IPFS<br></br>
-After installing IPFS, you can add images to IPFS using the following command in the terminal:
-<Image src={one} fluid />
-This will add the image to IPFS and return a unique hash that identifies the image. You can use this hash to access the image later.<br></br>
-*Step 3: View Images on IPFS<br></br>
-To view images on IPFS, you can use the unique hash generated in the previous step and append it to the IPFS gateway URL. For example, if the hash is "QmZdCt8J9ZntrhZamTy2g1Wn8pjArdyAbmBCwzLxjDcE8f", you can view the image by accessing the following URL in your browser:
-<Image src={two} fluid />
-<br></br>
-And also you can use IPFS in your applications to store images using 'web3.storage' library and here are the steps:<br></br>
-*Step 1: Install the web3.storage library:<br></br>
-
-<Image src={three} fluid />
-This command installs the web3.storage library and its dependencies in your project.<br></br>
-
-*Step 2: Import the necessary libraries:<br></br>
-These lines import the create function from the ipfs-http-client library and the Web3Storage class from the web3.storage library.<br></br>
-<Image src={four} fluid />
-*Step 3: Connect to an IPFS node:<br></br>
-This code creates an instance of an IPFS node using the create function from the ipfs-http-client library. The options passed to create specify the host, port, and protocol to use when connecting to the IPFS node. In this example, we're using the Infura IPFS gateway over HTTPS:<br></br>
-<Image src={five} fluid />
-
-*Step 4: Initialize the Web3Storage client:<br></br>
-This code creates a new instance of the Web3Storage class from the web3.storage library, passing in your API key as a token:<br></br>
-<Image src={six} fluid />
-
-*Step 5: Convert the image to a Buffer object:<br></br>
-This code uses the fs module to read the image file from disk and convert it to a Buffer object. You'll need to replace 'path/to/image.jpg' with the actual path to your image file:<br></br>
-<Image src={seven} fluid />
-<br></br>
-*Step 6: Add the image to IPFS:<br></br>
-This code adds the image to IPFS using the add method on the IPFS node instance. The result of the add method is an object containing the CID (content identifier) of the added file, which we extract using destructuring.<br></br>
-<Image src={eight} fluid />
-*Step 7: Store the CID on Web3Storage:<br></br>
-This code stores the image on Web3Storage using the put method on the Web3Storage client instance. The put method takes the image buffer as its first argument and an options object as its second argument. In this example, we specify the name of the file and its content type. The result of the put method is an object containing the CID of the stored file, which we extract using destructuring.<br></br>
-<Image src={nine} fluid />
-That's it! You have now stored an image on IPFS using the web3.storage library.<br></br>
-<br></br>
-</p>
-<br></br>
-<p><h4>Conclusion</h4></p>
-<br></br>
-<p>IPFS is a powerful and innovative protocol that allows users to store and access files in a decentralized and secure manner. It has several use cases, including file sharing, decentralized websites, decentralized applications, and permanent storage. IPFS is designed to be decentralized, distributed, content-addressed, and versioned. With its unique features, IPFS has the potential to revolutionize the way we store and share information online.</p>
-<br></br>
-
-
-<br></br>
-
-
-
-
-
-
-
-
-
-             
-              <div className="Demo__container">
-                <div className="Demo__some-network">
-                  <FacebookShareButton
-                    url={shareUrl}
-                    quote={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <FacebookIcon size={32} round />
-                  </FacebookShareButton>
-
-                  <div>
-                    <FacebookShareCount
-                      url={shareUrl}
-                      className="Demo__some-network__share-count"
-                    >
-                      {(count) => count}
-                    </FacebookShareCount>
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <FacebookMessengerShareButton
-                    url={shareUrl}
-                    appId="521270401588372"
-                    className="Demo__some-network__share-button"
-                  >
-                    <FacebookMessengerIcon size={32} round />
-                  </FacebookMessengerShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TwitterShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TwitterIcon size={32} round />
-                  </TwitterShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TelegramShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TelegramIcon size={32} round />
-                  </TelegramShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <WhatsappShareButton
-                    url={shareUrl}
-                    title={title}
-                    separator=":: "
-                    className="Demo__some-network__share-button"
-                  >
-                    <WhatsappIcon size={32} round />
-                  </WhatsappShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <LinkedinShareButton
-                    url={shareUrl}
-                    className="Demo__some-network__share-button"
-                  >
-                    <LinkedinIcon size={32} round />
-                  </LinkedinShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <RedditShareButton
-                    url={shareUrl}
-                    title={title}
-                    windowWidth={660}
-                    windowHeight={460}
-                    className="Demo__some-network__share-button"
-                  >
-                    <RedditIcon size={32} round />
-                  </RedditShareButton>
-
-                  <div>
-                    <RedditShareCount
-                      url={shareUrl}
-                      className="Demo__some-network__share-count"
-                    />
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TumblrShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TumblrIcon size={32} round />
-                  </TumblrShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <EmailShareButton
-                    url={shareUrl}
-                    subject={title}
-                    body="body"
-                    className="Demo__some-network__share-button"
-                  >
-                    <EmailIcon size={32} round />
-                  </EmailShareButton>
-                </div>
-                <div className="Demo__some-network">
-                  <ViberShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <ViberIcon size={32} round />
-                  </ViberShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <WorkplaceShareButton
-                    url={shareUrl}
-                    quote={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <WorkplaceIcon size={32} round />
-                  </WorkplaceShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <LineShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <LineIcon size={32} round />
-                  </LineShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <VKShareButton
-                    url={shareUrl}
-                    image={`${String(
-                      window.location,
-                    )}/${exampleImage}`}
-                    className="Demo__some-network__share-button"
-                  >
-                    <VKIcon size={32} round />
-                  </VKShareButton>
-                </div>
-              </div>
-              </p>
-            </Col>
-            <Col xs={12} sm={4} className="sidebar-section">
-              <Card style={{ width: '9rem' }}>
-                <Card.Img variant="top" src={me} />
-                <Card.Title>Sarah Jedlaoui</Card.Title>
-                <Card.Body>
-
-                  <Card.Text>
-                    <p>
-                     Software Developer
-                    </p>
-                  </Card.Text>
-                  
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-       
+        <img src={sc} style={styles.hero} alt="IPFS Decentralized Storage" />
+        <div style={styles.wrapper}>
+          <div style={styles.tag}>IPFS · Web3 · Decentralized Storage</div>
+          <h1 style={styles.title}>{title}</h1>
+          <div style={styles.meta}>
+            <img src={profilePic} style={styles.avatar} alt="Olvis Gil" />
+            <span><strong>Olvis Gil</strong> &nbsp;·&nbsp; EduNode &nbsp;·&nbsp; 5 min read</span>
+          </div>
+          <hr style={styles.divider} />
+          <div style={styles.body}>
+            <p>
+              The InterPlanetary File System (IPFS) is one of the most important infrastructure components of the Web3 ecosystem. It provides a decentralized, peer-to-peer way to store and share files — addressing one of the fundamental limitations of the current web.
+            </p>
+            <div style={styles.callout}>
+              <strong>The problem IPFS solves:</strong> On the traditional web, files are stored at a specific location (URL). If that server goes down, the file is gone. IPFS stores files based on their content hash, so as long as anyone in the network has the file, it is accessible.
+            </div>
+            <h4 style={styles.h4}>Introduction to IPFS</h4>
+            <p>
+              InterPlanetary File System (IPFS) is a distributed protocol and network for storing and sharing hypermedia in a peer-to-peer (P2P) fashion. IPFS is a decentralized alternative to the World Wide Web (WWW) and is built on top of it. The protocol was initially designed by Juan Benet, and it was first released in 2015.
+            </p>
+            <img src={one} style={styles.codeImg} alt="IPFS architecture" />
+            <h4 style={styles.h4}>What is IPFS used for?</h4>
+            <p>
+              IPFS has several use cases, including: file sharing, decentralized websites, decentralized applications (dApps), NFT metadata storage, and permanent archival of important data. It is the backbone of many Web3 applications, including NFT platforms that store artwork on IPFS.
+            </p>
+            <img src={two} style={styles.codeImg} alt="IPFS use cases" />
+            <h4 style={styles.h4}>How to Upload Images on IPFS</h4>
+            <p>
+              Uploading images on IPFS is a simple process that can be done in a few steps. The easiest way to get started is using Pinata or NFT.Storage, which provide user-friendly interfaces for uploading files to IPFS.
+            </p>
+            <img src={three} style={styles.codeImg} alt="IPFS upload step 1" />
+            <img src={four} style={styles.codeImg} alt="IPFS upload step 2" />
+            <img src={five} style={styles.codeImg} alt="IPFS upload step 3" />
+            <img src={six} style={styles.codeImg} alt="IPFS upload step 4" />
+            <img src={seven} style={styles.codeImg} alt="IPFS upload step 5" />
+            <img src={eight} style={styles.codeImg} alt="IPFS upload step 6" />
+            <h4 style={styles.h4}>Conclusion</h4>
+            <p>
+              IPFS is a powerful and innovative protocol that allows users to store and access files in a decentralized and secure manner. With its unique features, IPFS has the potential to revolutionize the way we store and share information online.
+            </p>
+            <h4 style={styles.h4}>Resources</h4>
+            <p>[1] <a href="https://ipfs.tech" style={styles.refLink}>IPFS — Official Website</a></p>
+            <p>[2] <a href="https://docs.ipfs.tech/concepts/what-is-ipfs/" style={styles.refLink}>What is IPFS? — IPFS Docs</a></p>
+            <p>[3] <a href="https://www.pinata.cloud" style={styles.refLink}>Pinata — IPFS Pinning Service</a></p>
+          </div>
+          <div style={styles.shareSection}>
+            <div style={styles.shareLabel}>Share this article</div>
+            <div style={styles.shareButtons}>
+              <FacebookShareButton url={shareUrl} quote={title}><FacebookIcon size={36} round /></FacebookShareButton>
+              <FacebookShareCount url={shareUrl}>{(count) => (count > 0 ? <span style={{ fontSize: '12px', color: '#888' }}>{count}</span> : null)}</FacebookShareCount>
+              <TwitterShareButton url={shareUrl} title={title}><TwitterIcon size={36} round /></TwitterShareButton>
+              <LinkedinShareButton url={shareUrl}><LinkedinIcon size={36} round /></LinkedinShareButton>
+            </div>
+          </div>
+          <div style={styles.authorCard}>
+            <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
+            <div>
+              <div style={styles.authorName}>Olvis Gil</div>
+              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Decentralized storage advocate and Web3 infrastructure expert based in Vienna, Austria.</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

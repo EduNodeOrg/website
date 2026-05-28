@@ -1,272 +1,110 @@
-  import React, { Component } from 'react';
-import { Container, Row, Col, Image, Card } from 'react-bootstrap';
-import NavBar from '../../NavBar';
-import kb1 from "../kb1.png"
-import kb2 from "../kb2.png"
-import kbt from "../keybase-stellar.7310fd97.png"
-import me from "../me.jpg"                              
-import kicon from "../keybaseicon.png"
+import React, { Component } from 'react';
+import NavBar from '../NavBar';
+import kbt from './keybaseicon.png';
 import {
   FacebookShareCount,
-  RedditShareCount,
   FacebookShareButton,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  VKShareButton,
-  TelegramShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
-  EmailShareButton,
-  TumblrShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  LineShareButton,
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
-  VKIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  RedditIcon,
-  TumblrIcon,
-  EmailIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
-} from "react-share";
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+} from 'react-share';
+import { Helmet } from 'react-helmet-async';
 
-
-
-const HighLight = () => {
-  const codeString = '(num) => num + 1';
-  return (
-    <SyntaxHighlighter language="javascript" style={docco}>
-      {codeString}
-    </SyntaxHighlighter>
-  );
+const styles = {
+  page: { background: '#f8f9fc', minHeight: '100vh', fontFamily: "'Inter', 'Segoe UI', sans-serif" },
+  hero: { width: '100%', maxHeight: '420px', objectFit: 'cover', display: 'block' },
+  wrapper: { maxWidth: '780px', margin: '0 auto', padding: '40px 24px 80px' },
+  tag: { display: 'inline-block', background: 'linear-gradient(135deg, #6B48FF, #00C6FF)', color: '#fff', fontSize: '12px', fontWeight: '700', letterSpacing: '1.2px', textTransform: 'uppercase', padding: '4px 12px', borderRadius: '20px', marginBottom: '16px' },
+  title: { fontSize: '2.4rem', fontWeight: '800', lineHeight: '1.25', color: '#0d0d2b', marginBottom: '12px' },
+  meta: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px', color: '#666', fontSize: '14px' },
+  avatar: { width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #6B48FF' },
+  divider: { border: 'none', borderTop: '1px solid #e4e8f0', margin: '32px 0' },
+  body: { fontSize: '1.05rem', lineHeight: '1.85', color: '#2d2d3a' },
+  h4: { fontSize: '1.3rem', fontWeight: '700', color: '#0d0d2b', marginTop: '36px', marginBottom: '12px', paddingBottom: '6px', borderBottom: '3px solid #6B48FF', display: 'inline-block' },
+  callout: { background: 'linear-gradient(135deg, #f0ecff, #e8f7ff)', borderLeft: '4px solid #6B48FF', borderRadius: '8px', padding: '16px 20px', margin: '24px 0', fontSize: '1rem', color: '#2d2d3a', lineHeight: '1.7' },
+  inlineImg: { width: '100%', borderRadius: '12px', margin: '20px 0', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' },
+  codeImg: { width: '100%', borderRadius: '8px', margin: '16px 0', border: '1px solid #e4e8f0' },
+  shareSection: { marginTop: '40px', paddingTop: '24px', borderTop: '1px solid #e4e8f0' },
+  shareLabel: { fontSize: '13px', fontWeight: '600', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' },
+  shareButtons: { display: 'flex', gap: '10px', alignItems: 'center' },
+  authorCard: { display: 'flex', alignItems: 'center', gap: '20px', background: '#fff', border: '1px solid #e4e8f0', borderRadius: '16px', padding: '24px', marginTop: '48px', boxShadow: '0 4px 20px rgba(107,72,255,0.08)' },
+  authorAvatar: { width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #6B48FF', flexShrink: 0 },
+  authorName: { fontWeight: '700', fontSize: '1.1rem', color: '#0d0d2b', marginBottom: '4px' },
+  authorBio: { fontSize: '0.9rem', color: '#555', lineHeight: '1.5', margin: 0 },
+  refLink: { color: '#6B48FF', textDecoration: 'none', wordBreak: 'break-all' },
 };
 
-
 export default class Keybase extends Component {
-  constructor(props) {
-    super(props);
-
-  }
   render() {
-
-    const shareUrl = "https://edunode.netlify.com/blog/What-is-Keybase"
-    const title = "How to Issue assets on the Stellar Network"
-    const exampleImage = kbt
+    const shareUrl = 'https://edunode.org/blog/What-is-Keybase';
+    const title = 'What is Keybase and how to use it with Stellar?';
+    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
+    
 
     return (
-      <div>
+      <div style={styles.page}>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{title}</title>
+          <link rel="canonical" href={shareUrl} />
+        </Helmet>
         <NavBar />
-
-        <Container>
-          <h2>Keybase the secure communication tool with Stellar native integration</h2>
-          <Image src={kbt} className="header-image" fluid />
-          <Row>
-            <Col xs={12} sm={8} className="main-section">
-              <p>Many tech companies that offer messaging applications have realized that privacy is clearly a big concern for users, and that the implementation of mechanisms that allow them to be able to control and protect their personal data is key in order to create trust. However, most of them struggle to try to reach this goal, this is where Keybase excels.</p>
-              <h3>Stellar built-in wallet</h3>
-              <p>Keybase is the best privacy-focused messaging tool, which also has a built-in wallet with native a integration of the Stellar network.</p>
-              <p>Stellar is an internet protocol that works as a decentralized order book, and which facilitates the exchange without borders of any type of assets, and cryptocurrencies.</p>
-              <p>This means that Keybase users does not only enjoy the benefits of encryption to securely communicate with friends and peers, but also allows them to move value borderless for a very small fraction of a penny.</p>
-              <h3>Keybase installation</h3>
-              <p>Users are able to create an account by<a href="https://keybase.io/download"> downloading </a> the mobile or desktop app.</p>
-              <p>Once the app is installed, users are able to login or to create a new account. Once logged in, they are able to enjoy of all the funtionalities that Keybase offers.</p>
-              <p>For instance, user are able to link their own stellar account (by adding your private key) or to generate a new one. </p>
-              <Image src={kb1} fluid />
-              <h3>Crypto Feature</h3>
-              <p>Another cool feature is the one called "Crypto", which allows anyone to encrypt and sign any type of data (e.g text files). Keybase will generate a hash of the information that can be securely sent and which allows the receiver to securely verify and unencrypt the data using the Keybase app. </p>
-              <Image src={kb2} fluid />
-              <h3>Keybase´s CLI</h3>
-              <p>If you are a tech savy you can check their built in CLI command lines with some useful commands that you can execute from your own terminal. </p>
-              <p><a href="https://book.keybase.io/docs/cli#basics">Here</a> you can find more information.</p>
-              <h3>Conclusion</h3>
-              <p>Keybase is without a doubt at the top when it comes to offering open source privacy-focused communication tools and thanks to this capabilities the company was recently acquired by Zoom, the world's leading video conferencing app, and this acquisition will surely help Zoom to improve the privacy of their services.</p>
-{/* <HighLight /> */}
-              <p></p>
-              <p></p>
-              <div className="Demo__container">
-        <div className="Demo__some-network">
-          <FacebookShareButton
-            url={shareUrl}
-            quote={title}
-            className="Demo__some-network__share-button"
-          >
-            <FacebookIcon size={32} round />
-          </FacebookShareButton>
-
-          <div>
-            <FacebookShareCount url={shareUrl} className="Demo__some-network__share-count">
-              {count => count}
-            </FacebookShareCount>
+        <img src={kbt} style={styles.hero} alt="Keybase for Stellar" />
+        <div style={styles.wrapper}>
+          <div style={styles.tag}>Stellar · Keybase · Identity</div>
+          <h1 style={styles.title}>{title}</h1>
+          <div style={styles.meta}>
+            <img src={profilePic} style={styles.avatar} alt="Olvis Gil" />
+            <span><strong>Olvis Gil</strong> &nbsp;·&nbsp; EduNode &nbsp;·&nbsp; 5 min read</span>
+          </div>
+          <hr style={styles.divider} />
+          <div style={styles.body}>
+            <p>
+              Keybase is a key directory that maps social media identities to encryption keys in a publicly auditable manner. For Stellar users, Keybase provides a way to verify your identity and associate it with your Stellar account — adding a layer of trust and discoverability to your on-chain presence.
+            </p>
+            <div style={styles.callout}>
+              <strong>What is Keybase?</strong> Keybase is a free, open-source security app for mobile and desktop. It combines end-to-end encrypted messaging, file sharing, and cryptographic identity verification — all in one platform.
+            </div>
+            <h4 style={styles.h4}>Why Keybase Matters for Stellar</h4>
+            <p>
+              Stellar's federation protocol allows you to use a human-readable address (like <code>olvis*stellar.org</code>) instead of a long public key. Keybase enhances this by allowing you to prove that your Stellar address belongs to you — verified against your GitHub, Twitter, Reddit, and other social accounts.
+            </p>
+            <h4 style={styles.h4}>Setting Up Keybase with Stellar</h4>
+            <p>
+              1. Download and install Keybase from <a href="https://keybase.io" style={styles.refLink}>keybase.io</a><br/>
+              2. Create a Keybase account and verify your social identities<br/>
+              3. In the Keybase app, navigate to the Stellar wallet section<br/>
+              4. Link your Stellar public key to your Keybase identity<br/>
+              5. Your Keybase username becomes your Stellar federation address
+            </p>
+            <h4 style={styles.h4}>Sending Stellar Payments via Keybase</h4>
+            <p>
+              Once set up, you can send XLM and other Stellar assets directly to any Keybase user by their username. This makes sending crypto as easy as sending a message — no need to copy and paste long public keys.
+            </p>
+            <h4 style={styles.h4}>Resources</h4>
+            <p>[1] <a href="https://keybase.io" style={styles.refLink}>Keybase — Official Website</a></p>
+            <p>[2] <a href="https://stellar.org/learn/stellar-federation" style={styles.refLink}>Stellar Federation — How it Works</a></p>
+          </div>
+          <div style={styles.shareSection}>
+            <div style={styles.shareLabel}>Share this article</div>
+            <div style={styles.shareButtons}>
+              <FacebookShareButton url={shareUrl} quote={title}><FacebookIcon size={36} round /></FacebookShareButton>
+              <FacebookShareCount url={shareUrl}>{(count) => (count > 0 ? <span style={{ fontSize: '12px', color: '#888' }}>{count}</span> : null)}</FacebookShareCount>
+              <TwitterShareButton url={shareUrl} title={title}><TwitterIcon size={36} round /></TwitterShareButton>
+              <LinkedinShareButton url={shareUrl}><LinkedinIcon size={36} round /></LinkedinShareButton>
+            </div>
+          </div>
+          <div style={styles.authorCard}>
+            <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
+            <div>
+              <div style={styles.authorName}>Olvis Gil</div>
+              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Web3 identity and cryptography enthusiast based in Vienna, Austria.</p>
+            </div>
           </div>
         </div>
-
-        <div className="Demo__some-network">
-          <FacebookMessengerShareButton
-            url={shareUrl}
-            appId="521270401588372"
-            className="Demo__some-network__share-button"
-          >
-            <FacebookMessengerIcon size={32} round />
-          </FacebookMessengerShareButton>
-        </div>
-
-        <div className="Demo__some-network">
-          <TwitterShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <TwitterIcon size={32} round />
-          </TwitterShareButton>
-
-          <div className="Demo__some-network__share-count">&nbsp;</div>
-        </div>
-
-        <div className="Demo__some-network">
-          <TelegramShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <TelegramIcon size={32} round />
-          </TelegramShareButton>
-
-          <div className="Demo__some-network__share-count">&nbsp;</div>
-        </div>
-
-        <div className="Demo__some-network">
-          <WhatsappShareButton
-            url={shareUrl}
-            title={title}
-            separator=":: "
-            className="Demo__some-network__share-button"
-          >
-            <WhatsappIcon size={32} round />
-          </WhatsappShareButton>
-
-          <div className="Demo__some-network__share-count">&nbsp;</div>
-        </div>
-
-        <div className="Demo__some-network">
-          <LinkedinShareButton url={shareUrl} className="Demo__some-network__share-button">
-            <LinkedinIcon size={32} round />
-          </LinkedinShareButton>
-        </div>
-
-
-        <div className="Demo__some-network">
-          <RedditShareButton
-            url={shareUrl}
-            title={title}
-            windowWidth={660}
-            windowHeight={460}
-            className="Demo__some-network__share-button"
-          >
-            <RedditIcon size={32} round />
-          </RedditShareButton>
-
-          <div>
-            <RedditShareCount url={shareUrl} className="Demo__some-network__share-count" />
-          </div>
-        </div>
-
-        <div className="Demo__some-network">
-          <TumblrShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <TumblrIcon size={32} round />
-          </TumblrShareButton>
-
-          
-        </div>
-
-        <div className="Demo__some-network">
-          <EmailShareButton
-            url={shareUrl}
-            subject={title}
-            body="body"
-            className="Demo__some-network__share-button"
-          >
-            <EmailIcon size={32} round />
-          </EmailShareButton>
-        </div>
-        <div className="Demo__some-network">
-          <ViberShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <ViberIcon size={32} round />
-          </ViberShareButton>
-        </div>
-
-        <div className="Demo__some-network">
-          <WorkplaceShareButton
-            url={shareUrl}
-            quote={title}
-            className="Demo__some-network__share-button"
-          >
-            <WorkplaceIcon size={32} round />
-          </WorkplaceShareButton>
-        </div>
-
-        <div className="Demo__some-network">
-          <LineShareButton
-            url={shareUrl}
-            title={title}
-            className="Demo__some-network__share-button"
-          >
-            <LineIcon size={32} round />
-          </LineShareButton>
-        </div>
-
-        <div className="Demo__some-network">
-          <VKShareButton
-            url={shareUrl}
-            image={`${String(window.location)}/${exampleImage}`}
-            className="Demo__some-network__share-button"
-          >
-            <VKIcon size={32} round />
-          </VKShareButton>
-
-        </div>
-
       </div>
-
-            </Col>
-            <Col xs={12} sm={4} className="sidebar-section">
-
-            <Card style={{ width: '9rem' }}>
-                <Card.Img variant="top" src={me} />
-                <Card.Body>
-                  <Card.Title>Olvis Gil</Card.Title>
-                  <Card.Text>
-                    <p>Economist, Entrepreneur and self-taught Developer</p>
-                  </Card.Text>
-                  <a href="https://keybase.io/olvis_experio">
-                  <img style={{ width: '25px' }} src={kicon} alt="keybase" />
-                  </a>
-                </Card.Body>
-                
-              </Card>
-
-            </Col>
-          </Row>
-        </Container>
-
-       
-      </div>
-    )
+    );
   }
 }

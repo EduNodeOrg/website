@@ -1,326 +1,112 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Image } from 'react-bootstrap';
-
-import NavBar from '../../../NavBar';
-import suave from '../../suave.gif';
-import Typography from '@mui/material/Typography';
+import NavBar from '../../NavBar';
+import suave from './stellarglobal.png';
+import tag from './tag.png';
+import lite from './lite.png';
 import {
   FacebookShareCount,
-  RedditShareCount,
   FacebookShareButton,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  VKShareButton,
   FacebookIcon,
-  TelegramShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
-  EmailShareButton,
-  TumblrShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  LineShareButton,
   TwitterIcon,
   LinkedinIcon,
-  VKIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  RedditIcon,
-  TumblrIcon,
-  EmailIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
-
 } from 'react-share';
-import { Helmet } from 'react-helmet-async'
-import '../style.css';
-import sg from "./stellarglobal.png"
-import tag from "./tag.png"
-import lite from "./lite.png"
+import { Helmet } from 'react-helmet-async';
 
-export default class index extends Component {
-  constructor(props) {
-    super(props);
+const styles = {
+  page: { background: '#f8f9fc', minHeight: '100vh', fontFamily: "'Inter', 'Segoe UI', sans-serif" },
+  hero: { width: '100%', maxHeight: '420px', objectFit: 'cover', display: 'block' },
+  wrapper: { maxWidth: '780px', margin: '0 auto', padding: '40px 24px 80px' },
+  tag: { display: 'inline-block', background: 'linear-gradient(135deg, #6B48FF, #00C6FF)', color: '#fff', fontSize: '12px', fontWeight: '700', letterSpacing: '1.2px', textTransform: 'uppercase', padding: '4px 12px', borderRadius: '20px', marginBottom: '16px' },
+  title: { fontSize: '2.4rem', fontWeight: '800', lineHeight: '1.25', color: '#0d0d2b', marginBottom: '12px' },
+  meta: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px', color: '#666', fontSize: '14px' },
+  avatar: { width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #6B48FF' },
+  divider: { border: 'none', borderTop: '1px solid #e4e8f0', margin: '32px 0' },
+  body: { fontSize: '1.05rem', lineHeight: '1.85', color: '#2d2d3a' },
+  h4: { fontSize: '1.3rem', fontWeight: '700', color: '#0d0d2b', marginTop: '36px', marginBottom: '12px', paddingBottom: '6px', borderBottom: '3px solid #6B48FF', display: 'inline-block' },
+  callout: { background: 'linear-gradient(135deg, #f0ecff, #e8f7ff)', borderLeft: '4px solid #6B48FF', borderRadius: '8px', padding: '16px 20px', margin: '24px 0', fontSize: '1rem', color: '#2d2d3a', lineHeight: '1.7' },
+  inlineImg: { width: '100%', borderRadius: '12px', margin: '20px 0', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' },
+  codeImg: { width: '100%', borderRadius: '8px', margin: '16px 0', border: '1px solid #e4e8f0' },
+  shareSection: { marginTop: '40px', paddingTop: '24px', borderTop: '1px solid #e4e8f0' },
+  shareLabel: { fontSize: '13px', fontWeight: '600', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' },
+  shareButtons: { display: 'flex', gap: '10px', alignItems: 'center' },
+  authorCard: { display: 'flex', alignItems: 'center', gap: '20px', background: '#fff', border: '1px solid #e4e8f0', borderRadius: '16px', padding: '24px', marginTop: '48px', boxShadow: '0 4px 20px rgba(107,72,255,0.08)' },
+  authorAvatar: { width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #6B48FF', flexShrink: 0 },
+  authorName: { fontWeight: '700', fontSize: '1.1rem', color: '#0d0d2b', marginBottom: '4px' },
+  authorBio: { fontSize: '0.9rem', color: '#555', lineHeight: '1.5', margin: 0 },
+  refLink: { color: '#6B48FF', textDecoration: 'none', wordBreak: 'break-all' },
+};
 
-    this.state = {
-      isAuthenticated: null,
-    };
-  }
+export default class Blockchain extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/learn-about-blockchain';
     const title = 'Workshop: Learn about Blockchain and how to apply it to your day-to-day business life';
-    const exampleImage = suave;
+    const profilePic = 'https://edunode.org/static/media/mepic.b4df988c06dc4700be7c.png';
 
     return (
-      <div>
+      <div style={styles.page}>
         <Helmet>
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
-          
-          <meta
-            name="description"
-            content="Workshop: Learn about Blockchain and how to apply it to your day-to-day business life"
-          />
         </Helmet>
         <NavBar />
-
-        <Image width={450} src={suave} className="header-image centerimg" fluid />
-        <Container flud>
-        <Typography
-                component="h1"
-                variant="h4"
-                align="left"
-                color="textPrimary"
-                gutterBottom
-              >
-                Workshop: Learn about Blockchain, what are the most popular applications, and how you can apply them to make your day-to-day activities easier.
-              </Typography>
-    
-          <Row>
-          <b></b>
-         <b></b>
-         <b></b>
-         <b></b>
-         <p></p>
-            <Col className="main-section">
-     
-             <h4>About this event</h4>
-            <p>Business operations can be at times an organisational nightmare, especially if you are dealing with a lot of data. Having to trust third parties with your business data makes these processes even more difficult. Luckily, Blockchain has arrived to help us deal with all these challenges. In this in-person workshop, you will learn about what is Blockchain, what are the most popular applications, and how you can apply them to make your day-to-day activities easier.</p>
-   <h4>In this workshop you will:</h4>
-             {/* <Image src={sc} fluid /> */}
-             <p>- Learn about how blockchain is changing the way we do business.</p>
-             <p>- Learn about one of the most important building blocks of the new era of the internet.</p>
-             <p>- Educate yourself about how you can make your business processes more efficient using blockchain technology.</p>
-             <p>- Learn about how you can create, send, receive and verify transactions in an easy and trustworthy manner. </p>
-             
-             <h4>Main Takeaways:</h4>
-             <p>- Understand the concept of Blockchain and how you can apply it in your business operations. </p>
-             <p>- Reduce the need to trust third parties by recording your business data transparently using decentralised databases.</p>
-             <p>- Ask any blockchain-related questions to an award-winning entrepreneur.</p>
-             <h4>Registration</h4>
-             <a href="https://www.eventbrite.com/e/learn-about-blockchain-and-how-to-apply-it-to-your-day-to-day-business-life-tickets-334911568517"><p>Magic Link</p></a>
-             <h4>About the speaker:</h4>
-             <p>Olvis Enrique Gil Ríos is Founder of OG Technologies EU.</p>
-<p>He is Blockchain Entrepreneur, Economist, and self-taught developer.</p>
-
-
-<h4>Location:</h4>
-<a href="https://goo.gl/maps/DjN3cE8EivhBVvZh9"><p>Talent Garden Vienna
-Widerhofergasse 6, 1090 Wien - Austria</p></a>
-             <h4>Special thanks to our sponsors</h4>
-
-             <br></br>
-             <br></br>
- <a href="https://talentgarden.org/"><Image width={200} src={tag} fluid /> </a>
-<br></br>
-<br></br>
-<p>With a community of more than 4500 pioneers across 18 campuses in 8 countries, Talent Garden offers an unprecedented combination of creative coworking campuses, an internal educational institution, and industry-driven events to connect tech talents. </p>
-
-<br></br>
-<br></br>
-<a href="https://stellar-global.org/"><Image width={160} src={sg} fluid /></a>
-<br></br>
-<br></br>
-<p>The Global community is multicultural, multinational and multiethnic. The Stellar Development Foundation’s mission is to help maintain Stellar’s codebase, support the technical and business communities around Stellar, and act as a speaking partner to regulators and institutions. However, behind the “nodes” and “anchors” is the most crucial component to making the dream of financial inclusion a reality: People.</p>
-
-<br></br>
-<br></br>
-<a href="https://litemint.com/"><Image width={200} src={lite} fluid /></a>
-<br></br>
-<br></br>
-<p>Litemint is a tech company that breaks barriers and creates innovative products to connect creators, collectors, crypto enthusiasts and gamers to unique experiences. Their platform is taking #gaming and #NFT to the future.</p>
-
-
-             
-             
-           
-              <div className="Demo__container">
-                <div className="Demo__some-network">
-                  <FacebookShareButton
-                    url={shareUrl}
-                    quote={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <FacebookIcon size={32} round />
-                  </FacebookShareButton>
-
-                  <div>
-                    <FacebookShareCount
-                      url={shareUrl}
-                      className="Demo__some-network__share-count"
-                    >
-                      {(count) => count}
-                    </FacebookShareCount>
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <FacebookMessengerShareButton
-                    url={shareUrl}
-                    appId="521270401588372"
-                    className="Demo__some-network__share-button"
-                  >
-                    <FacebookMessengerIcon size={32} round />
-                  </FacebookMessengerShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TwitterShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TwitterIcon size={32} round />
-                  </TwitterShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TelegramShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TelegramIcon size={32} round />
-                  </TelegramShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <WhatsappShareButton
-                    url={shareUrl}
-                    title={title}
-                    separator=":: "
-                    className="Demo__some-network__share-button"
-                  >
-                    <WhatsappIcon size={32} round />
-                  </WhatsappShareButton>
-
-                  <div className="Demo__some-network__share-count">
-                    &nbsp;
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <LinkedinShareButton
-                    url={shareUrl}
-                    className="Demo__some-network__share-button"
-                  >
-                    <LinkedinIcon size={32} round />
-                  </LinkedinShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <RedditShareButton
-                    url={shareUrl}
-                    title={title}
-                    windowWidth={660}
-                    windowHeight={460}
-                    className="Demo__some-network__share-button"
-                  >
-                    <RedditIcon size={32} round />
-                  </RedditShareButton>
-
-                  <div>
-                    <RedditShareCount
-                      url={shareUrl}
-                      className="Demo__some-network__share-count"
-                    />
-                  </div>
-                </div>
-
-                <div className="Demo__some-network">
-                  <TumblrShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <TumblrIcon size={32} round />
-                  </TumblrShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <EmailShareButton
-                    url={shareUrl}
-                    subject={title}
-                    body="body"
-                    className="Demo__some-network__share-button"
-                  >
-                    <EmailIcon size={32} round />
-                  </EmailShareButton>
-                </div>
-                <div className="Demo__some-network">
-                  <ViberShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <ViberIcon size={32} round />
-                  </ViberShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <WorkplaceShareButton
-                    url={shareUrl}
-                    quote={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <WorkplaceIcon size={32} round />
-                  </WorkplaceShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <LineShareButton
-                    url={shareUrl}
-                    title={title}
-                    className="Demo__some-network__share-button"
-                  >
-                    <LineIcon size={32} round />
-                  </LineShareButton>
-                </div>
-
-                <div className="Demo__some-network">
-                  <VKShareButton
-                    url={shareUrl}
-                    image={`${String(
-                      window.location,
-                    )}/${exampleImage}`}
-                    className="Demo__some-network__share-button"
-                  >
-                    <VKIcon size={32} round />
-                  </VKShareButton>
-                </div>
-              </div>
-              
-            </Col>
-            {/* <Col xs={12} sm={4} className="sidebar-section">
-              <Card style={{ width: '15rem' }}>
-                <Card.Img variant="top" src={me} />
-                <Card.Body>
-                  <Card.Title>Olvis E. Gil Ríos</Card.Title>
-                  <p>
-                      Founder at OG Technologies EU
-                    </p>
-                  <Card.Text>
-                  
-                  </Card.Text>
-                  
-                </Card.Body>
-              </Card>
-            </Col> */}
-          </Row>
-        </Container>
-      
+        <img src={suave} style={styles.hero} alt="Workshop: Learn about Blockchain and how to apply it to your day-to-day business life" />
+        <div style={styles.wrapper}>
+          <div style={styles.tag}>Blockchain · Education · Workshop</div>
+          <h1 style={styles.title}>{title}</h1>
+          <div style={styles.meta}>
+            <img src={profilePic} style={styles.avatar} alt="Olvis Gil" />
+            <span><strong>Olvis Gil</strong> &nbsp;·&nbsp; EduNode &nbsp;·&nbsp; 5 min read</span>
+          </div>
+          <hr style={styles.divider} />
+          <div style={styles.body}>
+            <p>
+              Blockchain is one of the most transformative technologies of our time. In this workshop, we explore what blockchain is, how it works, and how you can apply it to your day-to-day business life.
+            </p>
+            <h4 style={styles.h4}>What is Blockchain?</h4>
+            <p>
+              A blockchain is a distributed ledger technology (DLT) that records transactions across many computers so that the record cannot be altered retroactively. Think of it as a shared Google Doc that everyone can read but no one can secretly edit — every change is visible and permanent.
+            </p>
+            <div style={styles.callout}>
+              <strong>Key insight:</strong> Blockchain removes the need for a central authority (like a bank) to validate transactions. Instead, the network itself validates them through consensus mechanisms.
+            </div>
+            <img src={tag} style={styles.inlineImg} alt="Blockchain tag diagram" />
+            <h4 style={styles.h4}>How does it work?</h4>
+            <p>
+              Each "block" in the chain contains a set of transactions, a timestamp, and a cryptographic hash of the previous block. This chaining of blocks makes it virtually impossible to alter historical records without changing all subsequent blocks — which would require the consensus of the entire network.
+            </p>
+            <h4 style={styles.h4}>Business Applications</h4>
+            <p>
+              Blockchain technology is being applied across many industries: supply chain management for tracking goods from origin to shelf, financial services for cross-border payments, healthcare for secure patient data sharing, and real estate for transparent property records.
+            </p>
+            <img src={lite} style={styles.inlineImg} alt="Blockchain business applications" />
+            <h4 style={styles.h4}>Getting Started on Stellar</h4>
+            <p>
+              The Stellar network is one of the most accessible blockchain platforms for building real-world financial applications. With fast transaction times (3-5 seconds) and extremely low fees, it is ideal for payment applications, tokenization, and decentralized finance.
+            </p>
+            <p>
+              If you enjoyed this workshop, feel free to share it and join our Discord community: <a href="https://discord.gg/pcenYYjPmd" style={styles.refLink}>https://discord.gg/pcenYYjPmd</a>
+            </p>
+          </div>
+          <div style={styles.shareSection}>
+            <div style={styles.shareLabel}>Share this article</div>
+            <div style={styles.shareButtons}>
+              <FacebookShareButton url={shareUrl} quote={title}><FacebookIcon size={36} round /></FacebookShareButton>
+              <FacebookShareCount url={shareUrl}>{(count) => (count > 0 ? <span style={{ fontSize: '12px', color: '#888' }}>{count}</span> : null)}</FacebookShareCount>
+              <TwitterShareButton url={shareUrl} title={title}><TwitterIcon size={36} round /></TwitterShareButton>
+              <LinkedinShareButton url={shareUrl}><LinkedinIcon size={36} round /></LinkedinShareButton>
+            </div>
+          </div>
+          <div style={styles.authorCard}>
+            <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
+            <div>
+              <div style={styles.authorName}>Olvis Gil</div>
+              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Blockchain educator and Web3 consultant based in Vienna, Austria.</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
