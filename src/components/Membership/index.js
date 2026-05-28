@@ -3,7 +3,6 @@ import { clearErrors } from "../../actions/errorActions";
 import { verifyCode } from "../../actions/authActions";
 import Box from '@mui/material/Box';
 import Sidebar from "../Dashboard/Sidebar";
-import Topbar from "../Dashboard/Topbar";
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';

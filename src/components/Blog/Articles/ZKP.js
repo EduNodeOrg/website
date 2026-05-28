@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Image, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import NavBar from '../../NavBar';
 import zkpimg from './zkp_diagram.png';
 import me from '../me.jpg';
@@ -7,33 +7,12 @@ import keybase from './keybaseicon.png';
 import Typography from '@material-ui/core/Typography';
 import {
   FacebookShareCount,
-  RedditShareCount,
   FacebookShareButton,
-  FacebookMessengerShareButton,
-  FacebookMessengerIcon,
   LinkedinShareButton,
   TwitterShareButton,
-  VKShareButton,
-  TelegramShareButton,
-  WhatsappShareButton,
-  RedditShareButton,
-  EmailShareButton,
-  TumblrShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  LineShareButton,
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
-  VKIcon,
-  TelegramIcon,
-  WhatsappIcon,
-  RedditIcon,
-  TumblrIcon,
-  EmailIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
 } from 'react-share';
 import { Helmet } from 'react-helmet-async';
 import './style.css';
@@ -49,7 +28,6 @@ export default class ZKP extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/zero-knowledge-proofs';
     const title = 'Zero-Knowledge Proofs on the Stellar Network: The Future of Privacy';
-    const exampleImage = zkpimg;
 
     return (
       <div>
@@ -64,7 +42,7 @@ export default class ZKP extends Component {
         </Helmet>
         <NavBar />
 
-        <Image src={zkpimg} className="header-image" fluid />
+        <img src={zkpimg} className="header-image" alt="Zero-Knowledge Proofs" style={{ width: '100%', maxHeight: '300px', objectFit: 'cover' }} />
         <Container>
           <Typography
             component="h1"
@@ -190,7 +168,7 @@ export default class ZKP extends Component {
                 </div>
               </div>
             </Col>
-            
+
             <Col xs={12} sm={4} className="sidebar-section">
               <Card style={{ width: '9rem' }}>
                 <Card.Img variant="top" src={me} />
