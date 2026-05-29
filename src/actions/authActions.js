@@ -98,7 +98,7 @@ export const register = ({ email, password, confirmationCode,name }) => dispatch
           payload: res.data,
         });
       }
-      localStorage.setItem('jwt', res.user)
+      localStorage.setItem('token', res.user)
       localStorage.setItem('user', JSON.stringify(res.user))
 
     }
@@ -141,7 +141,7 @@ export const login = ({ email, password }) => dispatch => {
               payload: data,
             });
           }
-          localStorage.setItem('jwt', data.user);
+          localStorage.setItem('token', data.user);
           localStorage.setItem('user', JSON.stringify(data.user));
 
           resolve();
@@ -189,13 +189,10 @@ export const googleLogin = ({ email, name,image }) => dispatch => {
             type: VERIFICATION_SUCCESS,
             payload: data,
           });
-           localStorage.setItem('jwt', data.user)
-          localStorage.setItem('user', JSON.stringify(data.user))
-          console.log('users', data.user)
         }
-         localStorage.setItem('jwt', data.user)
-          localStorage.setItem('user', JSON.stringify(data.user))
-          console.log('users', data.user)
+        localStorage.setItem('token', data.user)
+        localStorage.setItem('user', JSON.stringify(data.user))
+        console.log('users', data.user)
       }
 
 

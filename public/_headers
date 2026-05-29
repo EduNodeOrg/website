@@ -1,4 +1,4 @@
-/*
+/* CSP updated 2024-05-29
   # Strict Transport Security — enforce HTTPS for 1 year, include subdomains
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 

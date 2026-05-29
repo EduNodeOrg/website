@@ -60,6 +60,7 @@
     "mapbox-gl": "^2.14.1",
     "mdb-react-ui-kit": "^6.1.0",
     "moment": "^2.29.4",
+    "netlify-cli": "^26.0.2",
     "npm": "^9.6.7",
     "numeral": "^2.0.6",
     "prop-types": "^15.8.1",
@@ -108,7 +109,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp public/_headers build/_headers",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "git pull": "git status && git add . && git commit -am 'commit' && git pull",
