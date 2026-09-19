@@ -3,7 +3,6 @@ import NavBar from '../../NavBar';
 import profilePicImg from '../mepic.png';
 import snft from './newnft1.png';
 import lite from './litemintlogo.png';
-import keybase from './keybaseicon.png';
 import nft1 from './nft1.jpg';
 import jack from './jackfirsttweet.jpeg';
 import {
