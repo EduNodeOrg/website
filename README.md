@@ -105,6 +105,6 @@ For more information about deployment options, see the Create React App deployme
 4. Push to the branch ( git push origin feature/amazing-feature )
 5. Open a Pull Request
 ## License
-See the repository for license details.
+Apache-2.0
 
 Built with ❤️ by the EduNode Team
