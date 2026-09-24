@@ -71,7 +71,7 @@ Files in `public/` are copied verbatim into `build/` — no import needed.
 
 - `<Route path="/*" element={<ThemedRoutes />}>` at the end of `App.js` catches unknown paths; `ThemedRoutes` redirects them to `/404` (renders `admin/src/pages/Page404.js`, whose illustration is served from `public/assets/illustrations/`).
 - `src/setupProxy.js` is loaded automatically by the CRA dev server — it is "unused" by the import graph but must not be deleted.
-- `netlify-cli` is pinned in `dependencies` and requires Node ≥20 while the project pins Node 18.16.0 — local `npm install` may fail on its postinstall; use `--ignore-scripts` locally if needed.
+- `netlify-cli` is NOT a project dependency — it requires Node ≥20 while the project pins Node 18.16.0, and its postinstall crashed Netlify CI builds. `npm run stage`/`prod-deploy` expect a globally installed CLI (`npm i -g netlify-cli`).
 - Several routes are duplicated or legacy aliases (`/loginn` vs `/login`, `/register` → `/signup` redirect).
 - Course metadata (titles, content) is fetched at runtime from the API (`edunode.herokuapp.com/api/cours/...`), so some course names live in the DB, not the repo.
 - `/chess` is "ChainChess" (`src/components/Chess/`): chessboardjsx board + chess.js rules; Web3 teaching content lives in `src/components/Chess/concepts.js` — extend that file to add new move→concept mappings.

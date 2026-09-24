@@ -42,7 +42,7 @@ code challenges, on-chain certificates, and community features.
 ## Installation
 
 ### Prerequisites
-- Node.js v18.16.0 (see `.nvmrc` — other versions may fail on `netlify-cli`)
+- Node.js v18.16.0 (see `.nvmrc`)
 - npm v9+
 
 ### Setup

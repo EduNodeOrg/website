@@ -55,7 +55,6 @@
     "mapbox-gl": "^2.14.1",
     "mdb-react-ui-kit": "^6.1.0",
     "moment": "^2.29.4",
-    "netlify-cli": "^26.0.2",
     "numeral": "^2.0.6",
     "prop-types": "^15.8.1",
     "qrcode": "^1.5.3",
