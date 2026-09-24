@@ -130,7 +130,7 @@ import NFT from './components/Blog/Articles/NFT';
 import Certificate from "./components/Certificate"
 import Web3 from "./components/Blog/Articles/Web3"
 import ZKP from "./components/Blog/Articles/ZKP"
-import ChessBoardEditor from "./components/Chess/";
+import ChainChess from "./components/Chess/";
 import Feed from "./components/Feed";
 import Gcallback from "./components/Gcallback";
 import Hyperledger from "./components/Hyperledger"
@@ -194,6 +194,9 @@ import Messages from './components/Profile/messages'
 import Game from './components/Challenges/gameChallenge/addGame'
 import Pricing from './components/Membership/Pricing'
 import StripeCheckout from './components/Membership/StripeCheckout'
+import Releases from './components/Releases'
+import Soroban from './components/Blog/Articles/Soroban'
+import Page404 from './admin/src/pages/Page404'
 import CheckoutSuccess from './components/Membership/CheckoutSuccess'
 import EmailUnsubscribe from './components/EmailUnsubscribe'
 
@@ -219,6 +222,7 @@ const ThemedRoutes = () => (
       </Route>
 
       <Route exact path="/Adminlogin" element={<LoginPage />} />
+      <Route exact path="/404" element={<Page404 />} />
       <Route path="*" element={<Navigate to="/404" replace />} />
     </Routes>
   </ThemeProvider>
@@ -362,7 +366,8 @@ function App(props) {
         <Route exact path="/blog/automated-market-maker" element={<AMM />} />
         <Route exact path="/blog/learn-about-blockchain" element={<Blockchain />} />
         <Route exact path="/projects" element={<Projects />} />
-        <Route exact path="/chess" element={<ChessBoardEditor />} />
+        <Route exact path="/chess" element={<ChainChess />} />
+        <Route exact path="/releases" element={<Releases />} />
         <Route exact path="/feed" element={<Feed />} />
         <Route exact path="/gcallback" element={<Gcallback />} />
         <Route exact path="/hyperledger" element={<Hyperledger />} />
@@ -382,7 +387,7 @@ function App(props) {
         <Route exact path="/VerifyEmail" element={<VerifyEmail />} />
         <Route exact path="/blog/docker" element={<Docker />} />
         <Route exact path="/blog/ipfs" element={<Ipfs />} />
-        <Route exact path="/blog/soroban" element={<soroban />} />
+        <Route exact path="/blog/soroban" element={<Soroban />} />
         <Route exact path="/dashboard/settings" element={<Navigate to="/account" replace />} />
         <Route exact path="/profile" element={<ModernMyProfile />} />
         <Route exact path="/post" element={<Post />} />

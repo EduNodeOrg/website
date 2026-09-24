@@ -104,6 +104,11 @@ export default function Footer() {
                   About
                   </a>
                 </p>
+                <p>
+                  <a href='/releases' className='text-reset'>
+                  Releases
+                  </a>
+                </p>
               </MDBCol>
 
               <MDBCol md="4" lg="3" xl="3" className='mx-auto mb-md-0 mb-4'>

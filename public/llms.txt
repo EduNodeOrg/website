@@ -1,0 +1,76 @@
+# EduNode
+
+> EduNode is an educational platform for becoming a blockchain developer. It offers interactive courses, coding challenges, verifiable certificates, and community resources focused on Stellar, Web3, Soroban, Ethereum, Hyperledger, and related decentralized technologies.
+
+## Courses
+
+- [All Courses](https://edunode.org/courses): Index of all blockchain and Web3 courses
+- [Basic Concepts](https://edunode.org/courses/101): Blockchain and Stellar fundamentals
+- [Operations](https://edunode.org/courses/102): Stellar network operations
+- [Anchors](https://edunode.org/courses/103): Stellar anchors and fiat on/off ramps
+- [SEPs](https://edunode.org/courses/104): Stellar Ecosystem Proposals
+- [Hyperledger](https://edunode.org/courses/105): Enterprise blockchain with Hyperledger
+- [Soroban](https://edunode.org/courses/106): Smart contracts on Stellar
+- [Ethereum Basics](https://edunode.org/courses/107): Introduction to Ethereum
+- [Oracles Basics](https://edunode.org/courses/108): Blockchain oracles fundamentals
+- [System Engineering](https://edunode.org/courses/109): System engineering concepts
+- [Blockchain y Web3](https://edunode.org/courses/110): Blockchain and Web3 course (Spanish)
+- [Mujeres en Web3](https://edunode.org/courses/111): Women in Web3 (Spanish)
+
+## Insights
+
+- [Blog](https://edunode.org/blog): Articles on blockchain, Stellar, and Web3
+- [What is Keybase and how to use it with Stellar?](https://edunode.org/blog/What-is-Keybase)
+- [How to issue assets on the Stellar Network](https://edunode.org/blog/How-to-issue)
+- [Stellarnomics: Understanding the Stellar Network Economics](https://edunode.org/blog/Stellarnomics)
+- [What are NFTs and how to mint them using the Stellar Network?](https://edunode.org/blog/minting-nfts)
+- [How to keep your lumens safe | Tips and security tools](https://edunode.org/blog/security-tools)
+- [Herramientas de seguridad](https://edunode.org/blog/herramientas-de-seguridad): Security tools (Spanish)
+- [What are Smart Contracts and how you can build them on Stellar?](https://edunode.org/blog/smart-contracts)
+- [Kelp: Setup your first trading bot on the Stellar Network](https://edunode.org/blog/kelp)
+- [What is PostgreSQL and how you can use it?](https://edunode.org/blog/postgresql)
+- [Identity verification with Albedo](https://edunode.org/blog/albedo)
+- [The Web3 Revolution And The New Creator Economy](https://edunode.org/blog/the-web3-revolution)
+- [Zero-Knowledge Proofs on the Stellar Network](https://edunode.org/blog/zero-knowledge-proofs)
+- [DeFi Explained: What is an Automated Market Maker?](https://edunode.org/blog/automated-market-maker)
+- [Workshop: Learn about Blockchain](https://edunode.org/blog/learn-about-blockchain)
+- [What is Docker and how you can use it?](https://edunode.org/blog/docker)
+- [What is IPFS and how you can use it?](https://edunode.org/blog/ipfs)
+- [What is Soroban and how you can use it?](https://edunode.org/blog/soroban)
+
+## Tools
+
+- [Code Playground](https://edunode.org/codeeditor): In-browser code editor — JavaScript runs locally, Rust and Solidity for drafting smart contracts
+- [ChainChess](https://edunode.org/chess): A working chess game where every move teaches a Web3/blockchain concept
+- [Stellar Nodes Map](https://edunode.org/stellarnodes): Interactive map of Stellar network nodes
+- [Certificate Verification](https://edunode.org/validCertificate): Verify EduNode certificates
+- [Glossary](https://edunode.org/glossary): Popular Web3 and blockchain terms explained
+
+## Resources
+
+- [About EduNode](https://edunode.org/about): About the platform and team
+- [Pricing](https://edunode.org/pricing): Membership plans and pricing
+- [Membership](https://edunode.org/membership): Membership benefits
+- [For Teachers](https://edunode.org/for-teachers): Guide for educators
+- [For Students](https://edunode.org/for-students): Guide for learners
+- [About Certificates](https://edunode.org/about-certificates): How EduNode certificates work
+- [Challenges](https://edunode.org/challenges): Coding challenges and hackathons
+- [Community](https://edunode.org/community): Community hub and projects
+- [Projects](https://edunode.org/projects): Community-built projects
+- [Resources](https://edunode.org/resources): Curated learning resources
+- [Milestones](https://edunode.org/milestones): Project roadmap and milestones
+- [Hyperledger](https://edunode.org/hyperledger): Hyperledger learning track
+- [Feed](https://edunode.org/feed): Community posts and discussions
+- [Releases](https://edunode.org/releases): Release notes and changelog
+- [Contact](https://edunode.org/contactus): Get in touch
+
+## Legal
+
+- [Terms and Conditions](https://edunode.org/terms)
+- [Privacy Policy](https://edunode.org/privacy)
+
+## Contact
+
+- Email: hi@edunode.org
+- GitHub: https://github.com/EduNodeOrg
+- LinkedIn: https://www.linkedin.com/company/edunodeorg/

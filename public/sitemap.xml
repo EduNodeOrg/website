@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core pages -->
+  <url>
+    <loc>https://edunode.org/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://edunode.org/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://edunode.org/courses</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://edunode.org/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://edunode.org/pricing</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://edunode.org/membership</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://edunode.org/contactus</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://edunode.org/milestones</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://edunode.org/releases</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Courses -->
+  <url><loc>https://edunode.org/courses/101</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/courses/102</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/courses/103</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/courses/104</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/courses/105</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/courses/106</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/courses/107</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/courses/108</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/courses/109</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/courses/110</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/courses/111</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Blog articles -->
+  <url><loc>https://edunode.org/blog/What-is-Keybase</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/How-to-issue</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/Stellarnomics</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/minting-nfts</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/security-tools</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/herramientas-de-seguridad</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/smart-contracts</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/kelp</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/postgresql</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/albedo</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/the-web3-revolution</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/zero-knowledge-proofs</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/automated-market-maker</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/learn-about-blockchain</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/docker</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/ipfs</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/soroban</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+
+  <!-- Tools & interactive -->
+  <url><loc>https://edunode.org/codeeditor</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://edunode.org/chess</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://edunode.org/stellarnodes</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://edunode.org/validCertificate</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://edunode.org/certificate</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+
+  <!-- Learning resources -->
+  <url><loc>https://edunode.org/glossary</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/resources</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/for-teachers</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/for-students</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/about-certificates</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://edunode.org/challenges</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/challenges/101</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://edunode.org/challengeGame</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://edunode.org/challengeGame/leaderBoard</loc><changefreq>weekly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://edunode.org/hyperledger</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://edunode.org/hyperledger/courses</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://edunode.org/search</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+
+  <!-- Community -->
+  <url><loc>https://edunode.org/community</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://edunode.org/community/project</loc><changefreq>weekly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://edunode.org/projects</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://edunode.org/feed</loc><changefreq>daily</changefreq><priority>0.4</priority></url>
+
+  <!-- Legal -->
+  <url><loc>https://edunode.org/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://edunode.org/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+</urlset>
