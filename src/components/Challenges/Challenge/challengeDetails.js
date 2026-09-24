@@ -98,8 +98,6 @@ function ChallengeDetails(props) {
           const user = res.data;
           userImages[email] = user.user.images;
           userId[email] = user.user._id;
-          console.log('image', userImages)
-          console.log('user', res.data)
         }
 
         setCommentImages(userImages);
@@ -115,7 +113,6 @@ function ChallengeDetails(props) {
 
   const handleSubmit = async (event) => {
 
-    console.log('submit email : ', userDetails.email)
     event.preventDefault();
     const userEmaill = userDetails?.email ?? 'anonymous';
     const comment = {

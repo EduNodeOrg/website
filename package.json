@@ -1,6 +1,6 @@
 {
   "name": "edunodeapp",
-  "version": "0.2.1",
+  "version": "0.3.1",
   "private": true,
   "engines": {
     "node": "18.16.0"
@@ -27,11 +27,7 @@
     "@mui/styles": "^5.11.13",
     "@paypal/react-paypal-js": "^8.8.1",
     "@react-oauth/google": "^0.11.0",
-    "@react-three/drei": "^9.70.0",
-    "@react-three/fiber": "^8.13.0",
     "@reduxjs/toolkit": "^1.9.3",
-    "@splinetool/loader": "^0.9.345",
-    "@splinetool/r3f-spline": "^1.0.2",
     "@stellar/freighter-api": "^1.4.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -55,14 +51,11 @@
     "history": "^5.3.0",
     "html2canvas": "^1.4.1",
     "http-proxy-middleware": "^2.0.6",
-    "i": "^0.3.7",
-    "ipfs-core": "^0.18.0",
     "jwt-decode": "^3.1.2",
     "mapbox-gl": "^2.14.1",
     "mdb-react-ui-kit": "^6.1.0",
     "moment": "^2.29.4",
     "netlify-cli": "^26.0.2",
-    "npm": "^9.6.7",
     "numeral": "^2.0.6",
     "prop-types": "^15.8.1",
     "qrcode": "^1.5.3",
@@ -80,7 +73,6 @@
     "react-iframe": "^1.8.5",
     "react-images-uploading": "^3.1.7",
     "react-intersection-observer": "^10.0.2",
-    "react-map-gl": "^7.0.23",
     "react-meta-tags": "^1.0.1",
     "react-modal": "^3.16.1",
     "react-player": "^2.12.0",
@@ -102,10 +94,8 @@
     "redux-thunk": "^2.4.2",
     "simplebar-react": "^3.2.4",
     "styled-components": "^5.3.9",
-    "three": "^0.152.2",
     "tss-react": "^4.8.2",
     "web-vitals": "^2.1.4",
-    "ws": "^8.13.0",
     "yup": "^1.0.2"
   },
   "scripts": {

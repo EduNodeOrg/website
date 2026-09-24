@@ -67,11 +67,7 @@ class VerifyEmail extends Component {
 
     axios.get(`https://edunode.herokuapp.com/api/emaillogin/user/${user.email}`)
     .then(response => {
-      const data = response.data;
-      console.log('dataaaaa',data) 
-      this.setState({ user: response.data }, () => {
-        console.log('useerrr', this.state.user);
-      });
+      this.setState({ user: response.data });
     })
     .catch(error => {
       console.error(error);
@@ -125,7 +121,6 @@ class VerifyEmail extends Component {
     const user = storedUser ? JSON.parse(storedUser) : null;
     
     if (!user || !user.email || !user.confirmationCode) {
-      console.log("Invalid user object:", user);
       return;
     }
     const email = user.email;
@@ -137,7 +132,6 @@ class VerifyEmail extends Component {
       inputcode,
       id
     };
-    console.log("Verify user:", verifyUser);
 
     try {
       await this.props.verifyCode(verifyUser);

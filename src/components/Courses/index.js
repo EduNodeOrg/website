@@ -21,6 +21,7 @@ import { KeyboardArrowUp } from '@mui/icons-material';
 import Navbar1 from '../Dashboard/Navbar1';
 import Navbar2 from '../Dashboard/Navbar2';
 import CourseList from './CourseList';
+import ProCourseCards from '../ProCourses/ProCourseCards';
 
 // Styles
 import './style.css';
@@ -296,6 +297,7 @@ const Courses = ({ auth, error: authError }) => {
                   <div className="learn" style={{ padding: '10px' }}>
                     <br />
                     {children}
+                    <ProCourseCards />
                   </div>
                 </motion.div>
               </Grid>

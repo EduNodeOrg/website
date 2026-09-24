@@ -11,7 +11,6 @@ import "./style.css";
 const ResetPasswordPage = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
-    console.log('token', token)
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [tokenValid, setTokenValid] = useState(false);
@@ -24,7 +23,6 @@ const ResetPasswordPage = () => {
         axios.post('https://edunode.herokuapp.com/api/password/validate-reset-token', { token })
             .then(response => {
                 setTokenValid(response.data.tokenValid);
-                console.log('valid token', response.data.tokenValid)
             })
             .catch(error => {
                 console.error('Error validating reset token:', error);

@@ -266,10 +266,8 @@ class Post extends Component {
     try {
 
       this.setState({ success: true }); // Set success state to true
-      console.log(data)
       await this.props.newPost(data)
       if (this.props.auth.user) {
-        console.log("users?", this.props.auth.user)
         return (
           <Navigate to="/dashboard" />
         );

@@ -61,15 +61,11 @@ class Login extends Component {
   }
 
   async handleCallBackResponse(token) {
-    console.log('encoded JWT ID Token :' + token);
     const userObject = jwt_decode(token);
-    console.log(userObject);
 
     const email = userObject.email;
     const name = userObject.name;
     const image =userObject.picture;
-    console.log(email);
-    console.log(name);
 
 
 
@@ -100,7 +96,6 @@ class Login extends Component {
   }
 
   handleLoginSuccess = (tokenResponse) => {
-    console.log(tokenResponse);
     // perform any other actions on successful login
   }
 
@@ -225,7 +220,6 @@ class Login extends Component {
         console.log('MetaMask is installed!');
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
         //  window.ethereum.request({ method: 'eth_requestAccounts' });
-        console.log(accounts)
         if (accounts !== undefined) {
           await this.props.metamaskAuth(accounts)
 
@@ -314,13 +308,8 @@ class Login extends Component {
               type="standard"
               onSuccess={credentialResponse => {
                 // axios post request to backend to store the token
-                console.log(credentialResponse);
-                console.log('login success')
-                
                 const token=credentialResponse.credential
                 this.props.handleSubmit(this.handleCallBackResponse(token))
-                console.log('token ', token )
-                
               }}
               onError={() => {
                 console.log('Login Failed');

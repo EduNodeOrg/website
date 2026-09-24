@@ -162,14 +162,12 @@ class Project extends Component {
         };
         try {
             const response = await axios.post('https://edunode.herokuapp.com/api/project', data);
-            console.log(response);
+            void response;
             //const result = await response.json();
             //console.log(result);
             this.setState({ success: true }); // Set success state to true
-            console.log(data)
-           
+
             if (this.props.auth.user) {
-                console.log("users?", this.props.auth.user)
                 return (
                     <Navigate to="/dashboard" />
                 );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, Suspense, lazy } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Provider, connect } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -8,197 +8,199 @@ import { CookieConsentProvider } from "./hooks/useCookieConsent";
 import CookieBanner from "./components/CookieConsent/Banner";
 import ConsentScripts from "./components/CookieConsent/ConsentScripts";
 import Home from "./components/Home";
-import AboutUs from "./components/aboutus";
-import Node from "./components/StellarNodes";
-import Account from "./components/Account"
-import Resources from "./components/Resources";
-import Community from "./components/Community";
-import Project from "./components/Community/project";
-import Milestones from "./components/Milestones"
-import TermsAndConditions from "./components/Terms";
 
-import Courses from './components/Courses';
-import Questions1 from './components/Courses1/Questions';
-import Questions from './components/Courses/Questions';
-import QuestionsTwo from './components/Courses/QuestionsTwo';
-import QuestionsTwo1 from './components/Courses1/QuestionsTwo';
-import QuestionsThree from './components/Courses/QuestionsThree';
-import QuestionsThree1 from './components/Courses1/QuestionsThree';
-import QuestionsFour from './components/Courses/QuestionsFour';
-import QuestionsFive from './components/Courses/QuestionsFive';
-import QuestionsFour1 from './components/Courses1/QuestionsFour';
-import QuestionsFive1 from './components/Courses1/QuestionsFive';
-import QuestionsSix1 from './components/Courses1/QuestionsSix';
-import Questions2 from './components/Courses2/Questions';
-import QuestionsTwo2 from './components/Courses2/QuestionsTwo';
-import QuestionsThree2 from './components/Courses2/QuestionsThree';
-import QuestionsFour2 from './components/Courses2/QuestionsFour';
-import QuestionsFive2 from './components/Courses2/QuestionsFive';
-import Questions3 from './components/Courses3/Questions';
-import QuestionsTwo3 from './components/Courses3/QuestionsTwo';
-import QuestionsThree3 from './components/Courses3/QuestionsThree';
-import QuestionsFour3 from './components/Courses3/QuestionsFour';
-import QuestionsFive3 from './components/Courses3/QuestionsFive';
-import Questions4 from './components/Courses4/Questions';
-import QuestionsTwo4 from './components/Courses4/QuestionsTwo';
-import QuestionsThree4 from './components/Courses4/QuestionsThree';
-import QuestionsFour4 from './components/Courses4/QuestionsFour';
-import QuestionsFive4 from './components/Courses4/QuestionsFive';
-import Questions5 from './components/Courses5/Questions';
-import QuestionsTwo5 from './components/Courses5/QuestionsTwo';
-import QuestionsThree5 from './components/Courses5/QuestionsThree';
-import QuestionsFour5 from './components/Courses5/QuestionsFour';
-import QuestionsFive5 from './components/Courses5/QuestionsFive';
-import Questions6 from './components/Courses6/Questions';
-import QuestionsTwo6 from './components/Courses6/QuestionsTwo';
-import QuestionsThree6 from './components/Courses6/QuestionsThree';
-import QuestionsFour6 from './components/Courses6/QuestionsFour';
-import QuestionsFive6 from './components/Courses6/QuestionsFive';
-import Questions7 from './components/Courses7/Questions';
-import QuestionsTwo7 from './components/Courses7/QuestionsTwo';
-import QuestionsThree7 from './components/Courses7/QuestionsThree';
-import QuestionsFour7 from './components/Courses7/QuestionsFour';
-import QuestionsFive7 from './components/Courses7/QuestionsFive';
-import Questions8 from './components/Courses8/Questions';
-import QuestionsTwo8 from './components/Courses8/QuestionsTwo';
-import QuestionsThree8 from './components/Courses8/QuestionsThree';
-import QuestionsFour8 from './components/Courses8/QuestionsFour';
-import QuestionsFive8 from './components/Courses8/QuestionsFive';
-import Questions9 from './components/Courses9/Questions';
-import QuestionsTwo9 from './components/Courses9/QuestionsTwo';
-import QuestionsThree9 from './components/Courses9/QuestionsThree';
-import QuestionsFour9 from './components/Courses9/QuestionsFour';
-import QuestionsFive9 from './components/Courses9/QuestionsFive';
+// Route components are lazy-loaded so the main bundle only ships the
+// landing page — everything else loads on demand per route.
+const AboutUs = lazy(() => import("./components/aboutus"));
+const Node = lazy(() => import("./components/StellarNodes"));
+const Account = lazy(() => import("./components/Account"));
+const Resources = lazy(() => import("./components/Resources"));
+const Community = lazy(() => import("./components/Community"));
+const Project = lazy(() => import("./components/Community/project"));
+const Milestones = lazy(() => import("./components/Milestones"));
+const TermsAndConditions = lazy(() => import("./components/Terms"));
 
+const Courses = lazy(() => import('./components/Courses'));
+const Questions1 = lazy(() => import('./components/Courses1/Questions'));
+const Questions = lazy(() => import('./components/Courses/Questions'));
+const QuestionsTwo = lazy(() => import('./components/Courses/QuestionsTwo'));
+const QuestionsTwo1 = lazy(() => import('./components/Courses1/QuestionsTwo'));
+const QuestionsThree = lazy(() => import('./components/Courses/QuestionsThree'));
+const QuestionsThree1 = lazy(() => import('./components/Courses1/QuestionsThree'));
+const QuestionsFour = lazy(() => import('./components/Courses/QuestionsFour'));
+const QuestionsFive = lazy(() => import('./components/Courses/QuestionsFive'));
+const QuestionsFour1 = lazy(() => import('./components/Courses1/QuestionsFour'));
+const QuestionsFive1 = lazy(() => import('./components/Courses1/QuestionsFive'));
+const QuestionsSix1 = lazy(() => import('./components/Courses1/QuestionsSix'));
+const Questions2 = lazy(() => import('./components/Courses2/Questions'));
+const QuestionsTwo2 = lazy(() => import('./components/Courses2/QuestionsTwo'));
+const QuestionsThree2 = lazy(() => import('./components/Courses2/QuestionsThree'));
+const QuestionsFour2 = lazy(() => import('./components/Courses2/QuestionsFour'));
+const QuestionsFive2 = lazy(() => import('./components/Courses2/QuestionsFive'));
+const Questions3 = lazy(() => import('./components/Courses3/Questions'));
+const QuestionsTwo3 = lazy(() => import('./components/Courses3/QuestionsTwo'));
+const QuestionsThree3 = lazy(() => import('./components/Courses3/QuestionsThree'));
+const QuestionsFour3 = lazy(() => import('./components/Courses3/QuestionsFour'));
+const QuestionsFive3 = lazy(() => import('./components/Courses3/QuestionsFive'));
+const Questions4 = lazy(() => import('./components/Courses4/Questions'));
+const QuestionsTwo4 = lazy(() => import('./components/Courses4/QuestionsTwo'));
+const QuestionsThree4 = lazy(() => import('./components/Courses4/QuestionsThree'));
+const QuestionsFour4 = lazy(() => import('./components/Courses4/QuestionsFour'));
+const QuestionsFive4 = lazy(() => import('./components/Courses4/QuestionsFive'));
+const Questions5 = lazy(() => import('./components/Courses5/Questions'));
+const QuestionsTwo5 = lazy(() => import('./components/Courses5/QuestionsTwo'));
+const QuestionsThree5 = lazy(() => import('./components/Courses5/QuestionsThree'));
+const QuestionsFour5 = lazy(() => import('./components/Courses5/QuestionsFour'));
+const QuestionsFive5 = lazy(() => import('./components/Courses5/QuestionsFive'));
+const Questions6 = lazy(() => import('./components/Courses6/Questions'));
+const QuestionsTwo6 = lazy(() => import('./components/Courses6/QuestionsTwo'));
+const QuestionsThree6 = lazy(() => import('./components/Courses6/QuestionsThree'));
+const QuestionsFour6 = lazy(() => import('./components/Courses6/QuestionsFour'));
+const QuestionsFive6 = lazy(() => import('./components/Courses6/QuestionsFive'));
+const Questions7 = lazy(() => import('./components/Courses7/Questions'));
+const QuestionsTwo7 = lazy(() => import('./components/Courses7/QuestionsTwo'));
+const QuestionsThree7 = lazy(() => import('./components/Courses7/QuestionsThree'));
+const QuestionsFour7 = lazy(() => import('./components/Courses7/QuestionsFour'));
+const QuestionsFive7 = lazy(() => import('./components/Courses7/QuestionsFive'));
+const Questions8 = lazy(() => import('./components/Courses8/Questions'));
+const QuestionsTwo8 = lazy(() => import('./components/Courses8/QuestionsTwo'));
+const QuestionsThree8 = lazy(() => import('./components/Courses8/QuestionsThree'));
+const QuestionsFour8 = lazy(() => import('./components/Courses8/QuestionsFour'));
+const QuestionsFive8 = lazy(() => import('./components/Courses8/QuestionsFive'));
+const Questions9 = lazy(() => import('./components/Courses9/Questions'));
+const QuestionsTwo9 = lazy(() => import('./components/Courses9/QuestionsTwo'));
+const QuestionsThree9 = lazy(() => import('./components/Courses9/QuestionsThree'));
+const QuestionsFour9 = lazy(() => import('./components/Courses9/QuestionsFour'));
+const QuestionsFive9 = lazy(() => import('./components/Courses9/QuestionsFive'));
 
-import Questions10 from './components/Courses10/Questions';
-import QuestionsTwo10 from './components/Courses10/QuestionsTwo';
-import QuestionsThree10 from './components/Courses10/QuestionsThree';
-import QuestionsFour10 from './components/Courses10/QuestionsFour';
-import QuestionsFive10 from './components/Courses10/QuestionsFive';
+const Questions10 = lazy(() => import('./components/Courses10/Questions'));
+const QuestionsTwo10 = lazy(() => import('./components/Courses10/QuestionsTwo'));
+const QuestionsThree10 = lazy(() => import('./components/Courses10/QuestionsThree'));
+const QuestionsFour10 = lazy(() => import('./components/Courses10/QuestionsFour'));
+const QuestionsFive10 = lazy(() => import('./components/Courses10/QuestionsFive'));
 
-import Intro from './components/Courses/One/Intro';
-import Intro1 from './components/Courses1/One/Intro';
-import Intro2 from './components/Courses2/One/Intro';
-import Intro3 from './components/Courses3/One/Intro';
-import Intro4 from './components/Courses4/One/Intro';
-import Intro5 from './components/Courses5/One/Intro';
-import Intro6 from './components/Courses6/One/Intro';
-import Intro7 from './components/Courses7/One/Intro';
-import Intro8 from './components/Courses8/One/Intro';
-import Intro9 from './components/Courses9/One/Intro';
-import Intro10 from './components/Courses10/One/Intro';
+const Intro = lazy(() => import('./components/Courses/One/Intro'));
+const Intro1 = lazy(() => import('./components/Courses1/One/Intro'));
+const Intro2 = lazy(() => import('./components/Courses2/One/Intro'));
+const Intro3 = lazy(() => import('./components/Courses3/One/Intro'));
+const Intro4 = lazy(() => import('./components/Courses4/One/Intro'));
+const Intro5 = lazy(() => import('./components/Courses5/One/Intro'));
+const Intro6 = lazy(() => import('./components/Courses6/One/Intro'));
+const Intro7 = lazy(() => import('./components/Courses7/One/Intro'));
+const Intro8 = lazy(() => import('./components/Courses8/One/Intro'));
+const Intro9 = lazy(() => import('./components/Courses9/One/Intro'));
+const Intro10 = lazy(() => import('./components/Courses10/One/Intro'));
 
+const ProCourseLanding = lazy(() => import('./components/ProCourses/ProCourseLanding'));
+const ProCourseModule = lazy(() => import('./components/ProCourses/ProCourseModule'));
+const ProCourseDone = lazy(() => import('./components/ProCourses/ProCourseDone'));
 
+const Coursedone = lazy(() => import("./components/Courses/Coursedone"));
+const Coursedone1 = lazy(() => import("./components/Courses1/Coursedone"));
+const Coursedone2 = lazy(() => import("./components/Courses2/Coursedone"));
+const Coursedone3 = lazy(() => import("./components/Courses3/Coursedone"));
+const Coursedone4 = lazy(() => import("./components/Courses4/Coursedone"));
+const Coursedone5 = lazy(() => import("./components/Courses5/Coursedone"));
+const Coursedone6 = lazy(() => import("./components/Courses6/Coursedone"));
+const Coursedone7 = lazy(() => import("./components/Courses7/Coursedone"));
+const Coursedone8 = lazy(() => import("./components/Courses8/Coursedone"));
+const Coursedone9 = lazy(() => import("./components/Courses9/Coursedone"));
+const Coursedone10 = lazy(() => import("./components/Courses10/Coursedone"));
 
-import Coursedone from "./components/Courses/Coursedone"
-import Coursedone1 from "./components/Courses1/Coursedone"
-import Coursedone2 from "./components/Courses2/Coursedone"
-import Coursedone3 from "./components/Courses3/Coursedone"
-import Coursedone4 from "./components/Courses4/Coursedone"
-import Coursedone5 from "./components/Courses5/Coursedone"
-import Coursedone6 from "./components/Courses6/Coursedone"
-import Coursedone7 from "./components/Courses7/Coursedone"
-import Coursedone8 from "./components/Courses8/Coursedone"
-import Coursedone9 from "./components/Courses9/Coursedone"
-import Coursedone10 from "./components/Courses10/Coursedone"
-
-
-import Challengedone from "./components/Challenges/Challenge/Coursedone"
-import Keybase from "./components/Blog/Articles/Keybase";
-import Issue from "./components/Blog/Articles/Issue";
+const Challengedone = lazy(() => import("./components/Challenges/Challenge/Coursedone"));
+const Keybase = lazy(() => import("./components/Blog/Articles/Keybase"));
+const Issue = lazy(() => import("./components/Blog/Articles/Issue"));
 // Register component is now accessed via /signup route (Signup alias below)
-import Login from "./components/Login";
-import Pref from "./components/Dashboard/preferences";
-import Chat from "./components/Chat";
-import History from "./components/Chat/history";
-import Blog from "./components/Blog";
-import VerifyEmail from "./components/VerifyEmail";
-import Stellarnomics from "./components/Blog/Articles/Stellarnomics";
-import Projects from "./components/Projects";
-import Seguridad from "./components/Blog/Articles/Seguridad";
-import Blockchain from "./components/Blog/Articles/Blockchain";
-import Contracts from './components/Blog/Articles/Contracts';
-import Docker from './components/Blog/Articles/Docker';
-import Ipfs from './components/Blog/Articles/Ipfs';
-import AMM from './components/Blog/Articles/AMM/AMM';
-import Kelp from "./components/Blog/Articles/Kelp";
-import PostgreSQL from "./components/Blog/Articles/Postgresql";
-import Albedo from "./components/Blog/Articles/Albedo";
-import Security from './components/Blog/Articles/Security';
-import NFT from './components/Blog/Articles/NFT';
-import Certificate from "./components/Certificate"
-import Web3 from "./components/Blog/Articles/Web3"
-import ZKP from "./components/Blog/Articles/ZKP"
-import ChainChess from "./components/Chess/";
-import Feed from "./components/Feed";
-import Gcallback from "./components/Gcallback";
-import Hyperledger from "./components/Hyperledger"
-import HyperledgerCourses from "./components/Hyperledger/Courses"
-import Challenge from "./components/Challenges/Challenge";
-import ChallengeGame from "./components/Challenges/gameChallenge";
-import ChallengeGameQ from "./components/Challenges/gameChallenge/Intro";
-import ChallengeGame2Q from "./components/Challenges/gameChallenge/Chalenge2intro";
-import LeaderBoard from "./components/Challenges/gameChallenge/leaderBoard";
-import ChallengeQ from './components/Challenges/Challenge/One/Intro.js';
-import CodeEditor from "./components/CodeEditor";
-import ContactUs from "./components/contactus";
-import Loggedout from "./components/Loggedout";
-import Membership from "./components/Membership"
-import NewPost from "./components/NewPost";
-import Privacy from './components/Privacy';
-import SubmitPost from "./components/SubmitPost"
-import Dashboard from "./components/Dashboard";
+const Login = lazy(() => import("./components/Login"));
+const Pref = lazy(() => import("./components/Dashboard/preferences"));
+const Chat = lazy(() => import("./components/Chat"));
+const History = lazy(() => import("./components/Chat/history"));
+const Blog = lazy(() => import("./components/Blog"));
+const VerifyEmail = lazy(() => import("./components/VerifyEmail"));
+const Stellarnomics = lazy(() => import("./components/Blog/Articles/Stellarnomics"));
+const Projects = lazy(() => import("./components/Projects"));
+const Seguridad = lazy(() => import("./components/Blog/Articles/Seguridad"));
+const Blockchain = lazy(() => import("./components/Blog/Articles/Blockchain"));
+const Contracts = lazy(() => import('./components/Blog/Articles/Contracts'));
+const Docker = lazy(() => import('./components/Blog/Articles/Docker'));
+const Ipfs = lazy(() => import('./components/Blog/Articles/Ipfs'));
+const AMM = lazy(() => import('./components/Blog/Articles/AMM/AMM'));
+const Kelp = lazy(() => import("./components/Blog/Articles/Kelp"));
+const PostgreSQL = lazy(() => import("./components/Blog/Articles/Postgresql"));
+const Albedo = lazy(() => import("./components/Blog/Articles/Albedo"));
+const Security = lazy(() => import('./components/Blog/Articles/Security'));
+const NFT = lazy(() => import('./components/Blog/Articles/NFT'));
+const Certificate = lazy(() => import("./components/Certificate"));
+const Web3 = lazy(() => import("./components/Blog/Articles/Web3"));
+const ZKP = lazy(() => import("./components/Blog/Articles/ZKP"));
+const ChainChess = lazy(() => import("./components/Chess/"));
+const Feed = lazy(() => import("./components/Feed"));
+const Gcallback = lazy(() => import("./components/Gcallback"));
+const Hyperledger = lazy(() => import("./components/Hyperledger"));
+const HyperledgerCourses = lazy(() => import("./components/Hyperledger/Courses"));
+const Challenge = lazy(() => import("./components/Challenges/Challenge"));
+const ChallengeGame = lazy(() => import("./components/Challenges/gameChallenge"));
+const ChallengeGameQ = lazy(() => import("./components/Challenges/gameChallenge/Intro"));
+const ChallengeGame2Q = lazy(() => import("./components/Challenges/gameChallenge/Chalenge2intro"));
+const LeaderBoard = lazy(() => import("./components/Challenges/gameChallenge/leaderBoard"));
+const ChallengeQ = lazy(() => import('./components/Challenges/Challenge/One/Intro.js'));
+const CodeEditor = lazy(() => import("./components/CodeEditor"));
+const ContactUs = lazy(() => import("./components/contactus"));
+const Loggedout = lazy(() => import("./components/Loggedout"));
+const Membership = lazy(() => import("./components/Membership"));
+const NewPost = lazy(() => import("./components/NewPost"));
+const Privacy = lazy(() => import('./components/Privacy'));
+const SubmitPost = lazy(() => import("./components/SubmitPost"));
+const Dashboard = lazy(() => import("./components/Dashboard"));
 //import Main from "./components/Dashboard/Main";
-import Post from "./components/Posts/Post";
-import Cours from "./components/Teach/teach";
-import Tutor from "./components/Teach/teachRole";
-import Badge from "./components/Teach/badge";
-import ValidCertificate from "./components/Teach/validCertificate";
-import Certificat from "./components/Certificate/certificat";
-import Notification from './components/Notifications/Notification';
-import Achievement from './components/Achievment/Achievment';
-import Search from "./components/Search/Search";
-import Sep from './components/Sep/sep'
-import AiPlugin from './components/AiPlugin'
-import PostDetails from './components/Posts/postDetails'
-import CourseDetails from './components/Courses/courseDetails'
-import { useState } from 'react';
-import Loginn from './components/Login';
-import Signup from "./components/Register";
-import Glossary from "./components/Glossary";
-import Badges from './components/Badges'
-import EduNodeGuide from './components/teacher'
-import StudentsPage from "./components/student"
-import PasswordPage from './components/Login/password'
-import ResetPasswordPage from './components/Login/reset_password'
-import ModernProfile from './components/Profile/ModernProfile'
-import ModernMyProfile from './components/Profile/ModernMyProfile'
-import CertificatePage from './components/Certificate/about'
-import ChallengeDetails from './components/Challenges/Challenge/challengeDetails'
-import ThemeProvider from './admin/src/theme';
-import DashboardLayout from './admin/src/layouts/dashboard';
-import DashboardAdmin from './admin/src/layouts/adminDashboard';
-import BlogPage from './admin/src/pages/BlogPage';
-import UserPage from './admin/src/pages/UserPage';
-import AddedBadges from './admin/src/pages/Badges';
-import AddedCourses from './admin/src/pages/Courses';
-import Users from './admin/src/pages/Users';
-import Glossaires from './admin/src/pages/Glossaires';
-import UserAdmin from './admin/src/pages/UserAdmin';
-import LoginPage from './admin/src/pages/LoginPage';
-import ProductsPage from './admin/src/pages/ProductsPage';
-import DashboardAppPage from './admin/src/pages/DashboardAppPage';
-import DashboardAppAdmin from './admin/src/pages/DashboardAdmin';
-import Messages from './components/Profile/messages'
-import Game from './components/Challenges/gameChallenge/addGame'
-import Pricing from './components/Membership/Pricing'
-import StripeCheckout from './components/Membership/StripeCheckout'
-import Releases from './components/Releases'
-import Soroban from './components/Blog/Articles/Soroban'
-import Page404 from './admin/src/pages/Page404'
-import CheckoutSuccess from './components/Membership/CheckoutSuccess'
-import EmailUnsubscribe from './components/EmailUnsubscribe'
+const Post = lazy(() => import("./components/Posts/Post"));
+const Cours = lazy(() => import("./components/Teach/teach"));
+const Tutor = lazy(() => import("./components/Teach/teachRole"));
+const Badge = lazy(() => import("./components/Teach/badge"));
+const ValidCertificate = lazy(() => import("./components/Teach/validCertificate"));
+const Certificat = lazy(() => import("./components/Certificate/certificat"));
+const Notification = lazy(() => import('./components/Notifications/Notification'));
+const Achievement = lazy(() => import('./components/Achievment/Achievment'));
+const Search = lazy(() => import("./components/Search/Search"));
+const Sep = lazy(() => import('./components/Sep/sep'));
+const AiPlugin = lazy(() => import('./components/AiPlugin'));
+const PostDetails = lazy(() => import('./components/Posts/postDetails'));
+const CourseDetails = lazy(() => import('./components/Courses/courseDetails'));
+const Loginn = lazy(() => import('./components/Login'));
+const Signup = lazy(() => import("./components/Register"));
+const Glossary = lazy(() => import("./components/Glossary"));
+const Badges = lazy(() => import('./components/Badges'));
+const EduNodeGuide = lazy(() => import('./components/teacher'));
+const StudentsPage = lazy(() => import("./components/student"));
+const PasswordPage = lazy(() => import('./components/Login/password'));
+const ResetPasswordPage = lazy(() => import('./components/Login/reset_password'));
+const ModernProfile = lazy(() => import('./components/Profile/ModernProfile'));
+const ModernMyProfile = lazy(() => import('./components/Profile/ModernMyProfile'));
+const CertificatePage = lazy(() => import('./components/Certificate/about'));
+const ChallengeDetails = lazy(() => import('./components/Challenges/Challenge/challengeDetails'));
+const ThemeProvider = lazy(() => import('./admin/src/theme'));
+const DashboardLayout = lazy(() => import('./admin/src/layouts/dashboard'));
+const DashboardAdmin = lazy(() => import('./admin/src/layouts/adminDashboard'));
+const BlogPage = lazy(() => import('./admin/src/pages/BlogPage'));
+const UserPage = lazy(() => import('./admin/src/pages/UserPage'));
+const AddedBadges = lazy(() => import('./admin/src/pages/Badges'));
+const AddedCourses = lazy(() => import('./admin/src/pages/Courses'));
+const Users = lazy(() => import('./admin/src/pages/Users'));
+const Glossaires = lazy(() => import('./admin/src/pages/Glossaires'));
+const UserAdmin = lazy(() => import('./admin/src/pages/UserAdmin'));
+const LoginPage = lazy(() => import('./admin/src/pages/LoginPage'));
+const ProductsPage = lazy(() => import('./admin/src/pages/ProductsPage'));
+const DashboardAppPage = lazy(() => import('./admin/src/pages/DashboardAppPage'));
+const DashboardAppAdmin = lazy(() => import('./admin/src/pages/DashboardAdmin'));
+const Messages = lazy(() => import('./components/Profile/messages'));
+const Game = lazy(() => import('./components/Challenges/gameChallenge/addGame'));
+const Pricing = lazy(() => import('./components/Membership/Pricing'));
+const StripeCheckout = lazy(() => import('./components/Membership/StripeCheckout'));
+const Releases = lazy(() => import('./components/Releases'));
+const Soroban = lazy(() => import('./components/Blog/Articles/Soroban'));
+const Page404 = lazy(() => import('./admin/src/pages/Page404'));
+const CheckoutSuccess = lazy(() => import('./components/Membership/CheckoutSuccess'));
+const EmailUnsubscribe = lazy(() => import('./components/EmailUnsubscribe'));
 
 const ThemedRoutes = () => (
   <ThemeProvider>
@@ -243,6 +245,7 @@ function App(props) {
       <CookieConsentProvider>
         <ConsentScripts />
         <CookieBanner />
+      <Suspense fallback={<div className="route-loading" />}>
       <Routes location={location} navigate={navigate}>
      
         <Route exact path="/" element={<Home />} />
@@ -343,6 +346,30 @@ function App(props) {
         <Route exact path="/courses/111/5" element={<QuestionsFive10 />} />
         <Route exact path="/courses/111/done" element={<Coursedone10 />} />
 
+        <Route exact path="/courses/112" element={<ProCourseLanding courseId="112" />} />
+        <Route exact path="/courses/112/done" element={<ProCourseDone courseId="112" />} />
+        <Route exact path="/courses/112/:step" element={<ProCourseModule courseId="112" />} />
+
+        <Route exact path="/courses/113" element={<ProCourseLanding courseId="113" />} />
+        <Route exact path="/courses/113/done" element={<ProCourseDone courseId="113" />} />
+        <Route exact path="/courses/113/:step" element={<ProCourseModule courseId="113" />} />
+
+        <Route exact path="/courses/114" element={<ProCourseLanding courseId="114" />} />
+        <Route exact path="/courses/114/done" element={<ProCourseDone courseId="114" />} />
+        <Route exact path="/courses/114/:step" element={<ProCourseModule courseId="114" />} />
+
+        <Route exact path="/courses/115" element={<ProCourseLanding courseId="115" />} />
+        <Route exact path="/courses/115/done" element={<ProCourseDone courseId="115" />} />
+        <Route exact path="/courses/115/:step" element={<ProCourseModule courseId="115" />} />
+
+        <Route exact path="/courses/116" element={<ProCourseLanding courseId="116" />} />
+        <Route exact path="/courses/116/done" element={<ProCourseDone courseId="116" />} />
+        <Route exact path="/courses/116/:step" element={<ProCourseModule courseId="116" />} />
+
+        <Route exact path="/courses/117" element={<ProCourseLanding courseId="117" />} />
+        <Route exact path="/courses/117/done" element={<ProCourseDone courseId="117" />} />
+        <Route exact path="/courses/117/:step" element={<ProCourseModule courseId="117" />} />
+
 
         <Route exact path="/blog" element={<Blog />} />
         <Route exact path="/blog/What-is-Keybase" element={<Keybase />} />
@@ -432,6 +459,7 @@ function App(props) {
         <Route exact path="/unsubscribe" element={<EmailUnsubscribe />} />
         <Route path="/*" element={<ThemedRoutes />} />
       </Routes>
+      </Suspense>
       </CookieConsentProvider>
     </Provider>
 

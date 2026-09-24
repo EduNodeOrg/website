@@ -65,12 +65,8 @@ function CourseDetails(props) {
     setNewComment(event.target.value);
   };
 
-  console.log('userDetails', userDetails)
-  console.log('userDetails', userDetails.email)
-
 
   const { _id } = useParams();
-  console.log('id :', _id)
 
   useEffect(() => {
     const getCourse = async () => {
@@ -104,7 +100,6 @@ function CourseDetails(props) {
 
   const handleSubmit = async (event) => {
 
-    console.log('submit email : ', userDetails.email)
     event.preventDefault();
     const userEmaill = userDetails?.email ?? 'anonymous';
     const comment = {

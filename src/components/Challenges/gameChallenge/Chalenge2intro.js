@@ -187,7 +187,6 @@ function VerticalLinearStepper(props) {
     const localUser = localStorage.getItem('user');
     const user = JSON.parse(localUser);
     const localEmail = user.email;
-    console.log('local email ', user.email)
 
     const isAnswerCorrect = validateStep(activeStep, editorValues[activeStep]);
     if (isAnswerCorrect) {
@@ -741,8 +740,6 @@ function Intro(props) {
             setModalFinishVisible(challengeFinished);
             setWinnerEmail(winner);
           }
-          console.log('Challenge Finished:', challengeFinished);
-          console.log('Winner:', winner);
           return data;
         } else {
           // Error or data not found
@@ -781,7 +778,6 @@ function Intro(props) {
     const localUser = localStorage.getItem('user');
     const user = JSON.parse(localUser);
     const localEmail = user.email;
-    console.log('local email ', user.email);
 
     try {
       // Send a POST request to the backend to notify readiness
@@ -790,7 +786,6 @@ function Intro(props) {
         localEmail: localEmail
       });
 
-      console.log('ready response', response.data);
       setModalVisible(!response.data);
       setTimerVisible(response.data);
       setChallengeStarted(response.data);

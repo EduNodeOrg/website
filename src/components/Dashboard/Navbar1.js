@@ -39,9 +39,7 @@ class NavBar1 extends Component {
     fetch(`https://edunode.herokuapp.com/api/users/user?email=${email}`)
       .then(response => response.json())
       .then(data => {
-        this.setState({ user: data }, () => {
-          console.log('user:', this.state.user);
-        });
+        this.setState({ user: data });
       })
       .catch(error => {
         console.error(error);
@@ -52,7 +50,6 @@ class NavBar1 extends Component {
       .then((response) => {
         const data = response.data;
         this.setState({ messageCount: data.count });
-        console.log('count messages =', data.count);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -267,10 +264,8 @@ class NavBar1 extends Component {
   else if (user.role !== 'Teacher' && user.role !== 'University') {
     return (
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="/">
-          <a href="/" className="brand-name">
-            EduNode
-          </a>
+        <Navbar.Brand href="/" className="brand-name">
+          EduNode
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -347,10 +342,8 @@ class NavBar1 extends Component {
  else if (user.role === 'Teacher') {
     return (
         <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="/">
-            <a href="/" className="brand-name">
-              EduNode
-            </a>
+          <Navbar.Brand href="/" className="brand-name">
+            EduNode
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

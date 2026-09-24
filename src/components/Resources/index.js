@@ -380,106 +380,6 @@ function Resources() {
                 <GlassCard>
                   <CardMedia
                     sx={{ paddingTop: '56.25%' }}
-                    image={require('../Resources/kelp1.png')}
-                    title="Kelp"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="h2"
-                    >
-                      Kelp
-                    </Typography>
-                    <Typography>
-                      Kelp is a free, customizable, open-source
-                      trading bot for the Stellar universal
-                      marketplace.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      size="small"
-                      sx={{ color: '#00d4ff' }}
-                      href="https://kelpbot.io/"
-                    >
-                      Learn More
-                    </Button>
-                  </CardActions>
-                </GlassCard>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={4}>
-                <GlassCard>
-                  <CardMedia
-                    sx={{ paddingTop: '56.25%' }}
-                    image={require('../Resources/stellarbeat.png')}
-                    title="Stellarbeat.io"
-                  />
-
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="h2"
-                    >
-                      Stellarbeat.io
-                    </Typography>
-                    <Typography>
-                      Stellar Network Visibility
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      size="small"
-                      sx={{ color: '#00d4ff' }}
-                      href="https://stellarbeat.io/"
-                    >
-                      Learn More
-                    </Button>
-                  </CardActions>
-                </GlassCard>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={4}>
-                <GlassCard>
-                  <CardMedia
-                    sx={{ paddingTop: '56.25%' }}
-                    image={require('../Resources/astrograph.png')}
-                    title="Astrograph"
-                  />
-
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="h2"
-                    >
-                      Astrograph
-                    </Typography>
-                    <Typography>
-                      GraphQL interface to Stellar blockchain
-                    </Typography>
-                    <a href="https://keybase.io/team/astrograph">
-                      <img src={kicon} height={25} width={25} alt="Keybase icon" />
-                    </a>
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      size="small"
-                      sx={{ color: '#00d4ff' }}
-                      href="https://astrograph.io/"
-                    >
-                      Learn More
-                    </Button>
-                  </CardActions>
-                </GlassCard>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={4}>
-                <GlassCard>
-                  <CardMedia
-                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/stellarguard.PNG')}
                     title="StellarGuard"
                   />
@@ -576,69 +476,6 @@ function Resources() {
                 <GlassCard>
                   <CardMedia
                     sx={{ paddingTop: '56.25%' }}
-                    image={require('../Resources/stellarlogo1.png')}
-                    title="awesomestellar"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="h2"
-                    >
-                      Awesome Stellar
-                    </Typography>
-                    <Typography>
-                      A curated list of Stellar applications, blog
-                      posts, educational resources, tools, and more.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      size="small"
-                      sx={{ color: '#00d4ff' }}
-                      href="https://www.awesomestellar.com/"
-                    >
-                      Learn More
-                    </Button>
-                  </CardActions>
-                </GlassCard>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={4}>
-                <GlassCard>
-                  <CardMedia
-                    sx={{ paddingTop: '56.25%' }}
-                    image={require('../Resources/lumenswap.jpeg')}
-                    title="awesomestellar"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="h2"
-                    >
-                      Lumenswap
-                    </Typography>
-                    <Typography>
-                    Swap assets in the borderless world
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      size="small"
-                      sx={{ color: '#00d4ff' }}
-                      href="https://lumenswap.io/"
-                    >
-                      Learn More
-                    </Button>
-                  </CardActions>
-                </GlassCard>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={4}>
-                <GlassCard>
-                  <CardMedia
-                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/rabet.jpeg')}
                     title="rabet"
                   />
@@ -665,21 +502,211 @@ function Resources() {
                   </CardActions>
                 </GlassCard>
               </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/stellar-go-cli.png')}
+                    title="Stellar Go CLI"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      Stellar Go CLI
+                    </Typography>
+                    <Typography>
+                      A command-line interface for interacting with
+                      the Stellar network, written in Go.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://github.com/stellar-go-cli/stellar-go-cli"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/stellar-wallets-kit.png')}
+                    title="Stellar Wallets Kit"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      Stellar Wallets Kit
+                    </Typography>
+                    <Typography>
+                      A kit to handle all Stellar wallets at once
+                      with a simple API.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://stellarwalletskit.dev/"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/freighter.png')}
+                    title="Freighter"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      Freighter
+                    </Typography>
+                    <Typography>
+                      A non-custodial Stellar wallet extension for
+                      your browser.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://freighter.app/"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/openzeppelin-stellar.jpg')}
+                    title="OpenZeppelin for Stellar"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      OpenZeppelin for Stellar
+                    </Typography>
+                    <Typography>
+                      Secure, audited smart contract libraries and
+                      tools for building on Stellar and Soroban.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://www.openzeppelin.com/networks/stellar"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/xbull.png')}
+                    title="xBull Wallet"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      xBull Wallet
+                    </Typography>
+                    <Typography>
+                      A powerful Stellar wallet for web and mobile.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://wallet.xbull.app/"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/stellar-disbursement-platform.png')}
+                    title="Stellar Disbursement Platform"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      Stellar Disbursement Platform
+                    </Typography>
+                    <Typography>
+                      A platform for organizations to send bulk
+                      payments and mass disbursements on Stellar.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://stellar.org/products-and-tools/disbursement-platform"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
             </Grid>
           </Container>
 
-          <Container sx={{ pt: 8, pb: 8 }} maxWidth="md">
+          <Container sx={{ pt: 8, pb: 8 }} maxWidth="lg">
             <Typography variant="h4" sx={{ color: '#ffffff', fontWeight: 'bold', mb: 4, textAlign: 'center' }}>
-              Courses
+              Public Good Projects
             </Typography>
             <Grid container spacing={4}>
               <Grid item xs={12} sm={6} md={4}>
-                <br></br>
                 <GlassCard>
                   <CardMedia
                     sx={{ paddingTop: '56.25%' }}
-                    image={require('./lumen.png')}
-                    title="Dev Google Group"
+                    image={require('../Resources/solang.png')}
+                    title="Hyperledger Solang"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
@@ -687,19 +714,18 @@ function Resources() {
                       variant="h5"
                       component="h2"
                     >
-                      Stellar Overview Course
+                      Hyperledger Solang
                     </Typography>
                     <Typography>
-                      Get started by learning more about the Stellar
-                      network, how to store lumens, how to trade on
-                      the Stellar decentralized exchange, and more.
+                      A Solidity compiler targeting Soroban, Solana,
+                      and Polkadot.
                     </Typography>
                   </CardContent>
                   <CardActions>
                     <Button
                       size="small"
                       sx={{ color: '#00d4ff' }}
-                      href="https://www.lumenauts.com/courses/stellar-overview-course"
+                      href="https://solang.io/"
                     >
                       Learn More
                     </Button>
@@ -708,12 +734,11 @@ function Resources() {
               </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
-                <br></br>
                 <GlassCard>
                   <CardMedia
                     sx={{ paddingTop: '56.25%' }}
-                    image={require('./coinbase2.png')}
-                    title="Dev Google Group"
+                    image={require('../Resources/obsrvr-radar.png')}
+                    title="OBSRVR Radar"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
@@ -721,19 +746,589 @@ function Resources() {
                       variant="h5"
                       component="h2"
                     >
-                      Learn Stellar. Earn XLM.
+                      OBSRVR Radar
                     </Typography>
                     <Typography>
-                      Stellar is a platform that connects banks,
-                      payment systems, and people. Learn how it works
-                      and you’ll earn XLM.
+                      Network monitoring and observability for the
+                      Stellar network.
                     </Typography>
                   </CardContent>
                   <CardActions>
                     <Button
                       size="small"
                       sx={{ color: '#00d4ff' }}
-                      href="https://www.coinbase.com/earn/stellar"
+                      href="https://radar.withobsrvr.com"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/opengrants.png')}
+                    title="OpenGrants"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      OpenGrants
+                    </Typography>
+                    <Typography>
+                      An open platform and data standard for grants
+                      in the Stellar ecosystem.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://opengrants.daostar.org/"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/refractorspace.png')}
+                    title="RefractorSpace"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      RefractorSpace
+                    </Typography>
+                    <Typography>
+                      Transaction coordination and multisig signing
+                      service for Stellar.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://refractor.space"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/scout.jpg')}
+                    title="Scout"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      Scout
+                    </Typography>
+                    <Typography>
+                      Open-source static analysis tool for Soroban
+                      smart contract security.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://www.coinfabrik.com/products/scout/"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/stellar-net-sdk.png')}
+                    title="Stellar .NET SDK"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      Stellar .NET SDK
+                    </Typography>
+                    <Typography>
+                      A .NET SDK for building applications on the
+                      Stellar network.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://beans-bv.github.io/dotnet-stellar-sdk/"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/stellar-hardware-wallet.png')}
+                    title="Stellar Hardware Wallet Support"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      Stellar Hardware Wallet Support
+                    </Typography>
+                    <Typography>
+                      Ledger and Trezor hardware wallet support for
+                      Stellar accounts.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://lightsail.network"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/stellar-registry.png')}
+                    title="Stellar Registry"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      Stellar Registry
+                    </Typography>
+                    <Typography>
+                      A registry of verified smart contracts on
+                      Stellar.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://rgstry.xyz"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/stellar-scaffold.png')}
+                    title="Stellar Scaffold"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      Stellar Scaffold
+                    </Typography>
+                    <Typography>
+                      A CLI and toolkit for scaffolding Stellar dApps.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://scaffoldstellar.org/"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/stellar-security-portal.png')}
+                    title="Stellar Security Portal"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      Stellar Security Portal
+                    </Typography>
+                    <Typography>
+                      A hub of security resources and tools for
+                      Soroban developers.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://sorobansecurity.com/"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/stellarchain.jpg')}
+                    title="StellarChain"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      StellarChain
+                    </Typography>
+                    <Typography>
+                      A fast and intuitive explorer for the Stellar
+                      blockchain.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://stellarchain.io"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/stellarlight.png')}
+                    title="Stellarlight"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      Stellarlight
+                    </Typography>
+                    <Typography>
+                      A discovery platform for projects in the Stellar
+                      ecosystem.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://stellarlight.xyz"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/tansu.png')}
+                    title="Tansu"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      Tansu
+                    </Typography>
+                    <Typography>
+                      Decentralized project governance on Stellar.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://tansu.dev"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/java-stellar-sdk.png')}
+                    title="java-stellar-sdk"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      java-stellar-sdk
+                    </Typography>
+                    <Typography>
+                      The Java SDK for building on the Stellar
+                      network.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://github.com/lightsail-network/java-stellar-sdk"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/kmp-stellar-sdk.png')}
+                    title="kmp-stellar-sdk"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      kmp-stellar-sdk
+                    </Typography>
+                    <Typography>
+                      Kotlin Multiplatform SDK for the Stellar
+                      network.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://github.com/Soneso/kmp-stellar-sdk"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/py-stellar-base.png')}
+                    title="py-stellar-base"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      py-stellar-base
+                    </Typography>
+                    <Typography>
+                      The Python SDK for building on the Stellar
+                      network.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://stellar-sdk.readthedocs.io"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/soropg.png')}
+                    title="soropg"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      soropg
+                    </Typography>
+                    <Typography>
+                      Soroban Playground — a browser IDE for Soroban
+                      smart contracts.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://github.com/jamesbachini/Soroban-Playground"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/stellar-flutter-sdk.png')}
+                    title="stellar-flutter-sdk"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      stellar-flutter-sdk
+                    </Typography>
+                    <Typography>
+                      Flutter/Dart SDK for the Stellar network.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://github.com/Soneso/stellar_flutter_sdk"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/stellar-ios-mac-sdk.png')}
+                    title="stellar-ios-mac-sdk"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      stellar-ios-mac-sdk
+                    </Typography>
+                    <Typography>
+                      iOS and macOS SDK for the Stellar network.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://github.com/Soneso/stellar-ios-mac-sdk"
+                    >
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia
+                    sx={{ paddingTop: '56.25%' }}
+                    image={require('../Resources/stellar-php-sdk.png')}
+                    title="stellar-php-sdk"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      stellar-php-sdk
+                    </Typography>
+                    <Typography>
+                      PHP SDK for the Stellar network.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{ color: '#00d4ff' }}
+                      href="https://github.com/Soneso/stellar-php-sdk"
                     >
                       Learn More
                     </Button>
@@ -742,6 +1337,7 @@ function Resources() {
               </Grid>
             </Grid>
           </Container>
+
         </main>
 
         

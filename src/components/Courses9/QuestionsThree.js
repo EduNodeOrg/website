@@ -74,7 +74,6 @@ export default class index extends Component {
     if (this.state.checknone === true) {
       alert('Please select a value');
     }
-    console.log(props.email);
     setCourseOne(props.email);
   };
 

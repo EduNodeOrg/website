@@ -52,10 +52,8 @@ class Badge extends Component {
 
     fetchBadges = async () => {
         const { email } = this.state;
-        console.log('badge email::::', email)
         try {
             const response = await axios.get(`https://edunode.herokuapp.com/api/badge/posted/${email}`);
-            console.log('Response:', response.data);
             this.setState({ badges: response.data });
         } catch (error) {
             console.error('Error fetching badges:', error);
@@ -67,7 +65,6 @@ class Badge extends Component {
         const localUser = localStorage.getItem('user');
         const user = JSON.parse(localUser);
         const localEmail = user.email;
-        console.log('local email ', user.email)
         axios.get('https://edunode.herokuapp.com/api/users/user', {
             body: {
                 email: localEmail
@@ -91,7 +88,6 @@ class Badge extends Component {
         } = this.props.auth;
         const hasShownPopupChat = localStorage.getItem('shownPopupChat');
         const { badges } = this.state;
-        console.log('local user ', this.state.users)
 
 
 

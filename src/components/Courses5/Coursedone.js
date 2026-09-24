@@ -30,8 +30,6 @@ class Coursedone extends Component {
         pkey: "GABC1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890ABCD"
       };
 
-      console.log('Sending certificate request with payload:', payload);
-      
       const response = await fetch("https://edunode.herokuapp.com/api/certificates/diploma5", {
         method: 'POST',
         headers: {
@@ -42,12 +40,6 @@ class Coursedone extends Component {
       });
 
       const data = await response.json().catch(() => ({}));
-      
-      console.log('Certificate API response:', {
-        status: response.status,
-        statusText: response.statusText,
-        data
-      });
       
       if (response.ok && data.success && data.certificate?.certificateNumber) {
         // Redirect to certificate after 3 seconds

@@ -46,12 +46,9 @@ class Achievement extends Component {
 
  async fetchNotifications(props) {
     try {
-        const email = this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : ""
       this.setState({ isLoading: true });
       const response = await axios.get(`https://edunode.herokuapp.com/api/notif/notification`);
       const notifications = response.data;
-      console.log('email', email);
-      console.log('hiii',response.data);
       this.setState({ isLoading: false, notifications });
     } catch (error) {
       console.error(error);

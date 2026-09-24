@@ -10,7 +10,6 @@ export default class Gcallback extends Component {
     // }
 
     render() {
-  console.log(this)
         return (
             <div>
                 wait a moment, you will be redirected

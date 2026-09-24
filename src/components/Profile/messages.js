@@ -214,8 +214,6 @@ class Messages extends Component {
     const user = JSON.parse(localUser);
     const senderEmail = user.email;
      const image=user.images
-    console.log('user email',senderEmail)
-    console.log('user image',image)
     return (
       <section style={{ backgroundColor: '#eee' }}>
         <Navbar1></Navbar1>

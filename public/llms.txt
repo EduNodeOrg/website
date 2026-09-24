@@ -16,6 +16,12 @@
 - [System Engineering](https://edunode.org/courses/109): System engineering concepts
 - [Blockchain y Web3](https://edunode.org/courses/110): Blockchain and Web3 course (Spanish)
 - [Mujeres en Web3](https://edunode.org/courses/111): Women in Web3 (Spanish)
+- [Web3 Fundamentals Masterclass](https://edunode.org/courses/112): Web3 development, blockchain technology, and dApps — free for members
+- [Advanced Smart Contract Development](https://edunode.org/courses/113): Solidity, upgradeable patterns, gas optimization, and DeFi apps (Pro)
+- [DeFi Protocol Engineering](https://edunode.org/courses/114): AMMs, lending, oracles, flash loans, and protocol design (Pro)
+- [NFT Marketplace Development](https://edunode.org/courses/115): Minting, trading, royalties, and full marketplace builds (Pro)
+- [Blockchain Security Auditing](https://edunode.org/courses/116): Smart contract vulnerabilities, audit methodology, and tooling (Pro)
+- [Cross-Chain Development](https://edunode.org/courses/117): Bridges, messaging protocols, and multi-chain dApps (Pro)
 
 ## Insights
 

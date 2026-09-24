@@ -4,6 +4,31 @@
 
 const releases = [
   {
+    version: '0.3.1',
+    date: '2026-09-25',
+    title: 'Faster loads, refreshed resources & glossary',
+    highlights: [
+      'Every page now lazy-loads on demand — the initial bundle only ships the landing page',
+      'Removed heavy unused dependencies (three.js, Spline, ipfs-core, react-map-gl) for a much smaller install and build',
+      'New caching policy: static assets cached for a year, HTML always fresh — repeat visits are much faster',
+      'Rebuilt the /resources directory with current Stellar ecosystem tools and SDKs; removed dead links',
+      'Redesigned /glossary with search and an expanded term list',
+      'Removed console logging that exposed emails, tokens, and API responses',
+    ],
+  },
+  {
+    version: '0.3.0',
+    date: '2026-09-24',
+    title: 'Six new courses, including the Pro catalog',
+    highlights: [
+      'Launched six full courses: Web3 Fundamentals, Advanced Smart Contract Development, DeFi Protocol Engineering, NFT Marketplace Development, Blockchain Security Auditing, and Cross-Chain Development',
+      'New data-driven course engine with lesson content, code walkthroughs, and per-module quizzes',
+      'Five courses are included with EduNode Pro; Web3 Fundamentals is free for logged-in members',
+      'Dashboard "coming soon" cards now open real course pages',
+      'Pro courses also listed on the public /courses catalog',
+    ],
+  },
+  {
     version: '0.2.1',
     date: '2026-09-24',
     title: 'Discoverability & housekeeping',

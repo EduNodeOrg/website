@@ -76,25 +76,21 @@ function Ediploma(props) {
 async function sendImageToServer(base64Image, props) {
   try {
     if (props.auth.user.email) {
-      const response = await axios.post("https://edunode.herokuapp.com/api/certificates/challenge1", {
-      
+      await axios.post("https://edunode.herokuapp.com/api/certificates/challenge1", {
+
       pkey: props.auth.user.pkey ? props.auth.user.pkey : null,
       email: props.auth.user.email ? props.auth.user.email : null,
       name: Name
     });
-    console.log('hi'); 
-    console.log(props.auth.user.pkey);
-    console.log(response.data); // Check if the image was saved successfully
-      
+
     } else if (props.auth.user.pkey) {
 
-      const response = await axios.post("https://edunode.herokuapp.com/api/certificates/challenge1", {
+      await axios.post("https://edunode.herokuapp.com/api/certificates/challenge1", {
       //image: base64Image,
       pkey: props.auth.user.pkey,
       name: Name
     });
-    console.log(response.data); // Check if the image was saved successfully
-    
+
     }
     
    
@@ -120,7 +116,6 @@ async function sendImageToServer(base64Image, props) {
 
     const base64Image = await getCertificateBase64();
     await sendImageToServer(base64Image, props);
-    console.log(base64Image); // This will log the base64 string of the image in the console
     // TODO: Send the base64Image to your server using an API
     exportComponentAsPNG(certificateWrapper, {
       html2CanvasOptions: { backgroundColor: `url(${dep})`, },
@@ -159,8 +154,6 @@ async function sendImageToServer(base64Image, props) {
     }
 
     const email = loggedInUserEmail;
-    console.log('loggedInUserEmail')
-    console.log(loggedInUserEmail)
   fetch('https://edunode.herokuapp.com/api/certificates/challenge/increment-Challenge', {
     method: 'PUT',
     headers: {

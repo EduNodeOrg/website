@@ -392,9 +392,21 @@ const CourseGrid = ({ courses, loading, onCourseClick, onBookmark }) => {
                         </Typography>
                       </Box>
 
-                      <Typography variant="h6" sx={{ color: '#00d4ff', fontWeight: 'bold' }}>
-                        {course.price === 0 ? 'Free' : `$${course.price || 49}`}
-                      </Typography>
+                      {course.proOnly ? (
+                        <Chip
+                          label="PRO"
+                          size="small"
+                          sx={{
+                            background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)',
+                            color: 'white',
+                            fontWeight: 'bold',
+                          }}
+                        />
+                      ) : (
+                        <Typography variant="h6" sx={{ color: '#00d4ff', fontWeight: 'bold' }}>
+                          {course.price === 0 ? 'Free' : `$${course.price || 49}`}
+                        </Typography>
+                      )}
                     </Box>
                   </CardContent>
                 </StyledCard>

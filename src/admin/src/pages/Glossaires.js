@@ -132,7 +132,6 @@ export default function UserPage() {
       try {
         const response = await axios.get('https://edunode.herokuapp.com/api/glossary/');
         const certificates = response.data;
-        console.log('glossary', certificates)
         setUserList(certificates);
       } catch (error) {
         console.error('Error fetching glossary:', error);

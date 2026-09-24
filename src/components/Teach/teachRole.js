@@ -163,12 +163,10 @@ class Teach extends Component {
         body: JSON.stringify(data),
       });
       const result = await response.json();
-      console.log(result);
+      void result;
       this.setState({ success: true });
-      console.log(data)
 
       if (this.props.auth.user) {
-        console.log("users?", this.props.auth.user)
         return (
           <Navigate to="/dashboard" />
         );

@@ -161,7 +161,6 @@ export const login = ({ email, password }) => dispatch => {
 
 
 export const googleLogin = ({ email, name,image }) => dispatch => {
-  console.log(email)
   dispatch({ type: USER_LOADING });
 
   // request body
@@ -178,7 +177,6 @@ export const googleLogin = ({ email, name,image }) => dispatch => {
   })
     .then(response => response.json())
     .then(data => {
-      console.log("new data", data)
       if (data.user) {
         dispatch({
           type: LOGIN_SUCCESS,
@@ -192,7 +190,6 @@ export const googleLogin = ({ email, name,image }) => dispatch => {
         }
         localStorage.setItem('token', data.user)
         localStorage.setItem('user', JSON.stringify(data.user))
-        console.log('users', data.user)
       }
 
 
@@ -228,9 +225,7 @@ export const confirm = ({ email, confirmationCode }) => (dispatch) => {
     body
   })
     .then(response => response.json())
-    .then(data => {
-      console.log(data)
-
+    .then(() => {
     })
 }
 
@@ -321,7 +316,6 @@ export const verifyCode = ({ email, inputcode, id, next }) => async dispatch => 
             payload: data,
           })
         }
-        console.log(data)
       }
     })
     .catch((err) => console.log(err));
@@ -615,7 +609,6 @@ export const pkeyGoogleUser = ({ email, pkey }) => (
   axios
     .put('https://edunode.herokuapp.com/api/users/googlepk', body, config)
     .then((res) => {
-      console.log(res)
       dispatch({
         type: UPDATED_ACCOUNT,
         payload: res.data,
@@ -802,7 +795,6 @@ export const newPost = ({ email, tags, title, link, description, privatee,image 
   })
     .then(response => response.json())
     .then((res) => {
-      console.log(res);
       //if (res.user.isVerified === true) {
       //dispatch({
       //type: VERIFICATION_SUCCESS,

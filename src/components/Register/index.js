@@ -168,7 +168,7 @@ export class Register extends Component {
     const freighterHandler = async () => {
       if (isConnected()) {
         const publicKey = await getPublicKey();
-        console.log(publicKey)
+        void publicKey;
       }
 
       // alert("not conected")

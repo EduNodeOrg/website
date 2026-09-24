@@ -13,9 +13,14 @@ import ModernNavbar from './ModernNavbar';
 import UserProfileWidget from '../widgets/UserProfileWidget';
 import ProgressChart from '../visualizations/ProgressChart';
 import CourseGrid from '../content/CourseGrid';
-import ComingSoonDialog from '../dialogs/ComingSoonDialog';
 import withRouter from '../../../withRouter';
 import { connect } from 'react-redux';
+import cryptoImg from '../../Courses/crypto.jpg';
+import ethereumImg from '../../Courses/Ethereum.png';
+import oraclesImg from '../../Courses/oracles.jpg';
+import nftImg from '../../Courses/NFT/growth.png';
+import securityImg from '../../Courses/basic.PNG';
+import stellarImg from '../../Courses/stellar.png';
 
 const DashboardContainer = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -86,8 +91,6 @@ class DashboardLayout extends Component {
       userProgress: {},
       weeklyStats: {},
       loading: true,
-      showComingSoonDialog: false,
-      selectedCourse: null,
     };
   }
 
@@ -122,11 +125,13 @@ class DashboardLayout extends Component {
           _id: '1',
           title: 'Web3 Fundamentals Masterclass',
           description: 'Learn the basics of Web3 development, blockchain technology, and decentralized applications.',
-          image: '/api/placeholder/course1.jpg',
+          image: cryptoImg,
           difficulty: 'beginner',
           rating: 4.8,
           duration: '6 weeks',
           price: 0,
+          route: '/courses/112',
+          proOnly: false,
           enrolled: 1250,
           createdAt: '2024-01-15',
         },
@@ -134,11 +139,13 @@ class DashboardLayout extends Component {
           _id: '2',
           title: 'Advanced Smart Contract Development',
           description: 'Master smart contract programming with Solidity and build real-world DeFi applications.',
-          image: '/api/placeholder/course2.jpg',
+          image: ethereumImg,
           difficulty: 'advanced',
           rating: 4.9,
           duration: '8 weeks',
           price: 99,
+          route: '/courses/113',
+          proOnly: true,
           enrolled: 890,
           createdAt: '2024-02-01',
         },
@@ -146,11 +153,13 @@ class DashboardLayout extends Component {
           _id: '3',
           title: 'DeFi Protocol Engineering',
           description: 'Build and deploy decentralized finance protocols on Ethereum and other blockchains.',
-          image: '/api/placeholder/course3.jpg',
+          image: oraclesImg,
           difficulty: 'intermediate',
           rating: 4.7,
           duration: '10 weeks',
           price: 149,
+          route: '/courses/114',
+          proOnly: true,
           enrolled: 567,
           createdAt: '2024-01-20',
         },
@@ -158,11 +167,13 @@ class DashboardLayout extends Component {
           _id: '4',
           title: 'NFT Marketplace Development',
           description: 'Create complete NFT marketplaces with minting, trading, and royalty features.',
-          image: '/api/placeholder/course4.jpg',
+          image: nftImg,
           difficulty: 'intermediate',
           rating: 4.6,
           duration: '8 weeks',
           price: 79,
+          route: '/courses/115',
+          proOnly: true,
           enrolled: 445,
           createdAt: '2024-02-10',
         },
@@ -170,11 +181,13 @@ class DashboardLayout extends Component {
           _id: '5',
           title: 'Blockchain Security Auditing',
           description: 'Learn security best practices and how to audit smart contracts for vulnerabilities.',
-          image: '/api/placeholder/course5.jpg',
+          image: securityImg,
           difficulty: 'advanced',
           rating: 4.9,
           duration: '12 weeks',
           price: 199,
+          route: '/courses/116',
+          proOnly: true,
           enrolled: 234,
           createdAt: '2024-01-25',
         },
@@ -182,11 +195,13 @@ class DashboardLayout extends Component {
           _id: '6',
           title: 'Cross-Chain Development',
           description: 'Build applications that work across multiple blockchain networks.',
-          image: '/api/placeholder/course6.jpg',
+          image: stellarImg,
           difficulty: 'advanced',
           rating: 4.5,
           duration: '10 weeks',
           price: 179,
+          route: '/courses/117',
+          proOnly: true,
           enrolled: 189,
           createdAt: '2024-02-05',
         },
@@ -229,7 +244,10 @@ class DashboardLayout extends Component {
   };
 
   handleCourseClick = (course) => {
-    // Show coming soon dialog instead of navigating
+    if (course.route) {
+      this.props.router.navigate(course.route);
+      return;
+    }
     this.setState({
       showComingSoonDialog: true,
       selectedCourse: course,
@@ -240,15 +258,8 @@ class DashboardLayout extends Component {
     console.log(`Course ${courseId} ${isBookmarked ? 'bookmarked' : 'unbookmarked'}`);
   };
 
-  handleCloseComingSoonDialog = () => {
-    this.setState({
-      showComingSoonDialog: false,
-      selectedCourse: null,
-    });
-  };
-
   render() {
-    const { showScrollTop, courses, achievements, userProgress, weeklyStats, loading, showComingSoonDialog, selectedCourse } = this.state;
+    const { showScrollTop, courses, achievements, userProgress, weeklyStats, loading } = this.state;
 
     return (
       <DashboardContainer>
@@ -369,12 +380,6 @@ class DashboardLayout extends Component {
           </ScrollToTopFab>
         )}
 
-        {/* Coming Soon Dialog */}
-        <ComingSoonDialog
-          open={showComingSoonDialog}
-          onClose={this.handleCloseComingSoonDialog}
-          course={selectedCourse}
-        />
       </DashboardContainer>
     );
   }

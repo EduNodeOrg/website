@@ -32,8 +32,7 @@ class PasswordPage extends Component {
       body: JSON.stringify({ email: this.state.email }),
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data); 
+      .then(() => {
         alert('A reset link is sent to your Email!');// Handle success or error response from the server
       })
       .catch((error) => {

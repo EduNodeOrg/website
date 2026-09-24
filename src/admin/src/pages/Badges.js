@@ -131,7 +131,6 @@ export default function UserPage() {
       try {
         const response = await axios.get('https://edunode.herokuapp.com/api/badge/');
         const certificates = response.data;
-        console.log('badges', certificates)
         setUserList(certificates);
       } catch (error) {
         console.error('Error fetching badges:', error);

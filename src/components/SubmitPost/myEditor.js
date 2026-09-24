@@ -13,7 +13,7 @@ export default class MyEditor extends Component {
     editorState: EditorState.createEmpty(),
   }
 
-  onEditorStateChange: Function = (editorState) => {
+  onEditorStateChange = (editorState) => {
     this.setState({
       editorState,
     });
@@ -48,11 +48,9 @@ export default class MyEditor extends Component {
   render() {
    
     const { editorState } = this.state;
-    const texto = editorState.getCurrentContent().getPlainText('\u0001')
     // console.log(this.state.editorState.getCurrentContent()) // .getPlainText('\u0001')
     // console.log(<pre>{JSON.stringify( )}</pre>)
-    // const html = convertToHTML(editorState.getCurrentContent()) 
-console.log(texto)
+    // const html = convertToHTML(editorState.getCurrentContent())
     return (
       <>
       {/* <button onClick={this.convertToRaw}>Convert to raw</button>

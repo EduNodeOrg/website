@@ -48,8 +48,6 @@ class Notification extends Component {
       this.setState({ isLoading: true });
       const response = await axios.get(`https://edunode.herokuapp.com/api/certificates/notification/${email}`);
       const notifications = response.data;
-      console.log('email', email);
-      console.log('hiii',response.data);
       this.setState({ isLoading: false, notifications });
     } catch (error) {
       console.error(error);

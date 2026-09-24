@@ -38,6 +38,7 @@ const tiers = [
     price: '6.99',
     description: [
       'All of Free tier features',
+      'Access to all Pro courses',
       'NFT certification for course completion',
       'Priority email support',
       'Exclusive Discord Role',
