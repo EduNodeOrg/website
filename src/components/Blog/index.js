@@ -53,6 +53,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 
+const gradThumb = (c1, c2, label) =>
+  `data:image/svg+xml,${encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs><rect width="320" height="240" fill="url(#g)"/><text x="160" y="134" font-family="Arial, sans-serif" font-size="34" font-weight="bold" fill="#ffffff" text-anchor="middle">${label}</text></svg>`
+  )}`;
+
 const mainFeaturedPost = {
   title: 'EduNode: A decentralized E-learning platform ',
   description:
@@ -213,6 +218,56 @@ const featuredPosts = [
     imageText: 'Zero-Knowledge Proofs',
     link: '/blog/zero-knowledge-proofs',
     tags:['ZKP', 'Privacy', 'Stellar']
+  },
+  {
+    title: 'How to Become a Blockchain Developer in 2026',
+    date: '25/09/2026',
+    description:
+      'A complete step-by-step roadmap: programming fundamentals, smart contracts, dApps, security, and your first Web3 job.',
+    image: gradThumb('#3a2a8f', '#6B48FF', 'ROADMAP'),
+    imageText: 'Blockchain Developer Roadmap',
+    link: '/blog/blockchain-developer-roadmap',
+    tags:['Web3', 'Career']
+  },
+  {
+    title: 'What Is a Stablecoin? USDC on Stellar Explained',
+    date: '25/09/2026',
+    description:
+      'How fiat-backed, crypto-collateralized, and algorithmic stablecoins work — and why USDC on Stellar powers global payments.',
+    image: gradThumb('#0a7d5c', '#00c389', 'USDC'),
+    imageText: 'Stablecoins on Stellar',
+    link: '/blog/what-is-a-stablecoin',
+    tags:['Stablecoin', 'USDC', 'Stellar']
+  },
+  {
+    title: 'Real-World Asset (RWA) Tokenization Explained',
+    date: '25/09/2026',
+    description:
+      'How treasuries, real estate, and gold move on-chain — and why Stellar leads institutional asset tokenization.',
+    image: gradThumb('#8a5a00', '#f0b429', 'RWA'),
+    imageText: 'RWA Tokenization',
+    link: '/blog/rwa-tokenization',
+    tags:['RWA', 'Tokenization', 'Stellar']
+  },
+  {
+    title: 'Top 10 Smart Contract Security Vulnerabilities',
+    date: '25/09/2026',
+    description:
+      'Reentrancy, oracle manipulation, flash loans and more — the bug classes behind billions in exploits and how to prevent them.',
+    image: gradThumb('#7a0c0c', '#e63946', 'SECURITY'),
+    imageText: 'Smart Contract Security',
+    link: '/blog/smart-contract-security-vulnerabilities',
+    tags:['Security', 'Smart Contracts']
+  },
+  {
+    title: 'Freighter Wallet: Setup & User Guide',
+    date: '25/09/2026',
+    description:
+      'Set up Stellar\'s most popular wallet: install, back up your recovery phrase, add trustlines, and connect to Soroban dApps.',
+    image: gradThumb('#0466c8', '#48cae4', 'FREIGHTER'),
+    imageText: 'Freighter Wallet',
+    link: '/blog/freighter-wallet',
+    tags:['Freighter', 'Wallet', 'Stellar']
   },
 ];
 

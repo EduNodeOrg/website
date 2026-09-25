@@ -43,6 +43,11 @@
 - [What is Docker and how you can use it?](https://edunode.org/blog/docker)
 - [What is IPFS and how you can use it?](https://edunode.org/blog/ipfs)
 - [What is Soroban and how you can use it?](https://edunode.org/blog/soroban)
+- [How to Become a Blockchain Developer in 2026](https://edunode.org/blog/blockchain-developer-roadmap): Complete step-by-step career roadmap
+- [What Is a Stablecoin? USDC on Stellar](https://edunode.org/blog/what-is-a-stablecoin): Stablecoin types and how they power payments
+- [Real-World Asset (RWA) Tokenization Explained](https://edunode.org/blog/rwa-tokenization): How traditional assets move on-chain
+- [Top 10 Smart Contract Security Vulnerabilities](https://edunode.org/blog/smart-contract-security-vulnerabilities): Exploit classes and how to prevent them
+- [Freighter Wallet: Setup & User Guide](https://edunode.org/blog/freighter-wallet): Set up and use Stellar's most popular wallet
 
 ## Tools
 

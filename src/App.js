@@ -133,6 +133,11 @@ const NFT = lazy(() => import('./components/Blog/Articles/NFT'));
 const Certificate = lazy(() => import("./components/Certificate"));
 const Web3 = lazy(() => import("./components/Blog/Articles/Web3"));
 const ZKP = lazy(() => import("./components/Blog/Articles/ZKP"));
+const Roadmap = lazy(() => import("./components/Blog/Articles/Roadmap"));
+const Stablecoin = lazy(() => import("./components/Blog/Articles/Stablecoin"));
+const RWA = lazy(() => import("./components/Blog/Articles/RWA"));
+const ContractSecurity = lazy(() => import("./components/Blog/Articles/ContractSecurity"));
+const Freighter = lazy(() => import("./components/Blog/Articles/Freighter"));
 const ChainChess = lazy(() => import("./components/Chess/"));
 const Feed = lazy(() => import("./components/Feed"));
 const Gcallback = lazy(() => import("./components/Gcallback"));
@@ -415,6 +420,11 @@ function App(props) {
         <Route exact path="/blog/docker" element={<Docker />} />
         <Route exact path="/blog/ipfs" element={<Ipfs />} />
         <Route exact path="/blog/soroban" element={<Soroban />} />
+        <Route exact path="/blog/blockchain-developer-roadmap" element={<Roadmap />} />
+        <Route exact path="/blog/what-is-a-stablecoin" element={<Stablecoin />} />
+        <Route exact path="/blog/rwa-tokenization" element={<RWA />} />
+        <Route exact path="/blog/smart-contract-security-vulnerabilities" element={<ContractSecurity />} />
+        <Route exact path="/blog/freighter-wallet" element={<Freighter />} />
         <Route exact path="/dashboard/settings" element={<Navigate to="/account" replace />} />
         <Route exact path="/profile" element={<ModernMyProfile />} />
         <Route exact path="/post" element={<Post />} />

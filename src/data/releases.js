@@ -6,6 +6,16 @@ const releases = [
   {
     version: '0.3.2',
     date: '2026-09-25',
+    title: 'Five new in-depth blog articles',
+    highlights: [
+      'New articles: How to Become a Blockchain Developer in 2026 (complete roadmap), What Is a Stablecoin (USDC on Stellar), RWA Tokenization Explained, Top 10 Smart Contract Security Vulnerabilities, and a Freighter Wallet setup guide',
+      'Each article ships with canonical + Open Graph meta tags and Article/FAQ structured data for search and AI answer engines',
+      'All five added to the blog index, sitemap.xml, and llms.txt',
+    ],
+  },
+  {
+    version: '0.3.2',
+    date: '2026-09-25',
     title: 'Search indexing fixes & leaner builds',
     highlights: [
       'Fixed conflicting canonical tags — every page was declaring the homepage as its canonical, causing Google to drop blog posts and other pages from the index',
