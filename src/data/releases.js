@@ -4,6 +4,16 @@
 
 const releases = [
   {
+    version: '0.3.2',
+    date: '2026-09-25',
+    title: 'Search indexing fixes & leaner builds',
+    highlights: [
+      'Fixed conflicting canonical tags — every page was declaring the homepage as its canonical, causing Google to drop blog posts and other pages from the index',
+      'Each route now emits a single correct canonical URL via Helmet',
+      'Removed netlify-cli from dependencies — it is a local deploy tool, not needed at build time; installs are much faster and CI deploys no longer crash on Node 18',
+    ],
+  },
+  {
     version: '0.3.1',
     date: '2026-09-25',
     title: 'Faster loads, refreshed resources & glossary',

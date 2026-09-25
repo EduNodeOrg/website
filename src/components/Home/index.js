@@ -35,6 +35,7 @@ class Home extends Component {
     <>
       <Helmet>
         <title>EduNode</title>
+        <link rel="canonical" href="https://edunode.org/" />
         <meta name="Edunode" content="We help you become a Blockchain Developer" />
         <meta property="og:title" content="EduNode" />
         <meta property="og:image" content="path/to/image.jpg" />
