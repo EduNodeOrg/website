@@ -15,12 +15,29 @@ import ProgressChart from '../visualizations/ProgressChart';
 import CourseGrid from '../content/CourseGrid';
 import withRouter from '../../../withRouter';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import { allCourses } from '../../ProCourses/data';
+import COURSE_IDS from '../../Courses/courseIds';
+import { loadFavorites, toggleFavoriteCourse } from '../../../hooks/useFavorites';
 import cryptoImg from '../../Courses/crypto.jpg';
 import ethereumImg from '../../Courses/Ethereum.png';
 import oraclesImg from '../../Courses/oracles.jpg';
 import nftImg from '../../Courses/NFT/growth.png';
 import securityImg from '../../Courses/basic.PNG';
 import stellarImg from '../../Courses/stellar.png';
+
+const API_BASE_URL = 'https://edunode.herokuapp.com/api';
+
+const COURSE_IMAGES = {
+  112: cryptoImg,
+  113: ethereumImg,
+  114: oraclesImg,
+  115: nftImg,
+  116: securityImg,
+  117: stellarImg,
+};
+
+const TOTAL_COURSES = Object.keys(COURSE_IDS).length + allCourses.length;
 
 const DashboardContainer = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -87,9 +104,8 @@ class DashboardLayout extends Component {
     this.state = {
       showScrollTop: false,
       courses: [],
-      achievements: [],
-      userProgress: {},
-      weeklyStats: {},
+      favorites: [],
+      completedCount: 0,
       loading: true,
     };
   }
@@ -117,130 +133,53 @@ class DashboardLayout extends Component {
   };
 
   fetchUserData = async () => {
-    try {
-      // Only fetch non-user specific data (courses, etc.)
-      // User data now comes from Redux auth state in UserProfileWidget
-      const mockCourses = [
-        {
-          _id: '1',
-          title: 'Web3 Fundamentals Masterclass',
-          description: 'Learn the basics of Web3 development, blockchain technology, and decentralized applications.',
-          image: cryptoImg,
-          difficulty: 'beginner',
-          rating: 4.8,
-          duration: '6 weeks',
-          price: 0,
-          route: '/courses/112',
-          proOnly: false,
-          enrolled: 1250,
-          createdAt: '2024-01-15',
-        },
-        {
-          _id: '2',
-          title: 'Advanced Smart Contract Development',
-          description: 'Master smart contract programming with Solidity and build real-world DeFi applications.',
-          image: ethereumImg,
-          difficulty: 'advanced',
-          rating: 4.9,
-          duration: '8 weeks',
-          price: 99,
-          route: '/courses/113',
-          proOnly: true,
-          enrolled: 890,
-          createdAt: '2024-02-01',
-        },
-        {
-          _id: '3',
-          title: 'DeFi Protocol Engineering',
-          description: 'Build and deploy decentralized finance protocols on Ethereum and other blockchains.',
-          image: oraclesImg,
-          difficulty: 'intermediate',
-          rating: 4.7,
-          duration: '10 weeks',
-          price: 149,
-          route: '/courses/114',
-          proOnly: true,
-          enrolled: 567,
-          createdAt: '2024-01-20',
-        },
-        {
-          _id: '4',
-          title: 'NFT Marketplace Development',
-          description: 'Create complete NFT marketplaces with minting, trading, and royalty features.',
-          image: nftImg,
-          difficulty: 'intermediate',
-          rating: 4.6,
-          duration: '8 weeks',
-          price: 79,
-          route: '/courses/115',
-          proOnly: true,
-          enrolled: 445,
-          createdAt: '2024-02-10',
-        },
-        {
-          _id: '5',
-          title: 'Blockchain Security Auditing',
-          description: 'Learn security best practices and how to audit smart contracts for vulnerabilities.',
-          image: securityImg,
-          difficulty: 'advanced',
-          rating: 4.9,
-          duration: '12 weeks',
-          price: 199,
-          route: '/courses/116',
-          proOnly: true,
-          enrolled: 234,
-          createdAt: '2024-01-25',
-        },
-        {
-          _id: '6',
-          title: 'Cross-Chain Development',
-          description: 'Build applications that work across multiple blockchain networks.',
-          image: stellarImg,
-          difficulty: 'advanced',
-          rating: 4.5,
-          duration: '10 weeks',
-          price: 179,
-          route: '/courses/117',
-          proOnly: true,
-          enrolled: 189,
-          createdAt: '2024-02-05',
-        },
-      ];
+    // Recommended courses come from the real course registry (courses 112-117).
+    const courses = allCourses.map((course) => ({
+      _id: course.id,
+      title: course.title,
+      description: course.description,
+      difficulty: course.difficulty,
+      rating: course.rating,
+      duration: course.duration,
+      proOnly: course.proOnly,
+      price: course.proOnly ? null : 0,
+      route: `/courses/${course.id}`,
+      image: COURSE_IMAGES[course.id],
+    }));
 
-      const mockAchievements = [
-        { _id: '1', title: 'First Steps', date: '2024-01-10', icon: '👟' },
-        { _id: '2', title: 'Smart Contract Pro', date: '2024-01-25', icon: '📝' },
-        { _id: '3', title: 'DeFi Explorer', date: '2024-02-05', icon: '💰' },
-        { _id: '4', title: 'NFT Creator', date: '2024-02-15', icon: '🎨' },
-      ];
-
-      const mockUserProgress = {
-        completed: 8,
-        total: 12,
-        currentCourse: 'DeFi Protocol Engineering',
-      };
-
-      const mockWeeklyStats = {
-        streak: 15,
-        projects: 6,
-        studyHours: 24,
-        completedLessons: 12,
-      };
-
-      // Simulate loading delay
-      setTimeout(() => {
-        this.setState({
-          courses: mockCourses,
-          achievements: mockAchievements,
-          userProgress: mockUserProgress,
-          weeklyStats: mockWeeklyStats,
-          loading: false,
-        });
-      }, 1000);
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-      this.setState({ loading: false });
+    // A completed course is recorded as a certificate — count unique types.
+    const email = this.props.auth.user?.email;
+    let completedCount = 0;
+    if (email) {
+      try {
+        const res = await axios.get(`${API_BASE_URL}/certificates/${email}`);
+        if (Array.isArray(res.data)) {
+          completedCount = new Set(res.data.map((c) => c.courseType)).size;
+        }
+      } catch (error) {
+        console.error('Error fetching certificates:', error);
+      }
     }
+
+    this.setState({
+      courses,
+      favorites: loadFavorites(email),
+      completedCount,
+      loading: false,
+    });
+  };
+
+  handleBookmark = (courseId) => {
+    const course = this.state.courses.find((c) => c._id === courseId);
+    if (!course) return;
+    const email = this.props.auth.user?.email;
+    this.setState((prev) => ({
+      favorites: toggleFavoriteCourse(
+        email,
+        { id: course._id, title: course.title, route: course.route },
+        prev.favorites
+      ),
+    }));
   };
 
   handleCourseClick = (course) => {
@@ -254,12 +193,13 @@ class DashboardLayout extends Component {
     });
   };
 
-  handleBookmark = (courseId, isBookmarked) => {
-    console.log(`Course ${courseId} ${isBookmarked ? 'bookmarked' : 'unbookmarked'}`);
-  };
-
   render() {
-    const { showScrollTop, courses, achievements, userProgress, weeklyStats, loading } = this.state;
+    const { showScrollTop, courses, favorites, completedCount, loading } = this.state;
+    const favoriteCourses = favorites.map((f) => ({
+      _id: f.id,
+      title: f.title,
+      route: f.route,
+    }));
 
     return (
       <DashboardContainer>
@@ -336,9 +276,10 @@ class DashboardLayout extends Component {
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <ProgressChart 
-                  userProgress={userProgress}
-                  achievements={achievements}
-                  weeklyStats={weeklyStats}
+                  user={this.props.auth.user}
+                  courses={favoriteCourses}
+                  completedCount={completedCount}
+                  totalCourses={TOTAL_COURSES}
                 />
               </motion.div>
             </Grid>
@@ -360,6 +301,7 @@ class DashboardLayout extends Component {
                 loading={loading}
                 onCourseClick={this.handleCourseClick}
                 onBookmark={this.handleBookmark}
+                bookmarkedIds={favorites.map((f) => f.id)}
               />
             </motion.div>
           </Box>

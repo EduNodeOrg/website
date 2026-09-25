@@ -17,7 +17,8 @@ import {
   Select,
   MenuItem,
   Button,
-  Skeleton
+  Skeleton,
+  Tooltip
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import {
@@ -105,11 +106,11 @@ const FilterContainer = styled(Box)(({ theme }) => ({
   marginBottom: theme.spacing(3),
 }));
 
-const CourseGrid = ({ courses, loading, onCourseClick, onBookmark }) => {
+const CourseGrid = ({ courses, loading, onCourseClick, onBookmark, bookmarkedIds = [] }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('popular');
   const [filterDifficulty, setFilterDifficulty] = useState('all');
-  const [bookmarkedCourses, setBookmarkedCourses] = useState(new Set());
+  const bookmarkedCourses = new Set(bookmarkedIds);
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -138,14 +139,7 @@ const CourseGrid = ({ courses, loading, onCourseClick, onBookmark }) => {
 
   const handleBookmark = (courseId, event) => {
     event.stopPropagation();
-    const newBookmarks = new Set(bookmarkedCourses);
-    if (newBookmarks.has(courseId)) {
-      newBookmarks.delete(courseId);
-    } else {
-      newBookmarks.add(courseId);
-    }
-    setBookmarkedCourses(newBookmarks);
-    onBookmark && onBookmark(courseId, newBookmarks.has(courseId));
+    onBookmark && onBookmark(courseId);
   };
 
   const containerVariants = {
@@ -316,23 +310,28 @@ const CourseGrid = ({ courses, loading, onCourseClick, onBookmark }) => {
                       <PlayArrow sx={{ color: 'white', fontSize: '2rem' }} />
                     </PlayOverlay>
                     
-                    {/* Bookmark Button */}
-                    <IconButton
-                      sx={{
-                        position: 'absolute',
-                        top: 8,
-                        right: 8,
-                        background: 'rgba(10, 14, 39, 0.8)',
-                        color: bookmarkedCourses.has(course._id) ? '#7b2ff7' : '#b8c5d6',
-                        '&:hover': {
-                          background: 'rgba(123, 47, 247, 0.9)',
-                          color: 'white',
-                        },
-                      }}
-                      onClick={(e) => handleBookmark(course._id, e)}
+                    {/* Favorite Button */}
+                    <Tooltip
+                      title={bookmarkedCourses.has(course._id) ? 'Remove from favorites' : 'Add to favorites'}
                     >
-                      {bookmarkedCourses.has(course._id) ? <Bookmark /> : <BookmarkBorder />}
-                    </IconButton>
+                      <IconButton
+                        aria-label={bookmarkedCourses.has(course._id) ? 'Remove from favorites' : 'Add to favorites'}
+                        sx={{
+                          position: 'absolute',
+                          top: 8,
+                          right: 8,
+                          background: 'rgba(10, 14, 39, 0.8)',
+                          color: bookmarkedCourses.has(course._id) ? '#7b2ff7' : '#b8c5d6',
+                          '&:hover': {
+                            background: 'rgba(123, 47, 247, 0.9)',
+                            color: 'white',
+                          },
+                        }}
+                        onClick={(e) => handleBookmark(course._id, e)}
+                      >
+                        {bookmarkedCourses.has(course._id) ? <Bookmark /> : <BookmarkBorder />}
+                      </IconButton>
+                    </Tooltip>
                   </Box>
 
                   <CardContent sx={{ p: 2 }}>

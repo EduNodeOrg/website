@@ -22,6 +22,7 @@ import Navbar1 from '../Dashboard/Navbar1';
 import Navbar2 from '../Dashboard/Navbar2';
 import CourseList from './CourseList';
 import ProCourseCards from '../ProCourses/ProCourseCards';
+import COURSE_IDS from './courseIds';
 
 // Styles
 import './style.css';
@@ -88,20 +89,6 @@ const FloatingParticle = styled(motion.div)(({ theme }) => ({
   pointerEvents: 'none',
   zIndex: 0,
 }));
-
-const COURSE_IDS = {
-  1: '644bcdd1e1fec0f4f55a7447',
-  2: '644bcdeee1fec0f4f55a7449',
-  3: '644bce0be1fec0f4f55a744b',
-  4: '644bce24e1fec0f4f55a744d',
-  5: '644bce41e1fec0f4f55a744f',
-  6: '6464e2968aca412ed2d81bef',
-  7: '6464e2b48aca412ed2d81bf1',
-  8: '6464e2d58aca412ed2d81bf3',
-  9: '646b83386cea9a0294e65253',
-  10: '647603a1c8c864e8a6195e00',
-  11: '6841abca38a24bd982c9d70a'
-};
 
 // Custom hook for API calls
 const useUserData = (email) => {

@@ -6,8 +6,11 @@ import LockIcon from '@mui/icons-material/Lock';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import StarIcon from '@mui/icons-material/Star';
 import { allCourses } from './data';
+import FavoriteButton from '../FavoriteButton';
+import { useFavorites } from '../../hooks/useFavorites';
 
 const Card = styled(Paper)(({ theme }) => ({
+  position: 'relative',
   background: 'rgba(26, 31, 58, 0.8)',
   border: '1px solid rgba(123, 47, 247, 0.3)',
   borderRadius: '16px',
@@ -31,6 +34,8 @@ const difficultyColor = {
 // Static cards for courses 112–117 — these live in the repo (no backend
 // course records), so they're rendered directly from the data registry.
 export default function ProCourseCards() {
+  const { toggleFavorite, isFavorite } = useFavorites();
+
   return (
     <Box sx={{ mt: 4 }}>
       <Typography
@@ -48,6 +53,17 @@ export default function ProCourseCards() {
         {allCourses.map((course) => (
           <Grid item xs={12} sm={6} md={4} key={course.id}>
             <Card elevation={0}>
+              <FavoriteButton
+                sx={{ position: 'absolute', top: 8, right: 8 }}
+                active={isFavorite(course.id)}
+                onToggle={() =>
+                  toggleFavorite({
+                    id: course.id,
+                    title: course.title,
+                    route: `/courses/${course.id}`,
+                  })
+                }
+              />
               <Box sx={{ display: 'flex', gap: 1, mb: 1.5 }}>
                 <Chip
                   icon={course.proOnly ? <LockIcon sx={{ color: '#fff !important' }} /> : null}

@@ -2,7 +2,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
-import { Button, TextField, Typography, Box } from '@mui/material';
+import { Button, TextField, Typography, Box, Divider, Paper } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import CircularProgress from "@mui/material/CircularProgress"
 import { Link } from "react-router-dom"
 import { clearErrors } from "../../actions/errorActions";
@@ -16,7 +17,67 @@ import { GoogleLogin } from '@react-oauth/google';
 import Alert from '@mui/material/Alert';
 import { Navigate } from "react-router-dom";
 import albedo from '@albedo-link/intent';
+import metamaskLogo from './metamask.png';
+import freighterLogo from './flogo.png';
+import albedoLogo from './albedo.png';
 
+const PageContainer = styled('div')(() => ({
+  minHeight: '100vh',
+  background: 'linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)',
+  paddingBottom: '48px',
+}));
+
+const LoginCard = styled(Paper)(({ theme }) => ({
+  width: '100%',
+  maxWidth: '440px',
+  background: 'linear-gradient(135deg, rgba(26, 31, 58, 0.9) 0%, rgba(10, 14, 39, 0.9) 100%)',
+  backdropFilter: 'blur(10px)',
+  border: '1px solid rgba(123, 47, 247, 0.3)',
+  borderRadius: '20px',
+  padding: theme.spacing(5, 4),
+}));
+
+const WalletButton = styled(Button)(() => ({
+  width: '100%',
+  justifyContent: 'center',
+  gap: '10px',
+  padding: '10px 16px',
+  borderColor: 'rgba(123, 47, 247, 0.5)',
+  color: '#d5deeb',
+  textTransform: 'none',
+  fontWeight: 'bold',
+  '&:hover': {
+    borderColor: '#00d4ff',
+    background: 'rgba(0, 212, 255, 0.08)',
+  },
+}));
+
+const SubmitButton = styled(Button)(() => ({
+  width: '100%',
+  padding: '12px 16px',
+  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+  color: '#fff',
+  fontWeight: 'bold',
+  '&:hover': {
+    background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)',
+  },
+  '&.Mui-disabled': {
+    background: 'rgba(123, 47, 247, 0.3)',
+    color: 'rgba(255, 255, 255, 0.5)',
+  },
+}));
+
+const darkFieldSx = {
+  width: '100%',
+  '& .MuiOutlinedInput-root': {
+    color: '#ffffff',
+    '& fieldset': { borderColor: 'rgba(123, 47, 247, 0.4)' },
+    '&:hover fieldset': { borderColor: '#7b2ff7' },
+    '&.Mui-focused fieldset': { borderColor: '#00d4ff' },
+  },
+  '& .MuiInputLabel-root': { color: '#b8c5d6' },
+  '& .MuiFormHelperText-root': { color: '#ff8888' },
+};
 
 const validate = values => {
   const errors = {}
@@ -136,6 +197,7 @@ class Login extends Component {
       placeholder={label}
       error={touched && invalid}
       helperText={touched && error}
+      sx={darkFieldSx}
       {...input}
       {...custom}
     />
@@ -290,136 +352,130 @@ class Login extends Component {
     }
 
     return (
-      <div>
+      <PageContainer>
         <NavBar />
-       
-        <form id="form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Box display="flex" flexDirection="column" alignItems="center">
-            <Typography variant="h4" gutterBottom style={{ textAlign: 'center' }}>
-               
-               Please Choose your login method
-            </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            px: 2,
+            pt: 14,
+          }}
+        >
+          <LoginCard elevation={0}>
+            <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+              <Typography
+                variant="h4"
+                sx={{
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  mb: 1,
+                  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                Welcome back
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ color: '#b8c5d6', textAlign: 'center', mb: 4 }}
+              >
+                Choose your login method to continue
+              </Typography>
 
+              <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
+                <GoogleLogin
+                  type="standard"
+                  theme="filled_black"
+                  onSuccess={credentialResponse => {
+                    // axios post request to backend to store the token
+                    const token=credentialResponse.credential
+                    this.props.handleSubmit(this.handleCallBackResponse(token))
+                  }}
+                  onError={() => {
+                    console.log('Login Failed');
+                  }}
+                />
+              </Box>
 
+              <Divider sx={{ borderColor: 'rgba(123, 47, 247, 0.3)', color: '#8fa3bf', mb: 3, fontSize: '0.8rem' }}>
+                or connect a wallet
+              </Divider>
 
-          <br></br>
-          <div >
-            <GoogleLogin
-              type="standard"
-              onSuccess={credentialResponse => {
-                // axios post request to backend to store the token
-                const token=credentialResponse.credential
-                this.props.handleSubmit(this.handleCallBackResponse(token))
-              }}
-              onError={() => {
-                console.log('Login Failed');
-              }}
-              style={{ width: '300px', marginBottom: '16px' }}
-            />
-          </div>
-          <br></br>
-          <div>
-            <Button
-              style={{ width: '300px' }}
-              onClick={handleMetamask}
-              variant="outlined"
-            >
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, mb: 3 }}>
+                <WalletButton onClick={handleMetamask} variant="outlined">
+                  <img src={metamaskLogo} alt="" style={{ height: 22 }} />
+                  Login with MetaMask
+                </WalletButton>
+                <WalletButton onClick={freighterHandler} variant="outlined">
+                  <img src={freighterLogo} alt="" style={{ height: 22 }} />
+                  Login with Freighter
+                </WalletButton>
+                <WalletButton onClick={albedoHandler} variant="outlined">
+                  <img src={albedoLogo} alt="" style={{ height: 22 }} />
+                  Login with Albedo
+                </WalletButton>
+              </Box>
 
-              Login with metamask
-              {/* <Image style={{ width: '25px', display: "inline-block", margin: "20px 20px" }} src={mlogo} /> */}
-            </Button>
+              <Divider sx={{ borderColor: 'rgba(123, 47, 247, 0.3)', color: '#8fa3bf', mb: 3, fontSize: '0.8rem' }}>
+                or with email
+              </Divider>
 
-          </div>
-          
-          <br></br>
-          <div>
-            <Button
-              style={{ width: '300px' }}
-              onClick={freighterHandler}
-              variant="outlined"
-            >
-              Login with freighter
-              {/* <Image style={{ width: '85px', display: "inline-block", margin: "5px 5px" }} src={flogo} /> */}
-            </Button>
-          </div>
-          <br></br>
-          <div>
-            <Button
-             style={{ width: '300px', marginBottom: '10px' }}
-              onClick={albedoHandler}
-              variant="outlined"
-            >
-              Login with albedo{/* Login with <Image style={{ width: '95px', display: "inline-block", margin: "5px 5px", }} src={albedologo} /> */}
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 3 }}>
+                <Field
+                  name="email"
+                  type="text"
+                  label="Email"
+                  component={this.renderTextField}
+                  value={this.state.email}
+                />
+                <Field
+                  name="password"
+                  type="password"
+                  label="Password"
+                  component={this.renderTextField}
+                  value={this.state.password}
+                />
+              </Box>
 
-            </Button>
-          </div>
+              <SubmitButton
+                variant="contained"
+                type="submit"
+                disabled={pristine || submitting}
+              >
+                Login
+              </SubmitButton>
 
-          <br></br>
-          <div>
+              {showError && (
+                <Alert severity="error" sx={{ mt: 2 }}>
+                  Login failed. Please check your credentials and try again!
+                </Alert>
+              )}
 
-          </div>
-          <div>
-            <Field
-              name="email"
-              type="text"
-              label="Email"
-              component={this.renderTextField}
-              id="email"
-              value={this.state.email}
-              style={{ width: '300px', marginBottom: '16px' }}
-            />
-          </div>
-          <div>
-            <Field
-              name="password"
-              type="password"
-              label="Password"
-              component={this.renderTextField}
-              id="password"
-              style={{ width: '300px', marginBottom: '16px' }}
-              value={this.state.password}
-            />
-          </div>
-
-          <div>
-            <Button
-              variant="contained"
-              id="button"
-              type="submit"
-
-              disabled={pristine || submitting}>
-
-              Login
-            </Button>
-          </div>
-          {showError && (
-        <div>
-          <Alert severity="error">Login failed. Please check your credentials and try again!</Alert>
-        </div>
-      )}
-          <div style={{ marginTop: '8px' }}>
-            <Typography variant="body2">
-              Don't have an account?{' '}
-              <Link to="/signup">
-                Sign up
-              </Link>
-            </Typography>
-          </div>
-          <div style={{ marginTop: '8px' }}>
-            <Link to="/forgot_password">
-              Forgot your password?
-            </Link>
-          </div>
-          <div style={{ marginTop: '8px' }}>
-            <Link to="/">
-              Return
-            </Link>
-          </div>
-          </Box>
-        </form>
-
-      </div>
-
+              <Box sx={{ mt: 3, textAlign: 'center' }}>
+                <Typography variant="body2" sx={{ color: '#b8c5d6' }}>
+                  Don't have an account?{' '}
+                  <Link to="/signup" style={{ color: '#00d4ff' }}>
+                    Sign up
+                  </Link>
+                </Typography>
+                <Typography variant="body2" sx={{ mt: 1 }}>
+                  <Link to="/forgot_password" style={{ color: '#00d4ff' }}>
+                    Forgot your password?
+                  </Link>
+                </Typography>
+                <Typography variant="body2" sx={{ mt: 1 }}>
+                  <Link to="/" style={{ color: '#8fa3bf' }}>
+                    Return
+                  </Link>
+                </Typography>
+              </Box>
+            </form>
+          </LoginCard>
+        </Box>
+      </PageContainer>
     )
   }
 }

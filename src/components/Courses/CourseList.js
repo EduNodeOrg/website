@@ -1,4 +1,7 @@
 import React from 'react';
+import FavoriteButton from '../FavoriteButton';
+import { useFavorites } from '../../hooks/useFavorites';
+import { BASE_COURSE_INFO } from './courseIds';
 import Course1 from './Course1';
 import Course2 from './Course2';
 import Course3 from './Course3';
@@ -27,15 +30,27 @@ const COURSE_COMPONENTS = [
 ];
 
 const CourseList = ({ interactive = true, courseIds, linkPattern }) => {
+  const { toggleFavorite, isFavorite } = useFavorites();
+
   const renderCourse = (CourseComponent, index) => {
     const courseNumber = index + 1;
     const courseId = courseIds ? courseIds[courseNumber] : null;
+    const info = BASE_COURSE_INFO[index];
 
     const courseElement = <CourseComponent key={index} />;
 
+    const favoriteToggle = info && (
+      <FavoriteButton
+        sx={{ position: 'absolute', top: 8, right: 8, zIndex: 2 }}
+        active={isFavorite(info.id)}
+        onToggle={() => toggleFavorite(info)}
+      />
+    );
+
     if (!interactive && courseId && linkPattern) {
       return (
-        <div key={index}>
+        <div key={index} style={{ position: 'relative', maxWidth: 500, margin: '0 auto' }}>
+          {favoriteToggle}
           <a 
             href={`${linkPattern}/${courseId}`} 
             target="_blank" 
@@ -50,7 +65,8 @@ const CourseList = ({ interactive = true, courseIds, linkPattern }) => {
     }
 
     return (
-      <div key={index}>
+      <div key={index} style={{ position: 'relative', maxWidth: 500, margin: '0 auto' }}>
+        {favoriteToggle}
         {courseElement}
         <br />
       </div>
