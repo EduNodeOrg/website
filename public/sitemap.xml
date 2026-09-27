@@ -94,7 +94,7 @@
   <url><loc>https://edunode.org/blog/what-is-defi</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://edunode.org/blog/crypto-wallet-security</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://edunode.org/blog/ai-and-blockchain</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://edunode.org/blog/stellar-go-sdk</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/build-stellar-apps-with-go</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
 
   <!-- Tools & interactive -->
   <url><loc>https://edunode.org/codeeditor</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>

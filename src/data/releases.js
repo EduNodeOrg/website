@@ -6,6 +6,15 @@ const releases = [
   {
     version: '0.3.4',
     date: '2026-09-27',
+    title: 'Community page additions & blog URL rename',
+    highlights: [
+      'Added the Stellar Ambassador Program, Stellarlight, and Stellar_IE to /community — Stellarlight moved over from /resources',
+      'Renamed /blog/stellar-go-sdk to /blog/build-stellar-apps-with-go with a 301 redirect for the old URL',
+    ],
+  },
+  {
+    version: '0.3.4',
+    date: '2026-09-27',
     title: "New article: A Go Developer's Guide to Stellar",
     highlights: [
       'New tutorial covering the official go-stellar-sdk (txnbuild + Horizon/RPC clients) and the community stellar-go-cli — payments, Soroban contract deploy/invoke, ISO 20022 reporting for Stellar Disbursement Platform flows, ingestion libraries, and MCP for AI assistants',

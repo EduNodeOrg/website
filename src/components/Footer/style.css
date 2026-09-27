@@ -8,3 +8,11 @@
  footer {
    margin-top: auto;
  }
+
+ .footer-link {
+   transition: color 0.2s ease;
+ }
+
+ .footer-link:hover {
+   color: #00d4ff;
+ }

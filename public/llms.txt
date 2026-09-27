@@ -51,7 +51,7 @@
 - [What Is DeFi? A Beginner's Guide](https://edunode.org/blog/what-is-defi): DEXs, AMMs, lending, stablecoins, and DeFi on Stellar
 - [Crypto Wallet Security](https://edunode.org/blog/crypto-wallet-security): Seed phrases, passkeys, multi-sig, and phishing defense
 - [AI and Blockchain](https://edunode.org/blog/ai-and-blockchain): Where AI agents, provenance, and verifiable compute meet Web3
-- [A Go Developer's Guide to Stellar](https://edunode.org/blog/stellar-go-sdk): Payments with go-stellar-sdk, terminal ops with stellar-go-cli, and Soroban contract calls from Go
+- [A Go Developer's Guide to Stellar](https://edunode.org/blog/build-stellar-apps-with-go): Payments with go-stellar-sdk, terminal ops with stellar-go-cli, and Soroban contract calls from Go
 
 ## Tools
 

@@ -269,13 +269,27 @@ class ModernNavbar extends Component {
 
             <NavActions>
               {/* Desktop Navigation — all links; below lg the drawer covers it */}
-              <Box sx={{ display: { xs: 'none', lg: 'flex' }, gap: 1 }}>
+              <Box sx={{ display: { xs: 'none', lg: 'flex' }, gap: 1, alignItems: 'center' }}>
                 {items.map((item, index) => (
-                  <Tooltip key={item.text} title={item.text} arrow>
-                    <StyledIconButton onClick={() => this.handleNavigation(item.path)}>
-                      {item.icon}
-                    </StyledIconButton>
-                  </Tooltip>
+                  isAuthenticated ? (
+                    <Tooltip key={item.text} title={item.text} arrow>
+                      <StyledIconButton onClick={() => this.handleNavigation(item.path)}>
+                        {item.icon}
+                      </StyledIconButton>
+                    </Tooltip>
+                  ) : (
+                    <Button
+                      key={item.text}
+                      onClick={() => this.handleNavigation(item.path)}
+                      sx={{
+                        color: '#b8c5d6',
+                        fontWeight: 500,
+                        '&:hover': { color: '#ffffff', background: 'rgba(123, 47, 247, 0.1)' },
+                      }}
+                    >
+                      {item.text}
+                    </Button>
+                  )
                 ))}
               </Box>
 

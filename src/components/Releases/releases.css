@@ -1,17 +1,7 @@
-.releases-page {
-  padding-top: 2rem;
-  padding-bottom: 3rem;
-}
-
 .releases-timeline {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.release-card {
-  padding: 1.25rem 1.5rem;
 }
 
 .release-header {
@@ -24,10 +14,13 @@
 .release-title {
   flex: 1;
   min-width: 200px;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .release-date {
   white-space: nowrap;
+  color: #7b8ba1;
 }
 
 .release-highlights {
@@ -37,9 +30,15 @@
 
 .release-highlights li {
   margin-bottom: 0.25rem;
-  color: #455060;
+  color: #b8c5d6;
 }
 
 .releases-footer-note {
   margin-top: 2rem;
+  color: #7b8ba1;
+  text-align: center;
+}
+
+.releases-footer-note a {
+  color: #00d4ff;
 }

@@ -366,7 +366,7 @@ stellar-go-cli mcp --transport sse --port 3000  # SSE over HTTP for remote agent
 
 export default class GoStellarSdk extends Component {
   render() {
-    const shareUrl = 'https://edunode.org/blog/stellar-go-sdk';
+    const shareUrl = 'https://edunode.org/blog/build-stellar-apps-with-go';
     const title = "Payments, Smart Contracts, and a Terminal: A Go Developer's Guide to Stellar";
     const profilePic = profilePicImg;
 

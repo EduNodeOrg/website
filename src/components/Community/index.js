@@ -108,6 +108,26 @@ function Community() {
                 </GlassCard>
               </Grid>
 
+              {/* Stellar Ambassador Program */}
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia sx={{ paddingTop: '56.25%' }} image={require('../Resources/stellarlogo1.png')} title="Stellar Ambassador Program" />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Stellar Ambassador Program
+                    </Typography>
+                    <Typography sx={{ color: '#b8c5d6' }}>
+                      Become a Stellar ambassador and help grow the ecosystem through content, events, and community building.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" href="https://stellar.gitbook.io/ambassador-program" target="_blank" rel="noopener" sx={{ color: '#00d4ff' }}>
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
               {/* Stellar Developers Discord */}
               <Grid item xs={12} sm={6} md={4}>
                 <GlassCard>
@@ -176,6 +196,7 @@ function Community() {
               {/* EduNode Discord */}
               <Grid item xs={12} sm={6} md={4}>
                 <GlassCard>
+                  <CardMedia sx={{ paddingTop: '56.25%', backgroundSize: 'contain' }} image="/favicon_io/android-chrome-512x512.png" title="EduNode Discord" />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
                       EduNode Discord
@@ -197,33 +218,10 @@ function Community() {
                 </GlassCard>
               </Grid>
 
-              {/* MozartPay Discord */}
-              <Grid item xs={12} sm={6} md={4}>
-                <GlassCard>
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      MozartPay
-                    </Typography>
-                    <Typography sx={{ color: '#b8c5d6' }}>
-                      A payment platform built on the Stellar network.
-                    </Typography>
-                    <Box sx={{ mt: 1 }}>
-                      <CommunityLink href="https://discord.gg/4VrBFvxr5B" target="_blank" rel="noopener">
-                        <img src={discord} height={25} width={25} alt="discord" />
-                      </CommunityLink>
-                    </Box>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" href="https://discord.gg/4VrBFvxr5B" target="_blank" rel="noopener" sx={{ color: '#00d4ff' }}>
-                      Join Discord
-                    </Button>
-                  </CardActions>
-                </GlassCard>
-              </Grid>
-
               {/* Lumenloop */}
               <Grid item xs={12} sm={6} md={4}>
                 <GlassCard>
+                  <CardMedia sx={{ paddingTop: '56.25%', backgroundSize: 'contain' }} image={require('./lumenloop.jpg')} title="Lumenloop" />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
                       Lumenloop
@@ -243,6 +241,7 @@ function Community() {
               {/* Stellar Austria */}
               <Grid item xs={12} sm={6} md={4}>
                 <GlassCard>
+                  <CardMedia sx={{ paddingTop: '56.25%', backgroundSize: 'contain', backgroundColor: '#ffffff' }} image={require('./stellar_austria.jpg')} title="Stellar Austria" />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
                       Stellar Austria
@@ -254,6 +253,46 @@ function Community() {
                   <CardActions>
                     <Button size="small" href="https://linktr.ee/stellaraustria" target="_blank" rel="noopener" sx={{ color: '#00d4ff' }}>
                       Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              {/* Stellarlight */}
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia sx={{ paddingTop: '56.25%' }} image={require('../Resources/stellarlight.png')} title="Stellarlight" />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Stellarlight
+                    </Typography>
+                    <Typography sx={{ color: '#b8c5d6' }}>
+                      A discovery platform for projects in the Stellar ecosystem.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" href="https://stellarlight.xyz" target="_blank" rel="noopener" sx={{ color: '#00d4ff' }}>
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </GlassCard>
+              </Grid>
+
+              {/* Stellar_IE */}
+              <Grid item xs={12} sm={6} md={4}>
+                <GlassCard>
+                  <CardMedia sx={{ paddingTop: '56.25%', backgroundSize: 'contain', backgroundColor: '#ffffff' }} image={require('./stellar_ie.jpg')} title="Stellar_IE" />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Stellar_IE
+                    </Typography>
+                    <Typography sx={{ color: '#b8c5d6' }}>
+                      The Irish Stellar community on X.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" href="https://x.com/Stellar_IE" target="_blank" rel="noopener" sx={{ color: '#00d4ff' }}>
+                      Follow on X
                     </Button>
                   </CardActions>
                 </GlassCard>

@@ -129,6 +129,7 @@ const CodeEditor = () => {
       error: capture('error'),
     };
     try {
+      // eslint-disable-next-line no-new-func
       new Function('console', code)(fakeConsole);
       if (logs.length === 0) logs.push('(finished — nothing logged)');
     } catch (err) {

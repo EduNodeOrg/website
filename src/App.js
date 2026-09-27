@@ -431,7 +431,7 @@ function App(props) {
         <Route exact path="/blog/what-is-defi" element={<Defi />} />
         <Route exact path="/blog/crypto-wallet-security" element={<WalletSecurity />} />
         <Route exact path="/blog/ai-and-blockchain" element={<AiBlockchain />} />
-        <Route exact path="/blog/stellar-go-sdk" element={<GoStellarSdk />} />
+        <Route exact path="/blog/build-stellar-apps-with-go" element={<GoStellarSdk />} />
         <Route exact path="/dashboard/settings" element={<Navigate to="/account" replace />} />
         <Route exact path="/profile" element={<ModernMyProfile />} />
         <Route exact path="/post" element={<Post />} />

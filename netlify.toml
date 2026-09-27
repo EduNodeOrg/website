@@ -11,6 +11,11 @@
   GENERATE_SOURCEMAP = "false"
 
 [[redirects]]
+  from = "/blog/stellar-go-sdk"
+  to = "/blog/build-stellar-apps-with-go"
+  status = 301
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

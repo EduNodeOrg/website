@@ -1056,38 +1056,6 @@ function Resources() {
                 <GlassCard>
                   <CardMedia
                     sx={{ paddingTop: '56.25%' }}
-                    image={require('../Resources/stellarlight.png')}
-                    title="Stellarlight"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="h2"
-                    >
-                      Stellarlight
-                    </Typography>
-                    <Typography>
-                      A discovery platform for projects in the Stellar
-                      ecosystem.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      size="small"
-                      sx={{ color: '#00d4ff' }}
-                      href="https://stellarlight.xyz"
-                    >
-                      Learn More
-                    </Button>
-                  </CardActions>
-                </GlassCard>
-              </Grid>
-
-              <Grid item xs={12} sm={6} md={4}>
-                <GlassCard>
-                  <CardMedia
-                    sx={{ paddingTop: '56.25%' }}
                     image={require('../Resources/tansu.png')}
                     title="Tansu"
                   />
