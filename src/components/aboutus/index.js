@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Container, Typography, Paper, Divider } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import NavBar from "../NavBar";
+import PageMeta from "../PageMeta";
 import { aboutUs } from './config';
 
 const PageContainer = styled(Box)(({ theme }) => ({
@@ -39,6 +40,11 @@ const InfoRow = styled(Box)(({ theme }) => ({
 function AboutUs() {
   return (
     <>
+      <PageMeta
+        title="About EduNode — Blockchain Education Platform"
+        description="EduNode is an educational platform for becoming a blockchain developer: interactive courses on Stellar, Web3, Soroban, Ethereum and Hyperledger, coding challenges, and verifiable certificates."
+        path="/about"
+      />
       <NavBar />
       <PageContainer>
         <Container maxWidth="md">

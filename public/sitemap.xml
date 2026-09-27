@@ -29,11 +29,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://edunode.org/membership</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://edunode.org/contactus</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
@@ -110,10 +105,13 @@
   <url><loc>https://edunode.org/about-certificates</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://edunode.org/challenges</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://edunode.org/challenges/101</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://edunode.org/challenges/soroban-hello-world</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://edunode.org/challenges/stellar-token</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://edunode.org/challenges/rust-ownership</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://edunode.org/challenges/nft-smart-contract</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://edunode.org/challengeGame/leaderBoard</loc><changefreq>weekly</changefreq><priority>0.4</priority></url>
   <url><loc>https://edunode.org/hyperledger</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://edunode.org/hyperledger/courses</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://edunode.org/search</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
 
   <!-- Community -->
   <url><loc>https://edunode.org/community</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>

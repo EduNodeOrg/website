@@ -1,10 +1,16 @@
 import React from 'react';
 import { Box, Typography, Paper, Container } from '@mui/material';
 import NavBar from "../NavBar"
+import PageMeta from "../PageMeta";
 
 function EduNodeGuide() {
   return (
     <>
+      <PageMeta
+        title="For Teachers — EduNode"
+        description="Teach blockchain and Web3 with EduNode: ready-made courses on Stellar, Soroban and Ethereum, student progress tracking, and verifiable certificates."
+        path="/for-teachers"
+      />
       <NavBar />
       <Box mt={4}> {/* For margin top */}
         <Container maxWidth="md">

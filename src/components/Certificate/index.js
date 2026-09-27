@@ -21,6 +21,7 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 
 import ModernNavbar from '../Dashboard/layout/ModernNavbar';
+import PageMeta from '../PageMeta';
 
 // Modern styled components matching dashboard theme
 const DashboardContainer = styled(Box)(({ theme }) => ({
@@ -335,6 +336,11 @@ class Certificate extends Component {
     
     return (
       <DashboardContainer>
+        <PageMeta
+          title="Certificates — EduNode"
+          description="Earn verifiable blockchain certificates with EduNode courses — proof of completion for Stellar, Web3, and smart contract skills."
+          path="/certificate"
+        />
         {/* Floating Particles */}
         {[...Array(15)].map((_, i) => (
           <FloatingParticle

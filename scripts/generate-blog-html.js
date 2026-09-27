@@ -33,13 +33,20 @@ const compImport = {};
 for (const m of appSrc.matchAll(/const (\w+) = lazy\(\(\) => import\(['"]([^'"]+)['"]\)/g)) {
   compImport[m[1]] = m[2];
 }
+// All exact public routes — parameterized, catch-all, admin and
+// .well-known paths are excluded (a baked .json/.well-known shell would
+// shadow real files). Pages without meta are skipped, so new routes get
+// coverage automatically once they render a <Helmet> or <PageMeta>.
+const SKIP_ROUTE = /^(\/Admin|\/\.well-known|\/\*)/;
 const routes = [];
-for (const m of appSrc.matchAll(/<Route exact path="(\/blog[^"]*)" element=\{<(\w+)\s*\/>\}/g)) {
+for (const m of appSrc.matchAll(/<Route exact path="(\/[^"]*)" element=\{<(\w+)\s*\/>\}/g)) {
   const comp = m[2];
+  const route = m[1];
+  if (route.includes(':') || SKIP_ROUTE.test(route)) continue;
   if (!compImport[comp]) continue;
-  routes.push({ route: m[1], file: compImport[comp] });
+  routes.push({ route, file: compImport[comp] });
 }
-if (!routes.length) throw new Error('No /blog routes found in App.js — parser out of date?');
+if (!routes.length) throw new Error('No routes found in App.js — parser out of date?');
 
 // ─── Meta extraction ─────────────────────────────────────────────────────────
 const ident = String.raw`[A-Za-z_$][\w$]*`;
@@ -123,21 +130,43 @@ function extractMeta(file) {
     }
   }
 
-  // parse the Helmet block
-  const helmet = src.match(/<Helmet>([\s\S]*?)<\/Helmet>/);
-  if (!helmet) throw new Error(`No <Helmet> block in ${file}`);
-  const body = helmet[1];
-
   const resolve = (v) => consts[v] ?? null;
-  const meta = { og: {}, twitter: {}, ld: [] };
-
-  for (const m of body.matchAll(/<(\w+)([\s\S]*?)\/?>(?:([\s\S]*?)<\/\1>)?/g)) {
-    const [, tag, attrText, inner] = m;
+  const parseAttrs = (attrText) => {
     const attrs = {};
     const attrRe = new RegExp(`(${ident}(?::${ident})?)\\s*=\\s*(?:"([^"]*)"|\\{(${strLit})\\}|\\{(${ident})\\})`, 'g');
     for (const a of attrText.matchAll(attrRe)) {
       attrs[a[1]] = a[2] ?? (a[3] !== undefined ? unquote(a[3]) : resolve(a[4]));
     }
+    return attrs;
+  };
+
+  // <PageMeta title="..." description="..." path="..." /> — shared
+  // meta component for non-article pages (src/components/PageMeta)
+  const pm = src.match(/<PageMeta([\s\S]*?)\/>/);
+  if (pm && !/<Helmet>/.test(src)) {
+    const a = parseAttrs(pm[1]);
+    const url = a.path ? ORIGIN + a.path : undefined;
+    const img = a.image || ORIGIN + '/en.png';
+    return {
+      title: a.title,
+      description: a.description,
+      canonical: url,
+      og: { type: 'website', title: a.title, description: a.description, url, image: img },
+      twitter: { card: 'summary_large_image', title: a.title, description: a.description, image: img },
+      ld: [],
+    };
+  }
+
+  // parse the Helmet block
+  const helmet = src.match(/<Helmet>([\s\S]*?)<\/Helmet>/);
+  if (!helmet) throw new Error(`No <Helmet> block in ${file}`);
+  const body = helmet[1];
+
+  const meta = { og: {}, twitter: {}, ld: [] };
+
+  for (const m of body.matchAll(/<(\w+)([\s\S]*?)\/?>(?:([\s\S]*?)<\/\1>)?/g)) {
+    const [, tag, attrText, inner] = m;
+    const attrs = parseAttrs(attrText);
     if (tag === 'title') {
       const t = inner && inner.trim().match(new RegExp(`^\\{(${ident})\\}$`));
       meta.title = t ? resolve(t[1]) : inner && inner.trim();
@@ -216,11 +245,21 @@ function buildPage(route, meta) {
 // ─── Main ────────────────────────────────────────────────────────────────────
 const required = ['title', 'description', 'canonical'];
 let written = 0;
+let skipped = 0;
 for (const { route, file } of routes) {
-  const meta = extractMeta(file);
+  let meta;
+  try {
+    meta = extractMeta(file);
+  } catch {
+    skipped++; // no Helmet/PageMeta — nothing to bake for this route
+    continue;
+  }
   const missing = required.filter((k) => !meta[k]);
   if (missing.length) {
-    console.error(`✗ ${route} (${file}): missing ${missing.join(', ')} — skipped`);
+    skipped++;
+    if (route.startsWith('/blog')) {
+      console.error(`✗ ${route} (${file}): missing ${missing.join(', ')} — skipped`);
+    }
     continue;
   }
   // Flat .html files: Netlify "Pretty URLs" serves blog/ipfs.html at
@@ -232,5 +271,5 @@ for (const { route, file } of routes) {
   written++;
   console.log(`✓ ${route}`);
 }
-console.log(`\nGenerated ${written}/${routes.length} blog pages with baked-in meta.`);
-if (written !== routes.length) process.exitCode = 1;
+console.log(`\nGenerated ${written} pages with baked-in meta (${skipped} routes without meta skipped).`);
+if (!written) process.exitCode = 1;

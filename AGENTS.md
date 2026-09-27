@@ -55,9 +55,29 @@ This project prioritizes search and LLM discoverability. When adding or removing
 1. **`public/sitemap.xml`** — XML sitemap for https://edunode.org. Add every new *public, indexable* route. Exclude auth-gated pages (`/dashboard`, `/account`, `/profile`, `/chat`, `/Badges`, admin routes), auth flows (`/login`, `/signup`, `/forgot_password`, `/reset-password`, `/VerifyEmail`, `/gcallback`, `/unsubscribe`, `/loggedout`), and parameterized routes (`/postDetails/:_id`, `/certificates/:certificateNumber`, `/profile/:id`, `/challengeDetails/:_id`, `/challengeGame*/:randomNumber`).
 2. **`public/llms.txt`** — llmstxt.org-formatted index for LLM crawlers. Keep link titles/descriptions in sync with actual page content.
 3. **`src/data/releases.js`** — release notes data for `/releases`. Add an entry at the top of the array when shipping notable changes; keep `version` aligned with `package.json`.
-3. **`public/robots.txt`** — declares `Sitemap: https://edunode.org/sitemap.xml`. Update if crawl rules change.
-4. **Meta tags** — new pages should set `<title>`, `description`, Open Graph, and Twitter Card tags using the existing react-meta-tags/react-helmet pattern (see `src/components/Blog/Articles/AMM/AMM.js` for an example). Blog routes get static per-route HTML baked at build time by `scripts/generate-blog-html.js` (runs inside `npm run build`) — it auto-discovers `/blog*` routes from `App.js` and reads meta from each component's `<Helmet>` block, so keep meta in Helmet and add the route as `lazy`+`exact` to be picked up.
+4. **`public/robots.txt`** — declares `Sitemap: https://edunode.org/sitemap.xml`. Update if crawl rules change.
 5. **Canonical domain** is `https://edunode.org` — always use absolute canonical URLs.
+
+### Adding a blog article — checklist
+
+Blog meta is served to *every* client as static HTML: `scripts/generate-blog-html.js` runs inside `npm run build` and writes `build/blog/<slug>.html` with the article's real tags baked in. For an article to be picked up correctly:
+
+- **Route**: declare it `lazy` + `exact` in `src/App.js` (`<Route exact path="/blog/<slug>" element={<Comp />} />` + `const Comp = lazy(() => import('...'))`). Non-lazy or non-`exact` routes are skipped.
+- **Meta lives in `<Helmet>`** — set `title`, `canonical`, `description`, `og:*`, `twitter:*` using `const`s (`shareUrl`, `title`, `description`, `image`) or literals; both are extracted. See `Articles/GoStellarSdk.js` for the full pattern.
+- **JSON-LD**: declare as `const <name>Ld = { '@type': 'Article' | 'FAQPage', ... }` objects. They are `eval`'d by the generator — only reference the `const` values above (e.g. `faqs` arrays are fine, JSX/imports are not).
+- **`og:image`**: must be an absolute `https://edunode.org/...` URL. Bundled imports **under ~10KB get inlined as data URIs** and can't be used — either pick a larger asset (`'https://edunode.org' + img`) or generate a branded 1200×630 card with `scripts/generate-og-cards.py` → `public/og/<slug>.png`.
+- **No trailing slash**: canonicals stay extensionless/no-slash — Netlify "Pretty URLs" serves `blog/<slug>.html` at `/blog/<slug>` directly. Do NOT emit `blog/<slug>/index.html` — directory indexes 301 to a trailing slash and diverge from canonicals.
+- **Crawlers also get a prerendered DOM** via the Netlify Prerender extension (classified UAs only). `window.prerenderReady` (set `false` in `public/index.html`, flipped `true` by `PrerenderReady` inside App's `<Suspense>`) is the readiness signal — don't remove it or lazy routes snapshot empty.
+- **Removing an article**: delete the route + component, drop its `sitemap.xml`/`llms.txt` entries, and add a 301 in BOTH `public/_redirects` and `netlify.toml` (before the `/*` catch-all) — precedent: `/blog/soroban` → `/blog`.
+
+### Non-blog public pages
+
+The generator is not blog-only despite its name: it scans EVERY `lazy` + `exact` route in `App.js` and bakes `build/<route>.html` whenever the component exposes extractable meta (`<Helmet>` or `<PageMeta>`). Pages without meta are skipped silently, so coverage grows automatically.
+
+- **Simple pages** (landing/legal/marketing) should render `<PageMeta title="..." description="..." path="/route" />` — `src/components/PageMeta`. Keep all props as **string literals**: the generator parses them statically (an optional `image` prop overrides the default `/en.png` og:image).
+- If a component has both, `<Helmet>` wins — use `PageMeta` only where the page doesn't already have a Helmet block.
+- Auth-gated pages that redirect unauthenticated visitors (e.g. `/membership` → `<Navigate to="/">`) get NO meta and must stay OUT of `sitemap.xml`.
+- **Verify**: `curl https://edunode.org/blog/<slug>` (any UA) must return the article meta in raw HTML.
 
 Files in `public/` are copied verbatim into `build/` — no import needed.
 

@@ -14,6 +14,7 @@ import Box from '@mui/material/Box';
 //import draftToHtml from "draftjs-to-html"; // Import the draftToHtml function
 //import { convertToRaw } from "draft-js";
 import axios from 'axios';
+import PageMeta from '../PageMeta';
 
 
 const Form = styled.form`
@@ -200,6 +201,11 @@ class Project extends Component {
         return (
 
             <div>
+                <PageMeta
+                  title="Community Projects — EduNode"
+                  description="Explore blockchain projects built by the EduNode community — Stellar, Web3 and Soroban apps from learners and developers."
+                  path="/community/project"
+                />
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={4} md={3}>

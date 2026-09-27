@@ -24,6 +24,7 @@ import list from './list.png'
 import add from './add.png'
 import findName from './find.png'
 import all from './all.png'
+import PageMeta from '../../../PageMeta';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -193,6 +194,11 @@ function VerticalLinearStepper(props) {
 
   return (
     <div className="page-container">
+      <PageMeta
+        title="Challenge 101 — EduNode"
+        description="Blockchain Challenge 101 on EduNode: hands-on exercises to practice Stellar and Web3 development concepts."
+        path="/challenges/101"
+      />
       <div className="split-view">
         <div className="left-panel">
         <img src={space} style={{ width: '550px', height: '300px' }} alt="space"></img>
@@ -298,6 +304,11 @@ function Intro(props) {
 
   return (
     <div className="page-container">
+      <PageMeta
+        title="Challenge 101 — EduNode"
+        description="Blockchain Challenge 101 on EduNode: hands-on exercises to practice Stellar and Web3 development concepts."
+        path="/challenges/101"
+      />
       <Navbar />
 
       <LinearProgressWithLabel value={activeProgress} />

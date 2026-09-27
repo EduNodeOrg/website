@@ -3,6 +3,7 @@ import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typograph
 import { styled } from '@mui/material/styles';
 
 import NavBar from "../NavBar";
+import PageMeta from "../PageMeta";
 import kicon from "./keybaseicon.png";
 import discord from "./discord.png";
 
@@ -63,6 +64,11 @@ function Community() {
 
   return (
     <>
+      <PageMeta
+        title="Community — EduNode"
+        description="Join the EduNode community: connect with blockchain developers, share projects, and learn Stellar, Web3, and Soroban together."
+        path="/community"
+      />
       <NavBar />
       <PageContainer>
         <main>

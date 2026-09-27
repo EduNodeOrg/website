@@ -12,6 +12,7 @@ import {Container} from '@mui/material';
 import PublishIcon from '@mui/icons-material/Publish';
 import NavBar from "../NavBar";
 import kicon from "./keybaseicon.png"
+import PageMeta from "../PageMeta";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -51,6 +52,11 @@ function Projects() {
 
   return (
     <>
+      <PageMeta
+        title="Projects — EduNode"
+        description="Blockchain projects and hands-on builds on EduNode — practice Stellar, Web3, and smart contract development with real projects."
+        path="/projects"
+      />
       <NavBar />
       <div className="resources">
         <main>

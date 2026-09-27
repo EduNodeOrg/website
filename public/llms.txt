@@ -64,11 +64,14 @@
 
 - [About EduNode](https://edunode.org/about): About the platform and team
 - [Pricing](https://edunode.org/pricing): Membership plans and pricing
-- [Membership](https://edunode.org/membership): Membership benefits
 - [For Teachers](https://edunode.org/for-teachers): Guide for educators
 - [For Students](https://edunode.org/for-students): Guide for learners
 - [About Certificates](https://edunode.org/about-certificates): How EduNode certificates work
 - [Challenges](https://edunode.org/challenges): Coding challenges and hackathons
+- [Soroban Hello World Challenge](https://edunode.org/challenges/soroban-hello-world): Write and test your first Soroban smart contract
+- [Stellar Token Challenge](https://edunode.org/challenges/stellar-token): Build a Soroban token contract (SEP-41 pattern)
+- [Rust Ownership Challenge](https://edunode.org/challenges/rust-ownership): Learn Rust moves, borrows, and mutable references
+- [NFT Smart Contract Challenge](https://edunode.org/challenges/nft-smart-contract): Mint and transfer NFTs with a Soroban contract
 - [Community](https://edunode.org/community): Community hub and projects
 - [Projects](https://edunode.org/projects): Community-built projects
 - [Resources](https://edunode.org/resources): Curated learning resources

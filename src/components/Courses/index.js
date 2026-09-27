@@ -23,6 +23,7 @@ import Navbar2 from '../Dashboard/Navbar2';
 import CourseList from './CourseList';
 import ProCourseCards from '../ProCourses/ProCourseCards';
 import COURSE_IDS from './courseIds';
+import PageMeta from '../PageMeta';
 
 // Styles
 import './style.css';
@@ -220,6 +221,11 @@ const Courses = ({ auth, error: authError }) => {
   const renderCourses = () => {
     const commonLayout = (children, showNavbar = true) => (
       <CoursesContainer>
+        <PageMeta
+          title="Blockchain Courses — EduNode"
+          description="Interactive blockchain courses on Stellar, Web3, Soroban, Ethereum, and Hyperledger — from basics to smart contracts, with verifiable certificates."
+          path="/courses"
+        />
         {/* Floating Particles */}
         {[...Array(8)].map((_, i) => (
           <FloatingParticle

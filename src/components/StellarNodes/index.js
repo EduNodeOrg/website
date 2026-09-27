@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./blogPage.css";
 import NavBar from "../NavBar";
+import PageMeta from "../PageMeta";
 const node = 'https://cdn.midjourney.com/3a7e9cb6-1b7a-44fb-afe1-9d769d145bdf/0_2.webp'
 function BlogPage() {
   const [blog, setBlog] = useState(null);
@@ -41,6 +42,11 @@ function BlogPage() {
 
   return (
     <>
+      <PageMeta
+        title="Stellar Nodes Explained — EduNode"
+        description="How Stellar network nodes work: validators, quorum slices, Horizon, and Stellar Core — the infrastructure behind the Stellar blockchain."
+        path="/stellarnodes"
+      />
       <NavBar />
       <br></br>
       <div className="blog-content">

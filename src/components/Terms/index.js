@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Container, Typography, Paper, Divider } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import NavBar from "../NavBar";
+import PageMeta from "../PageMeta";
 
 const PageContainer = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -22,6 +23,11 @@ const ContentCard = styled(Paper)(({ theme }) => ({
 const TermsAndConditions = () => {
   return (
     <div>
+      <PageMeta
+        title="Terms of Service — EduNode"
+        description="EduNode terms of service: the rules and conditions for using the EduNode blockchain education platform, courses, and certificates."
+        path="/terms"
+      />
       <NavBar />
       <PageContainer>
         <Container maxWidth="md">

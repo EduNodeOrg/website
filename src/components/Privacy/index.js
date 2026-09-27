@@ -3,6 +3,7 @@ import { Box, Container, Typography, Paper, Divider } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import NavBar from '../NavBar';
 import CookieSettingsButton from '../CookieConsent/CookieSettingsButton';
+import PageMeta from '../PageMeta';
 
 const PageContainer = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -40,6 +41,11 @@ export default class Privacy extends Component {
   render() {
     return (
       <div>
+        <PageMeta
+          title="Privacy Policy — EduNode"
+          description="EduNode privacy policy: how we collect, use, and protect your data when you use our blockchain education platform."
+          path="/privacy"
+        />
         <NavBar />
         <PageContainer>
           <Container maxWidth="md">

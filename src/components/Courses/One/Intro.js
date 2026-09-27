@@ -13,6 +13,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 //import ProgressBar from 'react-bootstrap/ProgressBar';
 import Box from '@mui/material/Box';
 import Navbar from '../../Dashboard/Navbar1';
+import PageMeta from '../../PageMeta';
 
 import { connect } from 'react-redux';
 import { clearErrors } from '../../../actions/errorActions';
@@ -184,7 +185,12 @@ class Intro extends Component {
     const progress = this.state.progress
     return (
       <div>
-         <Navbar></Navbar> 
+         <Navbar></Navbar>
+        <PageMeta
+          title="Basic Concepts — Blockchain Course 101 | EduNode"
+          description="Blockchain fundamentals course: distributed ledgers, consensus, wallets, and how the Stellar network works — the starting point on EduNode."
+          path="/courses/101"
+        /> 
         
         <LinearProgressWithLabel value={activeProgress} />
         <VerticalLinearStepper

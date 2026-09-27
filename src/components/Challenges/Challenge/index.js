@@ -18,6 +18,7 @@ import Navbar1 from '../../Dashboard/Navbar1';
 import challengeImg from './c1.png';
 import gameChallengeImg from '../gameChallenge/images/c1.png';
 import sorobanImg from '../gameChallenge/images/ship2.png';
+import PageMeta from '../../PageMeta';
 
 const PageRoot = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -82,7 +83,7 @@ const LeaderBoardCard = styled(Card)({
 
 const challengeDetailsId = '648c95d5d9b084b4ad3def41';
 
-function ChallengeCard({ image, title, description, onStart }) {
+function ChallengeCard({ image, title, description, onStart, detailsId }) {
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
 
@@ -108,13 +109,15 @@ function ChallengeCard({ image, title, description, onStart }) {
         <Button variant="outline-light" size="sm" onClick={() => setOpen(true)}>
           Select Challenge
         </Button>
-        <Button
-          variant="outline-light"
-          size="sm"
-          onClick={() => navigate(`/challengeDetails/${challengeDetailsId}`)}
-        >
-          Details
-        </Button>
+        {detailsId && (
+          <Button
+            variant="outline-light"
+            size="sm"
+            onClick={() => navigate(`/challengeDetails/${detailsId}`)}
+          >
+            Details
+          </Button>
+        )}
       </CardActions>
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>Start challenge</DialogTitle>
@@ -137,6 +140,11 @@ export default function Challenge() {
 
   return (
     <PageRoot>
+      <PageMeta
+        title="Blockchain Challenges — EduNode"
+        description="Test your blockchain skills with interactive coding challenges on EduNode — solve Stellar and Web3 problems and climb the leaderboard."
+        path="/challenges"
+      />
       <Navbar1 />
       <Content>
         <Title variant="h4">Challenges</Title>
@@ -150,6 +158,31 @@ export default function Challenge() {
           title="The Intergalactic Space Agency"
           description="A hand-authored, fixed challenge — follow the clues and complete each step."
           onStart={() => '/challenges/101/'}
+          detailsId={challengeDetailsId}
+        />
+        <ChallengeCard
+          image={sorobanImg}
+          title="Soroban Hello World Challenge"
+          description="Write, configure, and test your first Soroban smart contract in Rust."
+          onStart={() => '/challenges/soroban-hello-world/'}
+        />
+        <ChallengeCard
+          image={gameChallengeImg}
+          title="Stellar Token Challenge"
+          description="Build a Soroban token contract — balance storage, an authorized mint, and balance lookups (SEP-41 pattern)."
+          onStart={() => '/challenges/stellar-token/'}
+        />
+        <ChallengeCard
+          image={challengeImg}
+          title="Rust Ownership Challenge"
+          description="Master moves, borrows, and mutable references — the Rust concepts behind every Soroban contract."
+          onStart={() => '/challenges/rust-ownership/'}
+        />
+        <ChallengeCard
+          image={sorobanImg}
+          title="NFT Smart Contract Challenge"
+          description="Mint and transfer NFT badges with a Soroban contract — admin auth, persistent storage, and tests."
+          onStart={() => '/challenges/nft-smart-contract/'}
         />
 
         <SectionTitle variant="h6">Game Challenges</SectionTitle>
@@ -164,9 +197,27 @@ export default function Challenge() {
         />
         <ChallengeCard
           image={sorobanImg}
-          title="Soroban Hello World Challenge"
+          title="Soroban Hello World Challenge (Game)"
           description="Randomized game session — write and deploy your first Soroban contract."
           onStart={() => `/challengeGame2/${Math.floor(Math.random() * 10000)}/`}
+        />
+        <ChallengeCard
+          image={gameChallengeImg}
+          title="Stellar Token Challenge (Game)"
+          description="Race a friend to build a working Soroban token contract."
+          onStart={() => `/challengeGame3/${Math.floor(Math.random() * 10000)}/`}
+        />
+        <ChallengeCard
+          image={challengeImg}
+          title="Rust Ownership Challenge (Game)"
+          description="Race a friend through Rust ownership, borrows, and mutable references."
+          onStart={() => `/challengeGame4/${Math.floor(Math.random() * 10000)}/`}
+        />
+        <ChallengeCard
+          image={sorobanImg}
+          title="NFT Smart Contract Challenge (Game)"
+          description="Race a friend to mint and transfer an NFT with a Soroban contract."
+          onStart={() => `/challengeGame5/${Math.floor(Math.random() * 10000)}/`}
         />
         <LeaderBoardCard onClick={() => navigate('/challengeGame/leaderBoard')}>
           <CardText variant="subtitle1">

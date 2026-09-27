@@ -15,6 +15,7 @@ import Container from '@mui/material/Container';
 import { styled } from '@mui/material/styles';
 import NavBar from '../NavBar';
 import Footer from '../Footer/Footer';
+import PageMeta from '../PageMeta';
 //import { Redirect, BrowserRouter } from "react-router-dom";
 
 const API_URL = 'https://edunode.herokuapp.com/api';
@@ -192,6 +193,13 @@ function PricingContent({ embedded = false }) {
     <>
       <CssBaseline />
       {!embedded && <NavBar />}
+      {!embedded && (
+        <PageMeta
+          title="Pricing — EduNode"
+          description="EduNode pricing plans: free and premium access to blockchain courses, coding challenges, certificates, and developer tools for Stellar, Web3 and Soroban."
+          path="/pricing"
+        />
+      )}
       <PricingContainer>
         <ContentContainer maxWidth="md" component="main">
           <SectionTitle

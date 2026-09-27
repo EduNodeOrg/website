@@ -12,6 +12,7 @@ import { EditorState } from 'draft-js';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import Navbar1 from '../Dashboard/Navbar1';
 import { TextField } from '@mui/material';
+import PageMeta from '../PageMeta';
 // Initialize editorState
 // const editorState = EditorState.createEmpty();
 // const options = { ... };
@@ -155,6 +156,11 @@ class ValidCertificate extends Component {
     return (
 
       <div>
+        <PageMeta
+          title="Verify a Certificate — EduNode"
+          description="Verify an EduNode certificate: enter a certificate number to confirm authentic, blockchain-anchored proof of course completion."
+          path="/validCertificate"
+        />
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={8} md={20}>

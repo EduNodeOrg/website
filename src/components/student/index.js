@@ -1,11 +1,17 @@
 import React from 'react';
 import NavBar from "../NavBar"
 import { Box, Typography, Paper, Container } from '@mui/material';
+import PageMeta from '../PageMeta';
 
 class StudentsPage extends React.Component {
   render() {
     return (
       <>
+      <PageMeta
+        title="For Students — EduNode"
+        description="Learn blockchain development with EduNode: interactive courses on Stellar, Web3 and Soroban, coding challenges, and verifiable certificates for students."
+        path="/for-students"
+      />
       <NavBar />
       <Box mt={4}> {/* For margin top */}
         <Container maxWidth="md">

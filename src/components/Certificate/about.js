@@ -3,6 +3,7 @@ import { Typography, Container, Box } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import ModernNavbar from '../Dashboard/layout/ModernNavbar';
+import PageMeta from '../PageMeta';
 
 // Modern styled components matching dashboard theme
 const DashboardContainer = styled(Box)(({ theme }) => ({
@@ -79,6 +80,11 @@ class CertificatePage extends React.Component {
     render() {
     return (
       <DashboardContainer>
+        <PageMeta
+          title="About EduNode Certificates"
+          description="How EduNode certificates work: verifiable, blockchain-anchored proof of course completion you can share with employers."
+          path="/about-certificates"
+        />
         {/* Floating Particles */}
         {[...Array(15)].map((_, i) => (
           <FloatingParticle

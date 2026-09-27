@@ -13,6 +13,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography'
+import PageMeta from '../../PageMeta';
 
 const PageContainer = muiStyled(Box)(() => ({
   minHeight: '100vh',
@@ -69,6 +70,11 @@ class LeaderBoard extends Component {
     const { users, isLoading } = this.state;
     return (
       <PageContainer>
+        <PageMeta
+          title="Challenge Leaderboard — EduNode"
+          description="EduNode challenge leaderboard — top scores from developers solving blockchain and Web3 coding challenges."
+          path="/challengeGame/leaderBoard"
+        />
         <Topbar />
         <Box sx={{ maxWidth: 600, mx: 'auto', px: 2, pt: 6, pb: 4 }}>
           <PageTitle variant="h4" component="h1">Leader Board</PageTitle>

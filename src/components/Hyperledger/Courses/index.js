@@ -26,6 +26,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';  
 import Welcome from './Welcome';
+import PageMeta from '../../PageMeta';
 import "./styles.css"
 
 
@@ -230,6 +231,11 @@ export function AlertDialog(props) {
 
   return (
     <div>
+      <PageMeta
+        title="Hyperledger Courses — EduNode"
+        description="Learn Hyperledger enterprise blockchain development — courses covering Hyperledger Fabric, Besu, and permissioned DLT architectures."
+        path="/hyperledger/courses"
+      />
       <Button
         variant="outlined"
         color="primary"
