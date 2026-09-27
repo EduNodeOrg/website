@@ -5,7 +5,7 @@
   publish = "build"
 
 [build.environment]
-  NODE_VERSION = "18.16.0"
+  NODE_VERSION = "22"
   NPM_FLAGS = "--legacy-peer-deps"
   CI = "false"
   GENERATE_SOURCEMAP = "false"

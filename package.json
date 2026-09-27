@@ -3,7 +3,7 @@
   "version": "0.3.4",
   "private": true,
   "engines": {
-    "node": "18.16.0"
+    "node": ">=20.0.0"
   },
   "dependencies": {
     "@albedo-link/intent": "^0.12.0",
