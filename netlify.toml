@@ -16,6 +16,11 @@
   status = 301
 
 [[redirects]]
+  from = "/blog/soroban"
+  to = "/blog"
+  status = 301
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

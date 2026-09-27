@@ -205,7 +205,6 @@ const Game = lazy(() => import('./components/Challenges/gameChallenge/addGame'))
 const Pricing = lazy(() => import('./components/Membership/Pricing'));
 const StripeCheckout = lazy(() => import('./components/Membership/StripeCheckout'));
 const Releases = lazy(() => import('./components/Releases'));
-const Soroban = lazy(() => import('./components/Blog/Articles/Soroban'));
 const Page404 = lazy(() => import('./admin/src/pages/Page404'));
 const CheckoutSuccess = lazy(() => import('./components/Membership/CheckoutSuccess'));
 const EmailUnsubscribe = lazy(() => import('./components/EmailUnsubscribe'));
@@ -432,7 +431,6 @@ function App(props) {
         <Route exact path="/VerifyEmail" element={<VerifyEmail />} />
         <Route exact path="/blog/docker" element={<Docker />} />
         <Route exact path="/blog/ipfs" element={<Ipfs />} />
-        <Route exact path="/blog/soroban" element={<Soroban />} />
         <Route exact path="/blog/blockchain-developer-roadmap" element={<Roadmap />} />
         <Route exact path="/blog/what-is-a-stablecoin" element={<Stablecoin />} />
         <Route exact path="/blog/rwa-tokenization" element={<RWA />} />

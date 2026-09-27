@@ -42,7 +42,6 @@
 - [Workshop: Learn about Blockchain](https://edunode.org/blog/learn-about-blockchain)
 - [What is Docker and how you can use it?](https://edunode.org/blog/docker)
 - [What is IPFS and how you can use it?](https://edunode.org/blog/ipfs)
-- [What is Soroban and how you can use it?](https://edunode.org/blog/soroban)
 - [How to Become a Blockchain Developer in 2026](https://edunode.org/blog/blockchain-developer-roadmap): Complete step-by-step career roadmap
 - [What Is a Stablecoin? USDC on Stellar](https://edunode.org/blog/what-is-a-stablecoin): Stablecoin types and how they power payments
 - [Real-World Asset (RWA) Tokenization Explained](https://edunode.org/blog/rwa-tokenization): How traditional assets move on-chain
