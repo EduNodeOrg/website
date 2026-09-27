@@ -12,6 +12,9 @@ import {
   MDBCardHeader,
 } from 'mdb-react-ui-kit';
 import moment from 'moment';
+import { styled as muiStyled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import Navbar1 from '../Dashboard/Navbar1';
 import Footer from '../Footer/Footer';
 import { EditorState } from 'draft-js';
@@ -19,6 +22,21 @@ import { Editor } from 'react-draft-wysiwyg';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { convertToHTML } from 'draft-convert';
 import { Navigate } from "react-router-dom";
+
+const PageContainer = muiStyled(Box)(() => ({
+  minHeight: '100vh',
+  background: 'linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)',
+}));
+
+const PageTitle = muiStyled(Typography)(({ theme }) => ({
+  textAlign: 'center',
+  marginBottom: theme.spacing(3),
+  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+  fontWeight: 'bold',
+}));
 
 class Messages extends Component {
   constructor(props) {
@@ -215,25 +233,26 @@ class Messages extends Component {
     const senderEmail = user.email;
      const image=user.images
     return (
-      <section style={{ backgroundColor: '#eee' }}>
-        <Navbar1></Navbar1>
+      <PageContainer>
+        <Navbar1 />
 
-        <MDBContainer fluid className="py-5" style={{ backgroundColor: '#eee' }}>
+        <MDBContainer fluid className="py-5">
+          <PageTitle variant="h4" component="h1">Messages</PageTitle>
           <MDBRow>
             <MDBCol md="6" lg="5" xl="4" className="mb-4 mb-md-0 friendsCol">
-              <h5 className="font-weight-bold mb-3 text-center text-lg-start" style={{ fontSize: "2em" }}>Friends:</h5>
-              <h5 className="font-weight-bold mb-3 text-center text-lg-start">Note: Click on the friend you want to text and it will scroll you down to the latest messages!</h5>
-              <MDBCard style={{ height: 'auto' }} >
+              <h5 className="font-weight-bold mb-3 text-center text-lg-start" style={{ fontSize: "2em", color: '#e2e8f0' }}>Friends</h5>
+              <h5 className="font-weight-bold mb-3 text-center text-lg-start" style={{ color: '#b8c5d6' }}>Note: Click on the friend you want to text and it will scroll you down to the latest messages!</h5>
+              <MDBCard style={{ height: 'auto', background: 'rgba(26, 31, 58, 0.7)', border: '1px solid rgba(123, 47, 247, 0.3)' }} >
                 <MDBCardBody>
                   <MDBTypography listUnStyled className="mb-0">
                     {friends.map((friend) => (
                       <li
-                        className="p-2 border-bottom"
-                        style={{ backgroundColor: '#eee' }}
+                        className="p-2"
+                        style={{ backgroundColor: 'transparent', borderBottom: '1px solid rgba(123, 47, 247, 0.15)', cursor: 'pointer' }}
                         key={friend.id}
                         onClick={() => this.handleFriendClick(friend.email)}
                       >
-                        <a href="#!" className="d-flex justify-content-between">
+                        <a href="#!" className="d-flex justify-content-between" style={{ textDecoration: 'none' }}>
                           <div className="d-flex flex-row">
                             <img
                               src={friend.images}
@@ -242,8 +261,8 @@ class Messages extends Component {
                               width="60"
                             />
                             <div className="pt-1">
-                              <p className="fw-bold mb-0">{friend.name}</p>
-                              <p className="small text-muted">{friend.status}</p>
+                              <p className="fw-bold mb-0" style={{ color: '#e2e8f0' }}>{friend.name}</p>
+                              <p className="small" style={{ color: '#b8c5d6' }}>{friend.status}</p>
                             </div>
                           </div>
                           <div className="pt-1">
@@ -280,15 +299,15 @@ class Messages extends Component {
                           width="60"
                         />
                       )}
-                      <MDBCard>
-                        <MDBCardHeader className="d-flex justify-content-between p-3">
-                          <p className="fw-bold mb-0">{message.senderEmail}</p>
-                          <p className="text-muted small mb-0">
+                      <MDBCard style={{ background: 'rgba(26, 31, 58, 0.7)', border: '1px solid rgba(123, 47, 247, 0.3)' }}>
+                        <MDBCardHeader className="d-flex justify-content-between p-3" style={{ borderBottom: '1px solid rgba(123, 47, 247, 0.15)' }}>
+                          <p className="fw-bold mb-0" style={{ color: '#00d4ff' }}>{message.senderEmail}</p>
+                          <p className="small mb-0" style={{ color: '#b8c5d6' }}>
                             <MDBIcon far icon="clock" /> {this.formatTimestamp(message.timestamp)}
                           </p>
                         </MDBCardHeader>
                         <MDBCardBody>
-                          <p className="mb-0" dangerouslySetInnerHTML={{ __html: message.content }}></p>
+                          <p className="mb-0" style={{ color: '#e2e8f0' }} dangerouslySetInnerHTML={{ __html: message.content }}></p>
                           {message.image !== null && (
                             <img
                               src={message.image}
@@ -314,7 +333,7 @@ class Messages extends Component {
 
               {isFriendSelected && (
                 <div>
-                  <div style={{ border: '1px solid black', padding: '10px' }} ref={this.editorRef} >
+                  <div style={{ border: '1px solid rgba(123, 47, 247, 0.4)', borderRadius: '12px', padding: '10px', background: '#fff' }} ref={this.editorRef} >
                     <Editor
                       label="Message"
                       editorState={editorState}
@@ -330,7 +349,7 @@ class Messages extends Component {
                     type="file"
                     accept="image/*"
                     onChange={this.handleImageChange}
-                    style={{ marginBottom: '10px' }}
+                    style={{ marginBottom: '10px', color: '#b8c5d6' }}
                   />
                   <MDBBtn color="info" rounded className="float-end" onClick={this.handleSendMessage}>
                     Send
@@ -345,7 +364,7 @@ class Messages extends Component {
           </MDBRow>
         </MDBContainer>
         <Footer></Footer>
-      </section>
+      </PageContainer>
     );
   }
 

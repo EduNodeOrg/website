@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-//import { withRouter } from 'react-router';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
+import ButtonBase from '@mui/material/ButtonBase';
+import Typography from '@mui/material/Typography';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -14,168 +13,167 @@ import {
   Button,
 } from 'react-bootstrap';
 
-// Import components
-
-import Course1 from './Course1';
-
-
 import Navbar1 from '../../Dashboard/Navbar1';
 
-// Import styles
-import './style.css';
-import "./styles.css";
+import challengeImg from './c1.png';
+import gameChallengeImg from '../gameChallenge/images/c1.png';
+import sorobanImg from '../gameChallenge/images/ship2.png';
 
+const PageRoot = styled(Box)(({ theme }) => ({
+  minHeight: '100vh',
+  background: 'linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)',
+  paddingBottom: theme.spacing(6),
+}));
 
+const Content = styled(Box)(({ theme }) => ({
+  maxWidth: 900,
+  margin: '0 auto',
+  padding: theme.spacing(4, 2),
+}));
 
-
-class Challenge extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      errors: {},
-      courseData: []
-    };
-  }
-
-  componentDidMount() {
-    // fetch data.json file here and set it to the courseData state
-   try {
-    fetch('./data.json')
-    .then(response => response.json())
-    .then(data => this.setState({courseData: data}))
-    .catch(err => console.log(err))
-   } catch (error) {
-    console.log("there was an error!! ;/" + error)
-   }
-    }
-
-  componentDidUpdate(prevProps) {
-    const { error } = this.props;
-    if (error !== prevProps.error) {
-      if (error.id === 'LOGIN_FAIL') {
-        this.setState({ msg: error.msg.msg });
-      } else {
-        this.setState({ msg: null });
-      }
-    }
-  }
-  render() {
-
-    const Item = styled(Paper)(({ theme }) => ({
-      ...theme.typography.body2,
-      padding: theme.spacing(1),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    }));
-    
-    const email= this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : "";
-    const id1 ='644bcdd1e1fec0f4f55a7447';
-
-    const {
-      isLoading,
-      isAuthenticated,
-      isVerified,
-      hasUsername,
-      googleProfilePic,
-      isGranted,
-      isFirstCourseSelected,
-    courseOneDone,
-    } = this.props.auth;
-
-    
-      return (
-        <>
-         
-          <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        {/* <Grid xs={5} sm={3.5} md={2}>
-          <Item><Sidebar props={email}/></Item>
-        </Grid> */}
-        <Grid item xs={12} sm={8} md={20}>
-     <Navbar1 />
-     
-          <div className="myDiv">
-          <br></br>
-          <Course1 />
-          <br></br>
-          
-          
-          
-        </div>
-        </Grid>
-        
-      </Grid>
-     
-    </Box>
-        </>
-      );
-    }
-  }
-
-
-const mapStateToProps = (state) => ({
-  auth: state.auth,
+const Title = styled(Typography)({
+  background: 'linear-gradient(90deg, #00d4ff, #a855f7)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  fontWeight: 'bold',
+  marginBottom: 8,
 });
 
-export default (connect(mapStateToProps, null)(Challenge));
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  color: '#e2e8f0',
+  fontWeight: 600,
+  marginTop: theme.spacing(4),
+  marginBottom: theme.spacing(2),
+}));
 
+const Card = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(3),
+  background: 'rgba(255,255,255,0.06)',
+  border: '1px solid rgba(168,85,247,0.35)',
+  borderRadius: 12,
+  padding: theme.spacing(2.5),
+  marginBottom: theme.spacing(2),
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column',
+    textAlign: 'center',
+  },
+}));
 
+const CardText = styled(Typography)({
+  color: '#cbd5f5',
+  flexGrow: 1,
+});
 
-export function AlertDialog(props) {
+const CardActions = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  gap: theme.spacing(1),
+  flexShrink: 0,
+}));
+
+const LeaderBoardCard = styled(Card)({
+  cursor: 'pointer',
+  borderStyle: 'dashed',
+  '&:hover': {
+    background: 'rgba(168,85,247,0.12)',
+  },
+});
+
+const challengeDetailsId = '648c95d5d9b084b4ad3def41';
+
+function ChallengeCard({ image, title, description, onStart }) {
+  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
+  const handleConfirm = () => {
     setOpen(false);
+    navigate(onStart());
   };
-
-  const handleConfirm = (e) => {
-    setOpen(false);
-    window.location.href = '/courses/101/';
-
-
-  };
-  // 
 
   return (
-    <div>
-      <Button
-        variant="outlined"
-        color="primary"
-        onClick={handleClickOpen}
-      >
-        Select Course
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"Basic Concepts Course"}
-        </DialogTitle>
+    <Card>
+      <ButtonBase sx={{ width: 96, height: 96, flexShrink: 0 }}>
+        <img src={image} alt={title} style={{ maxWidth: '100%', maxHeight: '100%', display: 'block', margin: 'auto' }} />
+      </ButtonBase>
+      <CardText variant="subtitle1">
+        {title}
+        {description && (
+          <Typography variant="body2" sx={{ color: '#94a3b8', marginTop: 0.5 }}>
+            {description}
+          </Typography>
+        )}
+      </CardText>
+      <CardActions>
+        <Button variant="outline-light" size="sm" onClick={() => setOpen(true)}>
+          Select Challenge
+        </Button>
+        <Button
+          variant="outline-light"
+          size="sm"
+          onClick={() => navigate(`/challengeDetails/${challengeDetailsId}`)}
+        >
+          Details
+        </Button>
+      </CardActions>
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <DialogTitle>Start challenge</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Are you sure that you want to take this course?
+          <DialogContentText>
+            Are you sure that you want to take this challenge?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} style={{ backgroundColor: 'red', color: 'white' }}>
-            Cancel
-          </Button>
-          <Button onClick={handleConfirm} color="blue" autoFocus>
-            Confirm
-          </Button>
+          <Button onClick={() => setOpen(false)} variant="secondary">Cancel</Button>
+          <Button onClick={handleConfirm} variant="primary" autoFocus>Confirm</Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </Card>
   );
 }
 
+export default function Challenge() {
+  const navigate = useNavigate();
 
+  return (
+    <PageRoot>
+      <Navbar1 />
+      <Content>
+        <Title variant="h4">Challenges</Title>
+        <Typography variant="body2" sx={{ color: '#94a3b8', marginBottom: 2 }}>
+          Test your skills with curated challenges, or start a shareable game challenge and compete on the leaderboard.
+        </Typography>
 
+        <SectionTitle variant="h6">Curated Challenges</SectionTitle>
+        <ChallengeCard
+          image={challengeImg}
+          title="The Intergalactic Space Agency"
+          description="A hand-authored, fixed challenge — follow the clues and complete each step."
+          onStart={() => '/challenges/101/'}
+        />
 
+        <SectionTitle variant="h6">Game Challenges</SectionTitle>
+        <Typography variant="body2" sx={{ color: '#94a3b8', marginBottom: 2 }}>
+          Each game generates a unique link you can share — play with friends and climb the leaderboard.
+        </Typography>
+        <ChallengeCard
+          image={gameChallengeImg}
+          title="The Intergalactic Space Agency (Game)"
+          description="Randomized game session with a shareable link and scoring."
+          onStart={() => `/challengeGame1/${Math.floor(Math.random() * 1000000)}/`}
+        />
+        <ChallengeCard
+          image={sorobanImg}
+          title="Soroban Hello World Challenge"
+          description="Randomized game session — write and deploy your first Soroban contract."
+          onStart={() => `/challengeGame2/${Math.floor(Math.random() * 10000)}/`}
+        />
+        <LeaderBoardCard onClick={() => navigate('/challengeGame/leaderBoard')}>
+          <CardText variant="subtitle1">
+            View the Game Challenges Leaderboard →
+          </CardText>
+        </LeaderBoardCard>
+      </Content>
+    </PageRoot>
+  );
+}

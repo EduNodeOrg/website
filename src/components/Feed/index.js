@@ -46,7 +46,7 @@ const FeedContainer = styled(Box)(({ theme }) => ({
 const ContentContainer = styled(Container)(({ theme }) => ({
   position: 'relative',
   zIndex: 1,
-  paddingTop: theme.spacing(10),
+  paddingTop: 0,
   paddingBottom: theme.spacing(4),
 }));
 
@@ -385,6 +385,8 @@ class Feed extends Component {
         ))}
 
         <ContentContainer maxWidth="xl">
+          <Navbar1 />
+
           {/* Welcome Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -413,8 +415,6 @@ class Feed extends Component {
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <Navbar1 />
-                  
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}

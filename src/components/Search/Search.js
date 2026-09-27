@@ -34,7 +34,7 @@ const SearchContainer = styled(Box)(({ theme }) => ({
 const ContentContainer = styled(Container)(({ theme }) => ({
   position: 'relative',
   zIndex: 1,
-  paddingTop: theme.spacing(10),
+  paddingTop: 0,
   paddingBottom: theme.spacing(4),
 }));
 
@@ -247,6 +247,8 @@ class Search extends Component {
                 ))}
 
                 <ContentContainer maxWidth="xl">
+                    <Navbar1 />
+
                     {/* Welcome Section */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -270,8 +272,6 @@ class Search extends Component {
                             </Typography>
                         </Box>
                     </motion.div>
-
-                    <Navbar1 />
 
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}

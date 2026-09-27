@@ -1,66 +1,159 @@
-.aboutus {
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
+.milestones-page {
+  min-height: 100vh;
+  padding: 48px 16px 80px;
+  background: linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%);
+}
+
+.milestones-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.milestones-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  background: linear-gradient(45deg, #00d4ff, #7b2ff7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.milestones-header p {
+  color: #b8c5d6;
+  font-size: 1.15rem;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ─── Timeline ─────────────────────────────────────────────── */
+.timeline {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 8px 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  margin-left: -1.5px;
+  background: linear-gradient(180deg, #00d4ff, #7b2ff7);
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 12px 44px;
+  box-sizing: border-box;
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 28px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #00d4ff;
+  border: 3px solid #7b2ff7;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+  z-index: 1;
+}
+
+.timeline-item.left .timeline-dot {
+  right: -8px;
+}
+
+.timeline-item.right .timeline-dot {
+  left: -8px;
+}
+
+.timeline-card {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 18px 22px;
+  max-width: 420px;
+  text-align: left;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 212, 255, 0.45);
+}
+
+.timeline-date {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #00d4ff;
+  margin-bottom: 6px;
+}
+
+.timeline-title {
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.timeline-card img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ─── Mobile: single column ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .milestones-header h1 {
+    font-size: 2.2rem;
   }
-  
-  .aboutus h1 {
-    font-size: 3rem;
-    margin-bottom: 30px;
+
+  .timeline::before {
+    left: 10px;
+    margin-left: 0;
   }
-  
-  .aboutus h5 {
-    font-size: 1.5rem;
-    margin-top: 40px;
-    margin-bottom: 20px;
+
+  .timeline-item,
+  .timeline-item.left,
+  .timeline-item.right {
+    width: 100%;
+    left: 0;
+    padding: 10px 10px 10px 36px;
+    text-align: left;
   }
-  
-  .aboutus p {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+
+  .timeline-item.left .timeline-dot,
+  .timeline-item.right .timeline-dot {
+    left: 3px;
+    right: auto;
   }
-  
-  .meetup {
-    height: 40%;
-    width: 40%; 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
+
+  .timeline-card {
+    max-width: 100%;
+    width: 100%;
   }
-  
-  .img {
-    height: 300px;
-    width: 500px; 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-  
-  .users {
-    height: 300px;
-    width: 300px; 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-  
-  .ws {
-    height: 350px;
-    width: 250px; 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-  
+}

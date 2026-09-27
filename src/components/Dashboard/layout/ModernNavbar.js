@@ -15,17 +15,34 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Divider
+  Divider,
+  Button
 } from '@mui/material';
-import { 
+import {
   Menu as MenuIcon,
   Notifications,
   AccountCircle,
   Dashboard as DashboardIcon,
+  Home,
+  Search,
+  PostAdd,
   Book,
   Article,
   Feed,
-  VideoLibrary,
+  CardMembership,
+  Chat,
+  History,
+  MilitaryTech,
+  EmojiEvents,
+  SportsEsports,
+  Mail,
+  Flag,
+  Sell,
+  Groups,
+  Info,
+  MenuBook,
+  HowToReg,
+  Source,
   Settings,
   Logout
 } from '@mui/icons-material';
@@ -118,13 +135,38 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
 }));
 
 const menuItems = [
-  { icon: <DashboardIcon />, text: 'Dashboard', path: '/dashboard' },
-  { icon: <Feed />, text: 'Feed', path: '/feed' },
+  { icon: <Home />, text: 'Home', path: '/' },
+  { icon: <Search />, text: 'Search', path: '/search' },
+  { icon: <PostAdd />, text: 'New Post', path: '/post' },
   { icon: <Book />, text: 'Courses', path: '/courses' },
+  { icon: <Feed />, text: 'Feed', path: '/feed' },
+  { icon: <CardMembership />, text: 'Certificates', path: '/certificate' },
+  { icon: <Chat />, text: 'Chat', path: '/chat' },
+  { icon: <History />, text: 'Chat History', path: '/historyChat' },
+  { icon: <MilitaryTech />, text: 'Badges', path: '/badges' },
+  { icon: <EmojiEvents />, text: 'Challenges', path: '/challenges' },
   { icon: <Article />, text: 'Blog', path: '/blog' },
-  { icon: <VideoLibrary />, text: 'Videos', path: '/resources' },
+  { icon: <Source />, text: 'Resources', path: '/resources' },
   { icon: <Settings />, text: 'Settings', path: '/dashboard/settings' },
- 
+];
+
+// Links the legacy navbars exposed to Teacher/University/Admin roles.
+const staffMenuItems = [
+  { icon: <PostAdd />, text: 'Add Course', path: '/course' },
+  { icon: <MilitaryTech />, text: 'Add Badge', path: '/addBadge' },
+  { icon: <CardMembership />, text: 'Add Certificate', path: '/validCertificate' },
+  { icon: <SportsEsports />, text: 'Add Game Challenge', path: '/addGame' },
+];
+
+// Logged-out visitors get the marketing pages instead of the app links.
+const publicMenuItems = [
+  { icon: <Source />, text: 'Resources', path: '/resources' },
+  { icon: <Sell />, text: 'Pricing', path: '/pricing' },
+  { icon: <Groups />, text: 'Community', path: '/community' },
+  { icon: <EmojiEvents />, text: 'Milestones', path: '/milestones' },
+  { icon: <Article />, text: 'Blog', path: '/blog' },
+  { icon: <Info />, text: 'About', path: '/about' },
+  { icon: <MenuBook />, text: 'Glossary', path: '/glossary' },
 ];
 
 class ModernNavbar extends Component {
@@ -134,7 +176,18 @@ class ModernNavbar extends Component {
       anchorEl: null,
       mobileMenuOpen: false,
       notificationCount: 0,
+      userRole: null,
     };
+  }
+
+  componentDidMount() {
+    // Role isn't on the redux user — same lookup the legacy navbars used.
+    const email = this.props.auth && this.props.auth.user && this.props.auth.user.email;
+    if (!email) return;
+    fetch(`https://edunode.herokuapp.com/api/users/user?email=${email}`)
+      .then((res) => res.json())
+      .then((user) => this.setState({ userRole: user && user.role }))
+      .catch(() => {});
   }
 
   static propTypes = {
@@ -184,10 +237,19 @@ class ModernNavbar extends Component {
   };
 
   render() {
-    const { anchorEl, mobileMenuOpen, notificationCount } = this.state;
+    const { anchorEl, mobileMenuOpen, notificationCount, userRole } = this.state;
     const { auth } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const user = auth.user;
+    const { isAuthenticated } = auth;
+    const isStaff = ['Teacher', 'University', 'Admin'].includes(userRole);
+    const items = isAuthenticated
+      ? [...menuItems, ...(isStaff ? staffMenuItems : [])]
+      : publicMenuItems;
+    // Logged-in users also get the public/marketing links in the drawer,
+    // matching the legacy navbar which always showed them.
+    const drawerItems = isAuthenticated ? [...items, ...publicMenuItems] : items;
+    const homePath = isAuthenticated ? '/dashboard' : '/';
 
     return (
       <>
@@ -198,7 +260,7 @@ class ModernNavbar extends Component {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <LogoContainer onClick={() => this.handleNavigation('/dashboard')}>
+              <LogoContainer onClick={() => this.handleNavigation(homePath)}>
                 <LogoText variant="h6" component="div">
                   EduNode
                 </LogoText>
@@ -206,9 +268,9 @@ class ModernNavbar extends Component {
             </motion.div>
 
             <NavActions>
-              {/* Desktop Navigation */}
-              <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
-                {menuItems.slice(0, 4).map((item, index) => (
+              {/* Desktop Navigation — all links; below lg the drawer covers it */}
+              <Box sx={{ display: { xs: 'none', lg: 'flex' }, gap: 1 }}>
+                {items.map((item, index) => (
                   <Tooltip key={item.text} title={item.text} arrow>
                     <StyledIconButton onClick={() => this.handleNavigation(item.path)}>
                       {item.icon}
@@ -217,37 +279,58 @@ class ModernNavbar extends Component {
                 ))}
               </Box>
 
-              {/* Notifications */}
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <Tooltip title="Notifications" arrow>
-                  <StyledBadge badgeContent={notificationCount} color="error">
-                    <StyledIconButton>
-                      <Notifications />
-                    </StyledIconButton>
-                  </StyledBadge>
-                </Tooltip>
-              </motion.div>
+              {isAuthenticated ? (
+                <>
+                  {/* Notifications */}
+                  <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                    <Tooltip title="Notifications" arrow>
+                      <StyledBadge badgeContent={notificationCount} color="error">
+                        <StyledIconButton onClick={() => this.handleNavigation('/notification')}>
+                          <Notifications />
+                        </StyledIconButton>
+                      </StyledBadge>
+                    </Tooltip>
+                  </motion.div>
 
-              {/* User Profile */}
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <Tooltip title="Profile" arrow>
-                  <StyledIconButton
-                    onClick={this.handleProfileMenuOpen}
-                    size="small"
+                  {/* User Profile */}
+                  <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                    <Tooltip title="Profile" arrow>
+                      <StyledIconButton
+                        onClick={this.handleProfileMenuOpen}
+                        size="small"
+                      >
+                        {user && (user.avatar || user.googleProfilePic) ? (
+                          <UserAvatar src={user.avatar || user.googleProfilePic} alt={user.email} />
+                        ) : (
+                          <UserAvatar>
+                            {user && user.email ? user.email.charAt(0).toUpperCase() : 'U'}
+                          </UserAvatar>
+                        )}
+                      </StyledIconButton>
+                    </Tooltip>
+                  </motion.div>
+                </>
+              ) : (
+                <>
+                  <Button
+                    variant="outlined"
+                    href="/login"
+                    sx={{ color: '#b8c5d6', borderColor: 'rgba(123, 47, 247, 0.6)' }}
                   >
-                    {user && user.avatar ? (
-                      <UserAvatar src={user.avatar} alt={user.email} />
-                    ) : (
-                      <UserAvatar>
-                        {user && user.email ? user.email.charAt(0).toUpperCase() : 'U'}
-                      </UserAvatar>
-                    )}
-                  </StyledIconButton>
-                </Tooltip>
-              </motion.div>
+                    Log In
+                  </Button>
+                  <Button
+                    variant="contained"
+                    href="/register"
+                    sx={{ background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)', color: 'white' }}
+                  >
+                    Sign Up
+                  </Button>
+                </>
+              )}
 
-              {/* Mobile Menu */}
-              <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+              {/* Menu — full link list in the drawer */}
+              <Box sx={{ display: { xs: 'flex', lg: 'none' } }}>
                 <StyledIconButton onClick={this.handleMobileMenuToggle}>
                   <MenuIcon />
                 </StyledIconButton>
@@ -277,6 +360,56 @@ class ModernNavbar extends Component {
             </ListItemIcon>
             <ListItemText primary="Profile" sx={{ color: '#b8c5d6' }} />
           </MenuItem>
+          <MenuItem onClick={() => this.handleNavigation('/account')}>
+            <ListItemIcon>
+              <Settings sx={{ color: '#b8c5d6' }} />
+            </ListItemIcon>
+            <ListItemText primary="Profile Setting" sx={{ color: '#b8c5d6' }} />
+          </MenuItem>
+          {(userRole === 'University' || userRole === 'Admin') && (
+            <MenuItem onClick={() => this.handleNavigation('/AdminDashboard')}>
+              <ListItemIcon>
+                <DashboardIcon sx={{ color: '#b8c5d6' }} />
+              </ListItemIcon>
+              <ListItemText primary="University Dashboard" sx={{ color: '#b8c5d6' }} />
+            </MenuItem>
+          )}
+          {userRole === 'Admin' && (
+            <MenuItem onClick={() => this.handleNavigation('/Admin')}>
+              <ListItemIcon>
+                <DashboardIcon sx={{ color: '#b8c5d6' }} />
+              </ListItemIcon>
+              <ListItemText primary="Admin Dashboard" sx={{ color: '#b8c5d6' }} />
+            </MenuItem>
+          )}
+          {userRole && !isStaff && (
+            <MenuItem onClick={() => this.handleNavigation('/tutor')}>
+              <ListItemIcon>
+                <HowToReg sx={{ color: '#b8c5d6' }} />
+              </ListItemIcon>
+              <ListItemText primary="Role Request" sx={{ color: '#b8c5d6' }} />
+            </MenuItem>
+          )}
+          <MenuItem onClick={() => this.handleNavigation('/messages')}>
+            <ListItemIcon>
+              <Mail sx={{ color: '#b8c5d6' }} />
+            </ListItemIcon>
+            <ListItemText primary="Messages" sx={{ color: '#b8c5d6' }} />
+          </MenuItem>
+          <MenuItem onClick={() => this.handleNavigation('/notification')}>
+            <ListItemIcon>
+              <Notifications sx={{ color: '#b8c5d6' }} />
+            </ListItemIcon>
+            <ListItemText primary="Notifications" sx={{ color: '#b8c5d6' }} />
+          </MenuItem>
+          <MenuItem onClick={() => {
+            window.location.href = 'mailto:hi@ogtechnologies.co?subject=Reports';
+          }}>
+            <ListItemIcon>
+              <Flag sx={{ color: '#b8c5d6' }} />
+            </ListItemIcon>
+            <ListItemText primary="Report" sx={{ color: '#b8c5d6' }} />
+          </MenuItem>
           <MenuItem onClick={() => this.handleNavigation('/dashboard/settings')}>
             <ListItemIcon>
               <Settings sx={{ color: '#b8c5d6' }} />
@@ -299,14 +432,14 @@ class ModernNavbar extends Component {
           onClose={this.handleMobileMenuClose}
         >
           <Box sx={{ width: 250, pt: 2 }}>
-            <LogoContainer sx={{ mb: 4, pl: 2 }} onClick={() => this.handleNavigation('/dashboard')}>
+            <LogoContainer sx={{ mb: 4, pl: 2 }} onClick={() => this.handleNavigation(homePath)}>
               <LogoText variant="h6" component="div">
                 EduNode
               </LogoText>
             </LogoContainer>
-            
+
             <List>
-              {menuItems.map((item, index) => (
+              {drawerItems.map((item, index) => (
                 <motion.div
                   key={item.text}
                   initial={{ opacity: 0, x: -50 }}

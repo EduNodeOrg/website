@@ -186,7 +186,7 @@ const featuredPosts = [
       'Learn about Docker, what are the most popular applications, and how you can apply it in Blockchain .',
     image: docker,
     imageText: 'Learn about Docker and how to apply it in Blockchain',
-    link: '/blog/Docker',
+    link: '/blog/docker',
     tags:['Doker']
   },
   {
@@ -268,6 +268,46 @@ const featuredPosts = [
     imageText: 'Freighter Wallet',
     link: '/blog/freighter-wallet',
     tags:['Freighter', 'Wallet', 'Stellar']
+  },
+  {
+    title: 'What Is DeFi? A Beginner\'s Guide',
+    date: '27/09/2026',
+    description:
+      'Decentralized finance explained: DEXs, AMMs, lending, stablecoins, yield — and how DeFi works on Stellar and Soroban.',
+    image: gradThumb('#0a7d5c', '#00c389', 'DEFI'),
+    imageText: 'What is DeFi',
+    link: '/blog/what-is-defi',
+    tags:['DeFi', 'Beginner']
+  },
+  {
+    title: 'Crypto Wallet Security: Seed Phrases & Passkeys',
+    date: '27/09/2026',
+    description:
+      'How not to lose your funds: seed phrase hygiene, passkeys, multi-sig, and the phishing attacks that drain wallets.',
+    image: gradThumb('#7a0c0c', '#e63946', 'SECURITY'),
+    imageText: 'Crypto Wallet Security',
+    link: '/blog/crypto-wallet-security',
+    tags:['Security', 'Wallet']
+  },
+  {
+    title: 'AI and Blockchain: Where They Meet',
+    date: '27/09/2026',
+    description:
+      'AI agents with wallets, content provenance, verifiable AI with ZK proofs — and the skills to build at the intersection.',
+    image: gradThumb('#6B48FF', '#a06bff', 'AI × WEB3'),
+    imageText: 'AI and Blockchain',
+    link: '/blog/ai-and-blockchain',
+    tags:['AI', 'Web3', 'Trends']
+  },
+  {
+    title: "A Go Developer's Guide to Stellar",
+    date: '27/09/2026',
+    description:
+      'Payments, smart contracts, and a terminal: send XLM with go-stellar-sdk, script ops with stellar-go-cli, and invoke Soroban contracts from Go.',
+    image: gradThumb('#0b3d5c', '#00add8', 'GO + XLM'),
+    imageText: 'Stellar Go SDK',
+    link: '/blog/stellar-go-sdk',
+    tags:['Go', 'Stellar', 'SDK']
   },
 ];
 

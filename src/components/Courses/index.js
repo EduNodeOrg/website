@@ -51,7 +51,7 @@ const CoursesContainer = styled(Box)(({ theme }) => ({
 const ContentContainer = styled(Container)(({ theme }) => ({
   position: 'relative',
   zIndex: 1,
-  paddingTop: theme.spacing(10),
+  paddingTop: 0,
   paddingBottom: theme.spacing(4),
 }));
 
@@ -247,6 +247,8 @@ const Courses = ({ auth, error: authError }) => {
         ))}
 
         <ContentContainer maxWidth="xl">
+          {showNavbar && <NavbarSelector userRole={user.role} />}
+
           {/* Welcome Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -274,8 +276,6 @@ const Courses = ({ auth, error: authError }) => {
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                {showNavbar && <NavbarSelector userRole={user.role} />}
-                
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}

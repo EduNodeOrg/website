@@ -12,7 +12,8 @@ import Navbar from '../../Dashboard/Navbar1';
 import { connect } from 'react-redux';
 import { clearErrors } from '../../../actions/errorActions';
 import { reduxForm } from 'redux-form';
-import Editor from '@monaco-editor/react';
+import CodeMirror from '@uiw/react-codemirror';
+import { rust } from '@codemirror/lang-rust';
 import "./styles.css"
 import space from './images/space.png'
 import { useNavigate } from 'react-router-dom';
@@ -474,13 +475,12 @@ function VerticalLinearStepper(props) {
       </Dialog>
     </div>
         <div className="right-panel">
-          <Editor
+          <CodeMirror
             height="60vh"
-            defaultLanguage="rust"
-            stepIndex={props.activeStep}
+            extensions={[rust()]}
             value={editorValues[activeStep]}
             onChange={(value) => handleEditorChange(value, activeStep)}
-            theme="vs-dark"
+            theme="dark"
           />
           <Button variant="contained" onClick={handleOpenDialog}>
             Show Answer

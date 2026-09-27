@@ -91,6 +91,10 @@
   <url><loc>https://edunode.org/blog/rwa-tokenization</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://edunode.org/blog/smart-contract-security-vulnerabilities</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://edunode.org/blog/freighter-wallet</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/what-is-defi</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/crypto-wallet-security</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/ai-and-blockchain</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/blog/stellar-go-sdk</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
 
   <!-- Tools & interactive -->
   <url><loc>https://edunode.org/codeeditor</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -107,7 +111,6 @@
   <url><loc>https://edunode.org/about-certificates</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://edunode.org/challenges</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://edunode.org/challenges/101</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://edunode.org/challengeGame</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://edunode.org/challengeGame/leaderBoard</loc><changefreq>weekly</changefreq><priority>0.4</priority></url>
   <url><loc>https://edunode.org/hyperledger</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://edunode.org/hyperledger/courses</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>

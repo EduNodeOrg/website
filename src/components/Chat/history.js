@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { clearErrors } from "../../actions/errorActions";
 import { verifyCode } from "../../actions/authActions";
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 
 import { styled } from '@mui/material/styles';
 import { connect } from 'react-redux';
@@ -12,9 +10,31 @@ import TextField from '@mui/material/TextField'
 import PropTypes from 'prop-types'
 import "./style.css"
 import { Navigate } from "react-router-dom";
-import Alert from '@mui/material/Alert';
 import Typography from '@mui/material/Typography';
 import Navbar1 from '../Dashboard/Navbar1';
+
+const PageContainer = styled(Box)(() => ({
+    minHeight: '100vh',
+    background: 'linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)',
+}));
+
+const PageTitle = styled(Typography)(({ theme }) => ({
+    textAlign: 'center',
+    marginBottom: theme.spacing(3),
+    background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
+    fontWeight: 'bold',
+}));
+
+const MessageCard = styled(Box)(() => ({
+    background: 'rgba(26, 31, 58, 0.6)',
+    border: '1px solid rgba(123, 47, 247, 0.3)',
+    borderRadius: '12px',
+    padding: '12px 16px',
+    marginBottom: '12px',
+}));
 
 
 class History extends Component {
@@ -76,70 +96,37 @@ class History extends Component {
     }
 
     render() {
-        const Item = styled(Paper)(({ theme }) => ({
-            ...theme.typography.body2,
-            padding: theme.spacing(1),
-            textAlign: 'center',
-            color: theme.palette.text.secondary,
-        }));
-
         const {
-
             isAuthenticated,
-
         } = this.props.auth;
 
         if (isAuthenticated) {
             const { messages } = this.state;
-            const email = this.props.auth && this.props.auth.user && this.props.auth.user.email ? this.props.auth.user.email : "";
             return (
-
-                <>
-                    <div>
-                        <Box sx={{ flexGrow: 1 }}>
-                            <Grid container spacing={2}>
-                                {/* <Grid item xs={12} sm={4} md={2} >
-                                    <Item>
-
-                                        <Sidebar props={email} />
-
-                                    </Item>
-                                </Grid> */}
-
-                                <Grid item xs={12} sm={8.5} md={20}>
-                                    <Navbar1 />
-                                    
-                                    <div>
-                                        <div>
-                                            <div>
-                                                
-                                                <h4 style={{ fontSize: '2em' }}>Chat History</h4>
-                                                <br></br>
-                                                {messages.map((message, index) => (
-                                                    <div key={index}>
-
-                                                        <Alert severity="info"><Typography variant="h6">User:</Typography> {message.user}</Alert>
-
-                                                        <Alert severity="success">
-                                                            <Typography variant="h6">AI:</Typography> {message.ai}
-                                                        </Alert>
-                                                    </div>
-                                                ))}
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </Grid>
-
-                            </Grid>
-                         
-                        </Box>
-                    </div>
-                </>
-
+                <PageContainer>
+                    <Navbar1 />
+                    <Box sx={{ maxWidth: 800, mx: 'auto', px: 2, pt: 6, pb: 4 }}>
+                        <PageTitle variant="h4" component="h1">Chat History</PageTitle>
+                        {messages.length === 0 && (
+                            <Typography sx={{ color: '#b8c5d6', textAlign: 'center' }}>
+                                No chat history yet — ask the AI something on the Chat page.
+                            </Typography>
+                        )}
+                        {messages.map((message, index) => (
+                            <Box key={index} sx={{ mb: 2 }}>
+                                <MessageCard>
+                                    <Typography variant="subtitle2" sx={{ color: '#00d4ff' }}>You</Typography>
+                                    <Typography sx={{ color: '#e2e8f0' }}>{message.user}</Typography>
+                                </MessageCard>
+                                <MessageCard>
+                                    <Typography variant="subtitle2" sx={{ color: '#7b2ff7' }}>AI</Typography>
+                                    <Typography sx={{ color: '#e2e8f0' }}>{message.ai}</Typography>
+                                </MessageCard>
+                            </Box>
+                        ))}
+                    </Box>
+                </PageContainer>
             )
-
         }
 
 

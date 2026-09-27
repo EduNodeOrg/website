@@ -4,6 +4,27 @@
 
 const releases = [
   {
+    version: '0.3.4',
+    date: '2026-09-27',
+    title: "New article: A Go Developer's Guide to Stellar",
+    highlights: [
+      'New tutorial covering the official go-stellar-sdk (txnbuild + Horizon/RPC clients) and the community stellar-go-cli — payments, Soroban contract deploy/invoke, ISO 20022 reporting for Stellar Disbursement Platform flows, ingestion libraries, and MCP for AI assistants',
+      'Ships with canonical + Open Graph/Twitter meta and Article/FAQ structured data; added to the blog index, sitemap.xml, and llms.txt',
+    ],
+  },
+  {
+    version: '0.3.4',
+    date: '2026-09-27',
+    title: 'Three new articles, smarter glossary & playground fixes',
+    highlights: [
+      'New articles: What Is DeFi? (beginner guide), Crypto Wallet Security (seed phrases & passkeys), and AI and Blockchain',
+      'Code Playground now uses a bundled CodeMirror editor — no more CSP-blocked CDN loads; added dark/light theme, per-language code persistence, and Ctrl/Cmd+Enter to run',
+      'Glossary gains 10 new terms, DefinedTermSet structured data, deep-linkable anchors, and internal links to courses and articles',
+      'Milestones page redesigned as a visual timeline',
+      'All new pages added to the blog index, sitemap.xml, and llms.txt',
+    ],
+  },
+  {
     version: '0.3.2',
     date: '2026-09-25',
     title: 'Five new in-depth blog articles',

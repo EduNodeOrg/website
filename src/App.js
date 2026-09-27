@@ -138,13 +138,16 @@ const Stablecoin = lazy(() => import("./components/Blog/Articles/Stablecoin"));
 const RWA = lazy(() => import("./components/Blog/Articles/RWA"));
 const ContractSecurity = lazy(() => import("./components/Blog/Articles/ContractSecurity"));
 const Freighter = lazy(() => import("./components/Blog/Articles/Freighter"));
+const Defi = lazy(() => import("./components/Blog/Articles/Defi"));
+const WalletSecurity = lazy(() => import("./components/Blog/Articles/WalletSecurity"));
+const AiBlockchain = lazy(() => import("./components/Blog/Articles/AiBlockchain"));
+const GoStellarSdk = lazy(() => import("./components/Blog/Articles/GoStellarSdk"));
 const ChainChess = lazy(() => import("./components/Chess/"));
 const Feed = lazy(() => import("./components/Feed"));
 const Gcallback = lazy(() => import("./components/Gcallback"));
 const Hyperledger = lazy(() => import("./components/Hyperledger"));
 const HyperledgerCourses = lazy(() => import("./components/Hyperledger/Courses"));
 const Challenge = lazy(() => import("./components/Challenges/Challenge"));
-const ChallengeGame = lazy(() => import("./components/Challenges/gameChallenge"));
 const ChallengeGameQ = lazy(() => import("./components/Challenges/gameChallenge/Intro"));
 const ChallengeGame2Q = lazy(() => import("./components/Challenges/gameChallenge/Chalenge2intro"));
 const LeaderBoard = lazy(() => import("./components/Challenges/gameChallenge/leaderBoard"));
@@ -405,7 +408,7 @@ function App(props) {
         <Route exact path="/hyperledger" element={<Hyperledger />} />
         <Route exact path="/hyperledger/courses" element={<HyperledgerCourses />} />
         <Route exact path="/challenges" element={<Challenge />} />
-        <Route exact path="/challengeGame" element={<ChallengeGame />} />
+        <Route exact path="/challengeGame" element={<Navigate to="/challenges" replace />} />
         <Route exact path="/challengeGame/leaderBoard" element={<LeaderBoard/>} />
         <Route exact path="/codeeditor" element={<CodeEditor />} />
         <Route exact path="/contactus" element={<ContactUs />} />
@@ -425,6 +428,10 @@ function App(props) {
         <Route exact path="/blog/rwa-tokenization" element={<RWA />} />
         <Route exact path="/blog/smart-contract-security-vulnerabilities" element={<ContractSecurity />} />
         <Route exact path="/blog/freighter-wallet" element={<Freighter />} />
+        <Route exact path="/blog/what-is-defi" element={<Defi />} />
+        <Route exact path="/blog/crypto-wallet-security" element={<WalletSecurity />} />
+        <Route exact path="/blog/ai-and-blockchain" element={<AiBlockchain />} />
+        <Route exact path="/blog/stellar-go-sdk" element={<GoStellarSdk />} />
         <Route exact path="/dashboard/settings" element={<Navigate to="/account" replace />} />
         <Route exact path="/profile" element={<ModernMyProfile />} />
         <Route exact path="/post" element={<Post />} />
