@@ -223,7 +223,10 @@ for (const { route, file } of routes) {
     console.error(`✗ ${route} (${file}): missing ${missing.join(', ')} — skipped`);
     continue;
   }
-  const out = path.join(BUILD, route, 'index.html');
+  // Flat .html files: Netlify "Pretty URLs" serves blog/ipfs.html at
+  // /blog/ipfs with no redirect — a blog/ipfs/index.html directory would
+  // 301 to a trailing slash and diverge from our canonicals.
+  const out = path.join(BUILD, route + '.html');
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, buildPage(route, meta));
   written++;
