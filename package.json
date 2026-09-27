@@ -104,7 +104,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && cp public/_headers build/_headers",
+    "build": "react-scripts build && cp public/_headers build/_headers && node scripts/generate-blog-html.js",
     "test": "react-scripts test",
     "postinstall": "patch-package",
     "eject": "react-scripts eject",

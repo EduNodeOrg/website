@@ -56,7 +56,7 @@ This project prioritizes search and LLM discoverability. When adding or removing
 2. **`public/llms.txt`** — llmstxt.org-formatted index for LLM crawlers. Keep link titles/descriptions in sync with actual page content.
 3. **`src/data/releases.js`** — release notes data for `/releases`. Add an entry at the top of the array when shipping notable changes; keep `version` aligned with `package.json`.
 3. **`public/robots.txt`** — declares `Sitemap: https://edunode.org/sitemap.xml`. Update if crawl rules change.
-4. **Meta tags** — new pages should set `<title>`, `description`, Open Graph, and Twitter Card tags using the existing react-meta-tags/react-helmet pattern (see `src/components/Blog/Articles/AMM/AMM.js` for an example).
+4. **Meta tags** — new pages should set `<title>`, `description`, Open Graph, and Twitter Card tags using the existing react-meta-tags/react-helmet pattern (see `src/components/Blog/Articles/AMM/AMM.js` for an example). Blog routes get static per-route HTML baked at build time by `scripts/generate-blog-html.js` (runs inside `npm run build`) — it auto-discovers `/blog*` routes from `App.js` and reads meta from each component's `<Helmet>` block, so keep meta in Helmet and add the route as `lazy`+`exact` to be picked up.
 5. **Canonical domain** is `https://edunode.org` — always use absolute canonical URLs.
 
 Files in `public/` are copied verbatim into `build/` — no import needed.
