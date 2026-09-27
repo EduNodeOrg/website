@@ -289,6 +289,7 @@ export default class Roadmap extends Component {
         url: 'https://edunode.org',
       },
       datePublished: '2026-09-25',
+      image: 'https://edunode.org/og/blockchain-developer-roadmap.png',
       mainEntityOfPage: shareUrl,
     };
 
@@ -319,7 +320,9 @@ export default class Roadmap extends Component {
             content="Step-by-step blockchain developer roadmap for 2026: programming fundamentals, smart contracts, dApps, security, and your first Web3 job."
           />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content="https://edunode.org/og/blockchain-developer-roadmap.png" />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content="https://edunode.org/og/blockchain-developer-roadmap.png" />
           <meta name="twitter:title" content={title} />
           <meta
             name="twitter:description"

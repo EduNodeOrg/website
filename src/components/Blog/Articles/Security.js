@@ -46,11 +46,13 @@ export default class Security extends Component {
     const title = 'How to keep your lumens safe | Tips and security tools';
     const description =
       'Best practices and security tools to keep your Stellar lumens (XLM) safe: choosing the right wallet, protecting your keys, and avoiding scams.';
+    const image = 'https://edunode.org' + security;
     const articleLd = {
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: title,
       description,
+      image,
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       mainEntityOfPage: shareUrl,
@@ -69,7 +71,9 @@ export default class Security extends Component {
           <meta property="og:title" content={title} />
           <meta property="og:description" content={description} />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content={image} />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content={image} />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={description} />
           <script type="application/ld+json">{JSON.stringify(articleLd)}</script>

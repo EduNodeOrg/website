@@ -262,6 +262,7 @@ export default class AiBlockchain extends Component {
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       datePublished: '2026-09-27',
+      image: 'https://edunode.org/og/ai-and-blockchain.png',
       mainEntityOfPage: shareUrl,
     };
 
@@ -292,7 +293,9 @@ export default class AiBlockchain extends Component {
             content="Where AI and blockchain actually intersect — agent payments, provenance, verifiable AI, and the skills to build it."
           />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content="https://edunode.org/og/ai-and-blockchain.png" />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content="https://edunode.org/og/ai-and-blockchain.png" />
           <meta name="twitter:title" content={title} />
           <meta
             name="twitter:description"

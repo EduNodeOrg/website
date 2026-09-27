@@ -358,6 +358,11 @@ export default function Blog() {
         <meta property="og:title" content="EduNode Blog" />
         <meta property="og:description" content="Articles and tutorials on blockchain, Stellar, Soroban, DeFi, and Web3 development." />
         <meta property="og:url" content="https://edunode.org/blog" />
+        <meta property="og:image" content="https://edunode.org/en.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="EduNode Blog — Blockchain, Stellar & Web3 Articles" />
+        <meta name="twitter:description" content="Articles and tutorials on blockchain, Stellar, Soroban, DeFi, and Web3 development from the EduNode team." />
+        <meta name="twitter:image" content="https://edunode.org/en.png" />
       </Helmet>
       <NavBar />
       <PageContainer>

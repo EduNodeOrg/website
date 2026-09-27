@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavBar from '../../NavBar';
 import profilePicImg from '../mepic.png';
 import kbt from './keybaseicon.png';
+import kbimg from '../keybase_icon_132271.png';
 import {
   FacebookShareCount,
   FacebookShareButton,
@@ -43,11 +44,13 @@ export default class Keybase extends Component {
     const title = 'What is Keybase and how to use it with Stellar?';
     const description =
       'Keybase is a key directory that maps social media identities to encryption keys. Learn how to verify your identity and link it to your Stellar account.';
+    const image = 'https://edunode.org' + kbimg;
     const articleLd = {
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: title,
       description,
+      image,
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       mainEntityOfPage: shareUrl,
@@ -66,7 +69,9 @@ export default class Keybase extends Component {
           <meta property="og:title" content={title} />
           <meta property="og:description" content={description} />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content={image} />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content={image} />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={description} />
           <script type="application/ld+json">{JSON.stringify(articleLd)}</script>

@@ -44,11 +44,13 @@ export default class Stellarnomics extends Component {
     const title = 'Stellarnomics: Understanding the Stellar Network Economics';
     const description =
       'Understand the economics of the Stellar network: the role of XLM, the fee structure, and how Stellar enables fast, low-cost global payments.';
+    const image = 'https://edunode.org' + economics;
     const articleLd = {
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: title,
       description,
+      image,
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       mainEntityOfPage: shareUrl,
@@ -67,7 +69,9 @@ export default class Stellarnomics extends Component {
           <meta property="og:title" content={title} />
           <meta property="og:description" content={description} />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content={image} />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content={image} />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={description} />
           <script type="application/ld+json">{JSON.stringify(articleLd)}</script>

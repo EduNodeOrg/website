@@ -170,11 +170,13 @@ export default class ZKP extends Component {
     const title = 'Zero-Knowledge Proofs on the Stellar Network: The Future of Privacy';
     const description =
       'Explore Zero-Knowledge Proofs on Stellar for enhanced privacy, scalability, and interoperability in financial applications.';
+    const image = 'https://edunode.org' + zkpimg;
     const articleLd = {
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: title,
       description,
+      image,
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       datePublished: '2026-05-27',
@@ -216,7 +218,9 @@ export default class ZKP extends Component {
           <meta property="og:title" content={title} />
           <meta property="og:description" content={description} />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content={image} />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content={image} />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={description} />
           <script type="application/ld+json">{JSON.stringify(articleLd)}</script>

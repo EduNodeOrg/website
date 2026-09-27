@@ -43,11 +43,13 @@ export default class Kelp extends Component {
     const title = 'Kelp: Setup your first trading bot on the Stellar Network';
     const description =
       'Set up your first trading bot on the Stellar DEX with Kelp, the free and open-source trading bot from the Stellar Development Foundation.';
+    const image = 'https://edunode.org' + kelp;
     const articleLd = {
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: title,
       description,
+      image,
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       mainEntityOfPage: shareUrl,
@@ -66,7 +68,9 @@ export default class Kelp extends Component {
           <meta property="og:title" content={title} />
           <meta property="og:description" content={description} />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content={image} />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content={image} />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={description} />
           <script type="application/ld+json">{JSON.stringify(articleLd)}</script>

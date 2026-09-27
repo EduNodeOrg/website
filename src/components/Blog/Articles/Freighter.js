@@ -266,6 +266,7 @@ export default class Freighter extends Component {
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       datePublished: '2026-09-25',
+      image: 'https://edunode.org/og/freighter-wallet.png',
       mainEntityOfPage: shareUrl,
     };
 
@@ -296,7 +297,9 @@ export default class Freighter extends Component {
             content="Set up Freighter — Stellar's most popular wallet — and learn trustlines, sending payments, and connecting to Soroban dApps."
           />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content="https://edunode.org/og/freighter-wallet.png" />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content="https://edunode.org/og/freighter-wallet.png" />
           <meta name="twitter:title" content={title} />
           <meta
             name="twitter:description"

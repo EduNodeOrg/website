@@ -281,6 +281,7 @@ export default class RWA extends Component {
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       datePublished: '2026-09-25',
+      image: 'https://edunode.org/og/rwa-tokenization.png',
       mainEntityOfPage: shareUrl,
     };
 
@@ -311,7 +312,9 @@ export default class RWA extends Component {
             content="How real-world assets become blockchain tokens — treasuries, real estate, gold — and why Stellar leads institutional tokenization."
           />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content="https://edunode.org/og/rwa-tokenization.png" />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content="https://edunode.org/og/rwa-tokenization.png" />
           <meta name="twitter:title" content={title} />
           <meta
             name="twitter:description"

@@ -9,7 +9,9 @@ const releases = [
     title: 'Full SEO metadata across all blog articles',
     highlights: [
       'Every blog article now ships with description, Open Graph, and Twitter Card meta tags plus Article JSON-LD structured data — previously 17 older posts had title-only or partial metadata',
+      'Each article now declares a unique og:image/twitter:image — real hero photos for older posts and generated branded 1200x630 cards (icon + title) for the newer ones — so social links render rich previews',
       'Fixed incorrect canonical/share URLs on a few posts (netlify.com domain, case mismatches) and a wrong meta description on /blog/soroban',
+      'Bumped the build to Node 22 — required for the Netlify Prerender extension, which serves fully-rendered HTML to crawlers and social preview bots',
     ],
   },
   {

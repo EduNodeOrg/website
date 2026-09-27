@@ -46,11 +46,13 @@ export default class NFT extends Component {
     const title = 'What are NFTs and how to mint them using the Stellar Network?';
     const description =
       'What are NFTs? Learn what non-fungible tokens are and how to mint your own NFT on the Stellar Network step by step.';
+    const image = 'https://edunode.org' + snft;
     const articleLd = {
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: title,
       description,
+      image,
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       mainEntityOfPage: shareUrl,
@@ -69,7 +71,9 @@ export default class NFT extends Component {
           <meta property="og:title" content={title} />
           <meta property="og:description" content={description} />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content={image} />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content={image} />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={description} />
           <script type="application/ld+json">{JSON.stringify(articleLd)}</script>

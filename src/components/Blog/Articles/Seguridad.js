@@ -47,11 +47,13 @@ export default class Kelp extends Component {
       '¿Cómo mantener sus lúmenes seguros? | Consejos y herramientas de seguridad';
     const description =
       'Consejos y herramientas de seguridad para mantener sus lúmenes (XLM) seguros: cómo elegir wallets, proteger sus claves y evitar estafas en Stellar.';
+    const image = 'https://edunode.org' + security;
     const articleLd = {
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: title,
       description,
+      image,
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       mainEntityOfPage: shareUrl,
@@ -69,7 +71,9 @@ export default class Kelp extends Component {
           <meta property="og:title" content={title} />
           <meta property="og:description" content={description} />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content={image} />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content={image} />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={description} />
           <script type="application/ld+json">{JSON.stringify(articleLd)}</script>

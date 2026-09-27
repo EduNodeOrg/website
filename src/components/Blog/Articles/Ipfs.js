@@ -51,11 +51,13 @@ export default class Ipfs extends Component {
     const title = 'What is IPFS and how you can use it?';
     const description =
       'What is IPFS and how can you use it? Learn how the InterPlanetary File System provides decentralized, peer-to-peer storage for Web3 applications.';
+    const image = 'https://edunode.org' + sc;
     const articleLd = {
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: title,
       description,
+      image,
       author: { '@type': 'Organization', name: 'EduNode Team', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       mainEntityOfPage: shareUrl,
@@ -74,7 +76,9 @@ export default class Ipfs extends Component {
           <meta property="og:title" content={title} />
           <meta property="og:description" content={description} />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content={image} />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content={image} />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={description} />
           <script type="application/ld+json">{JSON.stringify(articleLd)}</script>

@@ -429,6 +429,7 @@ export default class GoStellarSdk extends Component {
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       datePublished: '2026-09-27',
+      image: 'https://edunode.org/og/build-stellar-apps-with-go.png',
       mainEntityOfPage: shareUrl,
     };
 
@@ -459,7 +460,9 @@ export default class GoStellarSdk extends Component {
             content="Build, sign, and submit Stellar payments in Go with the official SDK — then do it in one line from the terminal with stellar-go-cli, plus Soroban contract calls."
           />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content="https://edunode.org/og/build-stellar-apps-with-go.png" />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content="https://edunode.org/og/build-stellar-apps-with-go.png" />
           <meta name="twitter:title" content={title} />
           <meta
             name="twitter:description"

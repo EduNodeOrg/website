@@ -285,6 +285,7 @@ export default class WalletSecurity extends Component {
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       datePublished: '2026-09-27',
+      image: 'https://edunode.org/og/crypto-wallet-security.png',
       mainEntityOfPage: shareUrl,
     };
 
@@ -315,7 +316,9 @@ export default class WalletSecurity extends Component {
             content="Your keys, your coins — seed phrases, passkeys, multi-sig, and the attacks to watch for."
           />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content="https://edunode.org/og/crypto-wallet-security.png" />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content="https://edunode.org/og/crypto-wallet-security.png" />
           <meta name="twitter:title" content={title} />
           <meta
             name="twitter:description"

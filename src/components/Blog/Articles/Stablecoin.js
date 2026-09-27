@@ -273,6 +273,7 @@ export default class Stablecoin extends Component {
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       datePublished: '2026-09-25',
+      image: 'https://edunode.org/og/what-is-a-stablecoin.png',
       mainEntityOfPage: shareUrl,
     };
 
@@ -303,7 +304,9 @@ export default class Stablecoin extends Component {
             content="How stablecoins work, the different types, and why USDC on Stellar powers global payments and remittances."
           />
           <meta property="og:url" content={shareUrl} />
+          <meta property="og:image" content="https://edunode.org/og/what-is-a-stablecoin.png" />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content="https://edunode.org/og/what-is-a-stablecoin.png" />
           <meta name="twitter:title" content={title} />
           <meta
             name="twitter:description"
