@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Provider, connect } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -209,6 +209,16 @@ const Soroban = lazy(() => import('./components/Blog/Articles/Soroban'));
 const Page404 = lazy(() => import('./admin/src/pages/Page404'));
 const CheckoutSuccess = lazy(() => import('./components/Membership/CheckoutSuccess'));
 const EmailUnsubscribe = lazy(() => import('./components/EmailUnsubscribe'));
+
+// Mounted inside the Suspense boundary, so it fires only after the lazy
+// route chunk has resolved and rendered — the signal Netlify Prerender
+// waits for before snapshotting the page.
+const PrerenderReady = () => {
+  useEffect(() => {
+    window.prerenderReady = true;
+  }, []);
+  return null;
+};
 
 const ThemedRoutes = () => (
   <ThemeProvider>
@@ -476,6 +486,7 @@ function App(props) {
         <Route exact path="/unsubscribe" element={<EmailUnsubscribe />} />
         <Route path="/*" element={<ThemedRoutes />} />
       </Routes>
+      <PrerenderReady />
       </Suspense>
       </CookieConsentProvider>
     </Provider>
