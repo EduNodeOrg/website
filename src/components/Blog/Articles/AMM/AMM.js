@@ -41,6 +41,17 @@ export default class AMM extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/automated-market-maker';
     const title = 'DeFi Explained: What is an Automated Market Maker?';
+    const description =
+      'What are AMMs? Why are they useful? And how they are being used in decentralized finance.';
+    const articleLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      description,
+      author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
+      publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
+      mainEntityOfPage: shareUrl,
+    };
     const profilePic = profilePicImg;
     const ammy = "https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/2JYSUKBZKJDLPAOVBQT2EH2IHI.png";
     const off = "https://media0.giphy.com/media/SEWEmCymjv8XDbsb8I/giphy.gif";
@@ -52,7 +63,15 @@ export default class AMM extends Component {
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
-          <meta name="description" content="What are AMMs? Why are they useful? And how they are being used in decentralized finance." />
+          <meta name="description" content={description} />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:url" content={shareUrl} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={title} />
+          <meta name="twitter:description" content={description} />
+          <script type="application/ld+json">{JSON.stringify(articleLd)}</script>
         </Helmet>
         <NavBar />
         <img src={amm} style={styles.hero} alt="Automated Market Maker" />

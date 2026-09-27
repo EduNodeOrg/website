@@ -168,6 +168,18 @@ export default class ZKP extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/zero-knowledge-proofs';
     const title = 'Zero-Knowledge Proofs on the Stellar Network: The Future of Privacy';
+    const description =
+      'Explore Zero-Knowledge Proofs on Stellar for enhanced privacy, scalability, and interoperability in financial applications.';
+    const articleLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      description,
+      author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
+      publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
+      datePublished: '2026-05-27',
+      mainEntityOfPage: shareUrl,
+    };
     const profilePic = profilePicImg;
 
     const useCases = [
@@ -199,10 +211,15 @@ export default class ZKP extends Component {
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
-          <meta
-            name="description"
-            content="Explore Zero-Knowledge Proofs on Stellar for enhanced privacy, scalability, and interoperability in financial applications."
-          />
+          <meta name="description" content={description} />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:url" content={shareUrl} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={title} />
+          <meta name="twitter:description" content={description} />
+          <script type="application/ld+json">{JSON.stringify(articleLd)}</script>
         </Helmet>
 
         <NavBar />

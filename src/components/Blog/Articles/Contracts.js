@@ -41,6 +41,17 @@ export default class Contracts extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/smart-contracts';
     const title = 'What are Smart Contracts and how you can build them on Stellar?';
+    const description =
+      'What are smart contracts? Learn how self-executing contracts work and how you can build them on Stellar with Soroban.';
+    const articleLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      description,
+      author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
+      publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
+      mainEntityOfPage: shareUrl,
+    };
     const profilePic = profilePicImg;
     
 
@@ -50,6 +61,15 @@ export default class Contracts extends Component {
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
+          <meta name="description" content={description} />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:url" content={shareUrl} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={title} />
+          <meta name="twitter:description" content={description} />
+          <script type="application/ld+json">{JSON.stringify(articleLd)}</script>
         </Helmet>
         <NavBar />
         <img src={sc} style={styles.hero} alt="Smart Contracts on Stellar" />

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Image, Card } from 'react-bootstrap';
+import { Helmet } from 'react-helmet-async';
 import NavBar from '../../NavBar';
 import security from '../cyber-security.png';
 import lobstr from '../lobstr.png';
@@ -41,13 +42,38 @@ import {
 export default class Kelp extends Component {
   render() {
     const shareUrl =
-      'https://edunode.netlify.com/blog/herramientas-de-seguridad';
+      'https://edunode.org/blog/herramientas-de-seguridad';
     const title =
       '¿Cómo mantener sus lúmenes seguros? | Consejos y herramientas de seguridad';
+    const description =
+      'Consejos y herramientas de seguridad para mantener sus lúmenes (XLM) seguros: cómo elegir wallets, proteger sus claves y evitar estafas en Stellar.';
+    const articleLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      description,
+      author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
+      publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
+      mainEntityOfPage: shareUrl,
+    };
     const exampleImage = security;
 
     return (
       <div>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{title}</title>
+          <link rel="canonical" href={shareUrl} />
+          <meta name="description" content={description} />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:url" content={shareUrl} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={title} />
+          <meta name="twitter:description" content={description} />
+          <script type="application/ld+json">{JSON.stringify(articleLd)}</script>
+        </Helmet>
         <NavBar />
 
         <Container>

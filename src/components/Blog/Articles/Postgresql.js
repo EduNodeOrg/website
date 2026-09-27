@@ -47,6 +47,17 @@ export default class Postgresql extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/postgresql';
     const title = 'What is PostgreSQL and how you can use it?';
+    const description =
+      'What is PostgreSQL and how can you use it? Learn why PostgreSQL is the ideal off-chain database layer for blockchain and Web3 applications.';
+    const articleLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      description,
+      author: { '@type': 'Organization', name: 'EduNode Team', url: 'https://edunode.org' },
+      publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
+      mainEntityOfPage: shareUrl,
+    };
     const profilePic = profilePicImg;
     
 
@@ -56,6 +67,15 @@ export default class Postgresql extends Component {
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
+          <meta name="description" content={description} />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:url" content={shareUrl} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={title} />
+          <meta name="twitter:description" content={description} />
+          <script type="application/ld+json">{JSON.stringify(articleLd)}</script>
         </Helmet>
         <NavBar />
         <img src={sc} style={styles.hero} alt="PostgreSQL for Blockchain" />

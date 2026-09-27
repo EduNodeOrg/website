@@ -6,6 +6,15 @@ const releases = [
   {
     version: '0.3.4',
     date: '2026-09-27',
+    title: 'Full SEO metadata across all blog articles',
+    highlights: [
+      'Every blog article now ships with description, Open Graph, and Twitter Card meta tags plus Article JSON-LD structured data — previously 17 older posts had title-only or partial metadata',
+      'Fixed incorrect canonical/share URLs on a few posts (netlify.com domain, case mismatches) and a wrong meta description on /blog/soroban',
+    ],
+  },
+  {
+    version: '0.3.4',
+    date: '2026-09-27',
     title: 'Community page additions & blog URL rename',
     highlights: [
       'Added the Stellar Ambassador Program, Stellarlight, and Stellar_IE to /community — Stellarlight moved over from /resources',

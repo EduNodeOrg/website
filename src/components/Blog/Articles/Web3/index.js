@@ -41,6 +41,17 @@ export default class Web3 extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/the-web3-revolution';
     const title = 'The Web3 Revolution And The New Creator Economy';
+    const description =
+      'Web3 is the next evolution of the internet — where users own their data and creators own their content. Explore the new creator economy.';
+    const articleLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      description,
+      author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
+      publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
+      mainEntityOfPage: shareUrl,
+    };
     const profilePic = profilePicImg;
 
     return (
@@ -49,6 +60,15 @@ export default class Web3 extends Component {
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
+          <meta name="description" content={description} />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:url" content={shareUrl} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={title} />
+          <meta name="twitter:description" content={description} />
+          <script type="application/ld+json">{JSON.stringify(articleLd)}</script>
         </Helmet>
         <NavBar />
         <img src={creator} style={styles.hero} alt="The Web3 Revolution And The New Creator Economy" />

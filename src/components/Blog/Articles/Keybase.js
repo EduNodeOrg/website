@@ -41,6 +41,17 @@ export default class Keybase extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/What-is-Keybase';
     const title = 'What is Keybase and how to use it with Stellar?';
+    const description =
+      'Keybase is a key directory that maps social media identities to encryption keys. Learn how to verify your identity and link it to your Stellar account.';
+    const articleLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      description,
+      author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
+      publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
+      mainEntityOfPage: shareUrl,
+    };
     const profilePic = profilePicImg;
     
 
@@ -50,6 +61,15 @@ export default class Keybase extends Component {
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
+          <meta name="description" content={description} />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:url" content={shareUrl} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={title} />
+          <meta name="twitter:description" content={description} />
+          <script type="application/ld+json">{JSON.stringify(articleLd)}</script>
         </Helmet>
         <NavBar />
         <img src={kbt} style={styles.hero} alt="Keybase for Stellar" />

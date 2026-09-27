@@ -41,6 +41,17 @@ export default class Docker extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/docker';
     const title = 'What is Docker and how you can use it?';
+    const description =
+      'What is Docker and how can you use it? Learn how containers package applications and dependencies for consistent deployment across any environment.';
+    const articleLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      description,
+      author: { '@type': 'Organization', name: 'EduNode Team', url: 'https://edunode.org' },
+      publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
+      mainEntityOfPage: shareUrl,
+    };
     const profilePic = profilePicImg;
     
 
@@ -50,6 +61,15 @@ export default class Docker extends Component {
           <meta charSet="utf-8" />
           <title>{title}</title>
           <link rel="canonical" href={shareUrl} />
+          <meta name="description" content={description} />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:url" content={shareUrl} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={title} />
+          <meta name="twitter:description" content={description} />
+          <script type="application/ld+json">{JSON.stringify(articleLd)}</script>
         </Helmet>
         <NavBar />
         <img src={sc} style={styles.hero} alt="Docker for Blockchain Development" />
