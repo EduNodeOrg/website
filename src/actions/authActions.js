@@ -29,8 +29,7 @@ export const loadUser = ({ email }) => (dispatch, getState) => {
   const body = JSON.stringify({ email });
   const config = {
     headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
+      "Content-Type": "application/json"
     }
   }
 
@@ -69,11 +68,7 @@ export const register = ({ email, password, confirmationCode,name }) => dispatch
   fetch('https://edunode.herokuapp.com/api/emailauth/', {
     method: 'POST',
     headers: {
-      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
-      'Content-Security-Policy': 'script-src',
-      // 'self' :'https://accounts.google.com',
-      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS'
     },
     body
   })
@@ -235,8 +230,7 @@ export const confirm = ({ email, confirmationCode }) => (dispatch) => {
 export const resend = (email) => {
   const config = {
     headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
+      "Content-Type": "application/json"
     }
   }
   const body = JSON.stringify({ email });
@@ -270,8 +264,7 @@ export const tokenConfig = getState => {
 
   const config = {
     headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
+      "Content-Type": "application/json"
     }
   };
 
@@ -330,8 +323,7 @@ export const saveUsername = ({ email, username }) => dispatch => {
   dispatch({ type: USER_LOADING });
   const config = {
     headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
+      "Content-Type": "application/json"
     }
   }
 
@@ -439,8 +431,7 @@ export const verifyTwitterUser = ({ email, lastName, fistName, googleId, googleP
 
   const config = {
     headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
+      "Content-Type": "application/json"
     }
   }
 
@@ -694,8 +685,7 @@ export const freighterSign = (pkey) => dispatch => {
 
   const config = {
     headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
+      "Content-Type": "application/json"
     }
   }
 

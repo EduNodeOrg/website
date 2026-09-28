@@ -142,10 +142,11 @@ class Preferences extends Component {
 
       const response = await axios.get(`https://edunode.herokuapp.com/api/users/user?email=${email}`);
       const user = response.data;
+      const role = ROLES.includes(user.role) ? user.role : user.role === 'Student' ? 'Learner' : '';
       this.setState({
         user,
         selectedTags: user.preferences || [],
-        selectedRole: user.role || '',
+        selectedRole: role,
       });
     } catch (error) {
       console.error('Error fetching user preferences:', error);

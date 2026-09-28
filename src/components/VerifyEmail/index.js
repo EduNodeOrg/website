@@ -6,17 +6,61 @@ import { resend, verifyCode } from "../../actions/authActions";
 import { Field, reduxForm } from "redux-form";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import Alert from "@material-ui/lab/Alert";
+import Alert from "@mui/material/Alert";
 import CircularProgress from "@mui/material/CircularProgress";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
 import withRouter from '../../withRouter'
 import "./style.css";
 import NavBar from "../NavBar"
 import { Navigate, Link } from "react-router-dom";
 import { loadUser } from '../../actions/authActions';
 import axios from 'axios';
+
+const PageContainer = styled('div')(() => ({
+  minHeight: '100vh',
+  background: 'linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)',
+  paddingBottom: '48px',
+}));
+
+const VerifyCard = styled(Paper)(({ theme }) => ({
+  width: '100%',
+  maxWidth: '440px',
+  background: 'linear-gradient(135deg, rgba(26, 31, 58, 0.9) 0%, rgba(10, 14, 39, 0.9) 100%)',
+  backdropFilter: 'blur(10px)',
+  border: '1px solid rgba(123, 47, 247, 0.3)',
+  borderRadius: '20px',
+  padding: theme.spacing(5, 4),
+}));
+
+const SubmitButton = styled(Button)(() => ({
+  width: '100%',
+  padding: '12px 16px',
+  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+  color: '#fff',
+  fontWeight: 'bold',
+  '&:hover': {
+    background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)',
+  },
+  '&.Mui-disabled': {
+    background: 'rgba(123, 47, 247, 0.3)',
+    color: 'rgba(255, 255, 255, 0.5)',
+  },
+}));
+
+const darkFieldSx = {
+  width: '100%',
+  '& .MuiOutlinedInput-root': {
+    color: '#ffffff',
+    '& fieldset': { borderColor: 'rgba(123, 47, 247, 0.4)' },
+    '&:hover fieldset': { borderColor: '#7b2ff7' },
+    '&.Mui-focused fieldset': { borderColor: '#00d4ff' },
+  },
+  '& .MuiInputLabel-root': { color: '#b8c5d6' },
+  '& .MuiFormHelperText-root': { color: '#ff8888' },
+};
 
 const validate = values => {
   const errors = {};
@@ -98,6 +142,7 @@ class VerifyEmail extends Component {
       placeholder={label}
       error={touched && invalid}
       helperText={touched && error}
+      sx={darkFieldSx}
       {...input}
       {...custom}
     />
@@ -171,21 +216,32 @@ class VerifyEmail extends Component {
     }
     if (isAuthenticated && !isVerified) {
       return (
-        <div>
+        <PageContainer>
           <NavBar />
           <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-            minHeight="60vh"
-            px={2}
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              px: 2,
+              pt: 14,
+            }}
           >
-            <Paper elevation={3} sx={{ maxWidth: 480, width: '100%', p: 4, borderRadius: 2 }}>
-              <Typography variant="h5" align="center" gutterBottom>
+            <VerifyCard elevation={0}>
+              <Typography
+                variant="h4"
+                sx={{
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  mb: 1,
+                  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
                 Verify your email
               </Typography>
-              <Typography variant="body2" color="text.secondary" align="center" sx={{ mb: 3 }}>
+              <Typography variant="body2" sx={{ color: '#b8c5d6', textAlign: 'center', mb: 3 }}>
                 We sent a verification code to your email. Check your inbox (and spam folder), then enter the code below.
               </Typography>
 
@@ -201,7 +257,7 @@ class VerifyEmail extends Component {
               </Alert>
 
               <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                <Box display="flex" flexDirection="column" gap={2}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                   <Field
                     component={this.renderTextField}
                     value={this.state.confirmationCode}
@@ -209,17 +265,14 @@ class VerifyEmail extends Component {
                     label="Confirmation Code"
                     name="confirmationCode"
                     id="code"
-                    fullWidth
                   />
-                  <Button
+                  <SubmitButton
                     variant="contained"
                     type="submit"
                     disabled={pristine || submitting || isLoading}
-                    fullWidth
-                    size="large"
                   >
                     {isLoading ? <CircularProgress size={24} color="inherit" /> : 'Verify'}
-                  </Button>
+                  </SubmitButton>
 
                   {this.state.resendMsg && (
                     <Alert severity="info">{this.state.resendMsg}</Alert>
@@ -236,16 +289,16 @@ class VerifyEmail extends Component {
                 </Box>
               </form>
 
-              <Box textAlign="center" mt={3}>
+              <Box sx={{ mt: 3, textAlign: 'center' }}>
                 <Typography variant="body2">
-                  <Link to="/" style={{ color: 'inherit' }}>
+                  <Link to="/" style={{ color: '#8fa3bf' }}>
                     Return to Home
                   </Link>
                 </Typography>
               </Box>
-            </Paper>
+            </VerifyCard>
           </Box>
-        </div>
+        </PageContainer>
       );
     }
 

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
-import { Button, TextField, Typography, Box, Alert, InputAdornment, IconButton } from '@mui/material';
+import { Button, TextField, Typography, Box, Alert, InputAdornment, IconButton, Divider, Paper } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { styled } from '@mui/material/styles';
 
 import { CircularProgress } from "@mui/material"
 import "./style.css";
@@ -13,7 +14,6 @@ import {
 import { isConnected, getPublicKey } from "@stellar/freighter-api";
 import NavBar from "../NavBar"
 import albedo from '@albedo-link/intent'
-import { Image } from 'react-bootstrap';
 import albedologo from "./img/albedo.png"
 import flogo from "./img/flogo.png"
 //import { ConstructionOutlined } from '@mui/icons-material'
@@ -21,11 +21,63 @@ import { clearErrors } from "../../actions/errorActions";
 import { register, confirm, webThreeAuth } from "../../actions/authActions";
 import { Navigate } from "react-router-dom";
 
+const PageContainer = styled('div')(() => ({
+  minHeight: '100vh',
+  background: 'linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)',
+  paddingBottom: '48px',
+}));
 
+const SignupCard = styled(Paper)(({ theme }) => ({
+  width: '100%',
+  maxWidth: '440px',
+  background: 'linear-gradient(135deg, rgba(26, 31, 58, 0.9) 0%, rgba(10, 14, 39, 0.9) 100%)',
+  backdropFilter: 'blur(10px)',
+  border: '1px solid rgba(123, 47, 247, 0.3)',
+  borderRadius: '20px',
+  padding: theme.spacing(5, 4),
+}));
 
+const WalletButton = styled(Button)(() => ({
+  width: '100%',
+  justifyContent: 'center',
+  gap: '10px',
+  padding: '10px 16px',
+  borderColor: 'rgba(123, 47, 247, 0.5)',
+  color: '#d5deeb',
+  textTransform: 'none',
+  fontWeight: 'bold',
+  '&:hover': {
+    borderColor: '#00d4ff',
+    background: 'rgba(0, 212, 255, 0.08)',
+  },
+}));
 
+const SubmitButton = styled(Button)(() => ({
+  width: '100%',
+  padding: '12px 16px',
+  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+  color: '#fff',
+  fontWeight: 'bold',
+  '&:hover': {
+    background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)',
+  },
+  '&.Mui-disabled': {
+    background: 'rgba(123, 47, 247, 0.3)',
+    color: 'rgba(255, 255, 255, 0.5)',
+  },
+}));
 
-
+const darkFieldSx = {
+  width: '100%',
+  '& .MuiOutlinedInput-root': {
+    color: '#ffffff',
+    '& fieldset': { borderColor: 'rgba(123, 47, 247, 0.4)' },
+    '&:hover fieldset': { borderColor: '#7b2ff7' },
+    '&.Mui-focused fieldset': { borderColor: '#00d4ff' },
+  },
+  '& .MuiInputLabel-root': { color: '#b8c5d6' },
+  '& .MuiFormHelperText-root': { color: '#ff8888' },
+};
 
 const validate = values => {
   const errors = {}
@@ -109,6 +161,7 @@ export class Register extends Component {
       placeholder={label}
       error={touched && invalid}
       helperText={touched && error}
+      sx={darkFieldSx}
       {...input}
       {...custom}
     />
@@ -217,140 +270,149 @@ export class Register extends Component {
 
     }
     return (
-      <div>
+      <PageContainer>
         <NavBar />
-
-        <form id="form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
-          <Box display="flex" flexDirection="column" alignItems="center">
-            <Typography variant="h4" gutterBottom>
-              Sign Up
-            </Typography>
-
-            <Button
-              variant="outlined"
-              onClick={albedoHandler}
-              style={{ width: '300px', marginBottom: '16px' }}
-            >
-              Sign up with <Image style={{ width: '45px', marginLeft: '8px' }} src={albedologo} />
-            </Button>
-            <Button
-              variant="outlined"
-              onClick={freighterHandler}
-              style={{ width: '300px', marginBottom: '16px' }}
-            >
-              Sign up with <Image style={{ width: '75px', marginLeft: '8px' }} src={flogo} />
-            </Button>
-            <br></br>
-            <div>
-              <Field
-                name="name"
-                type="text"
-                label="Full Name"
-                component={props => this.renderTextField(props)}
-                id="name"
-                value={this.state.name}
-                style={{ width: '300px', marginBottom: '16px' }}
-              />
-            </div>
-            <div>
-              <Field
-                name="email"
-                type="email"
-                label="Email"
-                component={props => this.renderTextField(props)}
-                id="email"
-                value={this.state.email}
-                style={{ width: '300px', marginBottom: '16px' }}
-              />
-            </div>
-            <div>
-              <Field
-                name="password"
-                type={this.state.showPassword ? 'text' : 'password'}
-                label="Password"
-                component={props => this.renderTextField(props)}
-                id="password"
-                value={this.state.password}
-                style={{ width: '300px', marginBottom: '16px' }}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={() => this.setState({ showPassword: !this.state.showPassword })}
-                        edge="end"
-                        size="small"
-                      >
-                        {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  )
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            px: 2,
+            pt: 14,
+          }}
+        >
+          <SignupCard elevation={0}>
+            <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+              <Typography
+                variant="h4"
+                sx={{
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  mb: 1,
+                  background: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                 }}
-              />
-            </div>
-            <div>
-              <Field
-                name="confirmPassword"
-                type={this.state.showConfirmPassword ? 'text' : 'password'}
-                label="Confirm Password"
-                component={this.renderTextField}
-                id="confirmPassword"
-                value={this.state.confirmPassword}
-                style={{ width: '300px', marginBottom: '16px' }}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={() => this.setState({ showConfirmPassword: !this.state.showConfirmPassword })}
-                        edge="end"
-                        size="small"
-                      >
-                        {this.state.showConfirmPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  )
-                }}
-              />
-            </div>
-            <div>
-            <Button
-              variant="contained"
-              color="primary"
-              id="button"
-              type="submit"
-              disabled={pristine || submitting || isLoading}
-              style={{ width: '300px', marginBottom: '16px' }}
-            >
-              {isLoading ? <CircularProgress size={24} color="inherit" /> : 'Register'}
-            </Button>
-            </div>
-
-            {this.state.errorMsg && (
-              <Alert severity="error" style={{ width: '300px', marginBottom: '16px' }}>
-                {this.state.errorMsg}
-              </Alert>
-            )}
-            {this.props.error.msg.msg && (
-              <Alert severity="error" style={{ width: '300px', marginBottom: '16px' }}>
-                {this.props.error.msg.msg}
-              </Alert>
-            )}
-
-            <div style={{ marginTop: '8px' }}>
-              <Typography variant="body2">
-                Already have an account?{' '}
-                <Link to="/loginn">
-                  Log in
-                </Link>
+              >
+                Create your account
               </Typography>
-            </div>
-            <div style={{ marginTop: '8px' }}>
-              <Link to="/">
-                Return
-              </Link>
-            </div>
-          </Box>
-        </form>
-      </div>
+              <Typography
+                variant="body2"
+                sx={{ color: '#b8c5d6', textAlign: 'center', mb: 4 }}
+              >
+                Choose your sign up method to get started
+              </Typography>
+
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, mb: 3 }}>
+                <WalletButton onClick={albedoHandler} variant="outlined">
+                  <img src={albedologo} alt="" style={{ height: 22 }} />
+                  Sign up with Albedo
+                </WalletButton>
+                <WalletButton onClick={freighterHandler} variant="outlined">
+                  <img src={flogo} alt="" style={{ height: 22 }} />
+                  Sign up with Freighter
+                </WalletButton>
+              </Box>
+
+              <Divider sx={{ borderColor: 'rgba(123, 47, 247, 0.3)', color: '#8fa3bf', mb: 3, fontSize: '0.8rem' }}>
+                or with email
+              </Divider>
+
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 3 }}>
+                <Field
+                  name="name"
+                  type="text"
+                  label="Full Name"
+                  component={this.renderTextField}
+                  value={this.state.name}
+                />
+                <Field
+                  name="email"
+                  type="email"
+                  label="Email"
+                  component={this.renderTextField}
+                  value={this.state.email}
+                />
+                <Field
+                  name="password"
+                  type={this.state.showPassword ? 'text' : 'password'}
+                  label="Password"
+                  component={this.renderTextField}
+                  value={this.state.password}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          onClick={() => this.setState({ showPassword: !this.state.showPassword })}
+                          edge="end"
+                          size="small"
+                          sx={{ color: '#b8c5d6' }}
+                        >
+                          {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    )
+                  }}
+                />
+                <Field
+                  name="confirmPassword"
+                  type={this.state.showConfirmPassword ? 'text' : 'password'}
+                  label="Confirm Password"
+                  component={this.renderTextField}
+                  value={this.state.confirmPassword}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          onClick={() => this.setState({ showConfirmPassword: !this.state.showConfirmPassword })}
+                          edge="end"
+                          size="small"
+                          sx={{ color: '#b8c5d6' }}
+                        >
+                          {this.state.showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    )
+                  }}
+                />
+              </Box>
+
+              <SubmitButton
+                variant="contained"
+                type="submit"
+                disabled={pristine || submitting || isLoading}
+              >
+                {isLoading ? <CircularProgress size={24} color="inherit" /> : 'Register'}
+              </SubmitButton>
+
+              {this.state.errorMsg && (
+                <Alert severity="error" sx={{ mt: 2 }}>
+                  {this.state.errorMsg}
+                </Alert>
+              )}
+              {this.props.error.msg.msg && (
+                <Alert severity="error" sx={{ mt: 2 }}>
+                  {this.props.error.msg.msg}
+                </Alert>
+              )}
+
+              <Box sx={{ mt: 3, textAlign: 'center' }}>
+                <Typography variant="body2" sx={{ color: '#b8c5d6' }}>
+                  Already have an account?{' '}
+                  <Link to="/loginn" style={{ color: '#00d4ff' }}>
+                    Log in
+                  </Link>
+                </Typography>
+                <Typography variant="body2" sx={{ mt: 1 }}>
+                  <Link to="/" style={{ color: '#8fa3bf' }}>
+                    Return
+                  </Link>
+                </Typography>
+              </Box>
+            </form>
+          </SignupCard>
+        </Box>
+      </PageContainer>
     )
   }
 }
