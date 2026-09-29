@@ -13,6 +13,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 //import ProgressBar from 'react-bootstrap/ProgressBar';
 import Box from '@mui/material/Box';
 import Navbar from '../../Dashboard/Navbar1';
+import PageMeta from '../../PageMeta';
 
 import { connect } from 'react-redux';
 import { clearErrors } from '../../../actions/errorActions';
@@ -316,6 +317,11 @@ class Intro extends Component {
     return (
       <div>
         <Navbar></Navbar>
+        <PageMeta
+          title="Blockchain y Web3 — Curso 110 | EduNode"
+          description="Curso de Blockchain y Web3 en EduNode: fundamentos de cadenas de bloques, wallets y aplicaciones descentralizadas."
+          path="/courses/110"
+        />
         <LinearProgressWithLabel value={activeProgress} />
         <VerticalLinearStepper
           activeStep={activeStep}

@@ -13,6 +13,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 //import ProgressBar from 'react-bootstrap/ProgressBar';
 import Box from '@mui/material/Box';
 import Navbar from '../../Dashboard/Navbar1.js';
+import PageMeta from '../../PageMeta';
 
 import { connect } from 'react-redux';
 import { clearErrors } from '../../../actions/errorActions.js';
@@ -207,6 +208,11 @@ class Intro extends Component {
     return (
       <div>
         <Navbar></Navbar>
+        <PageMeta
+          title="Mujeres en Web3 — Curso 111 | EduNode"
+          description="Mujeres en Web3: curso de EduNode sobre blockchain y Web3 — fundamentos, wallets y oportunidades en el ecosistema descentralizado."
+          path="/courses/111"
+        />
         <LinearProgressWithLabel value={activeProgress} />
         <VerticalLinearStepper
           activeStep={activeStep}

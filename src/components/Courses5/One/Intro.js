@@ -13,6 +13,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 //import ProgressBar from 'react-bootstrap/ProgressBar';
 import Box from '@mui/material/Box';
 import Navbar from '../../Dashboard/Navbar1';
+import PageMeta from '../../PageMeta';
 import { connect } from 'react-redux';
 import { clearErrors } from '../../../actions/errorActions';
 import { reduxForm } from 'redux-form';
@@ -194,6 +195,11 @@ class Intro extends Component {
     return (
       <div>
         <Navbar></Navbar>
+        <PageMeta
+          title="Soroban — Smart Contracts Course 106 | EduNode"
+          description="Soroban smart contracts on Stellar: write, deploy, and invoke WebAssembly contracts — a hands-on EduNode course."
+          path="/courses/106"
+        />
         <LinearProgressWithLabel value={activeProgress} />
         <VerticalLinearStepper
           activeStep={activeStep}

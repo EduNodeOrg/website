@@ -13,6 +13,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 //import ProgressBar from 'react-bootstrap/ProgressBar';
 import Box from '@mui/material/Box';
 import Navbar from '../../Dashboard/Navbar1';
+import PageMeta from '../../PageMeta';
 import { connect } from 'react-redux';
 import { clearErrors } from '../../../actions/errorActions';
 import { reduxForm } from 'redux-form';
@@ -201,6 +202,11 @@ class Intro extends Component {
     return (
       <div>
         <Navbar></Navbar>
+        <PageMeta
+          title="Ethereum Basics — Course 107 | EduNode"
+          description="Ethereum fundamentals: accounts, gas, smart contracts, and dApps — learn the EVM ecosystem hands-on with EduNode."
+          path="/courses/107"
+        />
         <LinearProgressWithLabel value={activeProgress} />
         <VerticalLinearStepper
           activeStep={activeStep}

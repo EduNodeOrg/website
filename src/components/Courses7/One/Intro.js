@@ -13,6 +13,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 //import ProgressBar from 'react-bootstrap/ProgressBar';
 import Box from '@mui/material/Box';
 import Navbar from '../../Dashboard/Navbar1';
+import PageMeta from '../../PageMeta';
 import { connect } from 'react-redux';
 import { clearErrors } from '../../../actions/errorActions';
 import { reduxForm } from 'redux-form';
@@ -201,6 +202,11 @@ class Intro extends Component {
     return (
       <div>
         <Navbar></Navbar>
+        <PageMeta
+          title="Oracles Basics — Course 108 | EduNode"
+          description="Blockchain oracles explained: how smart contracts get real-world data — feeds, aggregation, and use cases."
+          path="/courses/108"
+        />
         <LinearProgressWithLabel value={activeProgress} />
         <VerticalLinearStepper
           activeStep={activeStep}

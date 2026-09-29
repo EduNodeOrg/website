@@ -13,6 +13,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 //import ProgressBar from 'react-bootstrap/ProgressBar';
 import Box from '@mui/material/Box';
 import Navbar from '../../Dashboard/Navbar1';
+import PageMeta from '../../PageMeta';
 import { connect } from 'react-redux';
 import { clearErrors } from '../../../actions/errorActions';
 import { reduxForm } from 'redux-form';
@@ -195,6 +196,11 @@ class Intro extends Component {
     return (
       <div>
         <Navbar></Navbar>
+        <PageMeta
+          title="Anchors — Blockchain Course 103 | EduNode"
+          description="How Stellar anchors bridge fiat and crypto: deposits, withdrawals, and issuing real-world assets on the network."
+          path="/courses/103"
+        />
         <LinearProgressWithLabel value={activeProgress} />
         <VerticalLinearStepper
           activeStep={activeStep}
