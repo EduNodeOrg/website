@@ -150,6 +150,13 @@ const HyperledgerCourses = lazy(() => import("./components/Hyperledger/Courses")
 const Challenge = lazy(() => import("./components/Challenges/Challenge"));
 const ChallengeGameQ = lazy(() => import("./components/Challenges/gameChallenge/Intro"));
 const ChallengeGame2Q = lazy(() => import("./components/Challenges/gameChallenge/Chalenge2intro"));
+const ChallengeGame3Q = lazy(() => import("./components/Challenges/gameChallenge/Game3"));
+const ChallengeGame4Q = lazy(() => import("./components/Challenges/gameChallenge/Game4"));
+const ChallengeGame5Q = lazy(() => import("./components/Challenges/gameChallenge/Game5"));
+const SorobanHelloChallenge = lazy(() => import("./components/Challenges/Challenge/SorobanHello"));
+const StellarTokenChallenge = lazy(() => import("./components/Challenges/Challenge/StellarToken"));
+const RustOwnershipChallenge = lazy(() => import("./components/Challenges/Challenge/RustOwnership"));
+const NftContractChallenge = lazy(() => import("./components/Challenges/Challenge/NftContract"));
 const LeaderBoard = lazy(() => import("./components/Challenges/gameChallenge/leaderBoard"));
 const ChallengeQ = lazy(() => import('./components/Challenges/Challenge/One/Intro.js'));
 const CodeEditor = lazy(() => import("./components/CodeEditor"));
@@ -474,7 +481,18 @@ function App(props) {
         <Route exact path="/challenges/101" element={<ChallengeQ />} />
         <Route exact path="/challengeGame1/:randomNumber" element={<ChallengeGameQ />} />
         <Route exact path="/challengeGame2/:randomNumber" element={<ChallengeGame2Q />} />
+        <Route exact path="/challengeGame3/:randomNumber" element={<ChallengeGame3Q />} />
+        <Route exact path="/challengeGame4/:randomNumber" element={<ChallengeGame4Q />} />
+        <Route exact path="/challengeGame5/:randomNumber" element={<ChallengeGame5Q />} />
         <Route exact path="/challenges/101/done" element={<Challengedone />} />
+        <Route exact path="/challenges/soroban-hello-world" element={<SorobanHelloChallenge />} />
+        <Route exact path="/challenges/soroban-hello-world/done" element={<Challengedone />} />
+        <Route exact path="/challenges/stellar-token" element={<StellarTokenChallenge />} />
+        <Route exact path="/challenges/stellar-token/done" element={<Challengedone />} />
+        <Route exact path="/challenges/rust-ownership" element={<RustOwnershipChallenge />} />
+        <Route exact path="/challenges/rust-ownership/done" element={<Challengedone />} />
+        <Route exact path="/challenges/nft-smart-contract" element={<NftContractChallenge />} />
+        <Route exact path="/challenges/nft-smart-contract/done" element={<Challengedone />} />
         <Route exact path="/for-teachers" element={<EduNodeGuide />} />
         <Route exact path="/for-students" element={<StudentsPage />} />
         <Route exact path="/forgot_password" element={<PasswordPage />} />
