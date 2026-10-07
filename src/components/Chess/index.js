@@ -143,6 +143,7 @@ export default function ChainChess() {
     <>
       <Helmet>
         <title>ChainChess — Learn Web3 through Chess | EduNode</title>
+        <link rel="canonical" href="https://edunode.org/chess" />
         <meta name="description" content="Play chess against the EduNode node and learn Web3 and blockchain concepts with every move — immutability, smart contracts, validators, minting, and finality." />
         <meta property="og:title" content="ChainChess — Learn Web3 through Chess" />
         <meta property="og:description" content="A working chess game where every move teaches a blockchain concept." />

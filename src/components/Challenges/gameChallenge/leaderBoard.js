@@ -73,7 +73,7 @@ class LeaderBoard extends Component {
         <PageMeta
           title="Challenge Leaderboard — EduNode"
           description="EduNode challenge leaderboard — top scores from developers solving blockchain and Web3 coding challenges."
-          path="/challengeGame/leaderBoard"
+          path="/challengegame/leaderboard"
         />
         <Topbar />
         <Box sx={{ maxWidth: 600, mx: 'auto', px: 2, pt: 6, pb: 4 }}>

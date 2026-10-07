@@ -40,7 +40,7 @@ const styles = {
 
 export default class Stellarnomics extends Component {
   render() {
-    const shareUrl = 'https://edunode.org/blog/Stellarnomics';
+    const shareUrl = 'https://edunode.org/blog/stellarnomics';
     const title = 'Stellarnomics: Understanding the Stellar Network Economics';
     const description =
       'Understand the economics of the Stellar network: the role of XLM, the fee structure, and how Stellar enables fast, low-cost global payments.';

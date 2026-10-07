@@ -26,9 +26,9 @@
 ## Insights
 
 - [Blog](https://edunode.org/blog): Articles on blockchain, Stellar, and Web3
-- [What is Keybase and how to use it with Stellar?](https://edunode.org/blog/What-is-Keybase)
-- [How to issue assets on the Stellar Network](https://edunode.org/blog/How-to-issue)
-- [Stellarnomics: Understanding the Stellar Network Economics](https://edunode.org/blog/Stellarnomics)
+- [What is Keybase and how to use it with Stellar?](https://edunode.org/blog/what-is-keybase)
+- [How to issue assets on the Stellar Network](https://edunode.org/blog/how-to-issue)
+- [Stellarnomics: Understanding the Stellar Network Economics](https://edunode.org/blog/stellarnomics)
 - [What are NFTs and how to mint them using the Stellar Network?](https://edunode.org/blog/minting-nfts)
 - [How to keep your lumens safe | Tips and security tools](https://edunode.org/blog/security-tools)
 - [Herramientas de seguridad](https://edunode.org/blog/herramientas-de-seguridad): Security tools (Spanish)
@@ -57,7 +57,7 @@
 - [Code Playground](https://edunode.org/codeeditor): In-browser code editor — JavaScript runs locally, Rust and Solidity for drafting smart contracts
 - [ChainChess](https://edunode.org/chess): A working chess game where every move teaches a Web3/blockchain concept
 - [Stellar Nodes Map](https://edunode.org/stellarnodes): Interactive map of Stellar network nodes
-- [Certificate Verification](https://edunode.org/validCertificate): Verify EduNode certificates
+- [Certificate Verification](https://edunode.org/validcertificate): Verify EduNode certificates
 - [Glossary](https://edunode.org/glossary): Popular Web3 and blockchain terms explained
 
 ## Resources

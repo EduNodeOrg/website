@@ -159,7 +159,7 @@ class ValidCertificate extends Component {
         <PageMeta
           title="Verify a Certificate — EduNode"
           description="Verify an EduNode certificate: enter a certificate number to confirm authentic, blockchain-anchored proof of course completion."
-          path="/validCertificate"
+          path="/validcertificate"
         />
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>

@@ -41,7 +41,7 @@ export default function Releases() {
   return (
     <>
       <Helmet>
-        <title>Releases &amp; Changelog | EduNode</title>
+        <title>Releases & Changelog | EduNode</title>
         <link rel="canonical" href="https://edunode.org/releases" />
         <meta
           name="description"

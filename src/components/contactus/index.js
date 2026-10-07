@@ -9,6 +9,7 @@ function ContactUs() {
         <>
             <Helmet>
                 <title>Contact Us | EduNode</title>
+                <link rel="canonical" href="https://edunode.org/contactus" />
                 <meta name="description" content="Get in touch with the EduNode team — questions, feedback, and support for the Web3 learning platform." />
             </Helmet>
             <NavBar />

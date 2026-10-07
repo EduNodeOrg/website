@@ -49,7 +49,12 @@ const useStyles = makeStyles((theme) => ({
       <>
       <Helmet>
             <meta charSet="utf-8" />
-       
+            <title>Hyperledger — Enterprise Blockchain Resources | EduNode</title>
+            <link rel="canonical" href={shareUrl} />
+            <meta name="description" content="Learn Hyperledger Fabric and enterprise blockchain: courses, documentation, and resources for building permissioned distributed ledger applications." />
+            <meta property="og:title" content="Hyperledger — Enterprise Blockchain Resources | EduNode" />
+            <meta property="og:description" content="Learn Hyperledger Fabric and enterprise blockchain with EduNode courses and resources." />
+            <meta property="og:url" content={shareUrl} />
           </Helmet>
         <NavBar />
         <div className="resources">

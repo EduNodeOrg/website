@@ -39,7 +39,7 @@ const styles = {
 
 export default class Issue extends Component {
   render() {
-    const shareUrl = 'https://edunode.org/blog/How-to-issue';
+    const shareUrl = 'https://edunode.org/blog/how-to-issue';
     const title = 'How to issue assets on the Stellar Network';
     const description =
       'Learn how to issue custom assets on the Stellar network step by step — tokens that can represent fiat currencies, commodities, loyalty points, or digital collectibles.';

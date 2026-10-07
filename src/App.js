@@ -92,6 +92,12 @@ const Intro9 = lazy(() => import('./components/Courses9/One/Intro'));
 const Intro10 = lazy(() => import('./components/Courses10/One/Intro'));
 
 const ProCourseLanding = lazy(() => import('./components/ProCourses/ProCourseLanding'));
+const Course112 = lazy(() => import('./components/ProCourses/Course112'));
+const Course113 = lazy(() => import('./components/ProCourses/Course113'));
+const Course114 = lazy(() => import('./components/ProCourses/Course114'));
+const Course115 = lazy(() => import('./components/ProCourses/Course115'));
+const Course116 = lazy(() => import('./components/ProCourses/Course116'));
+const Course117 = lazy(() => import('./components/ProCourses/Course117'));
 const ProCourseModule = lazy(() => import('./components/ProCourses/ProCourseModule'));
 const ProCourseDone = lazy(() => import('./components/ProCourses/ProCourseDone'));
 
@@ -370,27 +376,27 @@ function App(props) {
         <Route exact path="/courses/111/5" element={<QuestionsFive10 />} />
         <Route exact path="/courses/111/done" element={<Coursedone10 />} />
 
-        <Route exact path="/courses/112" element={<ProCourseLanding courseId="112" />} />
+        <Route exact path="/courses/112" element={<Course112 />} />
         <Route exact path="/courses/112/done" element={<ProCourseDone courseId="112" />} />
         <Route exact path="/courses/112/:step" element={<ProCourseModule courseId="112" />} />
 
-        <Route exact path="/courses/113" element={<ProCourseLanding courseId="113" />} />
+        <Route exact path="/courses/113" element={<Course113 />} />
         <Route exact path="/courses/113/done" element={<ProCourseDone courseId="113" />} />
         <Route exact path="/courses/113/:step" element={<ProCourseModule courseId="113" />} />
 
-        <Route exact path="/courses/114" element={<ProCourseLanding courseId="114" />} />
+        <Route exact path="/courses/114" element={<Course114 />} />
         <Route exact path="/courses/114/done" element={<ProCourseDone courseId="114" />} />
         <Route exact path="/courses/114/:step" element={<ProCourseModule courseId="114" />} />
 
-        <Route exact path="/courses/115" element={<ProCourseLanding courseId="115" />} />
+        <Route exact path="/courses/115" element={<Course115 />} />
         <Route exact path="/courses/115/done" element={<ProCourseDone courseId="115" />} />
         <Route exact path="/courses/115/:step" element={<ProCourseModule courseId="115" />} />
 
-        <Route exact path="/courses/116" element={<ProCourseLanding courseId="116" />} />
+        <Route exact path="/courses/116" element={<Course116 />} />
         <Route exact path="/courses/116/done" element={<ProCourseDone courseId="116" />} />
         <Route exact path="/courses/116/:step" element={<ProCourseModule courseId="116" />} />
 
-        <Route exact path="/courses/117" element={<ProCourseLanding courseId="117" />} />
+        <Route exact path="/courses/117" element={<Course117 />} />
         <Route exact path="/courses/117/done" element={<ProCourseDone courseId="117" />} />
         <Route exact path="/courses/117/:step" element={<ProCourseModule courseId="117" />} />
 

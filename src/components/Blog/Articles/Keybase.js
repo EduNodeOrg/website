@@ -40,7 +40,7 @@ const styles = {
 
 export default class Keybase extends Component {
   render() {
-    const shareUrl = 'https://edunode.org/blog/What-is-Keybase';
+    const shareUrl = 'https://edunode.org/blog/what-is-keybase';
     const title = 'What is Keybase and how to use it with Stellar?';
     const description =
       'Keybase is a key directory that maps social media identities to encryption keys. Learn how to verify your identity and link it to your Stellar account.';

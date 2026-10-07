@@ -664,7 +664,7 @@ function Intro(props) {
   const handlefinishClose = () => {
     setIsDialogClosed(true);
     setModalFinishVisible(false);
-    window.location.href = '/challengeGame/leaderBoard';
+    window.location.href = '/challengegame/leaderboard';
   };
 
 

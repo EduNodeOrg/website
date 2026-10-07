@@ -25,6 +25,7 @@ import Tweets from './tweets';
 import PostList from "./PostList";
 import Navbar1 from '../Dashboard/Navbar1';
 import UserContext from '../Posts/UserContext';
+import PageMeta from '../PageMeta';
 
 const FeedContainer = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -356,7 +357,11 @@ class Feed extends Component {
   return ( 
   
     <>
-
+<PageMeta
+  title="Community Feed — EduNode"
+  description="Posts, projects, and updates from the EduNode community of blockchain and Web3 developers."
+  path="/feed"
+/>
 <FeedContainer>
         {/* Floating Particles */}
         {[...Array(8)].map((_, i) => (
