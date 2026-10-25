@@ -1,0 +1,4 @@
+Contact: mailto:hi@edunode.org
+Expires: 2027-10-25T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://edunode.org/.well-known/security.txt

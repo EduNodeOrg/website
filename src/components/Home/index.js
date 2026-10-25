@@ -4,9 +4,46 @@ import Hometwo from "./Hometwo";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 import NavBar from "../NavBar"
-import Helmet from "react-helmet"
+import { Helmet } from "react-helmet-async"
 import Footer from "../Footer/Footer"
 
+const title = "EduNode | Learn Blockchain Development & IT Skills Online";
+const description = "Learn blockchain development with hands-on Stellar, Web3, Soroban and Ethereum courses — plus IT masterclasses in Python, SQL, AI and cybersecurity.";
+const shareUrl = "https://edunode.org/";
+const image = "https://edunode.org/en.png";
+
+const siteLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://edunode.org/#organization',
+      name: 'EduNode',
+      url: 'https://edunode.org/',
+      email: 'hi@edunode.org',
+      logo: {
+        '@type': 'ImageObject',
+        '@id': 'https://edunode.org/#logo',
+        url: 'https://edunode.org/en.png',
+        width: 1024,
+        height: 1024,
+      },
+      sameAs: [
+        'https://x.com/edunodeorg',
+        'https://www.linkedin.com/company/edunodeorg/',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://edunode.org/#website',
+      url: 'https://edunode.org/',
+      name: 'EduNode',
+      description: 'Educational platform for becoming a blockchain developer, with courses in Stellar, Web3, Soroban, Ethereum and Hyperledger, plus IT masterclasses.',
+      publisher: { '@id': 'https://edunode.org/#organization' },
+      inLanguage: 'en',
+    },
+  ],
+};
 
 class Home extends Component {
   constructor(props) {
@@ -34,11 +71,17 @@ class Home extends Component {
   return (
     <>
       <Helmet>
-        <title>EduNode</title>
-        <link rel="canonical" href="https://edunode.org/" />
-        <meta name="Edunode" content="We help you become a Blockchain Developer" />
-        <meta property="og:title" content="EduNode" />
-        <meta property="og:image" content="path/to/image.jpg" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={shareUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={shareUrl} />
+        <meta property="og:image" content={image} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={image} />
+        <script type="application/ld+json">{JSON.stringify(siteLd)}</script>
       </Helmet>
       <NavBar />
 
@@ -57,4 +100,3 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, null)(Home)
-

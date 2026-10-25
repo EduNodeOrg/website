@@ -2,4 +2,14 @@
 User-agent: *
 Disallow:
 
+# AI search crawlers — explicitly welcome
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 Sitemap: https://edunode.org/sitemap.xml

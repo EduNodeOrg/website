@@ -5,6 +5,17 @@
 const releases = [
   {
     version: '0.3.4',
+    date: '2026-10-25',
+    title: 'Search & AI-crawler readiness overhaul',
+    highlights: [
+      'Homepage now ships a full-length title and description, canonical URL, and an absolute og:image with dimensions and alt text',
+      'Organization + WebSite JSON-LD and real readable content (headings and links) in the initial HTML, so crawlers and no-JS clients see more than an empty shell',
+      'Every baked page gets its own heading/description stub and correct og:image dimensions instead of inheriting the homepage shell',
+      'robots.txt explicitly welcomes AI search crawlers (OAI-SearchBot, Claude-SearchBot, PerplexityBot); security.txt published; manifest.json rebranded from CRA defaults',
+    ],
+  },
+  {
+    version: '0.3.4',
     date: '2026-10-24',
     title: 'Five more masterclasses: 100 lessons total',
     highlights: [

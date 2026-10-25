@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" data-rh="true" />
-  <title>EduNode</title>
+  <title>EduNode | Learn Blockchain Development & IT Skills Online</title>
 
   <!-- Signals Netlify Prerender to keep waiting until React mounts the route -->
   <script>
@@ -11,10 +11,12 @@
   
 
   <!-- ── Primary Meta ──────────────────────────────────────────────────── -->
-  <meta name="title" content="EduNode" data-rh="true" />
-  <meta name="description" content="Your educational platform for becoming a blockchain developer." data-rh="true" />
+  <meta name="title" content="EduNode | Learn Blockchain Development & IT Skills Online" data-rh="true" />
+  <meta name="description" content="Learn blockchain development with hands-on Stellar, Web3, Soroban and Ethereum courses — plus IT masterclasses in Python, SQL, AI and cybersecurity." data-rh="true" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" data-rh="true" />
   <meta name="viewport" content="width=device-width, initial-scale=1" data-rh="true" />
   <meta name="theme-color" content="#000000" />
+  <link rel="canonical" href="https://edunode.org/" data-rh="true" />
 
   <!-- ── Security Meta ─────────────────────────────────────────────────── -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -22,22 +24,62 @@
         content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://binaries.soliditylang.org https://apis.google.com https://accounts.google.com https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://www.paypal.com https://use.fontawesome.com https://www.youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://use.fontawesome.com https://accounts.google.com; font-src 'self' https://fonts.gstatic.com https://use.fontawesome.com; img-src 'self' data: https:; connect-src 'self' https://api.edunode.org https://edunode.herokuapp.com https://play.rust-lang.org https://cdn.jsdelivr.net https://www.paypal.com https://www.sandbox.paypal.com https://www.google-analytics.com https://region1.google-analytics.com https://cdnjs.cloudflare.com https://www.googleapis.com wss:; frame-src https://www.paypal.com https://accounts.google.com https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self'" />
 
   <!-- ── Icons ─────────────────────────────────────────────────────────── -->
-  <!-- Note: no static canonical here — each route sets its own via Helmet. -->
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon_io/edunode.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
   <!-- ── Open Graph ────────────────────────────────────────────────────── -->
   <meta property="og:type" content="website" data-rh="true" />
   <meta property="og:url" content="https://edunode.org/" data-rh="true" />
-  <meta property="og:title" content="EduNode" data-rh="true" />
-  <meta property="og:description" content="Your educational platform for becoming a blockchain developer" data-rh="true" />
-  <meta property="og:image" content="%PUBLIC_URL%/en.png" data-rh="true" />
+  <meta property="og:title" content="EduNode | Learn Blockchain Development & IT Skills Online" data-rh="true" />
+  <meta property="og:description" content="Learn blockchain development with hands-on Stellar, Web3, Soroban and Ethereum courses — plus IT masterclasses in Python, SQL, AI and cybersecurity." data-rh="true" />
+  <meta property="og:image" content="https://edunode.org/en.png" data-rh="true" />
+  <meta property="og:image:width" content="1024" data-rh="true" />
+  <meta property="og:image:height" content="1024" data-rh="true" />
+  <meta property="og:image:alt" content="EduNode — blockchain and IT courses" data-rh="true" />
 
   <!-- ── Twitter Card ──────────────────────────────────────────────────── -->
-  <meta property="twitter:card" content="summary_large_image" data-rh="true" />
-  <meta property="twitter:url" content="https://edunode.org/" data-rh="true" />
-  <meta property="twitter:title" content="EduNode" data-rh="true" />
-  <meta property="twitter:description" content="Your educational platform for becoming a blockchain developer" data-rh="true" />
-  <meta property="twitter:image" content="%PUBLIC_URL%/en.png" data-rh="true" />
+  <meta name="twitter:card" content="summary_large_image" data-rh="true" />
+  <meta name="twitter:url" content="https://edunode.org/" data-rh="true" />
+  <meta name="twitter:title" content="EduNode | Learn Blockchain Development & IT Skills Online" data-rh="true" />
+  <meta name="twitter:description" content="Learn blockchain development with hands-on Stellar, Web3, Soroban and Ethereum courses — plus IT masterclasses in Python, SQL, AI and cybersecurity." data-rh="true" />
+  <meta name="twitter:image" content="https://edunode.org/en.png" data-rh="true" />
+
+  <!-- ── Structured Data ───────────────────────────────────────────────── -->
+  <script type="application/ld+json" data-rh="true">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://edunode.org/#organization",
+        "name": "EduNode",
+        "url": "https://edunode.org/",
+        "email": "hi@edunode.org",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://edunode.org/#logo",
+          "url": "https://edunode.org/en.png",
+          "width": 1024,
+          "height": 1024
+        },
+        "sameAs": [
+          "https://x.com/edunodeorg",
+          "https://www.linkedin.com/company/edunodeorg/"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://edunode.org/#website",
+        "url": "https://edunode.org/",
+        "name": "EduNode",
+        "description": "Educational platform for becoming a blockchain developer, with courses in Stellar, Web3, Soroban, Ethereum and Hyperledger, plus IT masterclasses.",
+        "publisher": { "@id": "https://edunode.org/#organization" },
+        "inLanguage": "en"
+      }
+    ]
+  }
+  </script>
 
   <!-- ── Third-Party Scripts (with Subresource Integrity where available) -->
 
@@ -73,7 +115,26 @@
 
 </head>
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+  <noscript>EduNode teaches blockchain development and IT skills through interactive courses and masterclasses. Enable JavaScript for the full experience.</noscript>
+  <!-- Static fallback content: visible to no-JS clients and crawlers until React
+       mounts and replaces it. Keep it free of <div> elements — the build-time
+       meta generator swaps this block out for per-route content. -->
+  <div id="root">
+    <main style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:720px;margin:0 auto;padding:2.5rem 1.25rem;line-height:1.65;color:#1c1c1e">
+      <h1 style="font-size:2rem;line-height:1.25;margin:0 0 1rem">Learn blockchain development and practical IT skills</h1>
+      <p>EduNode is an educational platform for becoming a blockchain developer. Hands-on courses cover Stellar, Web3, Soroban smart contracts, Ethereum, and Hyperledger, alongside self-paced IT masterclasses in Python, SQL, JavaScript, AI workflow automation, cybersecurity, networking, Docker, Git, and data analysis.</p>
+      <h2 style="font-size:1.35rem;margin:1.75rem 0 0.5rem">What is EduNode?</h2>
+      <p>A learning platform that combines written lessons, interactive coding challenges, quizzes, and verifiable certificates. It is built for beginners who want practical, project-based paths into blockchain and IT careers.</p>
+      <h2 style="font-size:1.35rem;margin:1.75rem 0 0.5rem">What can you learn?</h2>
+      <ul style="padding-left:1.25rem">
+        <li><a href="/masterclasses">IT masterclasses</a> — ten paths, 100 lessons: Python, SQL, JavaScript, Git, AI automation, cybersecurity, networking, Docker, data analysis, and IT support</li>
+        <li>Blockchain courses — Stellar, Web3, Soroban, Ethereum, and Hyperledger fundamentals</li>
+        <li><a href="/blog">Guides and articles</a> — wallets, smart contract security, DeFi, tokenization, and developer roadmaps</li>
+      </ul>
+      <h2 style="font-size:1.35rem;margin:1.75rem 0 0.5rem">How much is free?</h2>
+      <p>The first two lessons of every masterclass (20%) are free without an account. The remaining lessons and final projects are included with a <a href="/pricing">Pro membership</a>.</p>
+      <p><a href="/about">About EduNode</a> · <a href="/releases">Release notes</a> · <a href="/blog">Blog</a> · <a href="/masterclasses">Masterclasses</a></p>
+    </main>
+  </div>
 </body>
 </html>

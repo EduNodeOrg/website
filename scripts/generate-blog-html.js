@@ -229,14 +229,39 @@ function buildPage(route, meta) {
   html = setTag(html, /(<meta property="og:title" content=")[^"]*(")/, `$1${escAttr(og.title || title)}$2`);
   html = setTag(html, /(<meta property="og:description" content=")[^"]*(")/, `$1${escAttr(og.description || desc)}$2`);
   html = setTag(html, /(<meta property="og:image" content=")[^"]*(")/, `$1${escAttr(image || ORIGIN + '/en.png')}$2`);
-  html = setTag(html, /(<meta property="twitter:url" content=")[^"]*(")/, `$1${escAttr(tw.url || url)}$2`);
-  html = setTag(html, /(<meta property="twitter:title" content=")[^"]*(")/, `$1${escAttr(tw.title || title)}$2`);
-  html = setTag(html, /(<meta property="twitter:description" content=")[^"]*(")/, `$1${escAttr(tw.description || desc)}$2`);
-  html = setTag(html, /(<meta property="twitter:image" content=")[^"]*(")/, `$1${escAttr(tw.image || image || ORIGIN + '/en.png')}$2`);
+  html = setTag(html, /(<meta name="twitter:url" content=")[^"]*(")/, `$1${escAttr(tw.url || url)}$2`);
+  html = setTag(html, /(<meta name="twitter:title" content=")[^"]*(")/, `$1${escAttr(tw.title || title)}$2`);
+  html = setTag(html, /(<meta name="twitter:description" content=")[^"]*(")/, `$1${escAttr(tw.description || desc)}$2`);
+  html = setTag(html, /(<meta name="twitter:image" content=")[^"]*(")/, `$1${escAttr(tw.image || image || ORIGIN + '/en.png')}$2`);
 
-  let inject = `  <link rel="canonical" href="${escAttr(url)}" />\n`;
+  // The shell ships a homepage canonical — swap it for this route's.
+  // data-rh lets react-helmet-async manage it on client navigation.
+  html = setTag(html, /<link rel="canonical"[^>]*>/,
+    `<link data-rh="true" rel="canonical" href="${escAttr(url)}" />`);
+
+  // og:image dimensions: branded cards under /og/ are 1200×630 and /en.png
+  // is 1024×1024; for anything else drop the size tags rather than emit
+  // wrong ones.
+  const imgPath = (image || '').replace(ORIGIN, '');
+  const dims = imgPath.startsWith('/og/') ? [1200, 630] : imgPath === '/en.png' ? [1024, 1024] : null;
+  if (dims) {
+    html = setTag(html, /(<meta property="og:image:width" content=")[^"]*(")/, `$1${dims[0]}$2`);
+    html = setTag(html, /(<meta property="og:image:height" content=")[^"]*(")/, `$1${dims[1]}$2`);
+    html = setTag(html, /(<meta property="og:image:alt" content=")[^"]*(")/, `$1${escAttr(title)}$2`);
+  } else {
+    html = html.replace(/\s*<meta property="og:image:(width|height|alt)"[^>]*>/g, '');
+  }
+
+  // Real words in the initial HTML: replace the homepage fallback copy in
+  // #root with this page's own heading and description.
+  html = html.replace(
+    /<div id="root">[\s\S]*?<\/div>/,
+    `<div id="root"><main><h1>${escHtml(title)}</h1><p>${escHtml(desc)}</p></main></div>`
+  );
+
+  let inject = '';
   for (const ld of meta.ld) {
-    inject += `  <script type="application/ld+json">${JSON.stringify(ld)}</script>\n`;
+    inject += `  <script data-rh="true" type="application/ld+json">${JSON.stringify(ld)}</script>\n`;
   }
   html = html.replace('</head>', inject + '</head>');
   return html;
@@ -293,11 +318,9 @@ function writeMasterclassPage(route, title, description, content, ld) {
     ld: ld ? [ld] : [],
   };
   const html = buildPage(route, meta)
-    // Let react-helmet-async replace these on client navigation instead of
-    // retaining a second canonical or structured data from the initial route.
-    .replace('<link rel="canonical"', '<link data-rh="true" rel="canonical"')
-    .replace(/<script type="application\/ld\+json">/g, '<script data-rh="true" type="application/ld+json">')
-    .replace('<div id="root"></div>', `<div id="root"><main>${content}</main></div>`);
+    // Full public content in the initial HTML, replacing the title +
+    // description stub that buildPage wrote into #root.
+    .replace(/<div id="root">[\s\S]*?<\/div>/, `<div id="root"><main>${content}</main></div>`);
   const out = path.join(BUILD, route + '.html');
   fs.mkdirSync(path.dirname(out), { recursive: true });
   const existed = fs.existsSync(out);
