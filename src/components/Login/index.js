@@ -345,9 +345,12 @@ class Login extends Component {
     }
     if (isAuthenticated && isVerified) {
       //  <p class="loading">Lding...</p> <CircularProgress color="secondary" />
-
+      const returnTo = new URLSearchParams(window.location.search).get('returnTo') || '';
+      const destination = /^\/masterclasses(?:\/[a-z0-9-]+(?:\/lessons\/[a-z0-9-]+)?)?$/.test(returnTo)
+        ? returnTo
+        : '/dashboard';
       return (
-        <Navigate to="/dashboard" />
+        <Navigate to={destination} replace />
       );
     }
 
@@ -505,4 +508,3 @@ export default reduxForm({
   mozartAuth,
   metamaskAuth
 })(Login)
-

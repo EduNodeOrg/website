@@ -100,6 +100,9 @@ const Course116 = lazy(() => import('./components/ProCourses/Course116'));
 const Course117 = lazy(() => import('./components/ProCourses/Course117'));
 const ProCourseModule = lazy(() => import('./components/ProCourses/ProCourseModule'));
 const ProCourseDone = lazy(() => import('./components/ProCourses/ProCourseDone'));
+const Masterclasses = lazy(() => import('./components/Masterclasses'));
+const MasterclassDetail = lazy(() => import('./components/Masterclasses/MasterclassDetail'));
+const MasterclassLesson = lazy(() => import('./components/Masterclasses/MasterclassLesson'));
 
 const Coursedone = lazy(() => import("./components/Courses/Coursedone"));
 const Coursedone1 = lazy(() => import("./components/Courses1/Coursedone"));
@@ -290,6 +293,9 @@ function App(props) {
         <Route exact path="/community/project" element={<Project />} />
         <Route exact path="/milestones" element={<Milestones />} />
         <Route exact path="/courses" element={<Courses />} />
+        <Route exact path="/masterclasses" element={<Masterclasses />} />
+        <Route path="/masterclasses/:slug" element={<MasterclassDetail />} />
+        <Route path="/masterclasses/:slug/lessons/:lessonSlug" element={<MasterclassLesson />} />
         <Route exact path="/courses/101" element={<Intro />} />
         <Route exact path="/courses/102" element={<Intro1 />} />
         <Route exact path="/courses/103" element={<Intro2 />} />

@@ -58,7 +58,7 @@ export default function Footer() {
                   EduNode
                 </h6>
                 <p>
-                  Learn Web3 and Blockchain skills and reach your developing goals.
+                  Build practical IT, Web3, and blockchain skills through courses, masterclasses, and projects.
                 </p>
                 <p>
                   <MDBIcon icon="home" className="me-2" />
@@ -75,6 +75,7 @@ export default function Footer() {
               <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
                 <h6 className='text-uppercase fw-bold mb-4' style={headingStyle}>Products</h6>
                 <FooterLink href='/courses'>Courses</FooterLink>
+                <FooterLink href='/masterclasses'>Masterclasses</FooterLink>
                 <FooterLink href='/challenges'>Challenges</FooterLink>
                 <FooterLink href='/pricing'>Pricing</FooterLink>
                 <FooterLink href='/membership'>Membership</FooterLink>

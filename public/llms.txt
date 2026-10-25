@@ -1,6 +1,42 @@
 # EduNode
 
-> EduNode is an educational platform for becoming a blockchain developer. It offers interactive courses, coding challenges, verifiable certificates, and community resources focused on Stellar, Web3, Soroban, Ethereum, Hyperledger, and related decentralized technologies.
+> EduNode teaches practical IT and blockchain development through masterclasses, interactive courses, coding challenges, and community resources. IT masterclasses cover Python, SQL, AI automation, cybersecurity, and Docker/cloud deployment; specialist courses cover Stellar, Web3, Soroban, Ethereum, and Hyperledger.
+
+## IT Masterclasses
+
+Each masterclass has 10 written lessons with examples, exercises, and knowledge checks. The first two lessons (20%) are free without an account; the remaining eight (80%), including the final project, require an active Pro membership. Ten paths, 100 lessons total.
+
+- [Masterclasses](https://edunode.org/masterclasses): Five practical IT learning paths with 50 lessons and five final projects
+- [Python for Beginners: Automate Everyday Tasks](https://edunode.org/masterclasses/python-automation): Files, CSV/Excel, APIs, tests, scheduling, and a sales reporting project
+- [Your first useful Python script](https://edunode.org/masterclasses/python-automation/lessons/your-first-script): Free lesson on setup, variables, calculations, and debugging
+- [Data, loops, and decisions](https://edunode.org/masterclasses/python-automation/lessons/data-and-decisions): Free Python lesson on lists, dictionaries, and paid-order summaries
+- [SQL for Beginners: Analyze Real Business Data](https://edunode.org/masterclasses/sql-data-analysis): PostgreSQL queries, joins, data quality, window functions, and a store analysis project
+- [Tables, keys, and your first query](https://edunode.org/masterclasses/sql-data-analysis/lessons/tables-and-first-query): Free SQL lesson with a complete practice dataset
+- [Filter, sort, and handle missing values](https://edunode.org/masterclasses/sql-data-analysis/lessons/filter-and-sort): Free SQL lesson on WHERE, ORDER BY, and NULL
+- [AI Workflow Automation for Beginners with n8n](https://edunode.org/masterclasses/ai-workflow-automation): Workflow design, APIs, structured AI output, evaluation, human approval, and support triage
+- [Map a task before automating it](https://edunode.org/masterclasses/ai-workflow-automation/lessons/map-a-workflow): Free lesson on workflow inputs, decisions, and acceptance checks
+- [Build your first n8n workflow](https://edunode.org/masterclasses/ai-workflow-automation/lessons/first-n8n-workflow): Free lesson using sample data, Edit Fields, and IF branches
+- [Cybersecurity Fundamentals](https://edunode.org/masterclasses/cybersecurity-fundamentals): Networking, identity, hardening, web security, log analysis, and incident response
+- [Assets, threats, and security decisions](https://edunode.org/masterclasses/cybersecurity-fundamentals/lessons/assets-and-threats): Free lesson on threat modeling and practical controls
+- [Networks, DNS, and HTTPS](https://edunode.org/masterclasses/cybersecurity-fundamentals/lessons/network-basics): Free lesson on browser requests, ports, and transport security
+- [Docker and Cloud Deployment](https://edunode.org/masterclasses/docker-cloud-deployment): Linux, containers, configuration, Cloud Run, CI, and an operated API project
+- [Linux essentials and your first service](https://edunode.org/masterclasses/docker-cloud-deployment/lessons/linux-and-processes): Free lesson building a local Python health API
+- [Build and run your first container](https://edunode.org/masterclasses/docker-cloud-deployment/lessons/first-container): Free lesson on Dockerfiles, port mapping, logs, and cleanup
+- [JavaScript & Modern Web Fundamentals](https://edunode.org/masterclasses/javascript-web-fundamentals): HTML, CSS, DOM, events, fetch, debugging, and a deployed notes app
+- [Your first web page](https://edunode.org/masterclasses/javascript-web-fundamentals/lessons/your-first-web-page): Free lesson on HTML structure, elements, and attributes
+- [Style and arrange with CSS](https://edunode.org/masterclasses/javascript-web-fundamentals/lessons/style-with-css): Free lesson on selectors, the box model, and flexbox
+- [Git, GitHub & Collaboration](https://edunode.org/masterclasses/git-github-collaboration): Commits, branches, merges, pull requests, and safe recovery
+- [Why version control matters](https://edunode.org/masterclasses/git-github-collaboration/lessons/why-version-control): Free lesson creating a repository and first commit
+- [Commits, staging, and history](https://edunode.org/masterclasses/git-github-collaboration/lessons/commits-and-history): Free lesson on diffs, logs, and clean commit messages
+- [Networking & Linux Fundamentals](https://edunode.org/masterclasses/networking-linux-fundamentals): Command line, permissions, processes, IP/DNS, ports, and diagnostics
+- [Meet the Linux command line](https://edunode.org/masterclasses/networking-linux-fundamentals/lessons/command-line-basics): Free lesson on navigation and getting help
+- [Files and permissions](https://edunode.org/masterclasses/networking-linux-fundamentals/lessons/files-and-permissions): Free lesson on rwx, chmod, and safe file handling
+- [Data Analysis with Pandas & Visualization](https://edunode.org/masterclasses/data-analysis-pandas): DataFrames, cleaning, grouping, merging, charts, and a sales analysis project
+- [Your first DataFrame](https://edunode.org/masterclasses/data-analysis-pandas/lessons/first-dataframe): Free lesson loading and inspecting a CSV
+- [Select, filter, and sort](https://edunode.org/masterclasses/data-analysis-pandas/lessons/select-and-filter): Free lesson on boolean masks and deterministic ordering
+- [IT Support & Troubleshooting Foundations](https://edunode.org/masterclasses/it-support-troubleshooting): Six-step method, hardware/OS/network triage, tickets, remote support, and escalation
+- [What IT support really does](https://edunode.org/masterclasses/it-support-troubleshooting/lessons/support-role-and-method): Free lesson on the structured troubleshooting method
+- [Gather the right information](https://edunode.org/masterclasses/it-support-troubleshooting/lessons/gather-information): Free lesson on interviewing users and scoping issues
 
 ## Courses
 

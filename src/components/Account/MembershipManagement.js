@@ -34,6 +34,7 @@ const tiers = {
     chipColor: 'rgba(184, 197, 214, 0.2)',
     benefits: [
       'Access to FREE educational content and courses',
+      'First 20% of every IT masterclass',
       'Email support',
       'Community Discord access',
     ],
@@ -45,6 +46,7 @@ const tiers = {
     chipColor: 'rgba(0, 212, 255, 0.2)',
     benefits: [
       'All Free tier features',
+      'Full access to every IT masterclass',
       'NFT certification for course completion',
       'Priority email support',
       'Exclusive Discord Role',

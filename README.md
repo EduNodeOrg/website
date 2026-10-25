@@ -27,6 +27,8 @@ code challenges, on-chain certificates, and community features.
 
 ## Features
 - Course catalog with quizzes, progress tracking, and completion certificates
+- IT Masterclasses (`/masterclasses`) — ten paths and 100 written lessons; the
+  first two lessons in each class are public, and the other eight require Pro
 - ChainChess (`/chess`) — a chess game that teaches Web3 concepts move by move
   (chess.js engine + chessboardjsx)
 - In-browser JavaScript playground (`/codeeditor`, Monaco Editor)
@@ -56,6 +58,28 @@ npm install --legacy-peer-deps
 
 ### `npm start`
 Dev server at http://localhost:3000 (`src/setupProxy.js` proxies API calls).
+
+Masterclass access is also supported by the dev server. It runs the same
+`netlify/functions/masterclass.js` handler used in production. That handler
+forwards the signed-in user's JWT to the existing
+`/api/stripe/subscription-status` endpoint and checks the authoritative plan,
+status, and subscription period before returning paid content. An unavailable
+membership service fails closed with a retry message. Browser membership flags
+do not grant access. Active Pro subscriptions (and Enterprise if returned by the
+subscription API) qualify; expired, canceled, unpaid, and past-due plans do not.
+
+Public syllabus data and the first two lessons live in
+`src/components/Masterclasses`. The remaining lesson bodies live in
+`netlify/content`, outside the browser import graph. Do not move them into
+`public/` or import them from client components. Deploy through Netlify so the
+function ships alongside the static site; a static-only host cannot serve paid
+lessons. No additional secrets are required by the function.
+
+The build generates public HTML for the catalog, five overviews, and ten free
+lessons. Paid lesson bodies are never prerendered or added to the sitemap.
+Progress is a browser-local study aid, not a certificate or server-side record.
+Run the authorization/content checks with
+`node --test netlify/tests/masterclass.test.cjs`.
 
 ### `npm test`
 Launches the test runner in watch mode.

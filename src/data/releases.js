@@ -5,6 +5,28 @@
 const releases = [
   {
     version: '0.3.4',
+    date: '2026-10-24',
+    title: 'Five more masterclasses: 100 lessons total',
+    highlights: [
+      'New paths: JavaScript & Modern Web, Git & GitHub Collaboration, Networking & Linux, Data Analysis with Pandas, and IT Support & Troubleshooting',
+      '50 additional lessons with worked examples, exercises, knowledge checks, and five more final projects',
+      'Same access model: first two lessons of every class free without an account, remaining eight lessons verified server-side against an active Pro subscription',
+      'New class overviews and free lessons get static HTML, canonical URLs, sitemap entries, and llms.txt links automatically',
+    ],
+  },
+  {
+    version: '0.3.4',
+    date: '2026-10-24',
+    title: 'Five practical IT masterclasses',
+    highlights: [
+      'New Masterclasses catalog with Python automation, SQL data analysis, AI workflows with n8n, cybersecurity fundamentals, and Docker/cloud deployment',
+      '50 detailed lessons with worked examples, exercises, knowledge checks, and five final projects; completion progress is saved in the learner’s browser',
+      'The first two lessons of every class are free without an account; the remaining eight are delivered only after server-side verification of an active Pro subscription',
+      'Public class overviews and free lessons include static HTML, canonical URLs, social metadata, sitemap entries, and navigation links',
+    ],
+  },
+  {
+    version: '0.3.4',
     date: '2026-09-27',
     title: 'Full SEO metadata across all blog articles',
     highlights: [

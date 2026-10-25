@@ -51,6 +51,39 @@
     <priority>0.5</priority>
   </url>
 
+  <!-- Masterclasses: public overviews and the first two free lessons only -->
+  <url><loc>https://edunode.org/masterclasses</loc><lastmod>2026-10-24</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://edunode.org/masterclasses/python-automation</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/masterclasses/python-automation/lessons/your-first-script</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/python-automation/lessons/data-and-decisions</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/sql-data-analysis</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/masterclasses/sql-data-analysis/lessons/tables-and-first-query</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/sql-data-analysis/lessons/filter-and-sort</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/ai-workflow-automation</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/masterclasses/ai-workflow-automation/lessons/map-a-workflow</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/ai-workflow-automation/lessons/first-n8n-workflow</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/cybersecurity-fundamentals</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/masterclasses/cybersecurity-fundamentals/lessons/assets-and-threats</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/cybersecurity-fundamentals/lessons/network-basics</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/docker-cloud-deployment</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/masterclasses/docker-cloud-deployment/lessons/linux-and-processes</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/docker-cloud-deployment/lessons/first-container</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/javascript-web-fundamentals</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/masterclasses/javascript-web-fundamentals/lessons/your-first-web-page</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/javascript-web-fundamentals/lessons/style-with-css</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/git-github-collaboration</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/masterclasses/git-github-collaboration/lessons/why-version-control</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/git-github-collaboration/lessons/commits-and-history</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/networking-linux-fundamentals</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/masterclasses/networking-linux-fundamentals/lessons/command-line-basics</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/networking-linux-fundamentals/lessons/files-and-permissions</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/data-analysis-pandas</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/masterclasses/data-analysis-pandas/lessons/first-dataframe</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/data-analysis-pandas/lessons/select-and-filter</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/it-support-troubleshooting</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/masterclasses/it-support-troubleshooting/lessons/support-role-and-method</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edunode.org/masterclasses/it-support-troubleshooting/lessons/gather-information</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
   <!-- Courses -->
     <url>
     <loc>https://edunode.org/courses/101</loc>

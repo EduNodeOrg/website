@@ -27,6 +27,7 @@ const tiers = [
     description: [
       'Up to 1 User',
       'Access to FREE educational content and courses',
+      'First 20% of every IT masterclass',
       'Email support',
     ],
     buttonText: 'Get Started',
@@ -40,6 +41,7 @@ const tiers = [
     description: [
       'All of Free tier features',
       'Access to all Pro courses',
+      'Full access to every IT masterclass',
       'NFT certification for course completion',
       'Priority email support',
       'Exclusive Discord Role',
@@ -196,7 +198,7 @@ function PricingContent({ embedded = false }) {
       {!embedded && (
         <PageMeta
           title="Pricing — EduNode"
-          description="EduNode pricing plans: free and premium access to blockchain courses, coding challenges, certificates, and developer tools for Stellar, Web3 and Soroban."
+          description="Explore EduNode Free and Pro plans. Start 20% of every IT masterclass free; Pro unlocks all ten classes covering Python, JavaScript, SQL, AI, security, Docker, Git, and more."
           path="/pricing"
         />
       )}

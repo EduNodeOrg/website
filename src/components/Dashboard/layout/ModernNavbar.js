@@ -48,6 +48,7 @@ import {
 } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { motion } from 'framer-motion';
 import withRouter from '../../../withRouter';
@@ -89,12 +90,14 @@ const LogoText = styled(Typography)(({ theme }) => ({
   fontSize: '1.8rem',
   fontWeight: 'bold',
   letterSpacing: '1px',
+  [theme.breakpoints.down('sm')]: { fontSize: '1.4rem' },
 }));
 
 const NavActions = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: theme.spacing(2),
+  [theme.breakpoints.down('sm')]: { gap: theme.spacing(1) },
 }));
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
@@ -139,6 +142,7 @@ const menuItems = [
   { icon: <Search />, text: 'Search', path: '/search' },
   { icon: <PostAdd />, text: 'New Post', path: '/post' },
   { icon: <Book />, text: 'Courses', path: '/courses' },
+  { icon: <MenuBook />, text: 'Masterclasses', path: '/masterclasses' },
   { icon: <Feed />, text: 'Feed', path: '/feed' },
   { icon: <CardMembership />, text: 'Certificates', path: '/certificate' },
   { icon: <Chat />, text: 'Chat', path: '/chat' },
@@ -160,6 +164,7 @@ const staffMenuItems = [
 
 // Logged-out visitors get the marketing pages instead of the app links.
 const publicMenuItems = [
+  { icon: <MenuBook />, text: 'Masterclasses', path: '/masterclasses' },
   { icon: <Source />, text: 'Resources', path: '/resources' },
   { icon: <Sell />, text: 'Pricing', path: '/pricing' },
   { icon: <Groups />, text: 'Community', path: '/community' },
@@ -248,7 +253,9 @@ class ModernNavbar extends Component {
       : publicMenuItems;
     // Logged-in users also get the public/marketing links in the drawer,
     // matching the legacy navbar which always showed them.
-    const drawerItems = isAuthenticated ? [...items, ...publicMenuItems] : items;
+    const drawerItems = isAuthenticated
+      ? [...items, ...publicMenuItems.filter((item) => !items.some((existing) => existing.path === item.path))]
+      : items;
     const homePath = isAuthenticated ? '/dashboard' : '/';
 
     return (
@@ -273,14 +280,15 @@ class ModernNavbar extends Component {
                 {items.map((item, index) => (
                   isAuthenticated ? (
                     <Tooltip key={item.text} title={item.text} arrow>
-                      <StyledIconButton onClick={() => this.handleNavigation(item.path)}>
+                      <StyledIconButton component={Link} to={item.path} aria-label={item.text}>
                         {item.icon}
                       </StyledIconButton>
                     </Tooltip>
                   ) : (
                     <Button
                       key={item.text}
-                      onClick={() => this.handleNavigation(item.path)}
+                      component={Link}
+                      to={item.path}
                       sx={{
                         color: '#b8c5d6',
                         fontWeight: 500,
@@ -329,14 +337,14 @@ class ModernNavbar extends Component {
                   <Button
                     variant="outlined"
                     href="/login"
-                    sx={{ color: '#b8c5d6', borderColor: 'rgba(123, 47, 247, 0.6)' }}
+                    sx={{ color: '#b8c5d6', borderColor: 'rgba(123, 47, 247, 0.6)', whiteSpace: 'nowrap', minWidth: 0, px: { xs: 1.25, sm: 2 }, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}
                   >
                     Log In
                   </Button>
                   <Button
                     variant="contained"
                     href="/register"
-                    sx={{ background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)', color: 'white' }}
+                    sx={{ background: 'linear-gradient(45deg, #7b2ff7, #00d4ff)', color: 'white', whiteSpace: 'nowrap', minWidth: 0, px: { xs: 1.25, sm: 2 }, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}
                   >
                     Sign Up
                   </Button>

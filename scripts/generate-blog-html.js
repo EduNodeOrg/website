@@ -247,6 +247,8 @@ const required = ['title', 'description', 'canonical'];
 let written = 0;
 let skipped = 0;
 for (const { route, file } of routes) {
+  // Its schema and content are generated from the public catalog below.
+  if (route === '/masterclasses') continue;
   let meta;
   try {
     meta = extractMeta(file);
@@ -270,6 +272,108 @@ for (const { route, file } of routes) {
   fs.writeFileSync(out, buildPage(route, meta));
   written++;
   console.log(`✓ ${route}`);
+}
+// Dynamic masterclass routes use public data rather than literal PageMeta
+// wrappers. Generate their actual public content as well as metadata so it is
+// readable without JavaScript. Never import netlify/content in this generator.
+const { catalog: masterclasses, FREE_LESSON_COUNT } = require('../src/components/Masterclasses/catalog');
+const freeLessons = require('../src/components/Masterclasses/freeLessons');
+const listHtml = (items) => `<ul>${items.map((item) => `<li>${escHtml(item)}</li>`).join('')}</ul>`;
+const coursePath = (course) => `/masterclasses/${course.slug}`;
+const lessonPath = (course, lesson) => `${coursePath(course)}/lessons/${lesson.slug}`;
+const linkHtml = (url, title) => `<a href="${escAttr(url)}">${escHtml(title)}</a>`;
+const paragraph = (text) => `<p>${escHtml(text)}</p>`;
+
+function writeMasterclassPage(route, title, description, content, ld) {
+  const url = ORIGIN + route;
+  const meta = {
+    title, description, canonical: url,
+    og: { type: 'website', title, description, url, image: ORIGIN + '/en.png' },
+    twitter: { card: 'summary_large_image', title, description, image: ORIGIN + '/en.png' },
+    ld: ld ? [ld] : [],
+  };
+  const html = buildPage(route, meta)
+    // Let react-helmet-async replace these on client navigation instead of
+    // retaining a second canonical or structured data from the initial route.
+    .replace('<link rel="canonical"', '<link data-rh="true" rel="canonical"')
+    .replace(/<script type="application\/ld\+json">/g, '<script data-rh="true" type="application/ld+json">')
+    .replace('<div id="root"></div>', `<div id="root"><main>${content}</main></div>`);
+  const out = path.join(BUILD, route + '.html');
+  fs.mkdirSync(path.dirname(out), { recursive: true });
+  const existed = fs.existsSync(out);
+  fs.writeFileSync(out, html);
+  if (!existed) written++;
+  console.log(`✓ ${route} (public masterclass content)`);
+}
+
+writeMasterclassPage(
+  '/masterclasses',
+  'IT Masterclasses: Coding, Data, AI, Security & Cloud | EduNode',
+  'Build practical IT skills with ten detailed masterclasses. Explore Python, JavaScript, SQL, Git, AI, cybersecurity, networking, Docker, data analysis, and IT support. The first 20% of every class is free.',
+  '<h1>Masterclasses: practical IT skills and real projects</h1>' +
+  paragraph('Ten self-paced masterclasses, 100 lessons, and ten final projects. Lessons 1–2 of each class are free without an account (20%). Lessons 3–10 require an active Pro membership (80%).') +
+  masterclasses.map((course) => `<article><h2>${linkHtml(coursePath(course), course.title)}</h2>${paragraph(course.description)}${paragraph(course.project)}${listHtml(course.outcomes)}</article>`).join('') +
+  linkHtml('/pricing', 'Explore Pro membership'),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: masterclasses.map((course, index) => ({
+      '@type': 'ListItem', position: index + 1, name: course.title, url: ORIGIN + coursePath(course),
+    })),
+  }
+);
+
+for (const course of masterclasses) {
+  const courseLd = {
+    '@context': 'https://schema.org', '@type': 'Course',
+    name: course.title, description: course.description, url: ORIGIN + coursePath(course),
+    provider: { '@type': 'Organization', name: 'EduNode', url: ORIGIN },
+    coursePrerequisites: course.prerequisites,
+    educationalLevel: course.slug === 'docker-cloud-deployment' ? 'Beginner with programming experience' : 'Beginner',
+    isAccessibleForFree: false,
+    hasPart: course.lessons.map((lesson, index) => ({
+      '@type': 'LearningResource', name: lesson.title,
+      url: ORIGIN + lessonPath(course, lesson), isAccessibleForFree: index < FREE_LESSON_COUNT,
+    })),
+  };
+  writeMasterclassPage(
+    coursePath(course), `${course.title} | EduNode`, course.description,
+    `<nav>${linkHtml('/masterclasses', 'All masterclasses')}</nav><h1>${escHtml(course.title)}</h1>` +
+    paragraph(course.description) + paragraph('10 lessons. Approximately 6–8 hours including practice. First two lessons free; remaining eight lessons included with Pro.') +
+    '<h2>Who this is for</h2>' + paragraph(course.audience) +
+    '<h2>Before you start</h2>' + paragraph(course.prerequisites) +
+    '<h2>Your toolkit</h2>' + paragraph(course.tools) +
+    '<h2>What you will learn</h2>' + listHtml(course.outcomes) +
+    '<h2>Your final project</h2>' + paragraph(course.project) + listHtml(course.deliverables) +
+    '<h2>Curriculum</h2><ol>' + course.lessons.map((lesson, index) =>
+      `<li>${linkHtml(lessonPath(course, lesson), lesson.title)} — ${index < FREE_LESSON_COUNT ? 'Free' : 'Pro'}${paragraph(lesson.summary)}</li>`
+    ).join('') + '</ol><h2>References</h2><ul>' +
+    course.resources.map((resource) => `<li>${linkHtml(resource.url, resource.title)}</li>`).join('') + '</ul>',
+    courseLd
+  );
+  for (let index = 0; index < FREE_LESSON_COUNT; index++) {
+    const metadata = course.lessons[index];
+    const lesson = freeLessons[course.slug][index];
+    writeMasterclassPage(
+      lessonPath(course, metadata), `${metadata.title} | ${course.shortTitle} | EduNode`, metadata.summary,
+      `<nav>${linkHtml(coursePath(course), course.title)}</nav><h1>${escHtml(metadata.title)}</h1>` +
+      paragraph(metadata.summary) + paragraph(`Free lesson ${index + 1} of 10. No account required.`) +
+      '<h2>Learning objectives</h2>' + listHtml(lesson.objectives) +
+      lesson.sections.map((section) => `<section><h2>${escHtml(section.title)}</h2>${paragraph(section.text)}${section.code ? `<pre><code>${escHtml(section.code)}</code></pre>` : ''}</section>`).join('') +
+      `<h2>${escHtml(lesson.exercise.title)}</h2>` + listHtml(lesson.exercise.instructions) +
+      `<details><summary>Suggested solution</summary>${paragraph(lesson.exercise.solution)}</details>` +
+      '<h2>Knowledge check</h2>' + paragraph(lesson.quiz.question) + listHtml(lesson.quiz.options) +
+      `<details><summary>Answer and explanation</summary>${paragraph(lesson.quiz.options[lesson.quiz.answer])}${paragraph(lesson.quiz.explanation)}</details>` +
+      linkHtml(lessonPath(course, course.lessons[index + 1]), index + 1 < FREE_LESSON_COUNT ? 'Next free lesson' : 'Continue with Pro'),
+      {
+        '@context': 'https://schema.org', '@type': 'LearningResource',
+        name: metadata.title, description: metadata.summary,
+        url: ORIGIN + lessonPath(course, metadata), isAccessibleForFree: true,
+        learningResourceType: 'Lesson',
+        isPartOf: { '@type': 'Course', name: course.title, url: ORIGIN + coursePath(course) },
+      }
+    );
+  }
 }
 console.log(`\nGenerated ${written} pages with baked-in meta (${skipped} routes without meta skipped).`);
 if (!written) process.exitCode = 1;

@@ -10,6 +10,9 @@
   CI = "false"
   GENERATE_SOURCEMAP = "false"
 
+[functions]
+  node_bundler = "esbuild"
+
 [[redirects]]
   from = "/blog/stellar-go-sdk"
   to = "/blog/build-stellar-apps-with-go"

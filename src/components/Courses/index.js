@@ -276,6 +276,10 @@ const Courses = ({ auth, error: authError }) => {
               <Typography variant="h6" sx={{ color: '#b8c5d6' }}>
                 Explore our comprehensive Web3 and blockchain courses
               </Typography>
+              <Typography sx={{ color: '#b8c5d6', mt: 2 }}>
+                Looking for Python, SQL, AI, cybersecurity, or cloud skills?{' '}
+                <a href="/masterclasses" style={{ color: '#77d9bb' }}>Explore our IT masterclasses — the first 20% of each is free.</a>
+              </Typography>
             </Box>
           </motion.div>
 
@@ -399,5 +403,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Courses);
-
 
