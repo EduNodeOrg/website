@@ -1,0 +1,27 @@
+name: Submit SBOM to PG Atlas
+
+# Submits the repository's SPDX 2.3 dependency graph to PG Atlas.
+# Auth is GitHub OIDC — no secrets required in this repo.
+# Prerequisite: enable "Dependency graph" under Settings → Code security
+# (package-lock.json is already committed, so it will be populated).
+
+on:
+  push:
+    branches: [main]
+  release:
+    types: [published]
+  workflow_dispatch:
+
+concurrency:
+  group: sbom-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sbom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read      # GitHub Dependency Graph API
+      id-token: write     # OIDC token for PG Atlas authentication
+    steps:
+      - uses: SCF-Public-Goods-Maintenance/pg-atlas-sbom-action@bca8911b12604b102c41dab217b20c0a005fb126
