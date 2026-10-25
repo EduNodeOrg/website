@@ -144,6 +144,17 @@ const Web3 = lazy(() => import("./components/Blog/Articles/Web3"));
 const ZKP = lazy(() => import("./components/Blog/Articles/ZKP"));
 const Roadmap = lazy(() => import("./components/Blog/Articles/Roadmap"));
 const Stablecoin = lazy(() => import("./components/Blog/Articles/Stablecoin"));
+const UsdcVsUsdt = lazy(() => import("./components/Blog/Articles/UsdcVsUsdt"));
+const StablecoinsDecentralized = lazy(() => import("./components/Blog/Articles/StablecoinsDecentralized"));
+const HowStablecoinsWork = lazy(() => import("./components/Blog/Articles/HowStablecoinsWork"));
+const UsdcOnStellar = lazy(() => import("./components/Blog/Articles/UsdcOnStellar"));
+const StablecoinsHub = lazy(() => import("./components/Topics/Stablecoins"));
+const EthereumHub = lazy(() => import("./components/Topics/Ethereum"));
+const CryptoFundamentalsHub = lazy(() => import("./components/Topics/CryptoFundamentals"));
+const StellarHub = lazy(() => import("./components/Topics/Stellar"));
+const BitcoinHub = lazy(() => import("./components/Topics/Bitcoin"));
+const AiHub = lazy(() => import("./components/Topics/Ai"));
+const GlossaryTerm = lazy(() => import("./components/Glossary/GlossaryTerm"));
 const RWA = lazy(() => import("./components/Blog/Articles/RWA"));
 const ContractSecurity = lazy(() => import("./components/Blog/Articles/ContractSecurity"));
 const Freighter = lazy(() => import("./components/Blog/Articles/Freighter"));
@@ -459,6 +470,16 @@ function App(props) {
         <Route exact path="/blog/crypto-wallet-security" element={<WalletSecurity />} />
         <Route exact path="/blog/ai-and-blockchain" element={<AiBlockchain />} />
         <Route exact path="/blog/build-stellar-apps-with-go" element={<GoStellarSdk />} />
+        <Route exact path="/blog/usdc-vs-usdt" element={<UsdcVsUsdt />} />
+        <Route exact path="/blog/are-stablecoins-decentralized" element={<StablecoinsDecentralized />} />
+        <Route exact path="/blog/how-stablecoins-work" element={<HowStablecoinsWork />} />
+        <Route exact path="/blog/usdc-on-stellar" element={<UsdcOnStellar />} />
+        <Route exact path="/stablecoins" element={<StablecoinsHub />} />
+        <Route exact path="/ethereum" element={<EthereumHub />} />
+        <Route exact path="/crypto-fundamentals" element={<CryptoFundamentalsHub />} />
+        <Route exact path="/stellar" element={<StellarHub />} />
+        <Route exact path="/bitcoin" element={<BitcoinHub />} />
+        <Route exact path="/ai" element={<AiHub />} />
         <Route exact path="/dashboard/settings" element={<Navigate to="/account" replace />} />
         <Route exact path="/profile" element={<ModernMyProfile />} />
         <Route exact path="/post" element={<Post />} />
@@ -488,6 +509,7 @@ function App(props) {
           element={user ? <Navigate to="/" /> : <Signup />}
         />
         <Route exact path="/glossary" element={<Glossary />} />
+        <Route path="/glossary/:slug" element={<GlossaryTerm />} />
         <Route exact path="/Badges" element={<Badges />} />
         <Route exact path="/addBadge" element={<Badge />} />
         <Route exact path="/challenges/101" element={<ChallengeQ />} />

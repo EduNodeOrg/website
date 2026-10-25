@@ -44,7 +44,8 @@ import {
   HowToReg,
   Source,
   Settings,
-  Logout
+  Logout,
+  ExpandMore
 } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 import { connect } from "react-redux";
@@ -139,16 +140,20 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
 
 const menuItems = [
   { icon: <Home />, text: 'Home', path: '/' },
+  { icon: <Book />, text: 'Learn', children: [
+    { icon: <Book />, text: 'Courses', path: '/courses' },
+    { icon: <MenuBook />, text: 'Masterclasses', path: '/masterclasses' },
+    { icon: <EmojiEvents />, text: 'Challenges', path: '/challenges' },
+    { icon: <MilitaryTech />, text: 'Badges', path: '/badges' },
+    { icon: <CardMembership />, text: 'Certificates', path: '/certificate' },
+  ]},
   { icon: <Search />, text: 'Search', path: '/search' },
   { icon: <PostAdd />, text: 'New Post', path: '/post' },
-  { icon: <Book />, text: 'Courses', path: '/courses' },
-  { icon: <MenuBook />, text: 'Masterclasses', path: '/masterclasses' },
-  { icon: <Feed />, text: 'Feed', path: '/feed' },
-  { icon: <CardMembership />, text: 'Certificates', path: '/certificate' },
-  { icon: <Chat />, text: 'Chat', path: '/chat' },
-  { icon: <History />, text: 'Chat History', path: '/historyChat' },
-  { icon: <MilitaryTech />, text: 'Badges', path: '/badges' },
-  { icon: <EmojiEvents />, text: 'Challenges', path: '/challenges' },
+  { icon: <Feed />, text: 'Connect', children: [
+    { icon: <Feed />, text: 'Feed', path: '/feed' },
+    { icon: <Chat />, text: 'Chat', path: '/chat' },
+    { icon: <History />, text: 'Chat History', path: '/historyChat' },
+  ]},
   { icon: <Article />, text: 'Blog', path: '/blog' },
   { icon: <Source />, text: 'Resources', path: '/resources' },
   { icon: <Settings />, text: 'Settings', path: '/dashboard/settings' },
@@ -164,14 +169,26 @@ const staffMenuItems = [
 
 // Logged-out visitors get the marketing pages instead of the app links.
 const publicMenuItems = [
-  { icon: <MenuBook />, text: 'Masterclasses', path: '/masterclasses' },
-  { icon: <Source />, text: 'Resources', path: '/resources' },
+  { icon: <MenuBook />, text: 'Learn', children: [
+    { text: 'Courses', path: '/courses' },
+    { text: 'Masterclasses', path: '/masterclasses' },
+    { text: 'Challenges', path: '/challenges' },
+    { text: 'Glossary', path: '/glossary' },
+    { text: 'Resources', path: '/resources' },
+  ]},
+  { icon: <Sell />, text: 'Topics', children: [
+    { text: 'Bitcoin', path: '/bitcoin' },
+    { text: 'Stellar', path: '/stellar' },
+    { text: 'Stablecoins', path: '/stablecoins' },
+    { text: 'Ethereum', path: '/ethereum' },
+    { text: 'Crypto Fundamentals', path: '/crypto-fundamentals' },
+    { text: 'AI', path: '/ai' },
+  ]},
+  { icon: <Article />, text: 'Blog', path: '/blog' },
   { icon: <Sell />, text: 'Pricing', path: '/pricing' },
   { icon: <Groups />, text: 'Community', path: '/community' },
   { icon: <EmojiEvents />, text: 'Milestones', path: '/milestones' },
-  { icon: <Article />, text: 'Blog', path: '/blog' },
   { icon: <Info />, text: 'About', path: '/about' },
-  { icon: <MenuBook />, text: 'Glossary', path: '/glossary' },
 ];
 
 class ModernNavbar extends Component {
@@ -180,6 +197,8 @@ class ModernNavbar extends Component {
     this.state = {
       anchorEl: null,
       mobileMenuOpen: false,
+      navMenuAnchor: null,
+      navMenuKey: null,
       notificationCount: 0,
       userRole: null,
     };
@@ -212,6 +231,14 @@ class ModernNavbar extends Component {
     this.setState({ anchorEl: null });
   };
 
+  handleNavMenuOpen = (key) => (event) => {
+    this.setState({ navMenuAnchor: event.currentTarget, navMenuKey: key });
+  };
+
+  handleNavMenuClose = () => {
+    this.setState({ navMenuAnchor: null, navMenuKey: null });
+  };
+
   handleMobileMenuToggle = () => {
     this.setState(prevState => ({ mobileMenuOpen: !prevState.mobileMenuOpen }));
   };
@@ -242,7 +269,7 @@ class ModernNavbar extends Component {
   };
 
   render() {
-    const { anchorEl, mobileMenuOpen, notificationCount, userRole } = this.state;
+    const { anchorEl, mobileMenuOpen, navMenuAnchor, navMenuKey, notificationCount, userRole } = this.state;
     const { auth } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const user = auth.user;
@@ -277,8 +304,58 @@ class ModernNavbar extends Component {
             <NavActions>
               {/* Desktop Navigation — all links; below lg the drawer covers it */}
               <Box sx={{ display: { xs: 'none', lg: 'flex' }, gap: 1, alignItems: 'center' }}>
-                {items.map((item, index) => (
-                  isAuthenticated ? (
+                {items.map((item) => {
+                  if (item.children) {
+                    return (
+                      <React.Fragment key={item.text}>
+                        {isAuthenticated ? (
+                          <Tooltip title={item.text} arrow>
+                            <StyledIconButton onClick={this.handleNavMenuOpen(item.text)} aria-label={item.text}>
+                              {item.icon}
+                            </StyledIconButton>
+                          </Tooltip>
+                        ) : (
+                          <Button
+                            onClick={this.handleNavMenuOpen(item.text)}
+                            endIcon={<ExpandMore />}
+                            sx={{
+                              color: '#b8c5d6',
+                              fontWeight: 500,
+                              '&:hover': { color: '#ffffff', background: 'rgba(123, 47, 247, 0.1)' },
+                            }}
+                          >
+                            {item.text}
+                          </Button>
+                        )}
+                        <Menu
+                          anchorEl={navMenuAnchor}
+                          open={navMenuKey === item.text}
+                          onClose={this.handleNavMenuClose}
+                          PaperProps={{
+                            style: {
+                              background: 'linear-gradient(180deg, #1a1f3a 0%, #0a0e27 100%)',
+                              border: '1px solid rgba(123, 47, 247, 0.3)',
+                              borderRadius: '12px',
+                              marginTop: '8px',
+                            },
+                          }}
+                        >
+                          {item.children.map((child) => (
+                            <MenuItem
+                              key={child.text}
+                              onClick={() => { this.handleNavMenuClose(); this.handleNavigation(child.path); }}
+                            >
+                              {child.icon && (
+                                <ListItemIcon sx={{ color: '#b8c5d6' }}>{child.icon}</ListItemIcon>
+                              )}
+                              <ListItemText primary={child.text} sx={{ color: '#b8c5d6' }} />
+                            </MenuItem>
+                          ))}
+                        </Menu>
+                      </React.Fragment>
+                    );
+                  }
+                  return isAuthenticated ? (
                     <Tooltip key={item.text} title={item.text} arrow>
                       <StyledIconButton component={Link} to={item.path} aria-label={item.text}>
                         {item.icon}
@@ -297,8 +374,8 @@ class ModernNavbar extends Component {
                     >
                       {item.text}
                     </Button>
-                  )
-                ))}
+                  );
+                })}
               </Box>
 
               {isAuthenticated ? (
@@ -462,31 +539,44 @@ class ModernNavbar extends Component {
 
             <List>
               {drawerItems.map((item, index) => (
-                <motion.div
-                  key={item.text}
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <ListItem
-                    button
-                    onClick={item.text === 'Logout' ? this.handleLogout : () => this.handleNavigation(item.path)}
-                    sx={{
-                      color: '#b8c5d6',
-                      '&:hover': {
-                        background: 'rgba(123, 47, 247, 0.1)',
-                        color: '#ffffff',
-                      },
-                    }}
-                  >
-                    <ListItemIcon sx={{ color: 'inherit' }}>
-                      {item.icon}
-                    </ListItemIcon>
-                    <ListItemText primary={item.text} />
-                  </ListItem>
-                </motion.div>
+                <React.Fragment key={item.text}>
+                  {item.children && (
+                    <ListItem sx={{ pt: index === 0 ? 0 : 2, pb: 0.5 }}>
+                      <ListItemText
+                        primary={item.text}
+                        primaryTypographyProps={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '1.5px', color: '#00d4ff' }}
+                      />
+                    </ListItem>
+                  )}
+                  {(item.children || [item]).map((entry) => (
+                    <motion.div
+                      key={entry.text}
+                      initial={{ opacity: 0, x: -50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <ListItem
+                        button
+                        onClick={entry.text === 'Logout' ? this.handleLogout : () => this.handleNavigation(entry.path)}
+                        sx={{
+                          color: '#b8c5d6',
+                          pl: item.children ? 4 : 2,
+                          '&:hover': {
+                            background: 'rgba(123, 47, 247, 0.1)',
+                            color: '#ffffff',
+                          },
+                        }}
+                      >
+                        <ListItemIcon sx={{ color: 'inherit' }}>
+                          {entry.icon || item.icon}
+                        </ListItemIcon>
+                        <ListItemText primary={entry.text} />
+                      </ListItem>
+                    </motion.div>
+                  ))}
+                </React.Fragment>
               ))}
             </List>
           </Box>

@@ -11,6 +11,20 @@ const paidLessons = {
   'networking-linux-fundamentals': require('../content/networking'),
   'data-analysis-pandas': require('../content/pandas'),
   'it-support-troubleshooting': require('../content/itsupport'),
+  'stablecoins-in-practice': require('../content/stablecoins'),
+  'ethereum-development': require('../content/ethereum'),
+  'stellar-network-development': require('../content/stellar'),
+  'zero-knowledge-proofs': require('../content/zk'),
+  'crypto-fundamentals': require('../content/crypto'),
+  'bitcoin-fundamentals': require('../content/bitcoin'),
+  'chatgpt-essentials': require('../content/chatgpt'),
+  'claude-mastery': require('../content/claude'),
+  'gemini-essentials': require('../content/gemini'),
+  'deepseek-practice': require('../content/deepseek'),
+  'kimi-in-practice': require('../content/kimi'),
+  'glm-in-practice': require('../content/glm'),
+  'devin-for-developers': require('../content/devin'),
+  'jev-system-one-models': require('../content/jev'),
 };
 
 const SUBSCRIPTION_URL = 'https://edunode.herokuapp.com/api/stripe/subscription-status';

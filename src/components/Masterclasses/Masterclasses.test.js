@@ -41,16 +41,16 @@ const firstPath = '/masterclasses/python-automation/lessons/your-first-script';
 const paidPath = '/masterclasses/python-automation/lessons/functions-and-errors';
 const member = { isAuthenticated: true, token: 'test-session', user: { id: 'student', membership: 'Pro' } };
 
-test('catalog exposes all ten paths and topic filters work', () => {
+test('catalog exposes all twenty-four paths and topic filters work', () => {
   mount('/masterclasses');
-  expect(screen.getAllByRole('article')).toHaveLength(10);
+  expect(screen.getAllByRole('article')).toHaveLength(24);
   fireEvent.click(screen.getByRole('button', { name: 'Web Development', exact: true }));
   expect(screen.getAllByRole('article')).toHaveLength(1);
   expect(screen.getByRole('heading', { name: 'JavaScript & Modern Web Fundamentals' })).toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'Data', exact: true }));
   expect(screen.getAllByRole('article')).toHaveLength(2);
   fireEvent.click(screen.getByRole('button', { name: 'All topics' }));
-  expect(screen.getAllByRole('article')).toHaveLength(10);
+  expect(screen.getAllByRole('article')).toHaveLength(24);
 });
 
 test('anonymous learners can read, practice, and complete a free lesson without network access', () => {

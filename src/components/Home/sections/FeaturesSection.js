@@ -76,6 +76,16 @@ const FeatureDescription = styled(Typography)(({ theme }) => ({
   transition: 'all 0.3s ease',
 }));
 
+const ImageCredit = styled('span')({
+  position: 'absolute',
+  bottom: 6,
+  right: 10,
+  fontSize: '0.6rem',
+  color: 'rgba(255, 255, 255, 0.45)',
+  zIndex: 1,
+  letterSpacing: '0.02em',
+});
+
 const AnimatedButton = styled(ButtonBase)(({ theme }) => ({
   position: 'absolute',
   top: 0,
@@ -123,6 +133,27 @@ const features = [
     image: image1,
     href: '/blog',
     delay: 0.2,
+  },
+  {
+    title: 'Masterclasses',
+    description: 'Fifteen-plus self-paced paths in IT, AI assistants, and Web3 — first lessons free.',
+    image: '/img/features/masterclasses.jpg',
+    credit: 'maebmij / CC BY-SA',
+    href: '/masterclasses',
+  },
+  {
+    title: 'AI Topic',
+    description: 'Guides and masterclasses for the AI assistants reshaping work: ChatGPT, Claude, Gemini, and more.',
+    image: '/img/features/ai.jpg',
+    credit: 'uwnews / CC BY',
+    href: '/ai',
+  },
+  {
+    title: 'Crypto Fundamentals Topic',
+    description: 'Plain-English answers to every “what is…?” crypto question, plus a free masterclass.',
+    image: '/img/features/crypto.jpg',
+    credit: 'Flickr / CC BY',
+    href: '/crypto-fundamentals',
   },
   {
     title: 'Join the Community',
@@ -187,7 +218,9 @@ const FeaturesSection = () => {
                       sx={{
                         backgroundImage: `url(${feature.image})`,
                       }}
-                    />
+                    >
+                      {feature.credit && <ImageCredit>{feature.credit}</ImageCredit>}
+                    </FeatureImage>
                     <FeatureContent>
                       <FeatureTitle variant="h3">
                         {feature.title}

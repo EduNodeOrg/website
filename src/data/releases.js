@@ -4,6 +4,28 @@
 
 const releases = [
   {
+    version: '0.3.6',
+    date: '2026-10-25',
+    title: 'AI assistant masterclasses, Bitcoin class & new topic hubs',
+    highlights: [
+      'Nine new masterclasses: Bitcoin Fundamentals plus eight AI assistant paths — ChatGPT, Claude, Gemini, DeepSeek, Kimi, GLM, Devin, and Jev AI (24 classes, 240 lessons total)',
+      'New topic hubs at /stellar, /bitcoin, and /ai — joining /stablecoins, /ethereum, and /crypto-fundamentals',
+      'Navbar reorganized with dropdowns: Learn (courses, masterclasses, glossary) and Topics (all hubs); footer gained a Topics column',
+      'Loading screen now shows a branded spinner while the app boots',
+    ],
+  },
+  {
+    version: '0.3.5',
+    date: '2026-10-25',
+    title: 'Web3 content hubs, glossary pages & five blockchain masterclasses',
+    highlights: [
+      'New topic hubs at /stablecoins, /ethereum, and /crypto-fundamentals — curated paths through journals, courses, masterclasses, and glossary terms',
+      'Four new stablecoin journals: USDC vs USDT, Are Stablecoins Decentralized, How Stablecoins Work, and USDC on Stellar',
+      'Five new masterclasses (Web3 & Blockchain): Stablecoins in Practice, Ethereum Development, Stellar Network, Zero-Knowledge Proofs, and Crypto Fundamentals — 150 lessons total',
+      'Every glossary term now has its own page at /glossary/<term> with definitions, explanations, and related learning links — 67 term pages',
+    ],
+  },
+  {
     version: '0.3.4',
     date: '2026-10-25',
     title: 'Search & AI-crawler readiness overhaul',

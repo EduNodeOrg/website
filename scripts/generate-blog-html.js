@@ -212,6 +212,10 @@ function setTag(html, pattern, value) {
   return html.replace(pattern, value);
 }
 
+const LOADING_HTML =
+  '<div class="app-loading" role="status" aria-label="Loading EduNode">' +
+  '<div class="app-loading-mark">EduNode</div><div class="app-loading-spinner"></div></div>';
+
 function buildPage(route, meta) {
   let html = shell;
   const url = meta.canonical || ORIGIN + route;
@@ -253,10 +257,12 @@ function buildPage(route, meta) {
   }
 
   // Real words in the initial HTML: replace the homepage fallback copy in
-  // #root with this page's own heading and description.
+  // #root with this page's own heading and description. Styled like the
+  // shell's dark splash so the pre-React paint looks like the app loading,
+  // not an unstyled text page.
   html = html.replace(
     /<div id="root">[\s\S]*?<\/div>/,
-    `<div id="root"><main><h1>${escHtml(title)}</h1><p>${escHtml(desc)}</p></main></div>`
+    `<div id="root">${LOADING_HTML}<noscript><main><h1>${escHtml(title)}</h1><p>${escHtml(desc)}</p></main></noscript></div>`
   );
 
   let inject = '';
@@ -320,7 +326,10 @@ function writeMasterclassPage(route, title, description, content, ld) {
   const html = buildPage(route, meta)
     // Full public content in the initial HTML, replacing the title +
     // description stub that buildPage wrote into #root.
-    .replace(/<div id="root">[\s\S]*?<\/div>/, `<div id="root"><main>${content}</main></div>`);
+    .replace(
+      /<div id="root">[\s\S]*?<\/div>/,
+      `<div id="root">${LOADING_HTML}<noscript><main style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:760px;margin:0 auto;padding:2.5rem 1.25rem;line-height:1.7;color:#1c1c1e">${content}</main></noscript></div>`
+    );
   const out = path.join(BUILD, route + '.html');
   fs.mkdirSync(path.dirname(out), { recursive: true });
   const existed = fs.existsSync(out);
@@ -331,10 +340,10 @@ function writeMasterclassPage(route, title, description, content, ld) {
 
 writeMasterclassPage(
   '/masterclasses',
-  'IT Masterclasses: Coding, Data, AI, Security & Cloud | EduNode',
-  'Build practical IT skills with ten detailed masterclasses. Explore Python, JavaScript, SQL, Git, AI, cybersecurity, networking, Docker, data analysis, and IT support. The first 20% of every class is free.',
-  '<h1>Masterclasses: practical IT skills and real projects</h1>' +
-  paragraph('Ten self-paced masterclasses, 100 lessons, and ten final projects. Lessons 1–2 of each class are free without an account (20%). Lessons 3–10 require an active Pro membership (80%).') +
+  'Masterclasses: Coding, Data, AI, Security, Cloud & Web3 | EduNode',
+  'Build practical skills with twenty-four detailed masterclasses. Explore Python, JavaScript, SQL, Git, AI, cybersecurity, Docker, IT support, stablecoins, Ethereum, Stellar, zero-knowledge proofs, crypto, Bitcoin, and AI assistants. The first 20% of every class is free.',
+  '<h1>Masterclasses: practical IT and Web3 skills with real projects</h1>' +
+  paragraph('Twenty-four self-paced masterclasses, 240 lessons, and twenty-four final projects. Lessons 1–2 of each class are free without an account (20%). Lessons 3–10 require an active Pro membership (80%).') +
   masterclasses.map((course) => `<article><h2>${linkHtml(coursePath(course), course.title)}</h2>${paragraph(course.description)}${paragraph(course.project)}${listHtml(course.outcomes)}</article>`).join('') +
   linkHtml('/pricing', 'Explore Pro membership'),
   {
@@ -398,5 +407,70 @@ for (const course of masterclasses) {
     );
   }
 }
+
+// ─── Glossary term pages (/glossary/<slug>) ─────────────────────────────────
+// The /glossary/:slug route is parameterized, so like masterclasses these
+// pages are baked here from the shared terms data — every term gets a real
+// HTML page with its definition, explanation, and links readable without JS.
+const { GLOSSARY_TERMS, slugify } = require('../src/components/Glossary/terms');
+const glossaryLd = {
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTermSet',
+  name: 'EduNode Web3 & Blockchain Glossary',
+  url: ORIGIN + '/glossary',
+  description:
+    'A glossary of popular Web3, blockchain, and Stellar terms — from smart contracts and DeFi to Soroban, Horizon, and the Stellar Consensus Protocol.',
+  hasDefinedTerm: GLOSSARY_TERMS.map(({ term, definition }) => ({
+    '@type': 'DefinedTerm',
+    name: term,
+    description: definition,
+    url: `${ORIGIN}/glossary/${slugify(term)}`,
+  })),
+};
+writeMasterclassPage(
+  '/glossary',
+  'Web3 & Blockchain Glossary | EduNode',
+  'A glossary of popular Web3, blockchain, and Stellar terms — from smart contracts and DeFi to Soroban, Horizon, and the Stellar Consensus Protocol.',
+  `<h1>Web3 & Blockchain Glossary</h1>` +
+    paragraph('Plain-language definitions of Web3, blockchain, and Stellar ecosystem terms — each with its own page linking to deeper EduNode courses and articles.') +
+    `<ul>${GLOSSARY_TERMS.map((entry) => `<li>${linkHtml(`/glossary/${slugify(entry.term)}`, entry.term)} — ${escHtml(entry.definition)}</li>`).join('')}</ul>`,
+  glossaryLd
+);
+for (const entry of GLOSSARY_TERMS) {
+  const slug = slugify(entry.term);
+  const route = `/glossary/${slug}`;
+  const linkItems = (entry.links || [])
+    .map((link) => {
+      const href = link.href.startsWith('http') ? link.href : ORIGIN + link.href;
+      return `<li>${linkHtml(href, link.label)}</li>`;
+    })
+    .join('');
+  const content =
+    `<nav>${linkHtml('/glossary', 'Web3 & Blockchain Glossary')}</nav><h1>${escHtml(entry.term)}</h1>` +
+    paragraph(entry.definition) +
+    (entry.about ? paragraph(entry.about) : '') +
+    (linkItems ? `<h2>Keep learning</h2><ul>${linkItems}</ul>` : '') +
+    paragraph(`See all terms in the EduNode glossary.`);
+  const termLd = {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTerm',
+    name: entry.term,
+    description: entry.about || entry.definition,
+    url: ORIGIN + route,
+    inDefinedTermSet: {
+      '@type': 'DefinedTermSet',
+      name: 'EduNode Web3 & Blockchain Glossary',
+      url: ORIGIN + '/glossary',
+    },
+  };
+  writeMasterclassPage(
+    route,
+    `What Is ${entry.term}? | EduNode Glossary`,
+    entry.definition,
+    content,
+    termLd
+  );
+}
 console.log(`\nGenerated ${written} pages with baked-in meta (${skipped} routes without meta skipped).`);
+
 if (!written) process.exitCode = 1;

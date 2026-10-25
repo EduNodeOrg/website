@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const { handler } = require('../functions/masterclass');
 const { catalog, FREE_LESSON_COUNT } = require('../../src/components/Masterclasses/catalog');
 const freeLessons = require('../../src/components/Masterclasses/freeLessons');
-const paid = ['python', 'sql', 'ai', 'security', 'cloud', 'javascript', 'git', 'networking', 'pandas', 'itsupport'].map((file) => require(`../content/${file}`));
+const paid = ['python', 'sql', 'ai', 'security', 'cloud', 'javascript', 'git', 'networking', 'pandas', 'itsupport', 'stablecoins', 'ethereum', 'stellar', 'zk', 'crypto', 'bitcoin', 'chatgpt', 'claude', 'gemini', 'deepseek', 'kimi', 'glm', 'devin', 'jev'].map((file) => require(`../content/${file}`));
 const originalFetch = global.fetch;
 afterEach(() => { global.fetch = originalFetch; });
 
@@ -24,8 +24,8 @@ function subscription(data = { plan: 'pro', status: 'active' }, status = 200) {
   };
 }
 
-test('all ten classes contain exactly two public and eight comprehensive paid lessons', () => {
-  assert.equal(catalog.length, 10);
+test('all twenty-four classes contain exactly two public and eight comprehensive paid lessons', () => {
+  assert.equal(catalog.length, 24);
   for (const [index, course] of catalog.entries()) {
     assert.equal(course.lessons.length, 10);
     assert.equal(freeLessons[course.slug].length, FREE_LESSON_COUNT);
@@ -46,7 +46,7 @@ test('all ten classes contain exactly two public and eight comprehensive paid le
   }
 });
 
-test('all twenty free lessons work without authentication or a membership-service request', async () => {
+test('all forty-eight free lessons work without authentication or a membership-service request', async () => {
   global.fetch = () => { throw new Error('Free access must not call the subscription service'); };
   for (const course of catalog) {
     for (let index = 0; index < FREE_LESSON_COUNT; index++) {
@@ -57,7 +57,7 @@ test('all twenty free lessons work without authentication or a membership-servic
   }
 });
 
-test('all 40 paid lesson URLs reject anonymous callers without returning bodies', async () => {
+test('all 192 paid lesson URLs reject anonymous callers without returning bodies', async () => {
   for (const course of catalog) {
     for (let index = FREE_LESSON_COUNT; index < course.lessons.length; index++) {
       const response = await handler(event(course, index));

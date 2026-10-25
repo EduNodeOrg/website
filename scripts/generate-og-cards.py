@@ -22,6 +22,17 @@ CARDS = [
     ('crypto-wallet-security', 'VpnKey', 'Crypto Wallet Security: Seed Phrases & Passkeys'),
     ('ai-and-blockchain', 'Memory', 'AI and Blockchain: How AI Meets Web3'),
     ('build-stellar-apps-with-go', 'Code', "A Go Developer's Guide to Stellar"),
+    ('usdc-vs-usdt', 'CompareArrows', "USDC vs USDT: What's the Difference?"),
+    ('are-stablecoins-decentralized', 'AccountBalance', 'Are Stablecoins Actually Decentralized?'),
+    ('how-stablecoins-work', 'Build', 'How Stablecoins Work: Peg Mechanisms'),
+    ('usdc-on-stellar', 'Send', 'USDC on Stellar: Fast, Cheap Payments'),
+    ('ai', 'Memory', 'Learn AI: Assistants, Prompting & Workflows'),
+    ('masterclasses', 'WorkspacePremium', 'Masterclasses: Learn by Doing'),
+    ('bitcoin', 'CurrencyBitcoin', 'Learn Bitcoin: The Original Cryptocurrency'),
+    ('stellar', 'Send', 'Learn Stellar: Payments, Assets & Soroban'),
+    ('stablecoins', 'MonetizationOn', 'Stablecoins: Digital Dollars on Blockchain'),
+    ('ethereum', 'CurrencyExchange', 'Learn Ethereum: Contracts, Gas & Web3'),
+    ('crypto-fundamentals', 'School', 'Crypto Fundamentals: The Basics'),
 ]
 
 def icon_ds(name):

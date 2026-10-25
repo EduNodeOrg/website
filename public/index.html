@@ -113,28 +113,47 @@
     integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
     crossorigin="anonymous"></script>
 
-</head>
+    <style>
+      .app-loading{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:linear-gradient(180deg,#0a0e27 0%,#1a1f3a 50%,#2d1b69 100%);color:#dfe7f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+      .app-loading-mark{font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#00d4ff}
+      .app-loading-spinner{width:44px;height:44px;border:4px solid rgba(255,255,255,.15);border-top-color:#00d4ff;border-radius:50%;animation:edu-spin .8s linear infinite}
+      @keyframes edu-spin{to{transform:rotate(360deg)}}
+      @media (prefers-reduced-motion:reduce){.app-loading-spinner{animation:none}}
+    </style>
+  </head>
 <body>
   <noscript>EduNode teaches blockchain development and IT skills through interactive courses and masterclasses. Enable JavaScript for the full experience.</noscript>
   <!-- Static fallback content: visible to no-JS clients and crawlers until React
        mounts and replaces it. Keep it free of <div> elements — the build-time
        meta generator swaps this block out for per-route content. -->
   <div id="root">
-    <main style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:720px;margin:0 auto;padding:2.5rem 1.25rem;line-height:1.65;color:#1c1c1e">
-      <h1 style="font-size:2rem;line-height:1.25;margin:0 0 1rem">Learn blockchain development and practical IT skills</h1>
-      <p>EduNode is an educational platform for becoming a blockchain developer. Hands-on courses cover Stellar, Web3, Soroban smart contracts, Ethereum, and Hyperledger, alongside self-paced IT masterclasses in Python, SQL, JavaScript, AI workflow automation, cybersecurity, networking, Docker, Git, and data analysis.</p>
-      <h2 style="font-size:1.35rem;margin:1.75rem 0 0.5rem">What is EduNode?</h2>
-      <p>A learning platform that combines written lessons, interactive coding challenges, quizzes, and verifiable certificates. It is built for beginners who want practical, project-based paths into blockchain and IT careers.</p>
-      <h2 style="font-size:1.35rem;margin:1.75rem 0 0.5rem">What can you learn?</h2>
-      <ul style="padding-left:1.25rem">
-        <li><a href="/masterclasses">IT masterclasses</a> — ten paths, 100 lessons: Python, SQL, JavaScript, Git, AI automation, cybersecurity, networking, Docker, data analysis, and IT support</li>
-        <li>Blockchain courses — Stellar, Web3, Soroban, Ethereum, and Hyperledger fundamentals</li>
-        <li><a href="/blog">Guides and articles</a> — wallets, smart contract security, DeFi, tokenization, and developer roadmaps</li>
-      </ul>
-      <h2 style="font-size:1.35rem;margin:1.75rem 0 0.5rem">How much is free?</h2>
-      <p>The first two lessons of every masterclass (20%) are free without an account. The remaining lessons and final projects are included with a <a href="/pricing">Pro membership</a>.</p>
-      <p><a href="/about">About EduNode</a> · <a href="/releases">Release notes</a> · <a href="/blog">Blog</a> · <a href="/masterclasses">Masterclasses</a></p>
+    <div class="app-loading" role="status" aria-label="Loading EduNode">
+      <div class="app-loading-mark">EduNode</div>
+      <div class="app-loading-spinner"></div>
+    </div>
+    <noscript>
+
+    <main style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;min-height:100vh;box-sizing:border-box;background:linear-gradient(180deg,#0a0e27 0%,#1a1f3a 50%,#2d1b69 100%);color:#dfe7f5;padding:4rem 1.25rem;line-height:1.65">
+      <div style="max-width:720px;margin:0 auto">
+        <p style="font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#00d4ff;margin:0 0 0.75rem">EduNode</p>
+        <h1 style="font-size:2rem;line-height:1.25;margin:0 0 1rem;color:#ffffff">Learn blockchain development and practical IT skills</h1>
+        <p style="margin:0 0 0.5rem">EduNode is an educational platform for becoming a blockchain developer. Hands-on courses cover Stellar, Web3, Soroban smart contracts, Ethereum, and Hyperledger, alongside self-paced masterclasses in Python, SQL, JavaScript, AI workflow automation, cybersecurity, networking, Docker, Git, data analysis, and Web3 fundamentals.</p>
+        <h2 style="font-size:1.25rem;margin:1.75rem 0 0.5rem;color:#ffffff">What is EduNode?</h2>
+        <p style="margin:0 0 0.5rem">A learning platform that combines written lessons, interactive coding challenges, quizzes, and verifiable certificates. It is built for beginners who want practical, project-based paths into blockchain and IT careers.</p>
+        <h2 style="font-size:1.25rem;margin:1.75rem 0 0.5rem;color:#ffffff">What can you learn?</h2>
+        <ul style="padding-left:1.25rem;margin:0 0 0.5rem">
+          <li><a style="color:#00d4ff" href="/masterclasses">Masterclasses</a> — fifteen paths, 150 lessons: Python, SQL, JavaScript, Git, AI automation, cybersecurity, networking, Docker, data analysis, IT support, stablecoins, Ethereum, Stellar, zero-knowledge proofs, and crypto fundamentals</li>
+          <li>Blockchain courses — Stellar, Web3, Soroban, Ethereum, and Hyperledger fundamentals</li>
+          <li><a style="color:#00d4ff" href="/blog">Guides and articles</a> — wallets, stablecoins, smart contract security, DeFi, tokenization, and developer roadmaps</li>
+          <li><a style="color:#00d4ff" href="/glossary">Web3 glossary</a> — plain-language definitions, each on its own page</li>
+        </ul>
+        <h2 style="font-size:1.25rem;margin:1.75rem 0 0.5rem;color:#ffffff">How much is free?</h2>
+        <p style="margin:0 0 0.5rem">The first two lessons of every masterclass (20%) are free without an account. The remaining lessons and final projects are included with a <a style="color:#00d4ff" href="/pricing">Pro membership</a>.</p>
+        <p style="margin:2rem 0 0"><a style="color:#00d4ff" href="/about">About EduNode</a> · <a style="color:#00d4ff" href="/releases">Release notes</a> · <a style="color:#00d4ff" href="/blog">Blog</a> · <a style="color:#00d4ff" href="/masterclasses">Masterclasses</a></p>
+      </div>
     </main>
+  
+    </noscript>
   </div>
 </body>
 </html>

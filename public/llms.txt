@@ -4,9 +4,9 @@
 
 ## IT Masterclasses
 
-Each masterclass has 10 written lessons with examples, exercises, and knowledge checks. The first two lessons (20%) are free without an account; the remaining eight (80%), including the final project, require an active Pro membership. Ten paths, 100 lessons total.
+Each masterclass has 10 written lessons with examples, exercises, and knowledge checks. The first two lessons (20%) are free without an account; the remaining eight (80%), including the final project, require an active Pro membership. Twenty-four paths, 240 lessons total.
 
-- [Masterclasses](https://edunode.org/masterclasses): Five practical IT learning paths with 50 lessons and five final projects
+- [Masterclasses](https://edunode.org/masterclasses): Twenty-four learning paths (IT, Web3, and AI assistants) with 240 lessons and twenty-four final projects
 - [Python for Beginners: Automate Everyday Tasks](https://edunode.org/masterclasses/python-automation): Files, CSV/Excel, APIs, tests, scheduling, and a sales reporting project
 - [Your first useful Python script](https://edunode.org/masterclasses/python-automation/lessons/your-first-script): Free lesson on setup, variables, calculations, and debugging
 - [Data, loops, and decisions](https://edunode.org/masterclasses/python-automation/lessons/data-and-decisions): Free Python lesson on lists, dictionaries, and paid-order summaries
@@ -37,6 +37,32 @@ Each masterclass has 10 written lessons with examples, exercises, and knowledge 
 - [IT Support & Troubleshooting Foundations](https://edunode.org/masterclasses/it-support-troubleshooting): Six-step method, hardware/OS/network triage, tickets, remote support, and escalation
 - [What IT support really does](https://edunode.org/masterclasses/it-support-troubleshooting/lessons/support-role-and-method): Free lesson on the structured troubleshooting method
 - [Gather the right information](https://edunode.org/masterclasses/it-support-troubleshooting/lessons/gather-information): Free lesson on interviewing users and scoping issues
+
+- [Stablecoins in Practice](https://edunode.org/masterclasses/stablecoins-in-practice): Peg mechanics, USDC vs USDT, risks, regulation, and Stellar payments
+- [What a stablecoin really is](https://edunode.org/masterclasses/stablecoins-in-practice/lessons/digital-dollars): Free lesson on stablecoin purpose and claims
+- [How the peg is maintained](https://edunode.org/masterclasses/stablecoins-in-practice/lessons/how-pegs-hold): Free lesson on arbitrage and redemption
+- [Ethereum Development Essentials](https://edunode.org/masterclasses/ethereum-development): Accounts, gas, Solidity, testing, and a testnet tip-jar project
+- [How Ethereum works](https://edunode.org/masterclasses/ethereum-development/lessons/ethereum-mental-model): Free lesson on accounts, state, and the EVM
+- [Transactions and gas](https://edunode.org/masterclasses/ethereum-development/lessons/transactions-and-gas): Free lesson on gas mechanics and receipts
+- [Stellar Network Development](https://edunode.org/masterclasses/stellar-network-development): Assets, trustlines, Horizon, anchors, path payments, Soroban
+- [Stellar's model](https://edunode.org/masterclasses/stellar-network-development/lessons/stellar-model): Free lesson on accounts, assets, and reserves
+- [Transactions and operations](https://edunode.org/masterclasses/stellar-network-development/lessons/transactions-operations): Free lesson on atomic ops and fees
+- [Zero-Knowledge Proofs](https://edunode.org/masterclasses/zero-knowledge-proofs): ZKP intuition, SNARKs/STARKs, circuits, rollups, ZK on Stellar
+- [What a zero-knowledge proof is](https://edunode.org/masterclasses/zero-knowledge-proofs/lessons/zkp-intuition): Free lesson on prove-without-revealing
+- [Proofs, verification, three properties](https://edunode.org/masterclasses/zero-knowledge-proofs/lessons/proofs-that-verify): Free lesson on completeness, soundness, zero-knowledge
+- [Crypto Fundamentals](https://edunode.org/masterclasses/crypto-fundamentals): Keys, wallets, tokens, DeFi basics, security, testnets
+- [From money to blockchains](https://edunode.org/masterclasses/crypto-fundamentals/lessons/money-to-blockchain): Free lesson on ledgers and double-spend
+- [Keys, addresses, and signatures](https://edunode.org/masterclasses/crypto-fundamentals/lessons/keys-and-addresses): Free lesson on keypairs and seed phrases
+
+- [Bitcoin Fundamentals](https://edunode.org/masterclasses/bitcoin-fundamentals): Mining, scarcity, custody, and honest trade-offs
+- [ChatGPT Essentials](https://edunode.org/masterclasses/chatgpt-essentials): Prompting, files, custom GPTs, and real workflows
+- [Claude Mastery](https://edunode.org/masterclasses/claude-mastery): Long documents, projects, artifacts, and code
+- [Gemini Essentials](https://edunode.org/masterclasses/gemini-essentials): Multimodal, Workspace, and Deep Research
+- [DeepSeek in Practice](https://edunode.org/masterclasses/deepseek-practice): Reasoning mode, open weights, and the API
+- [Kimi in Practice](https://edunode.org/masterclasses/kimi-in-practice): Long-context document work and agents
+- [GLM in Practice](https://edunode.org/masterclasses/glm-in-practice): Bilingual strength and open weights
+- [Devin for Developers](https://edunode.org/masterclasses/devin-for-developers): Delegating to an AI software engineer
+- [Jev & System One Models](https://edunode.org/masterclasses/jev-system-one-models): TypeSafe AI’s typed decision models for automation in code
 
 ## Courses
 
@@ -87,6 +113,20 @@ Each masterclass has 10 written lessons with examples, exercises, and knowledge 
 - [Crypto Wallet Security](https://edunode.org/blog/crypto-wallet-security): Seed phrases, passkeys, multi-sig, and phishing defense
 - [AI and Blockchain](https://edunode.org/blog/ai-and-blockchain): Where AI agents, provenance, and verifiable compute meet Web3
 - [A Go Developer's Guide to Stellar](https://edunode.org/blog/build-stellar-apps-with-go): Payments with go-stellar-sdk, terminal ops with stellar-go-cli, and Soroban contract calls from Go
+
+## Topic Hubs & Glossary
+
+- [Bitcoin hub](https://edunode.org/bitcoin): Bitcoin fundamentals, mining, wallets, and glossary
+- [Stellar hub](https://edunode.org/stellar): Stellar courses, masterclass, journals, and glossary
+- [Stablecoins hub](https://edunode.org/stablecoins): Stablecoin journals, masterclass, courses, and glossary
+- [USDC vs USDT](https://edunode.org/blog/usdc-vs-usdt): Comparing the two largest dollar stablecoins
+- [Are stablecoins decentralized?](https://edunode.org/blog/are-stablecoins-decentralized): Issuer control, freezes, and the spectrum
+- [How stablecoins work](https://edunode.org/blog/how-stablecoins-work): Fiat-backed vs crypto-backed vs algorithmic
+- [USDC on Stellar](https://edunode.org/blog/usdc-on-stellar): Native USDC, trustlines, anchors, sub-cent payments
+- [Learn Ethereum hub](https://edunode.org/ethereum): Ethereum courses, masterclass, journals, and glossary
+- [Crypto fundamentals hub](https://edunode.org/crypto-fundamentals)
+- [AI hub](https://edunode.org/ai): AI assistant guides and masterclasses — ChatGPT, Claude, Gemini, DeepSeek, Kimi, GLM, Devin: Plain-English "what is..." answers plus courses
+- [Glossary](https://edunode.org/glossary): Every Web3/blockchain term has its own page under /glossary/<term>
 
 ## Tools
 
