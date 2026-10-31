@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: 'What do I need to hold USDC on Stellar?',
-    a: 'A Stellar wallet (such as Freighter), a small XLM balance for the account reserve, and a trustline to the USDC asset issued by Circle. Trustlines are how Stellar prevents unwanted assets being sent to your account.',
+    a: 'A Stellar wallet (such as Varial (formerly Freighter)), a small XLM balance for the account reserve, and a trustline to the USDC asset issued by Circle. Trustlines are how Stellar prevents unwanted assets being sent to your account.',
   },
   {
     q: 'How do I get USDC onto Stellar?',
@@ -154,7 +154,7 @@ export default function UsdcOnStellar() {
         </div>
         <div style={s.card}>
           <div style={{ ...s.cardTitle, color }}>Build payment products</div>
-          Horizon's API, Freighter wallets, anchor rails, and Soroban contracts let developers wire
+          Horizon's API, Varial (formerly Freighter) wallets, anchor rails, and Soroban contracts let developers wire
           USDC into payroll, disbursements, and checkout flows.
         </div>
         <div style={s.card}>

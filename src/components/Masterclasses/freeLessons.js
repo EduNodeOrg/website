@@ -576,6 +576,89 @@ const freeLessons = {
       quiz: { question: 'Why can Jev not hallucinate?', options: ['It is a smaller model', 'There is no free-form string space — output is constrained to your typed schema, so invention is impossible by construction', 'It uses RAG'], answer: 1, explanation: 'Hallucination lives in open-ended generation. Schema-typed output removes the space to hallucinate into — the remaining risk is wrong probabilities, which calibration exposes.' },
     },
   ],
+
+  'rust-web-wasm': [
+    {
+        "objectives": [
+            "Install the Rust toolchain with rustup.",
+            "Write and run a first Rust program with cargo.",
+            "Explain why browsers and blockchains chose Rust."
+        ],
+        "sections": [
+            {
+                "title": "Why Rust exists",
+                "text": "Rust is the language where performance meets safety: it compiles to native speed like C, but the compiler refuses to build programs that could crash on memory errors \u2014 no garbage collector, no null pointers, no data races, by construction. That combination is why Rust topped developer surveys for years, why it lives inside the Linux kernel and Firefox, and why serious Web3 platforms bet on it."
+            },
+            {
+                "title": "The Web3 connection",
+                "text": "Stellar\u2019s Soroban smart contracts, Polkadot\u2019s Substrate, and NEAR all run Rust compiled to WebAssembly \u2014 the same language and target you will use for browser apps in this class. Learning Rust is not a detour between web and Web3: it is one skill with two deployment targets."
+            },
+            {
+                "title": "Your toolchain",
+                "text": "rustup installs and updates everything: the rustc compiler, the cargo build tool, and extra compile targets like wasm32-unknown-unknown. cargo new creates a project; cargo run builds and executes it. By the end of this lesson you will have compiled and run your first Rust binary."
+            }
+        ],
+        "exercise": {
+            "title": "Install Rust and run hello world",
+            "instructions": [
+                "Install rustup per rust-lang.org instructions and verify rustc --version works.",
+                "cargo new hello && cd hello, read the generated src/main.rs.",
+                "cargo run and confirm you see the greeting \u2014 then change the message and run again."
+            ],
+            "solution": "rustup installs the toolchain; cargo new hello scaffolds a package; cargo run compiles src/main.rs and executes the binary \u2014 you should see Hello, world! in the terminal."
+        },
+        "quiz": {
+            "question": "Why did Web3 platforms like Stellar Soroban choose Rust?",
+            "options": [
+                "It has a garbage collector",
+                "Memory-safe, deterministic code that compiles to WASM",
+                "It is easier to learn than Python"
+            ],
+            "answer": 1,
+            "explanation": "Contracts need deterministic, memory-safe code in a sandboxed VM \u2014 Rust\u2192WASM delivers exactly that."
+        }
+    },
+    {
+        "objectives": [
+            "State the three ownership rules.",
+            "Distinguish moving from borrowing.",
+            "Read common borrow-checker errors without guessing."
+        ],
+        "sections": [
+            {
+                "title": "The rules",
+                "text": "Three rules do almost all the work: every value has exactly one owner; when the owner goes out of scope the value is dropped; and you may hold any number of immutable references OR exactly one mutable reference \u2014 never both. The compiler enforces these at build time, which is what eliminates use-after-free and data-race bugs that plague C and C++."
+            },
+            {
+                "title": "Borrows and mutation",
+                "text": "&T is a shared read-only borrow; &mut T is an exclusive borrow \u2014 while it exists, nothing else may touch the value. This exclusivity is the mechanism: shared readers plus zero-or-one writers is the exact recipe for freedom from data races. Most beginner friction is just learning to restructure code so borrows end before mutation begins."
+            },
+            {
+                "title": "Lifetimes in practice",
+                "text": "References must never outlive the data they point to; lifetimes are the compiler\u2019s bookkeeping for that rule. Most of the time inference handles it silently \u2014 you write explicit lifetime annotations mainly when functions return references or structs store them. The error messages tell you precisely which borrow outlived its owner."
+            }
+        ],
+        "exercise": {
+            "title": "Fix three borrow-checker errors",
+            "instructions": [
+                "Write code that tries to use a String after passing it by value to a function \u2014 read the \"moved value\" error, then fix it by borrowing.",
+                "Create two mutable references to the same variable \u2014 read the exclusivity error, then fix it by scoping the borrows.",
+                "Return a reference to a local variable from a function \u2014 read the lifetime error, then fix it by returning an owned value."
+            ],
+            "solution": "let s = String::from(\"hi\"); takes(s); println!(\"{}\", s); // ERROR: moved value \u2014 fix: takes(&s) and fn takes(x: &String). Two &mut s borrows fail; scope them: { let r = &mut s; } then &mut s again. Return owned String instead of &String."
+        },
+        "quiz": {
+            "question": "Why does Rust forbid two simultaneous mutable references?",
+            "options": [
+                "Mutable references are slower",
+                "One writer at a time eliminates data races and dangling-pointer bugs at compile time",
+                "It saves memory"
+            ],
+            "answer": 1,
+            "explanation": "Shared readers or one exclusive writer \u2014 enforced at compile time \u2014 is exactly the rule that makes data races and use-after-free impossible."
+        }
+    }
+],
 };
 
 module.exports = freeLessons;

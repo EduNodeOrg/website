@@ -471,6 +471,113 @@ for (const entry of GLOSSARY_TERMS) {
     termLd
   );
 }
-console.log(`\nGenerated ${written} pages with baked-in meta (${skipped} routes without meta skipped).`);
 
-if (!written) process.exitCode = 1;
+// ─── Journal: bake community posts, author pages, and tag pages ──────────────
+// Posts arrive from the API at build time; runtime prerender covers posts
+// created between builds (postDetails gates prerenderReady on data).
+function jSlugify(t) {
+  return String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70) || 'post';
+}
+function jHandle(email) {
+  const e = String(email || 'anonymous').toLowerCase();
+  const local = e === 'anonymous' ? 'anonymous' : e.split('@')[0];
+  return local.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'anonymous';
+}
+function jTags(t) {
+  const m = String(t || '').match(/['"]([^'"]+)['"]/g) || [];
+  return m.map((x) => x.replace(/['"]/g, ''));
+}
+function jStrip(h) { return String(h || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(); }
+const jParagraph = (t) => (t ? `<p>${escHtml(t)}</p>` : '');
+
+async function bakeJournal() {
+  let posts = [];
+  try {
+    const res = await fetch('https://edunode.herokuapp.com/api/post/posts');
+    posts = await res.json();
+    if (!Array.isArray(posts)) posts = [];
+  } catch (e) {
+    console.log('! journal bake skipped — posts API unreachable');
+    return { postUrls: [], authorUrls: [], tagUrls: [] };
+  }
+  const postUrls = [], authorUrls = [], tagUrls = [];
+  const byAuthor = new Map(), byTag = new Map();
+  for (const post of posts) {
+    if (!post || !post._id || !post.title) continue;
+    const handle = jHandle(post.email);
+    const slug = `${jSlugify(post.title)}-${post._id}`;
+    const route = `/journal/@${handle}/${slug}`;
+    const desc = jStrip(post.description).slice(0, 160);
+    const tags = jTags(post.tags);
+    const body =
+      (post.image ? `<p><img src="${escAttr(post.image)}" alt="${escAttr(post.title)}" style="max-width:100%"></p>` : '') +
+      (post.description || '') +
+      jParagraph(`Posted by @${handle}${tags.length ? ' · tags: ' + tags.join(', ') : ''}`) +
+      (post.link ? `<p><a href="${escAttr(post.link)}">Original source / reference</a></p>` : '');
+    writeMasterclassPage(route, `${post.title} | EduNode Journal`, desc, body, {
+      '@context': 'https://schema.org', '@type': 'Article',
+      headline: post.title, description: desc, url: ORIGIN + route,
+      datePublished: post.date,
+      author: { '@type': 'Person', name: handle === 'anonymous' ? 'EduNode Community' : '@' + handle, url: ORIGIN + `/journal/@${handle}` },
+      publisher: { '@type': 'Organization', name: 'EduNode', url: ORIGIN },
+      mainEntityOfPage: ORIGIN + route,
+    });
+    postUrls.push(route); written++;
+    if (!byAuthor.has(handle)) byAuthor.set(handle, []);
+    byAuthor.get(handle).push({ route, title: post.title, desc });
+    for (const t of tags) {
+      const ts = jSlugify(t);
+      if (!byTag.has(ts)) byTag.set(ts, []);
+      byTag.get(ts).push({ route, title: post.title, desc });
+    }
+  }
+  // Author pages — Person JSON-LD + post listing. File `journal/@h.html`
+  // coexists with the `@h/` posts dir: pretty URLs resolve .html first.
+  for (const [handle, list] of byAuthor) {
+    const route = `/journal/@${handle}`;
+    const content = list.map((i) => `<h3><a href="${i.route}">${escHtml(i.title)}</a></h3><p>${escHtml(i.desc)}</p>`).join('');
+    writeMasterclassPage(route, `@${handle} | EduNode Journal`, `Articles by @${handle} on EduNode Journal.`, content, {
+      '@context': 'https://schema.org', '@type': 'Person',
+      name: handle === 'anonymous' ? 'EduNode Community' : '@' + handle, url: ORIGIN + route,
+    });
+    authorUrls.push(route); written++;
+  }
+  for (const [tag, list] of byTag) {
+    const route = `/t/${tag}`;
+    const content = list.map((i) => `<h3><a href="${i.route}">${escHtml(i.title)}</a></h3><p>${escHtml(i.desc)}</p>`).join('');
+    writeMasterclassPage(route, `#${tag} | EduNode Journal`, `Articles tagged #${tag} on EduNode Journal.`, content, {
+      '@context': 'https://schema.org', '@type': 'CollectionPage',
+      name: `#${tag} posts`, url: ORIGIN + route,
+    });
+    tagUrls.push(route); written++;
+  }
+  // Journal index page
+  const idx = postUrls.length ? posts.filter((p) => p && p._id && p.title)
+    .map((p) => `<h3><a href="/journal/@${jHandle(p.email)}/${jSlugify(p.title)}-${p._id}">${escHtml(p.title)}</a></h3><p>${escHtml(jStrip(p.description).slice(0, 140))}</p>`).join('') : '';
+  writeMasterclassPage('/journal', 'EduNode Journal — Web3, Stellar & Developer Articles by Builders',
+    'Community-written journals on Stellar, Soroban, Web3 development, and software — connected to courses, masterclasses, and the glossary.',
+    idx, { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'EduNode Journal', url: ORIGIN + '/journal' });
+  written++;
+  // Append dynamic URLs into the copied sitemap + llms.txt, and emit llms-full.
+  const smap = path.join(BUILD, 'sitemap.xml');
+  if (fs.existsSync(smap)) {
+    const all = [...postUrls, ...authorUrls, ...tagUrls];
+    const entries = all.map((u) => `  <url><loc>${ORIGIN}${u}</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>`).join('\n');
+    fs.writeFileSync(smap, fs.readFileSync(smap, 'utf8').replace('</urlset>', `\n  <!-- Journal posts (generated at build) -->\n${entries}\n</urlset>`));
+  }
+  const lm = path.join(BUILD, 'llms.txt');
+  if (fs.existsSync(lm)) {
+    const lines = ['\n## Community Journal', ...postUrls.map((u) => `- [Post](${ORIGIN}${u})`), ...authorUrls.map((u) => `- [Author](${ORIGIN}${u})`)].join('\n');
+    fs.writeFileSync(lm, fs.readFileSync(lm, 'utf8') + lines + '\n');
+  }
+  const full = posts.filter((p) => p && p._id && p.title).map((p) =>
+    `\n# ${p.title}\n> ${ORIGIN}/journal/@${jHandle(p.email)}/${jSlugify(p.title)}-${p._id}\n\n${jStrip(p.description)}\n`).join('');
+  fs.writeFileSync(path.join(BUILD, 'llms-full.txt'), `EduNode — full content index\n${full}`);
+  console.log(`+ journal: ${postUrls.length} posts, ${authorUrls.length} authors, ${tagUrls.length} tags baked`);
+  return { postUrls, authorUrls, tagUrls };
+}
+bakeJournal().then(() => {
+  console.log(`\nGenerated ${written} pages with baked-in meta (${skipped} routes without meta skipped).`);
+  if (!written) process.exitCode = 1;
+});

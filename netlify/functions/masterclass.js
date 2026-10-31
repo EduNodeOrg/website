@@ -25,6 +25,7 @@ const paidLessons = {
   'glm-in-practice': require('../content/glm'),
   'devin-for-developers': require('../content/devin'),
   'jev-system-one-models': require('../content/jev'),
+  'rust-web-wasm': require('../content/rust'),
 };
 
 const SUBSCRIPTION_URL = 'https://edunode.herokuapp.com/api/stripe/subscription-status';

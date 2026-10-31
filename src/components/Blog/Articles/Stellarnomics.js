@@ -87,6 +87,9 @@ export default class Stellarnomics extends Component {
           </div>
           <hr style={styles.divider} />
           <div style={styles.body}>
+            <div style={{ background: '#fff8e1', border: '1px solid #f0c14b', borderRadius: '8px', padding: '14px 18px', marginBottom: '20px', fontSize: '0.95rem', lineHeight: 1.6 }}>
+              <strong>Update (October 2026):</strong> This guide has been refreshed — Stellar now includes Soroban smart contracts alongside classic operations, and ecosystem wallets like Varial (formerly Freighter) continue to evolve. Start at our <a href="/stellar">Stellar hub</a> for updated learning paths, the <a href="/masterclasses/stellar-network-development">Stellar Network masterclass</a>, and new journals like <a href="/blog/usdc-on-stellar">USDC on Stellar</a>.
+            </div>
             <p>
               Understanding the economics of the Stellar network is essential for anyone building on it. From the role of XLM as the native currency to the fee structure and inflation mechanism, Stellar's economic design is carefully crafted to enable fast, low-cost global payments.
             </p>

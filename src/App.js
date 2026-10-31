@@ -155,6 +155,31 @@ const StellarHub = lazy(() => import("./components/Topics/Stellar"));
 const BitcoinHub = lazy(() => import("./components/Topics/Bitcoin"));
 const AiHub = lazy(() => import("./components/Topics/Ai"));
 const GlossaryTerm = lazy(() => import("./components/Glossary/GlossaryTerm"));
+const JournalIndex = lazy(() => import("./components/Journal/JournalIndex"));
+const JournalAuthor = lazy(() => import("./components/Journal/JournalAuthor"));
+const JournalPost = lazy(() => import("./components/Journal/JournalPost"));
+const TagPage = lazy(() => import("./components/Journal/TagPage"));
+const WhatIsTokenization = lazy(() => import("./components/Blog/Articles/WhatIsTokenization"));
+const WhatIsWeb3 = lazy(() => import("./components/Blog/Articles/WhatIsWeb3"));
+const CustodialVsNonCustodial = lazy(() => import("./components/Blog/Articles/CustodialVsNonCustodial"));
+const DefiForBeginners = lazy(() => import("./components/Blog/Articles/DefiForBeginners"));
+const WhatIsADepeg = lazy(() => import("./components/Blog/Articles/WhatIsADepeg"));
+const WhatIsALiquidityPool = lazy(() => import("./components/Blog/Articles/WhatIsALiquidityPool"));
+const ZeroKnowledgeProofsExplained = lazy(() => import("./components/Blog/Articles/ZeroKnowledgeProofsExplained"));
+const WhatIsTheEVM = lazy(() => import("./components/Blog/Articles/WhatIsTheEVM"));
+const StellarValidatorNode = lazy(() => import("./components/Topics/StellarValidatorNode"));
+const StellarProofOfAgreement = lazy(() => import("./components/Topics/StellarProofOfAgreement"));
+const WhatIsARollup = lazy(() => import("./components/Blog/Articles/WhatIsARollup"));
+const ChatgptVsClaudeVsGemini = lazy(() => import("./components/Blog/Articles/ChatgptVsClaudeVsGemini"));
+const UsdcVsEurc = lazy(() => import("./components/Blog/Articles/UsdcVsEurc"));
+const VarialVsMetamaskVsAlbedo = lazy(() => import("./components/Blog/Articles/VarialVsMetamaskVsAlbedo"));
+const HowToCreateTokenStellar = lazy(() => import("./components/Blog/Articles/HowToCreateTokenStellar"));
+const WhatIsSmartContractAudit = lazy(() => import("./components/Blog/Articles/WhatIsSmartContractAudit"));
+const XBullSorobanDomains = lazy(() => import("./components/Blog/Articles/XBullSorobanDomains"));
+const WomenWeb3Bootcamp = lazy(() => import("./components/Blog/Articles/WomenWeb3Bootcamp"));
+const SoroswapDefiStellar = lazy(() => import("./components/Blog/Articles/SoroswapDefiStellar"));
+const SorobanEspanol = lazy(() => import("./components/Blog/Articles/SorobanEspanol"));
+const DaosEspanol = lazy(() => import("./components/Blog/Articles/DaosEspanol"));
 const RWA = lazy(() => import("./components/Blog/Articles/RWA"));
 const ContractSecurity = lazy(() => import("./components/Blog/Articles/ContractSecurity"));
 const Freighter = lazy(() => import("./components/Blog/Articles/Freighter"));
@@ -509,6 +534,31 @@ function App(props) {
           element={user ? <Navigate to="/" /> : <Signup />}
         />
         <Route exact path="/glossary" element={<Glossary />} />
+                <Route exact path="/blog/built-on-stellar-xbull-soroban-domains" element={<XBullSorobanDomains />} />
+        <Route exact path="/blog/women-in-web3-bootcamp" element={<WomenWeb3Bootcamp />} />
+        <Route exact path="/blog/defi-on-stellar-soroswap" element={<SoroswapDefiStellar />} />
+        <Route exact path="/blog/soroban-blockchain-espanol" element={<SorobanEspanol />} />
+        <Route exact path="/blog/daos-organizaciones-autonomas" element={<DaosEspanol />} />
+                <Route exact path="/blog/what-is-a-rollup" element={<WhatIsARollup />} />
+        <Route exact path="/blog/chatgpt-vs-claude-vs-gemini" element={<ChatgptVsClaudeVsGemini />} />
+        <Route exact path="/blog/usdc-vs-eurc" element={<UsdcVsEurc />} />
+        <Route exact path="/blog/varial-vs-metamask-vs-albedo" element={<VarialVsMetamaskVsAlbedo />} />
+        <Route exact path="/blog/how-to-create-a-token-on-stellar" element={<HowToCreateTokenStellar />} />
+        <Route exact path="/blog/what-is-a-smart-contract-audit" element={<WhatIsSmartContractAudit />} />
+                <Route exact path="/stellar/validator-node-guide" element={<StellarValidatorNode />} />
+        <Route exact path="/stellar/proof-of-agreement" element={<StellarProofOfAgreement />} />
+                <Route exact path="/blog/what-is-tokenization" element={<WhatIsTokenization />} />
+        <Route exact path="/blog/what-is-web3" element={<WhatIsWeb3 />} />
+        <Route exact path="/blog/custodial-vs-non-custodial-wallets" element={<CustodialVsNonCustodial />} />
+        <Route exact path="/blog/defi-for-beginners" element={<DefiForBeginners />} />
+        <Route exact path="/blog/what-is-a-depeg" element={<WhatIsADepeg />} />
+        <Route exact path="/blog/what-is-a-liquidity-pool" element={<WhatIsALiquidityPool />} />
+        <Route exact path="/blog/zero-knowledge-proofs-explained" element={<ZeroKnowledgeProofsExplained />} />
+        <Route exact path="/blog/what-is-the-evm" element={<WhatIsTheEVM />} />
+                <Route exact path="/journal" element={<JournalIndex />} />
+        <Route exact path="/journal/:author" element={<JournalAuthor />} />
+        <Route exact path="/journal/:author/:postSlug" element={<JournalPost />} />
+        <Route exact path="/t/:tag" element={<TagPage />} />
         <Route path="/glossary/:slug" element={<GlossaryTerm />} />
         <Route exact path="/Badges" element={<Badges />} />
         <Route exact path="/addBadge" element={<Badge />} />

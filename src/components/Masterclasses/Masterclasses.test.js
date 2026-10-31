@@ -43,14 +43,14 @@ const member = { isAuthenticated: true, token: 'test-session', user: { id: 'stud
 
 test('catalog exposes all twenty-four paths and topic filters work', () => {
   mount('/masterclasses');
-  expect(screen.getAllByRole('article')).toHaveLength(24);
+  expect(screen.getAllByRole('article')).toHaveLength(25);
   fireEvent.click(screen.getByRole('button', { name: 'Web Development', exact: true }));
   expect(screen.getAllByRole('article')).toHaveLength(1);
   expect(screen.getByRole('heading', { name: 'JavaScript & Modern Web Fundamentals' })).toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'Data', exact: true }));
   expect(screen.getAllByRole('article')).toHaveLength(2);
   fireEvent.click(screen.getByRole('button', { name: 'All topics' }));
-  expect(screen.getAllByRole('article')).toHaveLength(24);
+  expect(screen.getAllByRole('article')).toHaveLength(25);
 });
 
 test('anonymous learners can read, practice, and complete a free lesson without network access', () => {

@@ -348,7 +348,7 @@ class ModernMyProfile extends Component {
                       transition={{ type: "spring", stiffness: 300 }}
                     >
                       <StyledAvatar
-                        src={user.images || undefined}
+                        src={Array.isArray(user.images) ? user.images[0] : user.images || undefined}
                         sx={{ mx: 'auto', display: 'block' }}
                       >
                         {user.name?.charAt(0)?.toUpperCase()}

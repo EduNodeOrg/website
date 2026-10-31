@@ -42,6 +42,9 @@ export default function GlossaryTerm() {
   if (!entry) return <Navigate to="/glossary" replace />;
 
   const { term, definition, about, links } = entry;
+  const mc = (links || []).find((l) => l.href.startsWith('/masterclasses'));
+  const ctaHref = mc ? toPath(mc.href) : '/masterclasses';
+  const ctaLabel = mc ? `Try a free lesson: ${mc.label} →` : 'Browse free masterclass lessons →';
   const title = `What Is ${term}? | EduNode Glossary`;
   const url = `${ORIGIN}/glossary/${slug}`;
   const related = GLOSSARY_TERMS.filter((item) => item.term !== term).slice(0, 8);
@@ -135,6 +138,17 @@ export default function GlossaryTerm() {
                 ))}
               </Card>
             )}
+            <Card sx={{ border: '1px solid rgba(0,212,255,0.35)', background: 'rgba(0,212,255,0.06)' }}>
+              <Typography component="h2" sx={{ color: '#00d4ff', fontSize: '0.9rem', fontWeight: 700, letterSpacing: '2px', mb: 1 }}>
+                START A FREE LESSON
+              </Typography>
+              <Typography component="p" sx={{ color: '#b8c5d6', fontSize: '0.95rem', mb: 2 }}>
+                The first two lessons of every EduNode masterclass are free — no account required.
+              </Typography>
+              <TermLink to={ctaHref} style={{ display: 'inline-block', background: '#00d4ff', color: '#0a0e27', fontWeight: 700, borderRadius: '8px', padding: '10px 20px' }}>
+                {ctaLabel}
+              </TermLink>
+            </Card>
             <Card>
               <Typography component="h2" sx={{ color: '#00d4ff', fontSize: '0.9rem', fontWeight: 700, letterSpacing: '2px', mb: 2 }}>
                 MORE TERMS

@@ -86,6 +86,9 @@ export default class Kelp extends Component {
           </div>
           <hr style={styles.divider} />
           <div style={styles.body}>
+            <div style={{ background: '#ffebee', border: '1px solid #ef5350', borderRadius: '8px', padding: '14px 18px', marginBottom: '20px', fontSize: '0.95rem', lineHeight: 1.6 }}>
+              <strong>Update (October 2026):</strong> Kelp is <strong>deprecated</strong> — the Stellar Development Foundation no longer maintains this trading bot and the repository has been archived. This article is kept for historical reference and for anyone maintaining existing deployments; it is not recommended for new projects. For current ecosystem tooling, see our <a href="/stellar">Stellar hub</a>.
+            </div>
             <p>
               Kelp is a free, customizable, and open-source trading bot for the Stellar decentralized exchange (SDEX). Whether you are a market maker, arbitrageur, or simply want to automate your trading strategy, Kelp provides a powerful and flexible framework.
             </p>

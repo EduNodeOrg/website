@@ -3,6 +3,31 @@
 // Keep `version` aligned with package.json.
 
 const releases = [
+
+
+  {
+    version: '0.3.8',
+    date: 'October 31, 2026',
+    title: 'Stellar sub-guides, Rust masterclass, and explainer journal cluster',
+    notes: [
+      'New Stellar sub-pages: /stellar/validator-node-guide and /stellar/proof-of-agreement (migrated high-ranking posts with 301s, crediting overcat and SDF sources).',
+      'New masterclass: Rust for the Web (rust-web-wasm) — ownership to WASM apps with Trunk, referenced from the Trunk ecosystem post (migrated with 301).',
+      '8 new explainer journals: tokenization, Web3, custodial vs non-custodial wallets, DeFi for beginners, depeg, liquidity pools, ZK proofs explained, and the EVM.',
+      'All new content baked into static HTML with Article + FAQPage JSON-LD, OG cards, sitemap, and llms.txt entries.',
+    ],
+  },
+  {
+    version: '0.3.7',
+    date: 'October 31, 2026',
+    title: 'SEO content expansion: migrated posts, comparison journals, Varial rebrand',
+    notes: [
+      'Migrated 5 high-ranking postDetails pages to /blog/ slugs with 301 redirects (xBull & Soroban Domains, Women in Web3 Bootcamp, Soroswap DeFi, Soroban en Español, DAOs en Español).',
+      'New journals: What Is a Rollup?, ChatGPT vs Claude vs Gemini, USDC vs EURC, Varial vs MetaMask vs Albedo, How to Create a Token on Stellar, What Is a Smart Contract Audit.',
+      'Freighter wallet rebranded to Varial across all articles, glossary, and masterclass content.',
+      'Kelp trading bot article marked as deprecated; update notes added to Stellarnomics, asset issuance, and smart contracts articles.',
+      'Free-lesson CTA added to all 67 glossary term pages; SoftwareApplication JSON-LD and resource hints added to site shell.',
+    ],
+  },
   {
     version: '0.3.6',
     date: '2026-10-25',

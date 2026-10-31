@@ -128,6 +128,31 @@ Each masterclass has 10 written lessons with examples, exercises, and knowledge 
 - [AI hub](https://edunode.org/ai): AI assistant guides and masterclasses — ChatGPT, Claude, Gemini, DeepSeek, Kimi, GLM, Devin: Plain-English "what is..." answers plus courses
 - [Glossary](https://edunode.org/glossary): Every Web3/blockchain term has its own page under /glossary/<term>
 
+- [Built on Stellar: xBull Wallet & Soroban Domains](https://edunode.org/blog/built-on-stellar-xbull-soroban-domains)
+- [Women in Web3 Bootcamp — Second Edition](https://edunode.org/blog/women-in-web3-bootcamp)
+- [DeFi on Stellar with Soroswap](https://edunode.org/blog/defi-on-stellar-soroswap)
+- [Soroban y la blockchain de Stellar — Explicación en Español](https://edunode.org/blog/soroban-blockchain-espanol)
+- [Descubriendo las DAOs: Organizaciones Autónomas Descentralizadas](https://edunode.org/blog/daos-organizaciones-autonomas)
+
+- [What Is a Rollup? Optimistic vs ZK Rollups Explained](https://edunode.org/blog/what-is-a-rollup)
+- [ChatGPT vs Claude vs Gemini: Which AI Assistant Should You Use?](https://edunode.org/blog/chatgpt-vs-claude-vs-gemini)
+- [USDC vs EURC: Circle’s Dollar and Euro Stablecoins Compared](https://edunode.org/blog/usdc-vs-eurc)
+- [Varial vs MetaMask vs Albedo: Which Crypto Wallet for Which Chain?](https://edunode.org/blog/varial-vs-metamask-vs-albedo)
+- [How to Create a Token on Stellar: Issuer, Trustlines, and Distribution](https://edunode.org/blog/how-to-create-a-token-on-stellar)
+- [What Is a Smart Contract Audit? Process, Cost, and What It Proves](https://edunode.org/blog/what-is-a-smart-contract-audit)
+
+- [How to Set Up a Stellar Validator Node: Step-by-Step Guide](https://edunode.org/stellar/validator-node-guide)
+- [Stellar Proof-of-Agreement: How SCP Consensus Works (Not Proof of Stake)](https://edunode.org/stellar/proof-of-agreement)
+
+- [What Is Tokenization? Real-World Assets on Blockchain, Explained](https://edunode.org/blog/what-is-tokenization)
+- [What Is Web3? A Plain-English Beginner’s Guide](https://edunode.org/blog/what-is-web3)
+- [Custodial vs Non-Custodial Wallets — and What "Recoverable" Means](https://edunode.org/blog/custodial-vs-non-custodial-wallets)
+- [DeFi for Beginners: How Decentralized Finance Actually Works](https://edunode.org/blog/defi-for-beginners)
+- [What Is a Depeg? When Stablecoins Lose Their Peg](https://edunode.org/blog/what-is-a-depeg)
+- [What Is a Liquidity Pool? AMMs and DeFi Trading Explained](https://edunode.org/blog/what-is-a-liquidity-pool)
+- [Zero-Knowledge Proofs, Explained Simply](https://edunode.org/blog/zero-knowledge-proofs-explained)
+- [What Is the EVM? Ethereum’s Virtual Machine Explained](https://edunode.org/blog/what-is-the-evm)
+
 ## Tools
 
 - [Code Playground](https://edunode.org/codeeditor): In-browser code editor — JavaScript runs locally, Rust and Solidity for drafting smart contracts

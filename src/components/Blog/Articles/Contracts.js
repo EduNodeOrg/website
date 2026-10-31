@@ -86,6 +86,9 @@ export default class Contracts extends Component {
           </div>
           <hr style={styles.divider} />
           <div style={styles.body}>
+            <div style={{ background: '#fff8e1', border: '1px solid #f0c14b', borderRadius: '8px', padding: '14px 18px', marginBottom: '20px', fontSize: '0.95rem', lineHeight: 1.6 }}>
+              <strong>Update (October 2026):</strong> Since this article was first published, smart contracts have expanded well beyond Ethereum — Stellar now runs them via Soroban, and ZK-powered contracts are emerging. Related reading: <a href="/ethereum">Ethereum hub</a>, <a href="/glossary/smart-contract-audit">what is a smart contract audit</a>, <a href="/glossary/soroban">what is Soroban</a>, and the <a href="/masterclasses/ethereum-development">Ethereum Development masterclass</a>.
+            </div>
             <p>
               Smart contracts are self-executing contracts with the terms of the agreement directly written into code. They run on blockchain networks and automatically execute when predetermined conditions are met — no intermediary required.
             </p>

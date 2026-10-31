@@ -24,6 +24,48 @@
   status = 301
 
 [[redirects]]
+  from = "/postDetails/662a525e657babd52ff8869e"
+  to = "/blog/built-on-stellar-xbull-soroban-domains"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/postDetails/683716e8c17186bd1f84801c"
+  to = "/blog/women-in-web3-bootcamp"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/postDetails/65fd96eccc61b8e62f6ecc53"
+  to = "/blog/defi-on-stellar-soroswap"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/postDetails/65a5133a449cede73e1ea8d1"
+  to = "/blog/soroban-blockchain-espanol"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/postDetails/678ecd911fb964007281ea78"
+  to = "/blog/daos-organizaciones-autonomas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/postDetails/666dc9494694957286e5ac4e"
+  to = "/stellar/validator-node-guide"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/postDetails/65caaec2c7295bda819eb4d0"
+  to = "/stellar/proof-of-agreement"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/postDetails/65e5a6873ab993d197bbf193"
+  to = "/masterclasses/rust-web-wasm"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

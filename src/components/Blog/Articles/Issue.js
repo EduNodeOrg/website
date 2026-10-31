@@ -86,6 +86,9 @@ export default class Issue extends Component {
           </div>
           <hr style={styles.divider} />
           <div style={styles.body}>
+            <div style={{ background: '#fff8e1', border: '1px solid #f0c14b', borderRadius: '8px', padding: '14px 18px', marginBottom: '20px', fontSize: '0.95rem', lineHeight: 1.6 }}>
+              <strong>Update (October 2026):</strong> Stellar supports two ways to create tokens today: classic Stellar assets (below — still the standard for payments and stablecoins) and Soroban token contracts for programmable assets. For the full picture see our <a href="/stellar">Stellar hub</a>, <a href="/glossary/soroban">what is Soroban</a>, and the <a href="/masterclasses/stellar-network-development">Stellar Network masterclass</a>.
+            </div>
             <p>
               One of the most powerful features of the Stellar network is the ability to issue custom assets — tokens that represent anything from fiat currencies and commodities to loyalty points and digital collectibles. In this guide, we walk through the process step by step.
             </p>

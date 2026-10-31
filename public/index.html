@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://api.edunode.org" />
+    <link rel="preconnect" href="https://edunode.herokuapp.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://use.fontawesome.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
   <meta charset="utf-8" data-rh="true" />
   <title>EduNode | Learn Blockchain Development & IT Skills Online</title>
 
@@ -120,6 +127,37 @@
       @keyframes edu-spin{to{transform:rotate(360deg)}}
       @media (prefers-reduced-motion:reduce){.app-loading-spinner{animation:none}}
     </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "EduNode",
+        "url": "https://edunode.org",
+        "applicationCategory": "EducationalApplication",
+        "applicationSubCategory": "Online learning platform",
+        "operatingSystem": "Web",
+        "description": "Interactive blockchain and IT learning platform with hands-on courses, coding challenges, quizzes, verifiable certificates, and 24 self-paced masterclasses covering Web3, Stellar, Ethereum, AI assistants, and IT fundamentals.",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Free lessons",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "The first two lessons (20%) of every masterclass plus all journals and glossary pages are free without an account."
+          },
+          {
+            "@type": "Offer",
+            "name": "Pro membership",
+            "category": "Paid",
+            "url": "https://edunode.org/pricing",
+            "description": "Full access to all 240+ lessons, projects, courses, and verifiable certificates."
+          }
+        ],
+        "provider": { "@type": "Organization", "name": "EduNode", "url": "https://edunode.org" }
+      }
+    </script>
   </head>
 <body>
   <noscript>EduNode teaches blockchain development and IT skills through interactive courses and masterclasses. Enable JavaScript for the full experience.</noscript>

@@ -26,10 +26,12 @@ const sections = [
     blurb: 'Deep-dives on the pieces that make the network tick.',
     links: [
       { href: '/blog/usdc-on-stellar', title: 'USDC on Stellar: Fast, Cheap Dollar Payments', desc: 'How native USDC settles in seconds for fractions of a cent — and how to hold and send it.' },
+      { href: '/stellar/validator-node-guide', title: 'Run a Stellar Validator Node', desc: 'Step-by-step: install stellar-core, choose quorum slices, and help secure the network.' },
+      { href: '/stellar/proof-of-agreement', title: 'How Proof-of-Agreement Works', desc: 'Stellar consensus is neither PoW nor PoS — how federated voting finalizes ledgers in ~5 seconds.' },
       { href: '/blog/Stellarnomics', title: 'Stellarnomics: Stellar Network Economics', desc: 'Lumens, reserves, fees, and the incentives behind the ledger.' },
       { href: '/blog/zero-knowledge-proofs', title: 'Zero-Knowledge Proofs on Stellar', desc: 'What ZK verification on Soroban enables for private, compliant payments.' },
       { href: '/blog/build-stellar-apps-with-go', title: "A Go Developer's Guide to Stellar", desc: 'Build Stellar applications with the Go SDK.' },
-      { href: '/blog/freighter-wallet', title: "Freighter Wallet: Stellar's Most Popular Wallet", desc: 'Set up and use the go-to browser wallet for Stellar.' },
+      { href: '/blog/freighter-wallet', title: "Varial Wallet: Stellar's Most Popular Wallet", desc: 'Set up and use the go-to browser wallet for Stellar.' },
       { href: '/blog/what-is-a-stablecoin', title: 'What Is a Stablecoin?', desc: 'The asset class that makes Stellar payment rails useful.' },
     ],
   },

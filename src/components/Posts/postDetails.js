@@ -7,6 +7,8 @@ import Box from "@mui/material/Box";
 import PropTypes from "prop-types";
 import { useParams } from 'react-router-dom';
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
+import { journalAbs } from "../Journal/journalUtils";
 import Navbar from '../Dashboard/Navbar1';
 import TextField from '@mui/material/TextField'
 import userImage from './user.png'
@@ -33,12 +35,15 @@ function PostDetails(props) {
   const { _id } = useParams();
 
   useEffect(() => {
+    window.prerenderReady = false;
     const getPost = async () => {
       try {
         const res = await axios.get(`https://edunode.herokuapp.com/api/post/posts/${_id}`);
         setPost(res.data);
       } catch (err) {
         console.error(err);
+      } finally {
+        window.prerenderReady = true;
       }
     };
     getPost();
@@ -103,8 +108,27 @@ function PostDetails(props) {
 
 
 
+  const postDesc = post.description
+    ? String(post.description).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 160)
+    : '';
+  const canonical = post && post.title ? journalAbs(post) : `https://edunode.org/postDetails/${_id}`;
+  const ogImage = post.image && post.image.startsWith('http') ? post.image : `https://edunode.org${post.image || '/en.png'}`;
+
   return (
     <div>
+      <Helmet>
+        {post.title && <title>{post.title} | EduNode</title>}
+        <link rel="canonical" href={canonical} />
+        {postDesc && <meta name="description" content={postDesc} />}
+        {post.title && <meta property="og:title" content={`${post.title} | EduNode`} />}
+        {postDesc && <meta property="og:description" content={postDesc} />}
+        <meta property="og:url" content={canonical} />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content={ogImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+        {post.title && <meta name="twitter:title" content={`${post.title} | EduNode`} />}
+        {postDesc && <meta name="twitter:description" content={postDesc} />}
+      </Helmet>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={8} md={20}>
@@ -168,7 +192,7 @@ function PostDetails(props) {
 
 PostDetails.propTypes = {
   isAuthenticated: PropTypes.bool,
-  error: PropTypes.object.isRequired,
+  error: PropTypes.object,
   clearErrors: PropTypes.func.isRequired,
 };
 

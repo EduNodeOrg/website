@@ -620,4 +620,33 @@
   <url><loc>https://edunode.org/masterclasses/jev-system-one-models</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://edunode.org/masterclasses/jev-system-one-models/lessons/system-one-models</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://edunode.org/masterclasses/jev-system-one-models/lessons/jev-vs-llms</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Migrated postDetails articles -->
+  <url><loc>https://edunode.org/blog/built-on-stellar-xbull-soroban-domains</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/women-in-web3-bootcamp</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/defi-on-stellar-soroswap</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/soroban-blockchain-espanol</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/daos-organizaciones-autonomas</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Comparison + educational journals -->
+  <url><loc>https://edunode.org/blog/what-is-a-rollup</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/chatgpt-vs-claude-vs-gemini</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/usdc-vs-eurc</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/varial-vs-metamask-vs-albedo</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/how-to-create-a-token-on-stellar</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/what-is-a-smart-contract-audit</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Stellar sub-pages -->
+  <url><loc>https://edunode.org/stellar/validator-node-guide</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/stellar/proof-of-agreement</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Tier 1+2 explainers -->
+  <url><loc>https://edunode.org/blog/what-is-tokenization</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/what-is-web3</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/custodial-vs-non-custodial-wallets</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/defi-for-beginners</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/what-is-a-depeg</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/what-is-a-liquidity-pool</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/zero-knowledge-proofs-explained</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/blog/what-is-the-evm</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

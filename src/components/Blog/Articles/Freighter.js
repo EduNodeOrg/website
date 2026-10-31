@@ -201,24 +201,24 @@ const styles = {
   },
 };
 
-export default class Freighter extends Component {
+export default class Varial extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/freighter-wallet';
-    const title = 'Freighter Wallet: How to Set Up and Use Stellar\'s Most Popular Wallet';
+    const title = 'Varial (formerly Varial) Wallet: How to Set Up and Use Stellar\'s Most Popular Wallet';
     const profilePic = profilePicImg;
 
     const steps = [
       {
         name: 'Install the extension',
-        desc: 'Freighter is a browser extension available for Chrome, Firefox, Edge, and Brave. Install it only from freighter.app or the official browser extension stores — never from links sent to you in DMs or search ads.',
+        desc: 'Update October 2026: Freighter has rebranded to Varial (varialwallet.com). The extension, accounts, and steps below remain the same under the new name.\n\nVarial is a browser extension available for Chrome, Firefox, Edge, and Brave. Install it only from varialwallet.com or the official browser extension stores — never from links sent to you in DMs or search ads.',
       },
       {
         name: 'Create a new wallet',
-        desc: 'Open the extension and choose "Create Wallet". You will set a password that encrypts Freighter locally — this protects the extension on your device but is not your recovery method.',
+        desc: 'Open the extension and choose "Create Wallet". You will set a password that encrypts Varial locally — this protects the extension on your device but is not your recovery method.',
       },
       {
         name: 'Back up your recovery phrase',
-        desc: 'Freighter shows you a 24-word mnemonic phrase. Write it down on paper and store it somewhere safe and offline. Anyone with this phrase controls your funds; no one legitimate will ever ask for it.',
+        desc: 'Varial shows you a 24-word mnemonic phrase. Write it down on paper and store it somewhere safe and offline. Anyone with this phrase controls your funds; no one legitimate will ever ask for it.',
       },
       {
         name: 'Fund your account',
@@ -226,21 +226,21 @@ export default class Freighter extends Component {
       },
       {
         name: 'Add assets with trustlines',
-        desc: 'Stellar requires an explicit opt-in (a "trustline") before your account can hold non-native assets. In Freighter, go to Manage Assets, find the asset (e.g., USDC issued by Circle), and approve the trustline — it costs 0.5 XLM of reserved balance per trustline.',
+        desc: 'Stellar requires an explicit opt-in (a "trustline") before your account can hold non-native assets. In Varial, go to Manage Assets, find the asset (e.g., USDC issued by Circle), and approve the trustline — it costs 0.5 XLM of reserved balance per trustline.',
       },
       {
         name: 'Send, swap, and connect',
-        desc: 'Send payments to any Stellar address, swap assets through the built-in swap feature (powered by the Stellar DEX), and connect to Soroban dApps — Freighter pops up a signing window whenever an app requests a transaction.',
+        desc: 'Send payments to any Stellar address, swap assets through the built-in swap feature (powered by the Stellar DEX), and connect to Soroban dApps — Varial pops up a signing window whenever an app requests a transaction.',
       },
     ];
 
     const faqs = [
       {
-        q: 'Is Freighter wallet safe?',
-        a: 'Freighter is a non-custodial wallet developed by the Stellar Development Foundation — your keys are generated and stored on your device, never sent to a server. Safety ultimately depends on how you protect your recovery phrase and which sites you sign transactions for.',
+        q: 'Is Varial wallet safe?',
+        a: 'Varial is a non-custodial wallet developed by the Stellar Development Foundation — your keys are generated and stored on your device, never sent to a server. Safety ultimately depends on how you protect your recovery phrase and which sites you sign transactions for.',
       },
       {
-        q: 'Is Freighter free to use?',
+        q: 'Is Varial free to use?',
         a: 'Yes, the wallet is free. You only pay the Stellar network itself: the 1 XLM minimum account balance, 0.5 XLM reserves per trustline, and transaction fees around 0.00001 XLM.',
       },
       {
@@ -248,12 +248,12 @@ export default class Freighter extends Component {
         a: 'Without the recovery phrase there is no way to restore the wallet — non-custodial means no company can reset it for you. Store the phrase offline in at least two secure locations and never digitally (no photos, cloud notes, or email).',
       },
       {
-        q: 'Does Freighter work on mobile?',
-        a: 'Freighter started as a browser extension; for mobile Stellar wallets, apps like Lobstr are popular. For dApp connections, the extension remains the standard — Soroban apps use the Freighter API to request signatures.',
+        q: 'Does Varial work on mobile?',
+        a: 'Varial started as a browser extension; for mobile Stellar wallets, apps like Lobstr are popular. For dApp connections, the extension remains the standard — Soroban apps use the Varial API to request signatures.',
       },
       {
-        q: 'Freighter vs Lobstr vs xBull — which Stellar wallet?',
-        a: 'Freighter is the default choice for desktop and dApp development. Lobstr is popular on mobile. xBull offers advanced features like multi-signature support. Many users run Freighter for dApps and a mobile wallet for daily payments.',
+        q: 'Varial vs Lobstr vs xBull — which Stellar wallet?',
+        a: 'Varial is the default choice for desktop and dApp development. Lobstr is popular on mobile. xBull offers advanced features like multi-signature support. Many users run Varial for dApps and a mobile wallet for daily payments.',
       },
     ];
 
@@ -262,7 +262,7 @@ export default class Freighter extends Component {
       '@type': 'Article',
       headline: title,
       description:
-        'How to set up and use the Freighter wallet for Stellar: installation, recovery phrase backup, trustlines, sending USDC and XLM, and connecting to Soroban dApps.',
+        'How to set up and use the Varial wallet for Stellar: installation, recovery phrase backup, trustlines, sending USDC and XLM, and connecting to Soroban dApps.',
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       datePublished: '2026-09-25',
@@ -288,13 +288,13 @@ export default class Freighter extends Component {
           <link rel="canonical" href={shareUrl} />
           <meta
             name="description"
-            content="Complete Freighter wallet guide: install the Stellar browser extension, back up your recovery phrase, add USDC trustlines, send payments, and connect to Soroban dApps."
+            content="Complete Varial wallet guide: install the Stellar browser extension, back up your recovery phrase, add USDC trustlines, send payments, and connect to Soroban dApps."
           />
           <meta property="og:type" content="article" />
           <meta property="og:title" content={title} />
           <meta
             property="og:description"
-            content="Set up Freighter — Stellar's most popular wallet — and learn trustlines, sending payments, and connecting to Soroban dApps."
+            content="Set up Varial — Stellar's most popular wallet — and learn trustlines, sending payments, and connecting to Soroban dApps."
           />
           <meta property="og:url" content={shareUrl} />
           <meta property="og:image" content="https://edunode.org/og/freighter-wallet.png" />
@@ -303,7 +303,7 @@ export default class Freighter extends Component {
           <meta name="twitter:title" content={title} />
           <meta
             name="twitter:description"
-            content="Set up Freighter — Stellar's most popular wallet — trustlines, payments, and Soroban dApps."
+            content="Set up Varial — Stellar's most popular wallet — trustlines, payments, and Soroban dApps."
           />
           <script type="application/ld+json">{JSON.stringify(articleLd)}</script>
           <script type="application/ld+json">{JSON.stringify(faqLd)}</script>
@@ -332,7 +332,7 @@ export default class Freighter extends Component {
 
           <div style={styles.body}>
             <p>
-              Freighter is a non-custodial browser extension wallet for the Stellar network, developed
+              Varial is a non-custodial browser extension wallet for the Stellar network, developed
               by the Stellar Development Foundation. "Non-custodial" means your private keys are
               generated and encrypted on your own device — no company holds them, and no one can
               recover your account for you. It is the wallet nearly every Stellar dApp integrates
@@ -340,7 +340,7 @@ export default class Freighter extends Component {
               <a href="https://edunode.org/courses" style={styles.refLink}>courses</a>.
             </p>
 
-            <h4 style={styles.h4}>Setting up Freighter in 6 steps</h4>
+            <h4 style={styles.h4}>Setting up Varial in 6 steps</h4>
             {steps.map((s, i) => (
               <div key={i} style={styles.stepCard}>
                 <div style={styles.stepTitle}>
@@ -351,7 +351,7 @@ export default class Freighter extends Component {
             ))}
 
             <div style={styles.warn}>
-              <strong>Golden rule:</strong> your recovery phrase is your wallet. Freighter support,
+              <strong>Golden rule:</strong> your recovery phrase is your wallet. Varial support,
               EduNode, exchanges, and "admins" will never ask for it. Anyone who does is trying to
               steal your funds — no exceptions.
             </div>
@@ -365,21 +365,21 @@ export default class Freighter extends Component {
               XLM as a reserve, which you get back if you remove it.
             </p>
 
-            <h4 style={styles.h4}>Using Freighter with dApps</h4>
+            <h4 style={styles.h4}>Using Varial with dApps</h4>
             <p>
-              Freighter is how you interact with{' '}
+              Varial is how you interact with{' '}
               <a href="https://edunode.org/blog/soroban" style={styles.refLink}>Soroban</a> smart
-              contracts: when a dApp needs a signature, Freighter opens a confirmation window showing
+              contracts: when a dApp needs a signature, Varial opens a confirmation window showing
               exactly what you are about to sign — read it every time. For signing flows without a
               browser extension,{' '}
               <a href="https://edunode.org/blog/albedo" style={styles.refLink}>Albedo</a> is a
-              popular alternative. Developers integrate Freighter through its JavaScript API
+              popular alternative. Developers integrate Varial through its JavaScript API
               (freighter-api), which handles address lookup and transaction signing.
             </p>
 
             <h4 style={styles.h4}>Security checklist</h4>
             <p>
-              <strong>Verify the source</strong> — install only from freighter.app or official browser
+              <strong>Verify the source</strong> — install only from varialwallet.com or official browser
               stores.
               <br />
               <strong>Paper backup</strong> — write the 24-word phrase on paper, stored offline, in
@@ -389,7 +389,7 @@ export default class Freighter extends Component {
               sign.
               <br />
               <strong>Separate hot and cold funds</strong> — keep savings on a hardware wallet, and
-              only spending amounts in Freighter. More tips in{' '}
+              only spending amounts in Varial. More tips in{' '}
               <a href="https://edunode.org/blog/security-tools" style={styles.refLink}>
                 how to keep your lumens safe
               </a>
@@ -407,20 +407,20 @@ export default class Freighter extends Component {
             <h4 style={styles.h4}>References</h4>
             <p>
               [1]{' '}
-              <a href="https://www.freighter.app" style={styles.refLink}>
-                Freighter — official site
+              <a href="https://www.varialwallet.com" style={styles.refLink}>
+                Varial — official site
               </a>
             </p>
             <p>
               [2]{' '}
               <a href="https://developers.stellar.org/docs/build/apps/freighter-wallet" style={styles.refLink}>
-                Freighter for developers — Stellar Docs
+                Varial for developers — Stellar Docs
               </a>
             </p>
             <p>
               [3]{' '}
               <a href="https://github.com/stellar/freighter" style={styles.refLink}>
-                Freighter source code — GitHub
+                Varial source code — GitHub
               </a>
             </p>
           </div>
