@@ -85,6 +85,8 @@ export default function Footer() {
               <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
                 <h6 className='text-uppercase fw-bold mb-4' style={headingStyle}>Explore</h6>
                 <FooterLink href='/blog'>Blog</FooterLink>
+                <FooterLink href='/journal'>Journal</FooterLink>
+                <FooterLink href='/chess'>ChainChess</FooterLink>
                 <FooterLink href='/feed'>Feed</FooterLink>
                 <FooterLink href='/community'>Community</FooterLink>
                 <FooterLink href='/resources'>Resources</FooterLink>

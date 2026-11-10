@@ -1,16 +1,28 @@
+/* ChainChess — dark theme matching site palette */
+.chainchess-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%);
+}
+
 .chainchess {
   max-width: 1100px;
+  color: #e8ecf4;
 }
 
 .chainchess-title {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.2rem;
+  font-weight: 800;
   margin-bottom: 0.25rem;
+  background: linear-gradient(45deg, #00d4ff, #7b2ff7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .chainchess-subtitle {
-  color: #5a6472;
+  color: #b8c5d6;
   max-width: 720px;
+  font-size: 1.02rem;
 }
 
 .chainchess-layout {
@@ -18,31 +30,43 @@
   flex-wrap: wrap;
   gap: 1.5rem;
   align-items: flex-start;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
 }
 
 .chainchess-board {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.9rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
 }
 
 .chainchess-status {
   font-weight: 600;
-  color: #3d3565;
+  color: #00d4ff;
   min-height: 1.5rem;
+  font-size: 0.98rem;
 }
 
 .chainchess-newgame {
-  background-color: #6e59f7;
-  border-color: #6e59f7;
+  background: linear-gradient(45deg, #00d4ff, #7b2ff7) !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 700;
   align-self: flex-start;
+  padding: 0.55rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(123, 47, 247, 0.4);
 }
 
 .chainchess-newgame:hover,
 .chainchess-newgame:focus {
-  background-color: #5a47d6;
-  border-color: #5a47d6;
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(123, 47, 247, 0.55);
 }
 
 .chainchess-side {
@@ -54,8 +78,25 @@
   gap: 1rem;
 }
 
+.chainchess-side .card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  color: #e8ecf4;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+}
+
+.chainchess-side .card-title {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.chainchess-side .card-text {
+  color: #b8c5d6;
+}
+
 .chainchess-concept {
-  border-left: 4px solid #6e59f7;
+  border-left: 4px solid #00d4ff !important;
 }
 
 .chainchess-concept-tag {
@@ -63,14 +104,20 @@
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #6e59f7;
+  letter-spacing: 0.12em;
+  color: #00d4ff;
   margin-bottom: 0.25rem;
 }
 
 .chainchess-learn {
-  color: #6e59f7;
+  color: #00d4ff;
   font-weight: 600;
+  text-decoration: none;
+}
+
+.chainchess-learn:hover {
+  text-decoration: underline;
+  color: #66e4ff;
 }
 
 .chainchess-movelist {
@@ -79,18 +126,33 @@
   max-height: 220px;
   overflow-y: auto;
   font-size: 0.9rem;
+  color: #b8c5d6;
 }
 
 .chainchess-movelist .you {
-  color: #2f6b3a;
+  color: #00d4ff;
+  font-weight: 600;
 }
 
 .chainchess-movelist .node {
-  color: #7a4d8f;
+  color: #c9a7ff;
+}
+
+.chainchess-movelist::-webkit-scrollbar {
+  width: 6px;
+}
+.chainchess-movelist::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.3);
+  border-radius: 3px;
 }
 
 .chainchess-legend {
-  margin: 2.5rem 0 1rem;
+  margin: 2.5rem 0 2rem;
+}
+
+.chainchess-legend h2 {
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .chainchess-legend-grid {
@@ -104,23 +166,146 @@
   display: flex;
   gap: 0.75rem;
   align-items: flex-start;
-  padding: 0.75rem;
-  border: 1px solid #e4e7ee;
-  border-radius: 8px;
-  background: #fff;
+  padding: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.chainchess-legend-item:hover {
+  border-color: rgba(0, 212, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.chainchess-legend-item strong {
+  color: #ffffff;
 }
 
 .chainchess-legend-item p {
   margin: 0;
   font-size: 0.85rem;
-  color: #5a6472;
+  color: #b8c5d6;
 }
 
 .chainchess-piece {
   font-size: 1.75rem;
   line-height: 1;
+  color: #00d4ff;
 }
 
 .chainchess-legend-note {
   margin-top: 1.25rem;
+  color: #b8c5d6;
+}
+
+.chainchess-legend-note a {
+  color: #00d4ff;
+  text-decoration: none;
+}
+
+.chainchess-legend-note a:hover {
+  text-decoration: underline;
+}
+
+/* Time control selector + clocks */
+.chainchess-timers {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.chainchess-timer {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #b8c5d6;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.chainchess-timer:hover {
+  border-color: rgba(0, 212, 255, 0.5);
+  color: #ffffff;
+}
+
+.chainchess-timer.active {
+  background: linear-gradient(45deg, #00d4ff, #7b2ff7);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 3px 14px rgba(123, 47, 247, 0.45);
+}
+
+.chainchess-clocks {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.chainchess-clock {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #b8c5d6;
+}
+
+.chainchess-clock.active {
+  color: #00d4ff;
+  border-color: rgba(0, 212, 255, 0.55);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.25);
+}
+
+.chainchess-clock.flagged {
+  color: #ff5252;
+  border-color: rgba(255, 82, 82, 0.6);
+}
+
+/* Color select handled by .chainchess-timer pills; material + actions below */
+.chainchess-material {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: #b8c5d6;
+  flex-wrap: wrap;
+}
+
+.chainchess-material .you {
+  color: #00d4ff;
+  font-weight: 600;
+}
+
+.chainchess-material .node {
+  color: #c9a7ff;
+  font-weight: 600;
+}
+
+.chainchess-actions {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.chainchess-resign {
+  background: transparent !important;
+  border: 1px solid rgba(255, 82, 82, 0.55) !important;
+  color: #ff8a80 !important;
+  font-weight: 700;
+  padding: 0.55rem 1.25rem;
+  border-radius: 10px;
+}
+
+.chainchess-resign:hover,
+.chainchess-resign:focus {
+  background: rgba(255, 82, 82, 0.12) !important;
+  border-color: #ff5252 !important;
+  color: #ff5252 !important;
 }

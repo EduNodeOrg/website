@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
-import { fetchPosts, authorHandle, authorUrl, journalUrl, parseTags, stripHtml, tagSlug, ORIGIN } from './journalUtils';
 import NavBar from '../NavBar';
 import Footer from '../Footer/Footer';
+import { fetchPosts, authorHandle, authorUrl, journalUrl, parseTags, stripHtml, tagSlug, ORIGIN } from './journalUtils';
+import { PageContainer, Content, Eyebrow, PageTitle, Lead, PostCard, PostTitle, PostExcerpt, PostMeta, BackLink } from './journalStyles';
 
 export default function TagPage() {
   const { tag } = useParams();
@@ -22,7 +23,7 @@ export default function TagPage() {
   const ld = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description: desc, url: canonUrl };
 
   return (
-    <>
+    <PageContainer>
       <NavBar />
       <Helmet>
         <title>{title}</title>
@@ -34,22 +35,20 @@ export default function TagPage() {
         <meta property="og:image" content="https://edunode.org/en.png" />
         <script type="application/ld+json">{JSON.stringify(ld)}</script>
       </Helmet>
-      <main style={{ maxWidth: 860, margin: '0 auto', padding: '48px 20px', color: '#1a1a2e' }}>
-        <p style={{ fontSize: '0.9rem', letterSpacing: '2px', color: '#7b2ff7', fontWeight: 700 }}>TAG</p>
-        <h1>#{tag}</h1>
+      <Content>
+        <Eyebrow component="p">TAG</Eyebrow>
+        <PageTitle component="h1">#{tag}</PageTitle>
         {(posts || []).map((p) => (
-          <article key={p._id} style={{ borderBottom: '1px solid #eee', padding: '18px 0' }}>
-            <h2 style={{ fontSize: '1.35rem', marginBottom: 6 }}>
-              <Link to={journalUrl(p)} style={{ color: '#1a1a2e' }}>{p.title}</Link>
-            </h2>
-            <p style={{ color: '#666', fontSize: '0.95rem' }}>{stripHtml(p.description).slice(0, 160)}</p>
-            <small style={{ color: '#999' }}>by <Link to={authorUrl(p.email)}>@{authorHandle(p.email)}</Link></small>
-          </article>
+          <PostCard key={p._id}>
+            <PostTitle component="h2"><Link to={journalUrl(p)}>{p.title}</Link></PostTitle>
+            <PostExcerpt component="p">{stripHtml(p.description).slice(0, 160)}</PostExcerpt>
+            <PostMeta>by <Link to={authorUrl(p.email)}>@{authorHandle(p.email)}</Link></PostMeta>
+          </PostCard>
         ))}
-        {posts && posts.length === 0 && <p>No posts tagged #{tag} yet.</p>}
-        <p style={{ marginTop: 24 }}><Link to="/journal">← All journal posts</Link></p>
-      </main>
-          <Footer />
-    </>
+        {posts && posts.length === 0 && <Lead component="p">No posts tagged #{tag} yet.</Lead>}
+        <p style={{ marginTop: 24 }}><BackLink to="/journal">← All journal posts</BackLink></p>
+      </Content>
+      <Footer />
+    </PageContainer>
   );
 }

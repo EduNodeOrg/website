@@ -10,6 +10,7 @@ import {
 import { styled } from '@mui/material/styles';
 import { KeyboardArrowUp } from '@mui/icons-material';
 import ModernNavbar from './ModernNavbar';
+import Footer from '../../Footer/Footer';
 import UserProfileWidget from '../widgets/UserProfileWidget';
 import ProgressChart from '../visualizations/ProgressChart';
 import CourseGrid from '../content/CourseGrid';
@@ -322,6 +323,7 @@ class DashboardLayout extends Component {
           </ScrollToTopFab>
         )}
 
+        <Footer />
       </DashboardContainer>
     );
   }

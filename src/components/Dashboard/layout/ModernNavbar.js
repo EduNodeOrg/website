@@ -146,6 +146,9 @@ const menuItems = [
     { icon: <EmojiEvents />, text: 'Challenges', path: '/challenges' },
     { icon: <MilitaryTech />, text: 'Badges', path: '/badges' },
     { icon: <CardMembership />, text: 'Certificates', path: '/certificate' },
+    { icon: <MenuBook />, text: 'Glossary', path: '/glossary' },
+    { icon: <Article />, text: 'Journal', path: '/journal' },
+    { icon: <SportsEsports />, text: 'ChainChess', path: '/chess' },
   ]},
   { icon: <Search />, text: 'Search', path: '/search' },
   { icon: <PostAdd />, text: 'New Post', path: '/post' },
@@ -174,6 +177,8 @@ const publicMenuItems = [
     { text: 'Masterclasses', path: '/masterclasses' },
     { text: 'Challenges', path: '/challenges' },
     { text: 'Glossary', path: '/glossary' },
+    { text: 'Journal', path: '/journal' },
+    { text: 'ChainChess', path: '/chess' },
     { text: 'Resources', path: '/resources' },
   ]},
   { icon: <Sell />, text: 'Topics', children: [

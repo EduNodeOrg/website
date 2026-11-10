@@ -204,7 +204,7 @@ const styles = {
 export default class Varial extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/freighter-wallet';
-    const title = 'Varial (formerly Varial) Wallet: How to Set Up and Use Stellar\'s Most Popular Wallet';
+    const title = 'Varial (formerly Freighter) Wallet: How to Set Up and Use Stellar\'s Most Popular Wallet';
     const profilePic = profilePicImg;
 
     const steps = [

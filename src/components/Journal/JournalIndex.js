@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { fetchPosts, authorHandle, authorUrl, journalUrl, parseTags, stripHtml, ORIGIN } from './journalUtils';
 import NavBar from '../NavBar';
 import Footer from '../Footer/Footer';
+import { fetchPosts, authorHandle, authorUrl, journalUrl, parseTags, stripHtml, ORIGIN } from './journalUtils';
+import { PageContainer, Content, Eyebrow, PageTitle, Lead, PostCard, PostTitle, PostExcerpt, PostMeta } from './journalStyles';
 
 export default function JournalIndex() {
   const [posts, setPosts] = useState(null);
@@ -27,7 +28,7 @@ export default function JournalIndex() {
   };
 
   return (
-    <>
+    <PageContainer>
       <NavBar />
       <Helmet>
         <title>{title}</title>
@@ -39,27 +40,26 @@ export default function JournalIndex() {
         <meta property="og:image" content="https://edunode.org/en.png" />
         <script type="application/ld+json">{JSON.stringify(ld)}</script>
       </Helmet>
-      <main style={{ maxWidth: 860, margin: '0 auto', padding: '48px 20px', color: '#1a1a2e' }}>
-        <p style={{ fontSize: '0.9rem', letterSpacing: '2px', color: '#7b2ff7', fontWeight: 700 }}>EDUNODE JOURNAL</p>
-        <h1>Articles by builders, for builders</h1>
-        <p style={{ color: '#555' }}>Community journals on Web3, Stellar, and software — every post links into our courses, masterclasses, and glossary.</p>
+      <Content>
+        <Eyebrow component="p">EDUNODE JOURNAL</Eyebrow>
+        <PageTitle component="h1">Articles by builders, for builders</PageTitle>
+        <Lead component="p">Community journals on Web3, Stellar, and software — every post links into our courses, masterclasses, and glossary.</Lead>
         {(posts || []).map((p) => (
-          <article key={p._id} style={{ borderBottom: '1px solid #eee', padding: '18px 0' }}>
-            <h2 style={{ fontSize: '1.35rem', marginBottom: 6 }}>
-              <Link to={journalUrl(p)} style={{ color: '#1a1a2e' }}>{p.title}</Link>
-            </h2>
-            <p style={{ color: '#666', fontSize: '0.95rem' }}>{stripHtml(p.description).slice(0, 160)}</p>
-            <small style={{ color: '#999' }}>
+          <PostCard key={p._id}>
+            <PostTitle component="h2"><Link to={journalUrl(p)}>{p.title}</Link></PostTitle>
+            <PostExcerpt component="p">{stripHtml(p.description).slice(0, 160)}</PostExcerpt>
+            <PostMeta>
               by <Link to={authorUrl(p.email)}>@{authorHandle(p.email)}</Link>
+              {p.date ? ` · ${new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}` : ''}
               {parseTags(p.tags).map((t) => (
                 <span key={t}> · <Link to={`/t/${t.toLowerCase()}`}>#{t}</Link></span>
               ))}
-            </small>
-          </article>
+            </PostMeta>
+          </PostCard>
         ))}
-        {posts && posts.length === 0 && <p>No posts yet — be the first to publish.</p>}
-      </main>
-          <Footer />
-    </>
+        {posts && posts.length === 0 && <Lead component="p">No posts yet — be the first to publish.</Lead>}
+      </Content>
+      <Footer />
+    </PageContainer>
   );
 }
