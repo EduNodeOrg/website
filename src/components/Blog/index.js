@@ -84,6 +84,36 @@ const featuredPost = {
 
 const posts = [
   {
+    title: 'Migrate from Ethereum to Stellar: A Practical Playbook',
+    date: '16/11/2026',
+    description:
+      'Why payment and token apps port from Ethereum to Stellar — asset issuance, Soroban rewrites, tooling swaps, and a cutover that doesn\'t break production.',
+    image: gradThumb('#4a2d8f', '#00add8', 'ETH→XLM'),
+    imageText: 'Ethereum to Stellar',
+    link: '/blog/migrate-ethereum-to-stellar',
+    tags:['Stellar', 'Ethereum', 'Migration']
+  },
+  {
+    title: 'Build Stellar Apps in C++20: Meet the stellar-cpp-sdk',
+    date: '16/11/2026',
+    description:
+      'A modern Apache-2.0 C++ SDK for Stellar — full XDR, transactions, Soroban RPC, spec-driven contracts, and ISO 20022, ready for Protocol 30.',
+    image: gradThumb('#00599c', '#00add8', 'C++'),
+    imageText: 'Stellar C++ SDK',
+    link: '/blog/stellar-cpp-sdk',
+    tags:['Stellar', 'C++', 'SDK']
+  },
+  {
+    title: 'Stellar Go CLI: Wallets, Payments, DIDs, ISO 20022 & AI Agents',
+    date: '16/11/2026',
+    description:
+      'One open-source Go binary for the whole Stellar workflow — wallets with passkeys, DEX swaps, Soroban deploys, Verifiable Credentials, and an MCP server.',
+    image: gradThumb('#0b3d5c', '#00add8', 'GO CLI'),
+    imageText: 'Stellar Go CLI',
+    link: '/blog/stellar-go-cli',
+    tags:['Stellar', 'Go', 'CLI']
+  },
+  {
     title: 'AI and Blockchain: Where They Meet',
     date: '27/09/2026',
     description:
@@ -154,14 +184,14 @@ const posts = [
     tags:['Security', 'Smart Contracts']
   },
   {
-    title: 'Freighter Wallet: Setup & User Guide',
+    title: 'Varial Wallet: Setup & User Guide',
     date: '25/09/2026',
     description:
       'Set up Stellar\'s most popular wallet: install, back up your recovery phrase, add trustlines, and connect to Soroban dApps.',
-    image: gradThumb('#0466c8', '#48cae4', 'FREIGHTER'),
-    imageText: 'Freighter Wallet',
-    link: '/blog/freighter-wallet',
-    tags:['Freighter', 'Wallet', 'Stellar']
+    image: gradThumb('#0466c8', '#48cae4', 'VARIAL'),
+    imageText: 'Varial Wallet',
+    link: '/blog/varial-wallet',
+    tags:['Varial', 'Wallet', 'Stellar']
   },
   {
     title: 'Zero-Knowledge Proofs on the Stellar Network',

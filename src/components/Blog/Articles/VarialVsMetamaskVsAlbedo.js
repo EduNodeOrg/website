@@ -10,7 +10,7 @@ const image = 'https://edunode.org/og/varial-vs-metamask-vs-albedo.png';
 const accent = 'linear-gradient(135deg,#0a0e27 0%,#3a2a10 55%,#f6851b 100%)';
 const color = '#f6851b';
 
-const faqs = [{ q: 'Did Freighter wallet get renamed?', a: 'Yes — Freighter rebranded to Varial (varialwallet.com). Same Stellar wallet, same accounts and functionality, new name and domain.' }, { q: 'Can MetaMask hold XLM or Stellar assets?', a: 'No. MetaMask only supports Ethereum and EVM-compatible chains. Stellar is not EVM, so you need a Stellar wallet like Varial or Albedo for XLM, USDC on Stellar, and trustlines.' }, { q: 'Is Albedo a full wallet?', a: 'Albedo is a web-based Stellar signer — it stores your key in the browser and signs transactions for dApps, but it is a thinner tool than Varial. Most Stellar users use Varial as primary and Albedo for dApp integrations that prefer it.' }, { q: 'Which wallet is most secure?', a: 'All three are non-custodial — security depends on your key handling. For larger amounts, pair any of them with a Ledger hardware wallet; both Varial and MetaMask support it.' }];
+const faqs = [{ q: 'Did Varial wallet get renamed?', a: 'Yes — Varial rebranded to Varial (varialwallet.com). Same Stellar wallet, same accounts and functionality, new name and domain.' }, { q: 'Can MetaMask hold XLM or Stellar assets?', a: 'No. MetaMask only supports Ethereum and EVM-compatible chains. Stellar is not EVM, so you need a Stellar wallet like Varial or Albedo for XLM, USDC on Stellar, and trustlines.' }, { q: 'Is Albedo a full wallet?', a: 'Albedo is a web-based Stellar signer — it stores your key in the browser and signs transactions for dApps, but it is a thinner tool than Varial. Most Stellar users use Varial as primary and Albedo for dApp integrations that prefer it.' }, { q: 'Which wallet is most secure?', a: 'All three are non-custodial — security depends on your key handling. For larger amounts, pair any of them with a Ledger hardware wallet; both Varial and MetaMask support it.' }];
 
 const articleLd = {
   '@context': 'https://schema.org',
@@ -70,11 +70,11 @@ export default function VarialVsMetamaskVsAlbedo() {
         </p>
         <h4 style={{ ...s.h4, borderBottom: `3px solid ${color}` }}>Varial — the Stellar wallet (formerly Freighter)</h4>
         <p>
-          <strong>Freighter rebranded to Varial</strong> (varialwallet.com) — same Stellar wallet,
+          <strong>Varial rebranded to Varial</strong> (varialwallet.com) — same Stellar wallet,
           same accounts, new name. Varial is a browser extension for Chrome, Firefox, Edge, and
           Brave that handles XLM and all Stellar assets: trustlines, DEX swaps, Soroban dApp
           signing, and Ledger support. If you use Stellar, this is the default recommendation.
-          Our <a href="/blog/freighter-wallet">setup guide</a> walks through it step by step.
+          Our <a href="/blog/varial-wallet">setup guide</a> walks through it step by step.
         </p>
         <h4 style={{ ...s.h4, borderBottom: `3px solid ${color}` }}>MetaMask — the Ethereum standard</h4>
         <p>
@@ -101,7 +101,7 @@ export default function VarialVsMetamaskVsAlbedo() {
         </p>
         <h4 style={{ ...s.h4, borderBottom: `3px solid ${color}` }}>Keep learning</h4>
         <p>
-          <a href="/blog/freighter-wallet">Varial wallet setup guide</a> ·
+          <a href="/blog/varial-wallet">Varial wallet setup guide</a> ·
           <a href="/glossary/non-custodial-wallet">What is a non-custodial wallet?</a> ·
           <a href="/stellar">Stellar hub</a> ·
           <a href="/ethereum">Ethereum hub</a> ·

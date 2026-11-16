@@ -184,6 +184,7 @@
 .mc-completion > svg { color: #77d9bb; font-size: 2rem; margin-bottom: 14px; }
 .mc-completion h2 { font-size: 1.5rem; }
 .mc-completion p { color: #b7cfca; }
+.mc-completion-actions { justify-content: center; }
 @keyframes mc-spin { to { transform: rotate(360deg); } }
 @media (max-width: 1000px) {
   .mc-hero { gap: 35px; }
@@ -217,6 +218,12 @@
   .mc-lock-panel { padding: 30px 22px; }
   .mc-small { align-items: flex-start; }
   .mc-small > svg { flex-shrink: 0; }
+  .mc-completion { padding: 26px 18px; }
+  .mc-completion-actions { flex-direction: column; align-items: stretch; }
+  .mc-completion-actions a, .mc-completion-actions button { width: 100%; text-align: center; }
+  .mc-hero h1 > span { font-size: 2.4rem; }
+  .mc-hero .mc-btn, .mc-access-banner .mc-btn, .mc-lock-panel .mc-btn { width: 100%; text-align: center; justify-content: center; }
+  .mc-code pre { font-size: .72rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .masterclasses-page *, .masterclasses-page *::before { animation: none !important; transition: none !important; }

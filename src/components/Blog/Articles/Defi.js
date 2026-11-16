@@ -411,8 +411,8 @@ export default class Defi extends Component {
             <h4 style={styles.h4}>Getting started in 4 steps</h4>
             <p>
               <strong>1.</strong> Set up a non-custodial wallet —{' '}
-              <a href="https://edunode.org/blog/freighter-wallet" style={styles.refLink}>
-                Freighter
+              <a href="https://edunode.org/blog/varial-wallet" style={styles.refLink}>
+                Varial
               </a>{' '}
               is the standard for Stellar.
               <br />
@@ -493,7 +493,7 @@ export default class Defi extends Component {
                   MozartPay
                 </a>
                 . Web3 educator, payment technology expert, and ISO standardisation contributor
-                based in Vienna, Austria.
+                based in Vienna, Austria — and founder of <a href="https://www.ogtechnologies.co/" style={{ color: '#6B48FF' }}>OG Technologies EU</a>, a blockchain, payments, and digital-identity consultancy.
               </p>
             </div>
           </div>

@@ -38,8 +38,8 @@ export default function Masterclasses() {
   return (
     <MasterclassShell>
       <PageMeta
-        title="Masterclasses: Coding, Data, AI, Security, Cloud & Web3 | EduNode"
-        description="Build practical skills with twenty-four detailed masterclasses. Explore Python, JavaScript, SQL, Git, AI, cybersecurity, Docker, IT support, stablecoins, Ethereum, Stellar, zero-knowledge proofs, crypto, Bitcoin, and AI assistants. The first 20% of every class is free."
+        title="Masterclasses: Learn the Skills That Actually Get You Hired | EduNode"
+        description="27 deep-dive masterclasses that take you from curious to job-ready — Python, JavaScript, SQL, Git, AI, cybersecurity, rollups, smart contract auditing, Ethereum, Stellar, ZK proofs, and more. Finish one and earn a downloadable certificate. The first 20% of every class is free."
         path="/masterclasses"
       />
       <Helmet><script type="application/ld+json">{JSON.stringify(catalogLd)}</script></Helmet>
@@ -103,7 +103,7 @@ export default function Masterclasses() {
           <div className="mc-access-copy"><p className="mc-eyebrow">A CLEAR PATH FORWARD</p><h2>Start free.<br />Go further with Pro.</h2><p>Every masterclass has 10 lessons. Lessons 1–2 are free for everyone. Lessons 3–10, including the final project, are included with an active Pro membership.</p><Link className="mc-button mc-button-primary" to="/pricing">See Pro membership <ArrowForward fontSize="small" /></Link></div>
           <div className="mc-access-details">
             <div><SchoolOutlined /><div><h3>Your free 20%</h3><p>Two complete lessons per class, with worked examples, exercises, and knowledge checks. Read and practice without signing in.</p></div></div>
-            <div><LockOutlined /><div><h3>The remaining 80% with Pro</h3><p>Eight further lessons per class, deeper practical work, and a final project with acceptance criteria and a review checklist.</p></div></div>
+            <div><LockOutlined /><div><h3>The remaining 80% with Pro</h3><p>Eight further lessons per class, deeper practical work, a final project with acceptance criteria, and a downloadable certificate of completion.</p></div></div>
             <div className="mc-access-meter" aria-label="20 percent free, 80 percent Pro"><span>20% free</span><span>80% Pro</span></div>
             <p className="mc-small">Access percentages are based on lesson count. Learning time includes the suggested exercises.</p>
           </div>
@@ -114,7 +114,7 @@ export default function Masterclasses() {
           <details><summary>Do I need programming experience?</summary><p>Python, SQL, AI automation, and cybersecurity start with the fundamentals. Docker and cloud deployment assumes basic Python and Git familiarity. Every class lists its prerequisites and tools.</p></details>
           <details><summary>What is included in a lesson?</summary><p>Each lesson includes learning objectives, written explanations, a worked example or scenario, an exercise with a suggested solution, and a knowledge check. These are self-paced reading and practice courses.</p></details>
           <details><summary>Do I need to pay for software?</summary><p>Most local exercises use free tools. n8n hosting, model APIs, and cloud deployment may require separate accounts or incur usage charges. These costs are not included in EduNode Pro; relevant lessons explain setup and cleanup.</p></details>
-          <details><summary>How is my progress saved?</summary><p>Lesson completion is saved in this browser after you pass its knowledge check. It is personal study progress, not a graded credential, and does not sync between devices.</p></details>
+          <details><summary>How is my progress saved — and do I get a certificate?</summary><p>Lesson completion is saved in this browser after you pass each knowledge check; it does not sync between devices. Finish all 10 lessons of a class and you can download a certificate of completion as a PDF — a record of your progress, ideal for sharing with employers or your portfolio.</p></details>
           <details><summary>Do I need a crypto wallet?</summary><p>No for the IT classes. The Web3 & Blockchain classes (stablecoins, Ethereum, Stellar, zero-knowledge, crypto fundamentals) teach concepts and practice on free testnets — no wallet or funds are required to learn.</p></details>
         </section>
       </main>

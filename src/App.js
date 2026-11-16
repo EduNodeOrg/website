@@ -169,6 +169,10 @@ const ZeroKnowledgeProofsExplained = lazy(() => import("./components/Blog/Articl
 const WhatIsTheEVM = lazy(() => import("./components/Blog/Articles/WhatIsTheEVM"));
 const StellarValidatorNode = lazy(() => import("./components/Topics/StellarValidatorNode"));
 const StellarProofOfAgreement = lazy(() => import("./components/Topics/StellarProofOfAgreement"));
+const StellarBellProtocol30 = lazy(() => import("./components/Topics/StellarBellProtocol30"));
+const StellarDisbursementPlatform = lazy(() => import("./components/Topics/StellarDisbursementPlatform"));
+const StellarLab = lazy(() => import("./components/Topics/StellarLab"));
+const StellarRaven = lazy(() => import("./components/Topics/StellarRaven"));
 const WhatIsARollup = lazy(() => import("./components/Blog/Articles/WhatIsARollup"));
 const ChatgptVsClaudeVsGemini = lazy(() => import("./components/Blog/Articles/ChatgptVsClaudeVsGemini"));
 const UsdcVsEurc = lazy(() => import("./components/Blog/Articles/UsdcVsEurc"));
@@ -182,11 +186,14 @@ const SorobanEspanol = lazy(() => import("./components/Blog/Articles/SorobanEspa
 const DaosEspanol = lazy(() => import("./components/Blog/Articles/DaosEspanol"));
 const RWA = lazy(() => import("./components/Blog/Articles/RWA"));
 const ContractSecurity = lazy(() => import("./components/Blog/Articles/ContractSecurity"));
-const Freighter = lazy(() => import("./components/Blog/Articles/Freighter"));
+const VarialWallet = lazy(() => import("./components/Blog/Articles/VarialWallet"));
 const Defi = lazy(() => import("./components/Blog/Articles/Defi"));
 const WalletSecurity = lazy(() => import("./components/Blog/Articles/WalletSecurity"));
 const AiBlockchain = lazy(() => import("./components/Blog/Articles/AiBlockchain"));
 const GoStellarSdk = lazy(() => import("./components/Blog/Articles/GoStellarSdk"));
+const StellarCppSdk = lazy(() => import("./components/Blog/Articles/StellarCppSdk"));
+const StellarGoCli = lazy(() => import("./components/Blog/Articles/StellarGoCli"));
+const EthereumToStellar = lazy(() => import("./components/Blog/Articles/EthereumToStellar"));
 const ChainChess = lazy(() => import("./components/Chess/"));
 const Feed = lazy(() => import("./components/Feed"));
 const Gcallback = lazy(() => import("./components/Gcallback"));
@@ -490,11 +497,14 @@ function App(props) {
         <Route exact path="/blog/what-is-a-stablecoin" element={<Stablecoin />} />
         <Route exact path="/blog/rwa-tokenization" element={<RWA />} />
         <Route exact path="/blog/smart-contract-security-vulnerabilities" element={<ContractSecurity />} />
-        <Route exact path="/blog/freighter-wallet" element={<Freighter />} />
+        <Route exact path="/blog/varial-wallet" element={<VarialWallet />} />
         <Route exact path="/blog/what-is-defi" element={<Defi />} />
         <Route exact path="/blog/crypto-wallet-security" element={<WalletSecurity />} />
         <Route exact path="/blog/ai-and-blockchain" element={<AiBlockchain />} />
         <Route exact path="/blog/build-stellar-apps-with-go" element={<GoStellarSdk />} />
+        <Route exact path="/blog/stellar-cpp-sdk" element={<StellarCppSdk />} />
+        <Route exact path="/blog/stellar-go-cli" element={<StellarGoCli />} />
+        <Route exact path="/blog/migrate-ethereum-to-stellar" element={<EthereumToStellar />} />
         <Route exact path="/blog/usdc-vs-usdt" element={<UsdcVsUsdt />} />
         <Route exact path="/blog/are-stablecoins-decentralized" element={<StablecoinsDecentralized />} />
         <Route exact path="/blog/how-stablecoins-work" element={<HowStablecoinsWork />} />
@@ -547,6 +557,10 @@ function App(props) {
         <Route exact path="/blog/what-is-a-smart-contract-audit" element={<WhatIsSmartContractAudit />} />
                 <Route exact path="/stellar/validator-node-guide" element={<StellarValidatorNode />} />
         <Route exact path="/stellar/proof-of-agreement" element={<StellarProofOfAgreement />} />
+        <Route exact path="/stellar/bell-protocol-30" element={<StellarBellProtocol30 />} />
+        <Route exact path="/stellar/stellar-disbursement-platform" element={<StellarDisbursementPlatform />} />
+        <Route exact path="/stellar/stellarlab" element={<StellarLab />} />
+        <Route exact path="/stellar/raven" element={<StellarRaven />} />
                 <Route exact path="/blog/what-is-tokenization" element={<WhatIsTokenization />} />
         <Route exact path="/blog/what-is-web3" element={<WhatIsWeb3 />} />
         <Route exact path="/blog/custodial-vs-non-custodial-wallets" element={<CustodialVsNonCustodial />} />

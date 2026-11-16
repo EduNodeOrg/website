@@ -53,7 +53,7 @@ export default function XBullSorobanDomains() {
       >
         <div dangerouslySetInnerHTML={{ __html: `<p>Stellar Global Discord event recording featuring the Creit Tech team discussing their multi-functional wallet, xBull, and Soroban Domains!</p><p></p><p>Hosted by Olvis Gil &amp; Fergal, with special guest Enrique Arrieta!</p>` }} />
         <h4 style={{ ...s.h4, borderBottom: `3px solid ${color}` }}>Keep learning</h4>
-        <p dangerouslySetInnerHTML={{ __html: `Learn more about <a href="/stellar">Stellar development</a>, <a href="/blog/freighter-wallet">Varial wallet (formerly Freighter)</a>, and the <a href="/masterclasses/stellar-network-development">Stellar Network masterclass</a>.` }} />
+        <p dangerouslySetInnerHTML={{ __html: `Learn more about <a href="/stellar">Stellar development</a>, <a href="/blog/varial-wallet">Varial wallet (formerly Freighter)</a>, and the <a href="/masterclasses/stellar-network-development">Stellar Network masterclass</a>.` }} />
       </ArticleLayout>
     </>
   );

@@ -133,7 +133,7 @@ const course = {
         },
         {
           type: 'paragraph',
-          text: 'Hot wallets (MetaMask, Phantom, Freighter) are software connected to the internet — convenient for daily use and dApps. Cold wallets (Ledger, Trezor) keep keys in a hardware device that signs offline — the standard for larger holdings. A common pattern: keep spending funds in a hot wallet and savings in a hardware wallet.',
+          text: 'Hot wallets (MetaMask, Phantom, Varial) are software connected to the internet — convenient for daily use and dApps. Cold wallets (Ledger, Trezor) keep keys in a hardware device that signs offline — the standard for larger holdings. A common pattern: keep spending funds in a hot wallet and savings in a hardware wallet.',
         },
       ],
       quiz: [

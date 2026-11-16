@@ -6,6 +6,24 @@ const releases = [
 
 
   {
+    version: '0.3.9',
+    date: 'November 16, 2026',
+    title: 'Certificates, rollups & auditing masterclasses, Bell Protocol 30, and the Varial rebrand',
+    notes: [
+      'Downloadable PDF certificates on completion of every masterclass and Pro course, plus PDF download on issued certificate pages.',
+      'Two new certified masterclasses: Rollups in Practice (L2 security, DA, bridges) and Smart Contract Auditing (reentrancy, oracle attacks, report writing) — each with two free lessons and a final project.',
+      'New Stellar sub-page: /stellar/bell-protocol-30 covering CAP-84 muxed contract addresses, CAP-87 post-quantum ML-DSA signatures, and CAP-88 millisecond ledgers.',
+      'Freighter renamed to Varial across the site: /blog/freighter-wallet 301s to /blog/varial-wallet, login/signup buttons and the wallet SDK moved to @stellar/varial-sdk.',
+      'Higher-CTR titles and descriptions on the masterclasses hub and top-performing explainer pages, plus mobile improvements for article pages (readable tables, wrapped code, smaller headings).',
+      'New articles: Build Stellar Apps in C++20 (stellar-cpp-sdk), Stellar Go CLI (wallets, DIDs, ISO 20022, MCP server), and Migrate from Ethereum to Stellar (with OG Technologies consulting references).',
+      'New Stellar sub-pages: /stellar/stellar-disbursement-platform (SDP bulk payments), /stellar/stellarlab (sandbox), and /stellar/raven (MCP for AI agents).',
+      'Build speed: sourcemaps/ESLint disabled in the build script and Terser swapped for esbuild (craco) — npm run build roughly 2x faster.',
+      'OG Technologies EU integration site-wide: consulting CTA on all topic hubs, OG Tech in every article author bio, footer brand attribution + Company link, and parentOrganization in the homepage JSON-LD.',
+    ],
+  },
+
+
+  {
     version: '0.3.8',
     date: 'October 31, 2026',
     title: 'Stellar sub-guides, Rust masterclass, and explainer journal cluster',

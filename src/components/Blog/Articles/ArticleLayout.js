@@ -222,14 +222,29 @@ export default function ArticleLayout({
   const s = articleStyles;
   return (
     <div style={s.page}>
+      <style>{`
+        @media (max-width: 760px) {
+          .al-hero { padding: 48px 18px !important; }
+          .al-heroText { font-size: 1rem !important; }
+          .al-hero svg { font-size: 48px !important; }
+          .al-wrapper { padding: 28px 18px 56px !important; }
+          .al-title { font-size: 1.7rem !important; }
+          .al-body h4 { font-size: 1.15rem !important; }
+          .al-body p, .al-body li { font-size: 1rem !important; }
+          .al-body pre { white-space: pre-wrap !important; word-break: break-word !important; }
+          .al-body pre, .al-body code { font-size: 0.78rem !important; }
+          .al-body table { display: block; overflow-x: auto; font-size: 0.82rem !important; }
+          .al-body img { max-width: 100%; height: auto; }
+        }
+      `}</style>
       <NavBar />
-      <div style={{ ...s.hero, background: accent }}>
+      <div className="al-hero" style={{ ...s.hero, background: accent }}>
         {heroIcon}
-        <div style={s.heroText}>{heroText}</div>
+        <div className="al-heroText" style={s.heroText}>{heroText}</div>
       </div>
-      <div style={s.wrapper}>
+      <div className="al-wrapper" style={s.wrapper}>
         <div style={{ ...s.tag, background: accent }}>{tag}</div>
-        <h1 style={s.title}>{title}</h1>
+        <h1 className="al-title" style={s.title}>{title}</h1>
         <div style={s.meta}>
           <img src={profilePicImg} style={{ ...s.avatar, border: `2px solid ${color}` }} alt="Olvis Gil" />
           <span>
@@ -237,7 +252,7 @@ export default function ArticleLayout({
           </span>
         </div>
         <hr style={s.divider} />
-        <div style={s.body}>
+        <div className="al-body" style={s.body}>
           {children}
           {faqs && faqs.length > 0 && (
             <>
@@ -271,8 +286,10 @@ export default function ArticleLayout({
           <div>
             <div style={s.authorName}>Olvis Gil</div>
             <p style={s.authorBio}>
-              Founder of EduNode — an educational platform teaching blockchain
-              development on Stellar, Ethereum, Soroban, and beyond.
+              Founder of EduNode and{' '}
+              <a href="https://www.ogtechnologies.co/" target="_blank" rel="noopener noreferrer" style={{ color: '#6B48FF' }}>OG Technologies EU</a>{' '}
+              — a Vienna consultancy for blockchain payments, tokenization, digital
+              identity, and ISO 20022.
             </p>
           </div>
         </div>

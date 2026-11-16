@@ -99,9 +99,9 @@ export default class Security extends Component {
             <p>
               Your wallet is your gateway to the Stellar network. There are several excellent options, each with different security trade-offs:
             </p>
-            <img src={freighter} style={styles.inlineImg} alt="Freighter wallet" />
+            <img src={freighter} style={styles.inlineImg} alt="Varial wallet" />
             <p>
-              <strong>Freighter</strong> is a browser extension wallet developed by the Stellar Development Foundation. It is open-source, non-custodial, and integrates seamlessly with Soroban dApps.
+              <strong>Varial</strong> is a browser extension wallet developed by the Stellar Development Foundation. It is open-source, non-custodial, and integrates seamlessly with Soroban dApps.
             </p>
             <img src={lobstr} style={styles.inlineImg} alt="LOBSTR wallet" />
             <p>
@@ -122,7 +122,7 @@ export default class Security extends Component {
               • Use a dedicated device for crypto transactions
             </p>
             <h4 style={styles.h4}>Resources</h4>
-            <p>[1] <a href="https://www.freighter.app" style={styles.refLink}>Freighter — Stellar Browser Wallet</a></p>
+            <p>[1] <a href="https://varialwallet.com" style={styles.refLink}>Varial — Stellar Browser Wallet</a></p>
             <p>[2] <a href="https://lobstr.co" style={styles.refLink}>LOBSTR — Stellar Mobile Wallet</a></p>
             <p>[3] <a href="https://developers.stellar.org/docs/encyclopedia/signatures-multisig" style={styles.refLink}>Multisig on Stellar — Developer Docs</a></p>
           </div>
@@ -139,7 +139,7 @@ export default class Security extends Component {
             <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
             <div>
               <div style={styles.authorName}>Olvis Gil</div>
-              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Cybersecurity advocate and payment technology expert based in Vienna, Austria.</p>
+              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Cybersecurity advocate and payment technology expert based in Vienna, Austria — and founder of <a href="https://www.ogtechnologies.co/" style={{ color: '#6B48FF' }}>OG Technologies EU</a>, a blockchain, payments, and digital-identity consultancy.</p>
             </div>
           </div>
         </div>

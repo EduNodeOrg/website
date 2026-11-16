@@ -241,7 +241,7 @@ export default class Roadmap extends Component {
       },
       {
         name: 'Build full-stack dApps',
-        desc: 'Connect contracts to real frontends: React, wallet integration (Freighter, MetaMask, WalletConnect), blockchain SDKs, indexers, and decentralized storage like IPFS.',
+        desc: 'Connect contracts to real frontends: React, wallet integration (Varial, MetaMask, WalletConnect), blockchain SDKs, indexers, and decentralized storage like IPFS.',
       },
       {
         name: 'Study smart contract security',
@@ -569,7 +569,7 @@ export default class Roadmap extends Component {
                   MozartPay
                 </a>
                 . Web3 educator, payment technology expert, and ISO standardisation contributor
-                based in Vienna, Austria.
+                based in Vienna, Austria — and founder of <a href="https://www.ogtechnologies.co/" style={{ color: '#6B48FF' }}>OG Technologies EU</a>, a blockchain, payments, and digital-identity consultancy.
               </p>
             </div>
           </div>

@@ -26,6 +26,8 @@ const paidLessons = {
   'devin-for-developers': require('../content/devin'),
   'jev-system-one-models': require('../content/jev'),
   'rust-web-wasm': require('../content/rust'),
+  'rollups-in-practice': require('../content/rollups'),
+  'smart-contract-auditing': require('../content/audits'),
 };
 
 const SUBSCRIPTION_URL = 'https://edunode.herokuapp.com/api/stripe/subscription-status';

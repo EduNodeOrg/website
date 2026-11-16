@@ -114,6 +114,22 @@ export const topicStyles = {
     lineHeight: '1.75',
     fontSize: '0.98rem',
   },
+  consult: {
+    marginTop: '44px',
+    background: '#0d0d2b',
+    borderRadius: '14px',
+    padding: '24px 26px',
+    color: '#b8c5d6',
+  },
+  consultText: {
+    lineHeight: '1.75',
+    fontSize: '0.98rem',
+    margin: 0,
+  },
+  consultLink: {
+    color: '#00d4ff',
+    fontWeight: '600',
+  },
 };
 
 function HubLink({ link, accent }) {
@@ -163,6 +179,16 @@ export default function TopicPage({ accent, eyebrow, title, lead, sections, faqs
             </div>
           </section>
         )}
+        <section style={topicStyles.consult}>
+          <h2 style={topicStyles.sectionTitle}>Need this built for your organization?</h2>
+          <p style={topicStyles.consultText}>
+            EduNode is a brand of{' '}
+            <a href="https://www.ogtechnologies.co/" target="_blank" rel="noopener noreferrer" style={topicStyles.consultLink}>OG Technologies EU</a>{' '}
+            — a Vienna consultancy that designs Stellar and Ethereum payment systems, tokenized
+            assets, digital identity (W3C VC / EUDI), and ISO 20022 integrations. Engagements
+            start with a free 30-minute architecture review.
+          </p>
+        </section>
       </div>
       <Footer />
     </div>

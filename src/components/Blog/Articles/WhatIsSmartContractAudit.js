@@ -4,8 +4,8 @@ import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import ArticleLayout, { articleStyles as s } from './ArticleLayout';
 
 const shareUrl = 'https://edunode.org/blog/what-is-a-smart-contract-audit';
-const title = 'What Is a Smart Contract Audit? Process, Cost, and What It Proves';
-const description = 'A smart contract audit is a security review of on-chain code before deployment. What auditors check, how the process works, typical costs, and why an audit is necessary but not sufficient.';
+const title = 'What Is a Smart Contract Audit? The Review Standing Between Code and Catastrophe';
+const description = 'Billions have been lost to contracts that “worked perfectly.” A smart contract audit is the adversarial review that hunts for what the authors never intended — the process, the cost, and how to learn the skill yourself.';
 const image = 'https://edunode.org/og/what-is-a-smart-contract-audit.png';
 const accent = 'linear-gradient(135deg,#0a0e27 0%,#1a3a2f 55%,#00d4a0 100%)';
 const color = '#00d4a0';

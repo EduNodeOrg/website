@@ -4,6 +4,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowBack, ArrowForward, CheckCircleOutline, ContentCopy, LockOutlined } from '@mui/icons-material';
 import PageMeta from '../PageMeta';
+import CompletionCertificate from '../Certificates/CompletionCertificate';
 import { MasterclassShell } from './index';
 import { catalog, FREE_LESSON_COUNT } from './catalog';
 import freeLessons from './freeLessons';
@@ -169,7 +170,7 @@ function LessonReader({ course, lessonIndex }) {
                 <section className="mc-exercise"><p className="mc-eyebrow">PUT IT INTO PRACTICE</p><h2>{lesson.exercise.title}</h2><ol>{lesson.exercise.instructions.map((step) => <li key={step}>{step}</li>)}</ol><details><summary>Compare with the suggested solution</summary><p>{lesson.exercise.solution}</p></details></section>
                 <KnowledgeCheck quiz={lesson.quiz} complete={completed.includes(metadata.slug)} onComplete={markComplete} />
                 {storageError && <p className="mc-notice" role="status">Your progress is updated for this visit, but browser storage is unavailable. It may not persist after you leave.</p>}
-                {completed.length === course.lessons.length && <section className="mc-completion" role="status"><CheckCircleOutline /><h2>You’ve completed this masterclass.</h2><p>Review your final project against its acceptance criteria, then choose your next learning path.</p><Link to="/masterclasses" className="mc-button mc-button-primary">Explore more masterclasses</Link></section>}
+                {completed.length === course.lessons.length && <section className="mc-completion" role="status"><CheckCircleOutline /><h2>You’ve completed this masterclass — you earned your certificate.</h2><p>Download your certificate of completion as a PDF, review your final project against its acceptance criteria, then choose your next learning path.</p><div className="mc-actions mc-completion-actions"><CompletionCertificate courseTitle={course.title} detail="10 lessons, exercises, knowledge checks, and a final project" slug={course.slug} /><Link to="/masterclasses" className="mc-button mc-button-secondary">Explore more masterclasses</Link></div></section>}
               </>
             )}
             <nav className="mc-lesson-navigation" aria-label="Previous and next lesson">

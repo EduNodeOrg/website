@@ -24,6 +24,11 @@
   status = 301
 
 [[redirects]]
+  from = "/blog/freighter-wallet"
+  to = "/blog/varial-wallet"
+  status = 301
+
+[[redirects]]
   from = "/postDetails/662a525e657babd52ff8869e"
   to = "/blog/built-on-stellar-xbull-soroban-domains"
   status = 301

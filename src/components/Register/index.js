@@ -11,7 +11,7 @@ import { connect } from 'react-redux'
 import {
   Link
 } from "react-router-dom";
-import { isConnected, getPublicKey } from "@stellar/freighter-api";
+import { isConnected, requestAccess } from "@stellar/varial-sdk";
 import NavBar from "../NavBar"
 import albedo from '@albedo-link/intent'
 import albedologo from "./img/albedo.png"
@@ -219,9 +219,9 @@ export class Register extends Component {
   render() {
 
     const freighterHandler = async () => {
-      if (isConnected()) {
-        const publicKey = await getPublicKey();
-        void publicKey;
+      if (await isConnected()) {
+        const { address } = await requestAccess();
+        void address;
       }
 
       // alert("not conected")
@@ -310,7 +310,7 @@ export class Register extends Component {
                 </WalletButton>
                 <WalletButton onClick={freighterHandler} variant="outlined">
                   <img src={flogo} alt="" style={{ height: 22 }} />
-                  Sign up with Freighter
+                  Sign up with Varial
                 </WalletButton>
               </Box>
 

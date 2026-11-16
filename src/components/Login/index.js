@@ -11,7 +11,7 @@ import "./style.css";
 import { connect } from 'react-redux';
 import { albedoAuth, metamaskAuth, login, googleLogin, verifyGoogleUser, verifyTwitterUser, webThreeAuth, freighterAuth, mozartAuth } from "../../actions/authActions";
 import NavBar from "../NavBar";
-import { isConnected, getPublicKey } from "@stellar/freighter-api";
+import { isConnected, requestAccess } from "@stellar/varial-sdk";
 import jwt_decode from 'jwt-decode'
 import { GoogleLogin } from '@react-oauth/google';
 import Alert from '@mui/material/Alert';
@@ -304,15 +304,19 @@ class Login extends Component {
 
     const freighterHandler = async () => {
 
-      if (isConnected()) {
+      if (await isConnected()) {
 
-        const pkey = await getPublicKey();
+        const { address } = await requestAccess();
 
-        await this.props.freighterAuth(pkey)
+        if (address) {
 
-        return (
-          <Navigate to="/dashboard" />
-        );
+          await this.props.freighterAuth(address)
+
+          return (
+            <Navigate to="/dashboard" />
+          );
+
+        }
 
       }
 
@@ -414,7 +418,7 @@ class Login extends Component {
                 </WalletButton>
                 <WalletButton onClick={freighterHandler} variant="outlined">
                   <img src={freighterLogo} alt="" style={{ height: 22 }} />
-                  Login with Freighter
+                  Login with Varial
                 </WalletButton>
                 <WalletButton onClick={albedoHandler} variant="outlined">
                   <img src={albedoLogo} alt="" style={{ height: 22 }} />

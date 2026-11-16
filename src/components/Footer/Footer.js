@@ -61,6 +61,13 @@ export default function Footer() {
                   Build practical IT, Web3, and blockchain skills through courses, masterclasses, and projects.
                 </p>
                 <p>
+                  A brand of{' '}
+                  <a href="https://www.ogtechnologies.co/" target="_blank" rel="noreferrer" style={linkStyle} className="footer-link">
+                    OG Technologies EU
+                  </a>{' '}
+                  — blockchain, payments &amp; digital-identity consulting.
+                </p>
+                <p>
                   <MDBIcon icon="home" className="me-2" />
                   Widerhofergasse 6, 1090 Wien
                 </p>
@@ -108,6 +115,7 @@ export default function Footer() {
                 <h6 className='text-uppercase fw-bold mb-4' style={headingStyle}>Company</h6>
                 <FooterLink href='/about'>About</FooterLink>
                 <FooterLink href='/contactus'>Contact</FooterLink>
+                <FooterLink href='https://www.ogtechnologies.co/'>Consulting — OG Tech</FooterLink>
                 <FooterLink href='/releases'>Releases</FooterLink>
                 <FooterLink href='/terms'>Terms and Conditions</FooterLink>
                 <FooterLink href='/privacy'>Privacy Policy</FooterLink>

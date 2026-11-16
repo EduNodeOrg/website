@@ -571,8 +571,8 @@ function Resources() {
                 <GlassCard>
                   <CardMedia
                     sx={{ paddingTop: '56.25%' }}
-                    image={require('../Resources/freighter.png')}
-                    title="Freighter"
+                    image={require('../Resources/varial.png')}
+                    title="Varial"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
@@ -580,7 +580,7 @@ function Resources() {
                       variant="h5"
                       component="h2"
                     >
-                      Freighter
+                      Varial
                     </Typography>
                     <Typography>
                       A non-custodial Stellar wallet extension for
@@ -591,7 +591,7 @@ function Resources() {
                     <Button
                       size="small"
                       sx={{ color: '#00d4ff' }}
-                      href="https://freighter.app/"
+                      href="https://varialwallet.com/"
                     >
                       Learn More
                     </Button>

@@ -103,7 +103,7 @@ export default function CustodialVsNonCustodial() {
         </p>
         <h4 style={{ ...s.h4, borderBottom: `3px solid ${color}` }}>Keep learning</h4>
         <p>
-          <a href="/blog/freighter-wallet">Varial wallet setup guide</a> ·
+          <a href="/blog/varial-wallet">Varial wallet setup guide</a> ·
           <a href="/blog/varial-vs-metamask-vs-albedo">Varial vs MetaMask vs Albedo</a> ·
           <a href="/blog/crypto-wallet-security">Wallet security guide</a> ·
           <a href="/glossary/non-custodial-wallet">Non-custodial wallet term</a> ·

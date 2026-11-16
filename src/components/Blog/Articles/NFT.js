@@ -112,7 +112,7 @@ export default class NFT extends Component {
             <img src={lite} style={styles.inlineImg} alt="Litemint marketplace" />
             <h4 style={styles.h4}>Step-by-Step: Minting Your First NFT</h4>
             <p>
-              1. Create a Stellar wallet (Freighter or Albedo)<br/>
+              1. Create a Stellar wallet (Varial or Albedo)<br/>
               2. Fund your account with XLM<br/>
               3. Connect your wallet to Litemint<br/>
               4. Upload your digital artwork<br/>
@@ -135,7 +135,7 @@ export default class NFT extends Component {
             <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
             <div>
               <div style={styles.authorName}>Olvis Gil</div>
-              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Web3 educator and digital asset specialist based in Vienna, Austria.</p>
+              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Web3 educator and digital asset specialist based in Vienna, Austria — and founder of <a href="https://www.ogtechnologies.co/" style={{ color: '#6B48FF' }}>OG Technologies EU</a>, a blockchain, payments, and digital-identity consultancy.</p>
             </div>
           </div>
         </div>

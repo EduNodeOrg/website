@@ -131,7 +131,7 @@ export default class Contracts extends Component {
             <img src={profilePic} style={styles.authorAvatar} alt="Olvis Gil" />
             <div>
               <div style={styles.authorName}>Olvis Gil</div>
-              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Blockchain educator and smart contract developer based in Vienna, Austria.</p>
+              <p style={styles.authorBio}>Founder of <a href="https://edunode.org" style={{ color: '#6B48FF' }}>EduNode</a> and <a href="https://www.mozartpay.com" style={{ color: '#6B48FF' }}>MozartPay</a>. Blockchain educator and smart contract developer based in Vienna, Austria — and founder of <a href="https://www.ogtechnologies.co/" style={{ color: '#6B48FF' }}>OG Technologies EU</a>, a blockchain, payments, and digital-identity consultancy.</p>
             </div>
           </div>
         </div>

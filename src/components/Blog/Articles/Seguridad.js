@@ -179,7 +179,7 @@ export default class Kelp extends Component {
                 stellar account. They offer a mobile app that can be
                 accessed from Google Play or from the Apple Store.
               </p>
-              <h4>Freighter</h4>
+              <h4>Varial</h4>
               <p>
                 If you care alot about security, it makes sense to
                 securely manage your assets using a Non-Custodial
@@ -188,7 +188,7 @@ export default class Kelp extends Component {
               </p>
               <p></p>
               <p>
-                <a href="https://www.freighter.app/">Freighter </a>
+                <a href="https://varialwallet.com/">Varial </a>
                 is a non-custodial wallet developed by the Stellar
                 Development Foundation. It works similar to the way{' '}
                 <a href="albedo.link/">Albedo</a> works, and it allows
@@ -200,7 +200,7 @@ export default class Kelp extends Component {
               </p>
               <Image src={freighter} fluid />
               <p>
-                Freighter is a non-custodial wallet extension that
+                Varial is a non-custodial wallet extension that
                 enables you to sign Stellar transactions via your
                 browser. It's a safer alternative to copying and
                 pasting private keys for use with web applications.
@@ -266,9 +266,9 @@ export default class Kelp extends Component {
                 </a>{' '}
               </p>
               <p>
-                [4] freighter | A Stellar wallet for every website:
-                <a href="https://www.freighter.app/">
-                  https://www.freighter.app/
+                [4] Varial | A Stellar wallet for every website:
+                <a href="https://varialwallet.com/">
+                  https://varialwallet.com/
                 </a>{' '}
               </p>
               <br></br>

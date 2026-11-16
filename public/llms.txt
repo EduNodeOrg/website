@@ -1,12 +1,12 @@
 # EduNode
 
-> EduNode teaches practical IT and blockchain development through masterclasses, interactive courses, coding challenges, and community resources. IT masterclasses cover Python, SQL, AI automation, cybersecurity, and Docker/cloud deployment; specialist courses cover Stellar, Web3, Soroban, Ethereum, and Hyperledger.
+> EduNode — a brand of OG Technologies EU (ogtechnologies.co), a Vienna consultancy for blockchain payments, tokenization, digital identity, and ISO 20022 — teaches practical IT and blockchain development through masterclasses, interactive courses, coding challenges, and community resources. IT masterclasses cover Python, SQL, AI automation, cybersecurity, and Docker/cloud deployment; specialist courses cover Stellar, Web3, Soroban, Ethereum, and Hyperledger.
 
 ## IT Masterclasses
 
 Each masterclass has 10 written lessons with examples, exercises, and knowledge checks. The first two lessons (20%) are free without an account; the remaining eight (80%), including the final project, require an active Pro membership. Twenty-four paths, 240 lessons total.
 
-- [Masterclasses](https://edunode.org/masterclasses): Twenty-four learning paths (IT, Web3, and AI assistants) with 240 lessons and twenty-four final projects
+- [Masterclasses](https://edunode.org/masterclasses): Twenty-seven learning paths (IT, Web3, and AI assistants) with 270 lessons, twenty-seven final projects, and downloadable completion certificates
 - [Python for Beginners: Automate Everyday Tasks](https://edunode.org/masterclasses/python-automation): Files, CSV/Excel, APIs, tests, scheduling, and a sales reporting project
 - [Your first useful Python script](https://edunode.org/masterclasses/python-automation/lessons/your-first-script): Free lesson on setup, variables, calculations, and debugging
 - [Data, loops, and decisions](https://edunode.org/masterclasses/python-automation/lessons/data-and-decisions): Free Python lesson on lists, dictionaries, and paid-order summaries
@@ -48,6 +48,12 @@ Each masterclass has 10 written lessons with examples, exercises, and knowledge 
 - [Stellar's model](https://edunode.org/masterclasses/stellar-network-development/lessons/stellar-model): Free lesson on accounts, assets, and reserves
 - [Transactions and operations](https://edunode.org/masterclasses/stellar-network-development/lessons/transactions-operations): Free lesson on atomic ops and fees
 - [Zero-Knowledge Proofs](https://edunode.org/masterclasses/zero-knowledge-proofs): ZKP intuition, SNARKs/STARKs, circuits, rollups, ZK on Stellar
+- [Rollups in Practice](https://edunode.org/masterclasses/rollups-in-practice): Optimistic vs ZK rollups, data availability, bridges, security, and an L2 deployment project
+- [Why Ethereum needed rollups](https://edunode.org/masterclasses/rollups-in-practice/lessons/why-rollups): Free lesson on the fee problem and the rollup idea
+- [How a rollup actually works](https://edunode.org/masterclasses/rollups-in-practice/lessons/how-rollups-work): Free lesson on sequencers, state roots, and proofs
+- [Smart Contract Auditing](https://edunode.org/masterclasses/smart-contract-auditing): Auditor mindset, reentrancy, oracle attacks, tooling, report writing, and a seeded audit project
+- [The auditor’s mindset](https://edunode.org/masterclasses/smart-contract-auditing/lessons/audit-mindset): Free lesson on why “it compiles” means nothing
+- [Read a contract like an auditor](https://edunode.org/masterclasses/smart-contract-auditing/lessons/reading-contracts): Free lesson on entry points, value flows, and invariants
 - [What a zero-knowledge proof is](https://edunode.org/masterclasses/zero-knowledge-proofs/lessons/zkp-intuition): Free lesson on prove-without-revealing
 - [Proofs, verification, three properties](https://edunode.org/masterclasses/zero-knowledge-proofs/lessons/proofs-that-verify): Free lesson on completeness, soundness, zero-knowledge
 - [Crypto Fundamentals](https://edunode.org/masterclasses/crypto-fundamentals): Keys, wallets, tokens, DeFi basics, security, testnets
@@ -108,11 +114,13 @@ Each masterclass has 10 written lessons with examples, exercises, and knowledge 
 - [What Is a Stablecoin? USDC on Stellar](https://edunode.org/blog/what-is-a-stablecoin): Stablecoin types and how they power payments
 - [Real-World Asset (RWA) Tokenization Explained](https://edunode.org/blog/rwa-tokenization): How traditional assets move on-chain
 - [Top 10 Smart Contract Security Vulnerabilities](https://edunode.org/blog/smart-contract-security-vulnerabilities): Exploit classes and how to prevent them
-- [Freighter Wallet: Setup & User Guide](https://edunode.org/blog/freighter-wallet): Set up and use Stellar's most popular wallet
+- [Varial Wallet: Setup & User Guide](https://edunode.org/blog/varial-wallet): Set up and use Stellar's most popular wallet (formerly Freighter)
 - [What Is DeFi? A Beginner's Guide](https://edunode.org/blog/what-is-defi): DEXs, AMMs, lending, stablecoins, and DeFi on Stellar
 - [Crypto Wallet Security](https://edunode.org/blog/crypto-wallet-security): Seed phrases, passkeys, multi-sig, and phishing defense
 - [AI and Blockchain](https://edunode.org/blog/ai-and-blockchain): Where AI agents, provenance, and verifiable compute meet Web3
 - [A Go Developer's Guide to Stellar](https://edunode.org/blog/build-stellar-apps-with-go): Payments with go-stellar-sdk, terminal ops with stellar-go-cli, and Soroban contract calls from Go
+- [Build Stellar Apps in C++20](https://edunode.org/blog/stellar-cpp-sdk): stellar-cpp-sdk — XDR, transactions, Soroban RPC, contracts, ISO 20022 for Protocol 30
+- [Stellar Go CLI](https://edunode.org/blog/stellar-go-cli): Wallets, payments, DEX swaps, Soroban deploys, DIDs/VCs, ISO 20022, and an MCP server — CLI + Go packages
 
 ## Topic Hubs & Glossary
 
@@ -143,6 +151,11 @@ Each masterclass has 10 written lessons with examples, exercises, and knowledge 
 
 - [How to Set Up a Stellar Validator Node: Step-by-Step Guide](https://edunode.org/stellar/validator-node-guide)
 - [Stellar Proof-of-Agreement: How SCP Consensus Works (Not Proof of Stake)](https://edunode.org/stellar/proof-of-agreement)
+- [Bell, Protocol 30 on Stellar](https://edunode.org/stellar/bell-protocol-30): CAP-84 muxed contract addresses, CAP-87 ML-DSA post-quantum signatures, CAP-88 millisecond ledgers
+- [Stellar Disbursement Platform](https://edunode.org/stellar/stellar-disbursement-platform): Open-source bulk payments — 10k per batch, auto-created wallets, aid-proven
+- [Stellar Lab](https://edunode.org/stellar/stellarlab): Browser sandbox for transactions, Soroban deploys, RPC/Horizon, and XDR decoding
+- [Stellar Raven](https://edunode.org/stellar/raven): Remote MCP server giving AI agents official docs, live ecosystem data, and playbooks
+- [Migrate from Ethereum to Stellar](https://edunode.org/blog/migrate-ethereum-to-stellar): Asset re-issuance, Soroban rewrites, tooling map, and a safe cutover sequence
 
 - [What Is Tokenization? Real-World Assets on Blockchain, Explained](https://edunode.org/blog/what-is-tokenization)
 - [What Is Web3? A Plain-English Beginner’s Guide](https://edunode.org/blog/what-is-web3)

@@ -7,6 +7,7 @@ import { styled } from '@mui/material/styles';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import NavBar from '../NavBar';
 import Footer from '../Footer/Footer';
+import CompletionCertificate from '../Certificates/CompletionCertificate';
 import { getCourse } from './data';
 import { hasProAccess } from './membership';
 
@@ -124,10 +125,18 @@ function ProCourseDone({ courseId, auth }) {
             <Typography variant="h4" sx={{ color: '#fff', fontWeight: 'bold', mb: 2 }}>
               Congratulations!
             </Typography>
-            <Typography variant="body1" sx={{ color: '#b8c5d6', mb: 4, maxWidth: 480 }}>
-              You have completed <strong>{course.title}</strong>. Your certificate will be
-              issued once certification is enabled for this course.
+            <Typography variant="body1" sx={{ color: '#b8c5d6', mb: 3, maxWidth: 480 }}>
+              You have completed <strong>{course.title}</strong>. Download your certificate
+              of completion below — a blockchain-verified credential will also be issued once
+              certification is enabled for this course.
             </Typography>
+            <Box sx={{ mb: 4 }}>
+              <CompletionCertificate
+                courseTitle={course.title}
+                detail="Hands-on course completed on EduNode"
+                slug={course.id}
+              />
+            </Box>
             <Box sx={{ display: 'flex', gap: 2 }}>
               <Button
                 variant="contained"

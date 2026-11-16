@@ -32,6 +32,11 @@ const siteLd = {
         'https://x.com/edunodeorg',
         'https://www.linkedin.com/company/edunodeorg/',
       ],
+      parentOrganization: {
+        '@type': 'Organization',
+        name: 'OG Technologies EU',
+        url: 'https://www.ogtechnologies.co/',
+      },
     },
     {
       '@type': 'WebSite',

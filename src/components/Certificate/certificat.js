@@ -29,11 +29,13 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import DownloadIcon from '@mui/icons-material/Download';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Tooltip from '@mui/material/Tooltip';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import ModernNavbar from '../Dashboard/layout/ModernNavbar';
+import { downloadIssuedCertificate } from '../Certificates/certificatePdf';
 
 // Helper function to truncate long strings
 const truncateString = (str, maxLength = 30) => {
@@ -163,6 +165,7 @@ function Certificat() {
   const [qrCode, setQRCode] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [downloading, setDownloading] = useState(false);
   const title = "E-certification "
   const stellarLab = "https://horizon-futurenet.stellar.org/accounts/?sponsor=GC4MEJJJMNIBIDZSJOZOPVUQQUKR3AARFLPFYKUFXU2D7PHWJP5S4AEI"
   const shareUrl = `https://edunode.org/certificates/${certificateNumber}`;
@@ -423,6 +426,26 @@ function Certificat() {
                   sx={{ mt: 2 }}
                 >
                   Verify on Stellar Laboratory
+                </ShareButton>
+                <ShareButton
+                  onClick={async () => {
+                    setDownloading(true);
+                    try {
+                      await downloadIssuedCertificate({
+                        certificateNumber,
+                        imageUrl: cid ? `https://copper-deliberate-hippopotamus-402.mypinata.cloud/ipfs/${cid}` : '',
+                        verificationUrl: shareUrl,
+                        qrDataUrl: qrCode,
+                      });
+                    } finally {
+                      setDownloading(false);
+                    }
+                  }}
+                  disabled={downloading}
+                  startIcon={<DownloadIcon />}
+                  sx={{ mt: 2 }}
+                >
+                  {downloading ? 'Preparing PDF…' : 'Download PDF'}
                 </ShareButton>
               </Box>
 

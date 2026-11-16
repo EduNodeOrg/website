@@ -210,7 +210,7 @@ export default class WalletSecurity extends Component {
     const attacks = [
       {
         name: 'Phishing sites and fake extensions',
-        desc: 'Lookalike domains and malicious browser extensions impersonate real wallets to harvest recovery phrases. Always verify the URL character-by-character and install only from official sources — see our Freighter setup guide for the safe install path.',
+        desc: 'Lookalike domains and malicious browser extensions impersonate real wallets to harvest recovery phrases. Always verify the URL character-by-character and install only from official sources — see our Varial setup guide for the safe install path.',
       },
       {
         name: 'Seed phrase theft',
@@ -237,7 +237,7 @@ export default class WalletSecurity extends Component {
       },
       {
         name: 'Split hot and cold funds',
-        desc: 'Keep daily-use amounts in a hot wallet like Freighter, and long-term savings in a hardware wallet or multisig setup. A hot wallet is a pocket wallet, not a vault.',
+        desc: 'Keep daily-use amounts in a hot wallet like Varial, and long-term savings in a hardware wallet or multisig setup. A hot wallet is a pocket wallet, not a vault.',
       },
       {
         name: 'Prefer passkeys where supported',
@@ -272,7 +272,7 @@ export default class WalletSecurity extends Component {
       },
       {
         q: 'How does wallet security work on Stellar specifically?',
-        a: 'Stellar accounts support native multi-signature and weighted signers, so you can build 2-of-3 setups without smart contracts. Watch what you sign with wallets like Freighter, and be cautious with trustlines — only add assets from issuers you recognize.',
+        a: 'Stellar accounts support native multi-signature and weighted signers, so you can build 2-of-3 setups without smart contracts. Watch what you sign with wallets like Varial, and be cautious with trustlines — only add assets from issuers you recognize.',
       },
     ];
 
@@ -355,8 +355,8 @@ export default class WalletSecurity extends Component {
               the money. There is no "forgot password" flow and no fraud department to reverse a bad
               transaction. That makes wallet security the single most important skill for anyone in
               Web3. If you're just getting set up, start with our{' '}
-              <a href="https://edunode.org/blog/freighter-wallet" style={styles.refLink}>
-                Freighter wallet guide
+              <a href="https://edunode.org/blog/varial-wallet" style={styles.refLink}>
+                Varial wallet guide
               </a>{' '}
               for Stellar, then come back here for the security fundamentals. (También disponible en
               español:{' '}
@@ -435,8 +435,8 @@ export default class WalletSecurity extends Component {
             <h4 style={styles.h4}>References</h4>
             <p>
               [1]{' '}
-              <a href="https://www.freighter.app" style={styles.refLink}>
-                Freighter — official Stellar wallet
+              <a href="https://varialwallet.com" style={styles.refLink}>
+                Varial — official Stellar wallet
               </a>
             </p>
             <p>
@@ -491,7 +491,7 @@ export default class WalletSecurity extends Component {
                   MozartPay
                 </a>
                 . Web3 educator, payment technology expert, and ISO standardisation contributor
-                based in Vienna, Austria.
+                based in Vienna, Austria — and founder of <a href="https://www.ogtechnologies.co/" style={{ color: '#6B48FF' }}>OG Technologies EU</a>, a blockchain, payments, and digital-identity consultancy.
               </p>
             </div>
           </div>

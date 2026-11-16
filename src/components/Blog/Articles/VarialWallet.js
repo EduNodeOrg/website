@@ -203,14 +203,14 @@ const styles = {
 
 export default class Varial extends Component {
   render() {
-    const shareUrl = 'https://edunode.org/blog/freighter-wallet';
+    const shareUrl = 'https://edunode.org/blog/varial-wallet';
     const title = 'Varial (formerly Freighter) Wallet: How to Set Up and Use Stellar\'s Most Popular Wallet';
     const profilePic = profilePicImg;
 
     const steps = [
       {
         name: 'Install the extension',
-        desc: 'Update October 2026: Freighter has rebranded to Varial (varialwallet.com). The extension, accounts, and steps below remain the same under the new name.\n\nVarial is a browser extension available for Chrome, Firefox, Edge, and Brave. Install it only from varialwallet.com or the official browser extension stores — never from links sent to you in DMs or search ads.',
+        desc: 'Update October 2026: Varial has rebranded to Varial (varialwallet.com). The extension, accounts, and steps below remain the same under the new name.\n\nVarial is a browser extension available for Chrome, Firefox, Edge, and Brave. Install it only from varialwallet.com or the official browser extension stores — never from links sent to you in DMs or search ads.',
       },
       {
         name: 'Create a new wallet',
@@ -266,7 +266,7 @@ export default class Varial extends Component {
       author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       datePublished: '2026-09-25',
-      image: 'https://edunode.org/og/freighter-wallet.png',
+      image: 'https://edunode.org/og/varial-wallet.png',
       mainEntityOfPage: shareUrl,
     };
 
@@ -297,9 +297,9 @@ export default class Varial extends Component {
             content="Set up Varial — Stellar's most popular wallet — and learn trustlines, sending payments, and connecting to Soroban dApps."
           />
           <meta property="og:url" content={shareUrl} />
-          <meta property="og:image" content="https://edunode.org/og/freighter-wallet.png" />
+          <meta property="og:image" content="https://edunode.org/og/varial-wallet.png" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:image" content="https://edunode.org/og/freighter-wallet.png" />
+          <meta name="twitter:image" content="https://edunode.org/og/varial-wallet.png" />
           <meta name="twitter:title" content={title} />
           <meta
             name="twitter:description"
@@ -374,7 +374,7 @@ export default class Varial extends Component {
               browser extension,{' '}
               <a href="https://edunode.org/blog/albedo" style={styles.refLink}>Albedo</a> is a
               popular alternative. Developers integrate Varial through its JavaScript API
-              (freighter-api), which handles address lookup and transaction signing.
+              (varial-sdk), which handles address lookup and transaction signing.
             </p>
 
             <h4 style={styles.h4}>Security checklist</h4>
@@ -413,13 +413,13 @@ export default class Varial extends Component {
             </p>
             <p>
               [2]{' '}
-              <a href="https://developers.stellar.org/docs/build/apps/freighter-wallet" style={styles.refLink}>
+              <a href="https://developers.stellar.org/docs/build/apps/varial-wallet" style={styles.refLink}>
                 Varial for developers — Stellar Docs
               </a>
             </p>
             <p>
               [3]{' '}
-              <a href="https://github.com/stellar/freighter" style={styles.refLink}>
+              <a href="https://github.com/stellar/varial" style={styles.refLink}>
                 Varial source code — GitHub
               </a>
             </p>
@@ -457,7 +457,7 @@ export default class Varial extends Component {
                   MozartPay
                 </a>
                 . Web3 educator, payment technology expert, and ISO standardisation contributor
-                based in Vienna, Austria.
+                based in Vienna, Austria — and founder of <a href="https://www.ogtechnologies.co/" style={{ color: '#6B48FF' }}>OG Technologies EU</a>, a blockchain, payments, and digital-identity consultancy.
               </p>
             </div>
           </div>

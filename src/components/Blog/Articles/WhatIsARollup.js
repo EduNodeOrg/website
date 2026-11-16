@@ -4,8 +4,8 @@ import LayersIcon from '@mui/icons-material/Layers';
 import ArticleLayout, { articleStyles as s } from './ArticleLayout';
 
 const shareUrl = 'https://edunode.org/blog/what-is-a-rollup';
-const title = 'What Is a Rollup? Optimistic vs ZK Rollups Explained';
-const description = 'A rollup is a Layer 2 that executes transactions off Ethereum and posts proofs back to mainnet. How optimistic and zk-rollups differ, what certified means, and why they matter.';
+const title = 'What Is a Rollup? The Trick That Made Ethereum Usable Again';
+const description = 'Rollups quietly moved billions of dollars of activity off Ethereum without losing its security. How optimistic and ZK rollups actually work, what “certified” means — and how to get certified yourself.';
 const image = 'https://edunode.org/og/what-is-a-rollup.png';
 const accent = 'linear-gradient(135deg,#0a0e27 0%,#232a6b 55%,#627eea 100%)';
 const color = '#627eea';
