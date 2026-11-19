@@ -1,0 +1,17 @@
+{
+  "entries": [
+    {
+      "identifier": "urn:air:edunode.org:docs:llms-txt",
+      "displayName": "EduNode LLM content index",
+      "description": "llms.txt index of EduNode's public content — courses, masterclasses, blog articles, glossary, and documentation — for LLM agents and registries.",
+      "type": "text/markdown",
+      "url": "https://edunode.org/llms.txt",
+      "capabilities": ["content-discovery"],
+      "representativeQueries": [
+        "What blockchain and Web3 courses does EduNode offer?",
+        "List EduNode masterclasses and which lessons are free",
+        "EduNode guides about Stellar, Soroban, and Ethereum development"
+      ]
+    }
+  ]
+}
