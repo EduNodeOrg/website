@@ -5,7 +5,7 @@ import { Container, Typography, Box, Grid, ButtonBase } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import image1 from '../stellarbg.JPG';
 import image2 from '../coding-924920_640.jpg';
-import image3 from '../people-2.jpg';
+import image3 from '../people-2.webp';
 
 const FeaturesContainer = styled(Box)(({ theme }) => ({
   padding: '100px 0',
@@ -137,21 +137,21 @@ const features = [
   {
     title: 'Masterclasses',
     description: 'Fifteen-plus self-paced paths in IT, AI assistants, and Web3 — first lessons free.',
-    image: '/img/features/masterclasses.jpg',
+    image: '/img/features/masterclasses.webp',
     credit: 'maebmij / CC BY-SA',
     href: '/masterclasses',
   },
   {
     title: 'AI Topic',
     description: 'Guides and masterclasses for the AI assistants reshaping work: ChatGPT, Claude, Gemini, and more.',
-    image: '/img/features/ai.jpg',
+    image: '/img/features/ai.webp',
     credit: 'uwnews / CC BY',
     href: '/ai',
   },
   {
     title: 'Crypto Fundamentals Topic',
     description: 'Plain-English answers to every “what is…?” crypto question, plus a free masterclass.',
-    image: '/img/features/crypto.jpg',
+    image: '/img/features/crypto.webp',
     credit: 'Flickr / CC BY',
     href: '/crypto-fundamentals',
   },

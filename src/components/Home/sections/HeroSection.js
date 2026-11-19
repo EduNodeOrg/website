@@ -33,18 +33,14 @@ const HeroContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
+// Static gradient text — animating background-position on the LCP element is a
+// non-composited animation that repaints the <h1> every frame.
 const AnimatedTypography = styled(Typography)(({ theme }) => ({
   background: 'linear-gradient(45deg, #00d4ff, #7b2ff7, #ff107f)',
   backgroundSize: '200% 200%',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
-  animation: 'gradient 3s ease infinite',
-  '@keyframes gradient': {
-    '0%': { backgroundPosition: '0% 50%' },
-    '50%': { backgroundPosition: '100% 50%' },
-    '100%': { backgroundPosition: '0% 50%' },
-  },
 }));
 
 const GlowButton = styled(Button)(({ theme }) => ({

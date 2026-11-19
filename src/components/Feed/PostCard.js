@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { faLink } from "@fortawesome/free-solid-svg-icons/faLink";
 import CardMedia from "@mui/material/CardMedia";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";

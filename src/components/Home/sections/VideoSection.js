@@ -27,22 +27,7 @@ const VideoWrapper = styled(Box)(({ theme }) => ({
   border: '1px solid rgba(255, 255, 255, 0.1)',
 }));
 
-const VideoOverlay = styled(Box)(({ theme }) => ({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  background: 'linear-gradient(135deg, rgba(123, 47, 247, 0.2) 0%, rgba(0, 212, 255, 0.2) 100%)',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  zIndex: 1,
-  transition: 'opacity 0.3s ease',
-  '&:hover': {
-    opacity: 0,
-  },
-}));
+
 
 const PlayButton = styled(IconButton)(({ theme }) => ({
   width: '80px',
@@ -144,6 +129,8 @@ const VideoSection = () => {
           </SectionTitle>
 
           <VideoWrapper>
+            {/* Facade: only the i.ytimg thumbnail loads up front — the ~1 MB
+                YouTube iframe is deferred until the visitor clicks play. */}
             <ReactPlayer
               url="https://www.youtube.com/watch?v=cHnlzwi7DuY"
               width="100%"
@@ -151,7 +138,14 @@ const VideoSection = () => {
               playing={isPlaying}
               muted={isMuted}
               controls={true}
-              light={false}
+              light="https://i.ytimg.com/vi/cHnlzwi7DuY/hqdefault.jpg"
+              previewTabIndex={0}
+              playIcon={
+                <PlayButton aria-label="Play EduNode intro video">
+                  <PlayArrowIcon sx={{ fontSize: '40px' }} />
+                </PlayButton>
+              }
+              onClickPreview={handlePlay}
               config={{
                 youtube: {
                   playerVars: {
@@ -161,20 +155,14 @@ const VideoSection = () => {
                 },
               }}
             />
-            
-            {!isPlaying && (
-              <VideoOverlay onClick={handlePlay}>
-                <PlayButton>
-                  <PlayArrowIcon sx={{ fontSize: '40px' }} />
-                </PlayButton>
-              </VideoOverlay>
-            )}
 
-            <VideoControls>
-              <ControlButton onClick={handleMuteToggle}>
-                {isMuted ? <VolumeOffIcon /> : <VolumeUpIcon />}
-              </ControlButton>
-            </VideoControls>
+            {isPlaying && (
+              <VideoControls>
+                <ControlButton onClick={handleMuteToggle} aria-label={isMuted ? 'Unmute video' : 'Mute video'}>
+                  {isMuted ? <VolumeOffIcon /> : <VolumeUpIcon />}
+                </ControlButton>
+              </VideoControls>
+            )}
           </VideoWrapper>
 
           <KeyPoints>

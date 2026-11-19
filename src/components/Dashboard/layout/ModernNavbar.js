@@ -389,7 +389,7 @@ class ModernNavbar extends Component {
                   <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                     <Tooltip title="Notifications" arrow>
                       <StyledBadge badgeContent={notificationCount} color="error">
-                        <StyledIconButton onClick={() => this.handleNavigation('/notification')}>
+                        <StyledIconButton onClick={() => this.handleNavigation('/notification')} aria-label="Notifications">
                           <Notifications />
                         </StyledIconButton>
                       </StyledBadge>
@@ -402,6 +402,7 @@ class ModernNavbar extends Component {
                       <StyledIconButton
                         onClick={this.handleProfileMenuOpen}
                         size="small"
+                        aria-label="Account menu"
                       >
                         {user && (user.avatar || user.googleProfilePic) ? (
                           <UserAvatar src={user.avatar || user.googleProfilePic} alt={user.email} />
@@ -435,7 +436,7 @@ class ModernNavbar extends Component {
 
               {/* Menu — full link list in the drawer */}
               <Box sx={{ display: { xs: 'flex', lg: 'none' } }}>
-                <StyledIconButton onClick={this.handleMobileMenuToggle}>
+                <StyledIconButton onClick={this.handleMobileMenuToggle} aria-label="Open navigation menu">
                   <MenuIcon />
                 </StyledIconButton>
               </Box>

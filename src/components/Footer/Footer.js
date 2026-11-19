@@ -1,7 +1,13 @@
 import React from 'react';
-import { MDBFooter, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
-import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// Deep per-icon imports — the icon packs don't tree-shake in this build, so
+// root imports would pull thousands of icons into the main bundle.
+import { faHome } from '@fortawesome/free-solid-svg-icons/faHome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope';
+import { faXTwitter } from '@fortawesome/free-brands-svg-icons/faXTwitter';
+import { faDiscord } from '@fortawesome/free-brands-svg-icons/faDiscord';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons/faLinkedin';
+import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub';
 import './style.css'
 import CookieSettingsButton from '../CookieConsent/CookieSettingsButton';
 
@@ -21,7 +27,7 @@ function FooterLink({ href, children }) {
 export default function Footer() {
   return (
     <div className="content-wrapper">
-      <MDBFooter style={{
+      <footer style={{
         background: 'linear-gradient(180deg, #1a1f3a 0%, #0a0e27 100%)',
         color: '#b8c5d6',
         borderTop: '1px solid rgba(123, 47, 247, 0.3)',
@@ -32,31 +38,31 @@ export default function Footer() {
           </div>
 
           <div>
-            <a href='https://x.com/edunodeorg' target="_blank" rel="noreferrer" className='me-4 footer-link' style={linkStyle}>
-              <MDBIcon fab icon="twitter" />
+            <a href='https://x.com/edunodeorg' target="_blank" rel="noreferrer" className='me-4 footer-link' style={linkStyle} aria-label="EduNode on X">
+              <FontAwesomeIcon icon={faXTwitter} />
             </a>
-            <a href='https://discord.gg/qBJYQYUK92' target="_blank" rel="noreferrer" className='me-4 footer-link' style={linkStyle}>
-              <MDBIcon fab icon="discord" />
+            <a href='https://discord.gg/qBJYQYUK92' target="_blank" rel="noreferrer" className='me-4 footer-link' style={linkStyle} aria-label="EduNode on Discord">
+              <FontAwesomeIcon icon={faDiscord} />
             </a>
-            <a href="mailto:hi@edunode.org" className='me-4 footer-link' style={linkStyle}>
-              <MDBIcon icon="envelope" />
+            <a href="mailto:hi@edunode.org" className='me-4 footer-link' style={linkStyle} aria-label="Email EduNode">
+              <FontAwesomeIcon icon={faEnvelope} />
             </a>
-            <a href='https://www.linkedin.com/company/edunodeorg/' target="_blank" rel="noreferrer" className='me-4 footer-link' style={linkStyle}>
-              <MDBIcon fab icon="linkedin" />
+            <a href='https://www.linkedin.com/company/edunodeorg/' target="_blank" rel="noreferrer" className='me-4 footer-link' style={linkStyle} aria-label="EduNode on LinkedIn">
+              <FontAwesomeIcon icon={faLinkedin} />
             </a>
-            <a href='https://github.com/EduNodeOrg' target="_blank" rel="noreferrer" className='me-4 footer-link' style={linkStyle}>
-              <MDBIcon fab icon="github" />
+            <a href='https://github.com/EduNodeOrg' target="_blank" rel="noreferrer" className='me-4 footer-link' style={linkStyle} aria-label="EduNode on GitHub">
+              <FontAwesomeIcon icon={faGithub} />
             </a>
           </div>
         </section>
 
         <section>
           <div className="py-5 container">
-            <MDBRow className='mt-3 justify-content-center'>
-              <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4'>
-                <h6 className='text-uppercase fw-bold mb-4' style={headingStyle}>
+            <div className='row mt-3 justify-content-center'>
+              <div className='col-md-3 col-lg-4 col-xl-3 mx-auto mb-4'>
+                <p className='text-uppercase fw-bold mb-4' style={headingStyle}>
                   EduNode
-                </h6>
+                </p>
                 <p>
                   Build practical IT, Web3, and blockchain skills through courses, masterclasses, and projects.
                 </p>
@@ -68,29 +74,29 @@ export default function Footer() {
                   — blockchain, payments &amp; digital-identity consulting.
                 </p>
                 <p>
-                  <MDBIcon icon="home" className="me-2" />
+                  <FontAwesomeIcon icon={faHome} className="me-2" />
                   Widerhofergasse 6, 1090 Wien
                 </p>
                 <p>
-                  <MDBIcon icon="envelope" className="me-2" />
+                  <FontAwesomeIcon icon={faEnvelope} className="me-2" />
                   <a href="mailto:hi@edunode.org" style={linkStyle} className="footer-link">
                     hi@edunode.org
                   </a>
                 </p>
-              </MDBCol>
+              </div>
 
-              <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
-                <h6 className='text-uppercase fw-bold mb-4' style={headingStyle}>Products</h6>
+              <div className='col-md-2 col-lg-2 col-xl-2 mx-auto mb-4'>
+                <p className='text-uppercase fw-bold mb-4' style={headingStyle}>Products</p>
                 <FooterLink href='/courses'>Courses</FooterLink>
                 <FooterLink href='/masterclasses'>Masterclasses</FooterLink>
                 <FooterLink href='/challenges'>Challenges</FooterLink>
                 <FooterLink href='/pricing'>Pricing</FooterLink>
                 <FooterLink href='/membership'>Membership</FooterLink>
                 <FooterLink href='/certificate'>Certificates</FooterLink>
-              </MDBCol>
+              </div>
 
-              <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
-                <h6 className='text-uppercase fw-bold mb-4' style={headingStyle}>Explore</h6>
+              <div className='col-md-3 col-lg-2 col-xl-2 mx-auto mb-4'>
+                <p className='text-uppercase fw-bold mb-4' style={headingStyle}>Explore</p>
                 <FooterLink href='/blog'>Blog</FooterLink>
                 <FooterLink href='/journal'>Journal</FooterLink>
                 <FooterLink href='/chess'>ChainChess</FooterLink>
@@ -99,20 +105,20 @@ export default function Footer() {
                 <FooterLink href='/resources'>Resources</FooterLink>
                 <FooterLink href='/glossary'>Glossary</FooterLink>
                 <FooterLink href='/milestones'>Milestones</FooterLink>
-              </MDBCol>
+              </div>
 
-              <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
-                <h6 className='text-uppercase fw-bold mb-4' style={headingStyle}>Topics</h6>
+              <div className='col-md-3 col-lg-2 col-xl-2 mx-auto mb-4'>
+                <p className='text-uppercase fw-bold mb-4' style={headingStyle}>Topics</p>
                 <FooterLink href='/bitcoin'>Bitcoin</FooterLink>
                 <FooterLink href='/stellar'>Stellar</FooterLink>
                 <FooterLink href='/stablecoins'>Stablecoins</FooterLink>
                 <FooterLink href='/ethereum'>Ethereum</FooterLink>
                 <FooterLink href='/crypto-fundamentals'>Crypto Fundamentals</FooterLink>
                 <FooterLink href='/ai'>AI</FooterLink>
-              </MDBCol>
+              </div>
 
-              <MDBCol md="4" lg="3" xl="3" className='mx-auto mb-md-0 mb-4'>
-                <h6 className='text-uppercase fw-bold mb-4' style={headingStyle}>Company</h6>
+              <div className='col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4'>
+                <p className='text-uppercase fw-bold mb-4' style={headingStyle}>Company</p>
                 <FooterLink href='/about'>About</FooterLink>
                 <FooterLink href='/contactus'>Contact</FooterLink>
                 <FooterLink href='https://www.ogtechnologies.co/'>Consulting — OG Tech</FooterLink>
@@ -122,8 +128,8 @@ export default function Footer() {
                 <p>
                   <CookieSettingsButton style={{ color: '#b8c5d6' }} />
                 </p>
-              </MDBCol>
-            </MDBRow>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -133,7 +139,7 @@ export default function Footer() {
             EduNode.org
           </a>
         </div>
-      </MDBFooter>
+      </footer>
     </div>
   );
 }

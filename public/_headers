@@ -32,6 +32,12 @@
 /assets/*
   Cache-Control: public, max-age=604800
 
+/img/*
+  Cache-Control: public, max-age=604800
+
+/og/*
+  Cache-Control: public, max-age=604800
+
 # HTML must always revalidate so new deploys take effect immediately
 /index.html
   Cache-Control: public, max-age=0, must-revalidate

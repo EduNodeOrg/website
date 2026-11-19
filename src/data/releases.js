@@ -6,6 +6,20 @@ const releases = [
 
 
   {
+    version: '0.3.10',
+    date: 'November 19, 2026',
+    title: 'Homepage performance & accessibility pass (Lighthouse)',
+    notes: [
+      'Removed unused third-party scripts from the page head: the Socket.IO CDN build, both PayPal SDK tags, the legacy Font Awesome 5 JS (~356 KiB), and the duplicate Google Identity/Platform scripts.',
+      'Google Analytics now loads only after cookie consent (ConsentScripts), instead of unconditionally in the page head.',
+      'The homepage intro video uses a click-to-play thumbnail facade — the ~1 MB YouTube embed no longer loads until a visitor presses play.',
+      'Feature-card images converted to WebP (up to ~70% smaller), Google Fonts moved to parallel <link> tags, and remaining icon-font usage replaced with tree-shaken SVG icons — no more 255 KiB of Font Awesome webfonts on first load.',
+      'Accessibility: aria-labels on navbar icon buttons and footer social links, and footer headings no longer skip heading levels.',
+    ],
+  },
+
+
+  {
     version: '0.3.9',
     date: 'November 16, 2026',
     title: 'Certificates, rollups & auditing masterclasses, Bell Protocol 30, and the Varial rebrand',

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from "redux-form";
 import { updateAccount, saveUsernameAlbedo, pkeyGoogleUser } from "../../actions/authActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { faLink } from "@fortawesome/free-solid-svg-icons/faLink";
 import Navbar1 from '../Dashboard/Navbar1';
 import axios from 'axios';
 import { Grid, Box, Container, Typography, Fab } from '@mui/material';

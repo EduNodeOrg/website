@@ -6,11 +6,13 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBIcon,
   MDBBtn,
   MDBTypography,
   MDBCardHeader,
 } from 'mdb-react-ui-kit';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-solid-svg-icons/faClock';
 import moment from 'moment';
 import { styled as muiStyled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -303,7 +305,7 @@ class Messages extends Component {
                         <MDBCardHeader className="d-flex justify-content-between p-3" style={{ borderBottom: '1px solid rgba(123, 47, 247, 0.15)' }}>
                           <p className="fw-bold mb-0" style={{ color: '#00d4ff' }}>{message.senderEmail}</p>
                           <p className="small mb-0" style={{ color: '#b8c5d6' }}>
-                            <MDBIcon far icon="clock" /> {this.formatTimestamp(message.timestamp)}
+                            <FontAwesomeIcon icon={faClock} /> {this.formatTimestamp(message.timestamp)}
                           </p>
                         </MDBCardHeader>
                         <MDBCardBody>

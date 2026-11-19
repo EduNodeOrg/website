@@ -23,7 +23,7 @@ import Container from '@mui/material/Container';
 import tuto from './tutorial.png';
 import dec from './decision-making.png';
 import axios from 'axios';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { faLink } from '@fortawesome/free-solid-svg-icons/faLink';
 
 const PageContainer = styled(Box)(() => ({
     minHeight: '100vh',
