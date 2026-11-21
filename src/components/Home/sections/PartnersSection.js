@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Container, Typography, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import Logos from '../logos.webp';
+import Logos from '../logos-834.webp';
+import Logos2x from '../logos.webp';
 
 const PartnersContainer = styled(Box)(({ theme }) => ({
   padding: '100px 0',
@@ -137,10 +138,12 @@ const PartnersSection = () => {
             >
               <PartnerImage
                 src={Logos}
+                srcSet={`${Logos} 834w, ${Logos2x} 1668w`}
+                sizes="(max-width: 900px) 90vw, 834px"
                 alt="Partners"
                 loading="lazy"
-                width="1668"
-                height="112"
+                width="834"
+                height="56"
               />
             </motion.div>
           </PartnersWrapper>

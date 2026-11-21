@@ -1,4 +1,5 @@
 import React, { Suspense, lazy } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { Box, CircularProgress } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
@@ -17,17 +18,30 @@ const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
   size: 60,
 }));
 
+// Mount (and therefore the lazy chunk fetch) only when the section approaches
+// the viewport — keeps react-player + the video facade off the critical path.
 const LazyVideoSection = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: '400px 0px',
+  });
+
   return (
-    <Suspense
-      fallback={
-        <LoadingContainer>
-          <StyledCircularProgress />
-        </LoadingContainer>
-      }
-    >
-      <VideoSection />
-    </Suspense>
+    <div ref={ref}>
+      {inView ? (
+        <Suspense
+          fallback={
+            <LoadingContainer>
+              <StyledCircularProgress />
+            </LoadingContainer>
+          }
+        >
+          <VideoSection />
+        </Suspense>
+      ) : (
+        <LoadingContainer />
+      )}
+    </div>
   );
 };
 

@@ -13,7 +13,7 @@ import { albedoAuth, metamaskAuth, login, googleLogin, verifyGoogleUser, verifyT
 import NavBar from "../NavBar";
 import { isConnected, requestAccess } from "@stellar/varial-sdk";
 import jwt_decode from 'jwt-decode'
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import Alert from '@mui/material/Alert';
 import { Navigate } from "react-router-dom";
 import albedo from '@albedo-link/intent';
@@ -359,6 +359,7 @@ class Login extends Component {
     }
 
     return (
+      <GoogleOAuthProvider clientId="463653089707-knhj5ovu0jkdetb0a10h7r9c2rcjl2l7.apps.googleusercontent.com">
       <PageContainer>
         <NavBar />
         <Box
@@ -483,6 +484,7 @@ class Login extends Component {
           </LoginCard>
         </Box>
       </PageContainer>
+      </GoogleOAuthProvider>
     )
   }
 }

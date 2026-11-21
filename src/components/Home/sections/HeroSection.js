@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Container, Typography, Box, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -90,6 +90,31 @@ const HeroSection = () => {
   const [typingSpeed, setTypingSpeed] = useState(150);
   const navigate = useNavigate();
 
+  // Precompute particle configs once — reading innerWidth/innerHeight inside
+  // the render loop forces layout while Emotion is still injecting styles.
+  const particles = useMemo(() => {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    return [...Array(20)].map((_, i) => ({
+      key: i,
+      initial: {
+        x: Math.random() * w,
+        y: Math.random() * h,
+        scale: Math.random() * 0.5 + 0.5,
+      },
+      animate: {
+        x: Math.random() * w,
+        y: Math.random() * h,
+        scale: Math.random() * 0.5 + 0.5,
+      },
+      transition: {
+        duration: Math.random() * 10 + 10,
+        repeat: Infinity,
+        repeatType: 'reverse',
+      },
+    }));
+  }, []);
+
   useEffect(() => {
     const phrases = [
       'Learn Web3 and Blockchain skills',
@@ -125,24 +150,12 @@ const HeroSection = () => {
   return (
     <HeroContainer>
       {/* Floating Particles */}
-      {[...Array(20)].map((_, i) => (
+      {particles.map((p) => (
         <FloatingParticle
-          key={i}
-          initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            scale: Math.random() * 0.5 + 0.5,
-          }}
-          animate={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            scale: Math.random() * 0.5 + 0.5,
-          }}
-          transition={{
-            duration: Math.random() * 10 + 10,
-            repeat: Infinity,
-            repeatType: 'reverse',
-          }}
+          key={p.key}
+          initial={p.initial}
+          animate={p.animate}
+          transition={p.transition}
         />
       ))}
 

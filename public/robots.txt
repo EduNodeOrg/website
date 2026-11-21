@@ -13,6 +13,3 @@ User-agent: PerplexityBot
 Allow: /
 
 Sitemap: https://edunode.org/sitemap.xml
-
-# Agentic Resource Discovery manifest (ARD spec)
-Agentmap: https://edunode.org/.well-known/ard.json
