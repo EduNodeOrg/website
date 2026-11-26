@@ -4,8 +4,8 @@ import CompareIcon from '@material-ui/icons/CompareArrows';
 import ArticleLayout, { articleStyles as s } from './ArticleLayout';
 
 const shareUrl = 'https://edunode.org/blog/usdc-vs-usdt';
-const title = "USDC vs USDT: What's the Difference Between the Two Biggest Stablecoins?";
-const description = 'USDC vs USDT compared: reserves, transparency, regulation, network support, and which dollar stablecoin fits payments, trading, and savings.';
+const title = 'USDC vs USDT (2026): Safety, Fees & Reserves Compared';
+const description = 'USDC vs USDT side-by-side: Circle vs Tether reserves, MiCA regulation, freeze risk, network fees (Ethereum, Tron, Stellar) & which is safer to hold.';
 const image = 'https://edunode.org/og/usdc-vs-usdt.png';
 const accent = 'linear-gradient(135deg, #063a2c 0%, #0a7d5c 55%, #00c389 100%)';
 const color = '#0a7d5c';
@@ -34,9 +34,10 @@ const articleLd = {
   '@type': 'Article',
   headline: title,
   description,
-  author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
+  author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org/about#founder', jobTitle: 'Founder, EduNode & OG Technologies EU' },
   publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
   datePublished: '2026-10-25',
+  dateModified: '2026-11-26',
   image,
   mainEntityOfPage: shareUrl,
 };

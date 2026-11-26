@@ -6,8 +6,8 @@ export default function Course114() {
   return (
     <>
       <PageMeta
-        title="DeFi Protocol Engineering | EduNode"
-        description="Build and deploy decentralized finance protocols on Ethereum and other blockchains."
+        title="DeFi Protocol Engineering Course with Certificate | EduNode"
+        description="Build & deploy DeFi protocols on Ethereum: AMMs, lending, oracles, flash loans and protocol design. Verifiable certificate — included with EduNode Pro."
         path="/courses/114"
       />
       <ProCourseLanding courseId="114" />

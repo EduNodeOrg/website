@@ -45,7 +45,9 @@ export default function GlossaryTerm() {
   const mc = (links || []).find((l) => l.href.startsWith('/masterclasses'));
   const ctaHref = mc ? toPath(mc.href) : '/masterclasses';
   const ctaLabel = mc ? `Try a free lesson: ${mc.label} →` : 'Browse free masterclass lessons →';
-  const title = `What Is ${term}? | EduNode Glossary`;
+  const title = `${term} Meaning & Examples (Web3 Reference) | EduNode`;
+  const fullDesc = `${definition} ${about || ''}`.trim();
+  const metaDesc = fullDesc.length <= 158 ? fullDesc : `${fullDesc.slice(0, 155).replace(/\s+\S*$/, '')}…`;
   const url = `${ORIGIN}/glossary/${slug}`;
   const related = GLOSSARY_TERMS.filter((item) => item.term !== term).slice(0, 8);
 
@@ -76,14 +78,14 @@ export default function GlossaryTerm() {
         <meta charSet="utf-8" />
         <title>{title}</title>
         <link rel="canonical" href={url} />
-        <meta name="description" content={definition} />
+        <meta name="description" content={metaDesc} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={title} />
-        <meta property="og:description" content={definition} />
+        <meta property="og:description" content={metaDesc} />
         <meta property="og:url" content={url} />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={definition} />
+        <meta name="twitter:description" content={metaDesc} />
         <script type="application/ld+json">{JSON.stringify(termLd)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbLd)}</script>
       </Helmet>

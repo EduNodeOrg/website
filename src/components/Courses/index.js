@@ -222,8 +222,8 @@ const Courses = ({ auth, error: authError }) => {
     const commonLayout = (children, showNavbar = true) => (
       <CoursesContainer>
         <PageMeta
-          title="Blockchain Courses — EduNode"
-          description="Interactive blockchain courses on Stellar, Web3, Soroban, Ethereum, and Hyperledger — from basics to smart contracts, with verifiable certificates."
+          title="Blockchain & Web3 Courses with Certificates | EduNode"
+          description="Interactive blockchain courses on Stellar, Web3, Soroban, Ethereum & Hyperledger — from basics to smart contracts, with verifiable PDF certificates."
           path="/courses"
         />
         {/* Floating Particles */}

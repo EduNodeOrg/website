@@ -18,3 +18,30 @@ footer {
   flex-shrink: 0;
 }
 
+
+/* Inline infographics (src/components/Infographics) — the SVG scales to the
+   column width; the caption carries the accessible summary + WebP link. */
+.infographic-frame {
+  margin: 2.5rem auto;
+  max-width: 960px;
+  border: 1px solid rgba(123, 47, 247, 0.35);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0a0e27;
+}
+
+.infographic-caption {
+  padding: 0.9rem 1.25rem 1.1rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: #8fa3bf;
+}
+
+.infographic-caption a {
+  color: #00d4ff;
+  text-decoration: none;
+}
+
+.infographic-caption a:hover {
+  text-decoration: underline;
+}

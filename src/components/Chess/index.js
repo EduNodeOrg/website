@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Chessboard from 'chessboardjsx';
 import { Chess } from 'chess.js';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import NavBar from '../NavBar';
 import Footer from '../Footer/Footer';
 import { PIECE_CONCEPTS, OPENING_CONCEPT, conceptForMove } from './concepts';
@@ -314,12 +314,13 @@ export default function ChainChess() {
   return (
     <>
       <Helmet>
-        <title>ChainChess — Learn Web3 through Chess | EduNode</title>
+        <title>ChainChess: Play Free Chess vs Stockfish & Learn Web3 | EduNode</title>
         <link rel="canonical" href="https://edunode.org/chess" />
-        <meta name="description" content="Play chess against the EduNode node and learn Web3 and blockchain concepts with every move — immutability, smart contracts, validators, minting, and finality." />
+        <meta name="description" content="Free browser chess against three difficulty levels — including a real Stockfish engine — where every move teaches a Web3 concept like validators or finality." />
         <meta property="og:title" content="ChainChess — Learn Web3 through Chess" />
         <meta property="og:description" content="A working chess game where every move teaches a blockchain concept." />
         <meta property="og:url" content="https://edunode.org/chess" />
+        <meta property="og:image" content="https://edunode.org/og/chainchess.png" />
       </Helmet>
       <div className="chainchess-page">
       <NavBar />

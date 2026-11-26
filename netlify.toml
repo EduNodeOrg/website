@@ -14,6 +14,11 @@
   node_bundler = "esbuild"
 
 [[redirects]]
+  from = "/loginn"
+  to = "/login"
+  status = 301
+
+[[redirects]]
   from = "/blog/stellar-go-sdk"
   to = "/blog/build-stellar-apps-with-go"
   status = 301
@@ -108,6 +113,11 @@
 
 [[headers]]
   for = "/og/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/infographics/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
 

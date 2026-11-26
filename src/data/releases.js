@@ -6,6 +6,21 @@ const releases = [
 
 
   {
+    version: '0.3.11',
+    date: 'November 26, 2026',
+    title: 'SEO & E-E-A-T overhaul: new commercial pages, infographics, snippet fixes',
+    notes: [
+      'New landing pages: /certified-courses (all certificate tracks) and /alternatives with head-to-head comparisons vs Coursera, Udemy, and 360Learning.',
+      'Pricing and course pages rewritten around real search intent — /pricing now shows the €6.99 Pro tier, a value infographic, trust signals, and an FAQ; all six Pro course pages answer "course with certificate" queries directly.',
+      'Four original infographics published as inline SVG plus downloadable 1600×900 WebP (cached 1 week): pricing value, certificate roadmap, platform comparison, and the 33-track skill map.',
+      'E-E-A-T pass: /about rebuilt with founder and editorial-policy sections plus Organization/Person schema, article bylines now link to the founder profile with review dates, and /for-students and /for-teachers rewritten to match the real curriculum.',
+      'Snippet & CTR fixes: tighter titles/descriptions on high-impression pages (rollups, Varial, Bell Protocol 30, USDC vs USDT/EURC, Raven, ChainChess), datePublished/dateModified added to article schema, glossary snippets and internal links fixed, auth pages marked noindex, and /loginn now 301s to /login.',
+      'Static HTML generator fixes: baked pages no longer inherit the homepage <h1> or SoftwareApplication schema, /masterclasses serves current copy, and /courses/112–117 get Course/Offer schema.',
+    ],
+  },
+
+
+  {
     version: '0.3.10',
     date: 'November 19, 2026',
     title: 'Homepage performance & accessibility pass (Lighthouse)',

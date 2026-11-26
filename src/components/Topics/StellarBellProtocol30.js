@@ -4,15 +4,15 @@ import UpgradeIcon from '@mui/icons-material/Upgrade';
 import ArticleLayout, { articleStyles as s } from '../Blog/Articles/ArticleLayout';
 
 const shareUrl = 'https://edunode.org/stellar/bell-protocol-30';
-const title = 'Bell, Protocol 30 on Stellar: Smart Accounts, Post-Quantum Signatures & Millisecond Ledgers';
-const description = 'Stellar’s Bell upgrade (Protocol 30) brings muxed contract addresses for smart accounts, ML-DSA post-quantum signature verification, and millisecond ledger timing. What changes, who must act, and the timeline.';
+const title = 'Stellar Protocol 30 (Bell): CAP-84 W Addresses & SDK Guide';
+const description = 'What changed in Stellar’s Bell (Protocol 30) upgrade: CAP-84 muxed W contract addresses, CAP-87 post-quantum ML-DSA, CAP-88 ms ledgers & SDK checklist.';
 const image = 'https://edunode.org/og/stellar-bell-protocol-30.png';
 const accent = 'linear-gradient(135deg,#0a0e27 0%,#123a5c 55%,#00add8 100%)';
 const color = '#00add8';
 
 const faqs = [
   { q: 'What is Bell, Protocol 30?', a: 'The next Stellar network upgrade. It carries three changes: CAP-84 (muxed contract addresses — W addresses — for smart accounts), CAP-87 (ML-DSA post-quantum signature verification inside smart contracts), and CAP-88 (millisecond ledger close times that remove the one-ledger-per-second floor).' },
-  { q: 'When does Bell go live?', a: 'Validators voted on testnet on November 3, 2026, and vote on mainnet on November 23, 2026 at 1700 UTC. The upgrade takes effect if validators approve it.' },
+  { q: 'When did Bell go live?', a: 'Validators approved Bell on testnet on November 3, 2026, and on mainnet on November 23, 2026. Protocol 30 is now the network’s active protocol — upgrade to a Bell-aware SDK before decoding ledgers.' },
   { q: 'What is a W address?', a: 'A new Stellar address type introduced by CAP-84: a contract address carrying a 64-bit ID — the muxed-account pattern applied to smart accounts. Exchanges and custodial products can give every customer a unique deposit address while funds land in one smart account.' },
   { q: 'Does Bell make Stellar post-quantum?', a: 'Not yet for regular accounts. CAP-87 lets smart contracts verify ML-DSA signatures, so contract accounts can opt into quantum-safe authorization. Network transaction signatures remain Ed25519 for now — a native post-quantum signer for classic accounts comes in a future protocol change.' },
   { q: 'Do I need to do anything before the vote?', a: 'Upgrade to the latest Stellar SDK. If your product handles addresses, accept the new W address type for muxed contracts. If you decode raw ledger data without an SDK — indexers, explorers, analytics — update your XDR definitions or decoding breaks at the upgrade.' },
@@ -25,7 +25,9 @@ const articleLd = {
   description,
   image,
   url: shareUrl,
-  author: { '@type': 'Person', name: 'Olvis Gil' },
+  datePublished: '2026-10-25',
+  dateModified: '2026-11-26',
+  author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org/about#founder', jobTitle: 'Founder, EduNode & OG Technologies EU' },
   publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
   mainEntityOfPage: shareUrl,
 };

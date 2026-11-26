@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from "../NavBar"
+import Footer from '../Footer/Footer';
 import { Box, Typography, Paper, Container } from '@mui/material';
 import PageMeta from '../PageMeta';
 
@@ -8,93 +9,79 @@ class StudentsPage extends React.Component {
     return (
       <>
       <PageMeta
-        title="For Students — EduNode"
-        description="Learn blockchain development with EduNode: interactive courses on Stellar, Web3 and Soroban, coding challenges, and verifiable certificates for students."
+        title="For Students — Learn IT, Coding & Blockchain | EduNode"
+        description="A student's guide to EduNode: self-paced IT, coding, AI and blockchain courses with free starter lessons, hands-on projects, and verifiable certificates."
         path="/for-students"
       />
+      <Box sx={{ minHeight: '100vh', background: 'linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%)', pb: 8 }}>
       <NavBar />
       <Box mt={4}> {/* For margin top */}
         <Container maxWidth="md">
-          <Paper elevation={3} sx={{ p: 4, borderRadius: 2 }}>
-            <Typography variant="h3" gutterBottom>
+          <Paper elevation={3} sx={{ p: 4, borderRadius: 2, background: 'rgba(26, 31, 58, 0.85)', border: '1px solid rgba(123, 47, 247, 0.3)' }}>
+            <Typography variant="h3" gutterBottom sx={{ color: '#fff', fontWeight: 'bold' }}>
             Harnessing EduNode for Students: A Complete Guide
             </Typography>
-            <Typography variant="body1" paragraph>
-            Welcome, students! We understand that each of you has unique learning goals and preferences. That's why we've crafted this guide to help you leverage the benefits of EduNode, a powerful learning platform designed to cater to your individual educational needs and ambitions. Here's how you can use EduNode to optimize your learning journey:
+            <Typography variant="body1" paragraph sx={{ color: '#b8c5d6' }}>
+            Welcome, students! We understand that each of you has unique learning goals and preferences. That's why we've crafted this guide to help you leverage the benefits of EduNode, a learning platform focused on practical technology skills. Here's how you can use EduNode to optimize your learning journey:
             </Typography>
 
-            <Typography variant="h5" gutterBottom mt={4}>
-              1. Diverse Learning Opportunities
+            <Typography variant="h5" gutterBottom mt={4} sx={{ color: '#fff' }}>
+              1. Focused, Technical Learning Opportunities
             </Typography>
-            <Typography variant="body1" paragraph>
-            EduNode offers a wide range of courses covering various subjects. Whether you're interested in mastering a new language, learning programming, understanding quantum physics, or exploring creative writing, EduNode is your go-to platform. This opens up a world of knowledge at your fingertips.
+            <Typography variant="body1" paragraph sx={{ color: '#b8c5d6' }}>
+            EduNode offers 33 certified tracks across coding &amp; data (Python, SQL, JavaScript, Rust, Git), IT, cloud &amp; security, AI assistants &amp; automation, and blockchain, DLT &amp; crypto (Bitcoin, Ethereum, Stellar, rollups, smart contract auditing). The first two lessons of every masterclass are free — no account needed.
             </Typography>
 
-            {/* Add other sections here */}
-
-            
-            <Typography variant="h5" gutterBottom mt={4}>
-              2. Personalized Learning Experience
+            <Typography variant="h5" gutterBottom mt={4} sx={{ color: '#fff' }}>
+              2. Learn at Your Own Pace
             </Typography>
-            <Typography variant="body1" paragraph>
-            EduNode allows you to learn at your own pace. You can tailor your learning path according to your needs and adjust it whenever necessary. With features like replaying lectures, pausing to take notes, and accelerating video speed, you have full control over your learning process.
-
+            <Typography variant="body1" paragraph sx={{ color: '#b8c5d6' }}>
+            EduNode lessons are written, self-paced walkthroughs — read fast or slow, re-read the hard parts, and take notes as you go. There are no video lectures to pause or rewind: every lesson includes worked examples, an exercise with a suggested solution, and a knowledge check.
             </Typography>
-            <Typography variant="h5" gutterBottom mt={4}>
+            <Typography variant="h5" gutterBottom mt={4} sx={{ color: '#fff' }}>
               3. Interactive and Engaging Content
             </Typography>
-            <Typography variant="body1" paragraph>
-            EduNode's courses are designed to be highly interactive, making learning more enjoyable and effective. They include multimedia content, quizzes, real-life project assignments, and discussion forums. This not only helps you grasp complex concepts but also enables you to apply what you've learned.
+            <Typography variant="body1" paragraph sx={{ color: '#b8c5d6' }}>
+            Courses are built around doing: coding challenges, quizzes, real-life project assignments, and community journals. This not only helps you grasp complex concepts but also enables you to apply what you've learned.
             </Typography>
-            <Typography variant="h5" gutterBottom mt={4}>
-              4. Access to Experts and Peers
+            <Typography variant="h5" gutterBottom mt={4} sx={{ color: '#fff' }}>
+              4. Practitioner-Authored Curriculum
             </Typography>
-            <Typography variant="body1" paragraph>
-            With EduNode, you get to learn from expert educators across the globe. You can interact with them through discussions, receive personalized feedback, and get your questions answered. Additionally, you can collaborate with your peers, learn from their perspectives, and make learning a social experience.
+            <Typography variant="body1" paragraph sx={{ color: '#b8c5d6' }}>
+            Every course is written and reviewed by Olvis E. Gil Rios — founder of EduNode and OG Technologies EU, a Vienna blockchain, payments and cybersecurity consultancy — and updated when the underlying technology changes. Community journals let you learn from other builders' perspectives too.
             </Typography>
 
-            <Typography variant="h5" gutterBottom mt={4}>
+            <Typography variant="h5" gutterBottom mt={4} sx={{ color: '#fff' }}>
               5. Skill Development and Portfolio Building
             </Typography>
-            <Typography variant="body1" paragraph>
-            EduNode provides opportunities for you to work on real-life projects and gain practical experience. This can significantly enhance your skills and build your portfolio, making you stand out in college applications, internships, or job markets.
+            <Typography variant="body1" paragraph sx={{ color: '#b8c5d6' }}>
+            Every track ends with a real project you can show — a reporting pipeline, a deployed app, a smart contract audit — plus a verifiable certificate of completion. These stand out in college applications, internships, and job searches.
             </Typography>
-            <Typography variant="h5" gutterBottom mt={4}>
+            <Typography variant="h5" gutterBottom mt={4} sx={{ color: '#fff' }}>
               6. Tools and Resources
             </Typography>
-            <Typography variant="body1" paragraph>
-            <p>Here you can find some tools that you can leverage:</p>  
-           <p>Here you can find our course: <a href="https://edunode.org/courses">https://edunode.org/courses</a> </p> 
-           <p>Here you can find our blog: <a href="https://edunode.org/blog">https://edunode.org/blog</a> </p> 
-           Additionally, you use our Chat Feature to harness AI for learning purposes: <a href="https://edunode.org/chat">https://edunode.org/chat</a>
+            <Typography variant="body1" paragraph sx={{ color: '#b8c5d6' }}>
+            <p>Here you can find some tools that you can leverage:</p>
+           <p>Certified course catalog: <a href="https://edunode.org/certified-courses" style={{ color: '#00d4ff' }}>https://edunode.org/certified-courses</a> </p>
+           <p>All courses: <a href="https://edunode.org/courses" style={{ color: '#00d4ff' }}>https://edunode.org/courses</a> </p>
+           <p>Guides and articles: <a href="https://edunode.org/blog" style={{ color: '#00d4ff' }}>https://edunode.org/blog</a> </p>
+           <p>Web3 glossary: <a href="https://edunode.org/glossary" style={{ color: '#00d4ff' }}>https://edunode.org/glossary</a> </p>
             </Typography>
-            <Typography variant="h5" gutterBottom mt={4}>
+            <Typography variant="h5" gutterBottom mt={4} sx={{ color: '#fff' }}>
               7. Track Your Progress
             </Typography>
-            <Typography variant="body1" paragraph>
-            EduNode's built-in tracking and assessment tools allow you to monitor your learning progress, identify areas of improvement, and adapt your study strategies accordingly. This helps you stay focused, motivated, and on the path to reaching your learning goals.
+            <Typography variant="body1" paragraph sx={{ color: '#b8c5d6' }}>
+            EduNode's built-in tracking tools let you monitor your lesson completions, identify areas of improvement, and adapt your study strategies accordingly. This helps you stay focused, motivated, and on the path to reaching your learning goals.
 
-To get started, sign up on the EduNode platform, set up your profile, and explore the courses available. Remember, you also have access to a detailed help section and a responsive customer support team if you need any assistance.
+To get started, pick a masterclass and try the first two lessons free — no signup required. If you want the full tracks and certificates, Pro unlocks everything for €6.99 per month.
 
 Learning is a lifelong journey, and with EduNode, you get to navigate this journey on your own terms. Embrace the opportunities, engage with the community, and most importantly, enjoy the process! Your educational adventure awaits on EduNode.
-            </Typography>
-
-
-            <Typography variant="h5" gutterBottom mt={4}>
-              7. Easy Tracking and Assessment
-            </Typography>
-            <Typography variant="body1" paragraph>
-              EduNode provides robust tracking and assessment tools. You can easily monitor students' progress, identify areas where they're struggling, and adjust your teaching accordingly. EduNode's analytical tools also provide insights into the effectiveness of your teaching methods and course materials, helping you continually improve your practice.
-            </Typography>
-            <Typography variant="body1" paragraph>
-              To get started, sign up on the EduNode platform, set up your profile, and familiarize yourself with its features. There's also a detailed help section and a responsive customer support team if you need assistance.
-            </Typography>
-            <Typography variant="body1" paragraph>
-              Remember, teaching is a journey. As you embrace EduNode, you're embarking on a new adventure to reshape and enhance how you connect with and inspire your students. Enjoy the journey!
             </Typography>
           </Paper>
         </Container>
       </Box>
+      </Box>
+      <Footer />
     </>
     );
   }

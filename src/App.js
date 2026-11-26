@@ -233,7 +233,6 @@ const Sep = lazy(() => import('./components/Sep/sep'));
 const AiPlugin = lazy(() => import('./components/AiPlugin'));
 const PostDetails = lazy(() => import('./components/Posts/postDetails'));
 const CourseDetails = lazy(() => import('./components/Courses/courseDetails'));
-const Loginn = lazy(() => import('./components/Login'));
 const Signup = lazy(() => import("./components/Register"));
 const Glossary = lazy(() => import("./components/Glossary"));
 const Badges = lazy(() => import('./components/Badges'));
@@ -262,6 +261,10 @@ const DashboardAppAdmin = lazy(() => import('./admin/src/pages/DashboardAdmin'))
 const Messages = lazy(() => import('./components/Profile/messages'));
 const Game = lazy(() => import('./components/Challenges/gameChallenge/addGame'));
 const Pricing = lazy(() => import('./components/Membership/Pricing'));
+const CertifiedCourses = lazy(() => import('./components/Commercial/CertifiedCourses'));
+const AlternativesHub = lazy(() => import('./components/Commercial/AlternativesHub'));
+const AlternativesCourseraUdemy = lazy(() => import('./components/Commercial/AlternativesCourseraUdemy'));
+const Alternatives360Learning = lazy(() => import('./components/Commercial/Alternatives360Learning'));
 const StripeCheckout = lazy(() => import('./components/Membership/StripeCheckout'));
 const Releases = lazy(() => import('./components/Releases'));
 const Page404 = lazy(() => import('./admin/src/pages/Page404'));
@@ -327,6 +330,10 @@ function App(props) {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/about" element={<AboutUs />} />
         <Route exact path="/pricing" element={<Pricing />} />
+        <Route exact path="/certified-courses" element={<CertifiedCourses />} />
+        <Route exact path="/alternatives" element={<AlternativesHub />} />
+        <Route exact path="/alternatives/coursera-udemy" element={<AlternativesCourseraUdemy />} />
+        <Route exact path="/alternatives/360learning" element={<Alternatives360Learning />} />
         <Route exact path="/stellarnodes" element={<Node />} />
         <Route exact path="/account" element={<Account />} />
         <Route exact path="/resources" element={<Resources />} />
@@ -534,11 +541,7 @@ function App(props) {
         <Route exact path="/validCertificate" element={<ValidCertificate />} />
         <Route exact path="/messages" element={<Messages />} />
         <Route exact path="/addGame" element={<Game />} />
-        <Route
-          exact
-          path="/loginn"
-          element={user ? <Navigate to="/" /> : <Loginn />}
-        />
+        <Route exact path="/loginn" element={<Navigate to="/login" replace />} />
         <Route
           path="/signup"
           element={user ? <Navigate to="/" /> : <Signup />}

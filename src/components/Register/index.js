@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import { isConnected, requestAccess } from "@stellar/varial-sdk";
 import NavBar from "../NavBar"
+import { Helmet } from 'react-helmet-async'
 import albedo from '@albedo-link/intent'
 import albedologo from "./img/albedo.png"
 import flogo from "./img/flogo.png"
@@ -271,6 +272,7 @@ export class Register extends Component {
     }
     return (
       <PageContainer>
+        <Helmet><meta name="robots" content="noindex, nofollow" /></Helmet>
         <NavBar />
         <Box
           sx={{

@@ -4,7 +4,7 @@ import SmartToyIcon from '@mui/icons-material/SmartToy';
 import ArticleLayout, { articleStyles as s } from '../Blog/Articles/ArticleLayout';
 
 const shareUrl = 'https://edunode.org/stellar/raven';
-const title = 'Stellar Raven: Give Your AI Agent the Official Docs, Live Ecosystem Data & Playbooks';
+const title = 'Stellar Raven MCP: Connect Claude, Cursor & Codex to Stellar';
 const description = 'Raven is Stellar’s remote MCP server — one endpoint that feeds AI coding assistants the official docs, graded ecosystem data, community intel, and 20 proven playbooks. No API keys; one browser sign-in.';
 const image = 'https://edunode.org/og/stellar-raven.png';
 const accent = 'linear-gradient(135deg,#0a0e27 0%,#1a1f3a 45%,#8b5cf6 100%)';
@@ -32,7 +32,9 @@ const articleLd = {
   description,
   image,
   url: shareUrl,
-  author: { '@type': 'Person', name: 'Olvis Gil' },
+  datePublished: '2026-10-25',
+  dateModified: '2026-11-26',
+  author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org/about#founder', jobTitle: 'Founder, EduNode & OG Technologies EU' },
   publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
   mainEntityOfPage: shareUrl,
 };

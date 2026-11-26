@@ -4,7 +4,7 @@
 
 ## IT Masterclasses
 
-Each masterclass has 10 written lessons with examples, exercises, and knowledge checks. The first two lessons (20%) are free without an account; the remaining eight (80%), including the final project, require an active Pro membership. Twenty-four paths, 240 lessons total.
+Each masterclass has 10 written lessons with examples, exercises, and knowledge checks. The first two lessons (20%) are free without an account; the remaining eight (80%), including the final project, require an active Pro membership. Twenty-seven paths, 270 lessons total.
 
 - [Masterclasses](https://edunode.org/masterclasses): Twenty-seven learning paths (IT, Web3, and AI assistants) with 270 lessons, twenty-seven final projects, and downloadable completion certificates
 - [Python for Beginners: Automate Everyday Tasks](https://edunode.org/masterclasses/python-automation): Files, CSV/Excel, APIs, tests, scheduling, and a sales reporting project
@@ -90,6 +90,14 @@ Each masterclass has 10 written lessons with examples, exercises, and knowledge 
 - [NFT Marketplace Development](https://edunode.org/courses/115): Minting, trading, royalties, and full marketplace builds (Pro)
 - [Blockchain Security Auditing](https://edunode.org/courses/116): Smart contract vulnerabilities, audit methodology, and tooling (Pro)
 - [Cross-Chain Development](https://edunode.org/courses/117): Bridges, messaging protocols, and multi-chain dApps (Pro)
+
+## Plans & Comparisons
+
+- [Certified Courses](https://edunode.org/certified-courses): All 33 IT, coding, AI, DLT & blockchain tracks with verifiable PDF certificates — free lessons or Pro (€6.99/mo)
+- [Platform Alternatives](https://edunode.org/alternatives): Coursera, Udemy & 360Learning alternatives for coding, IT, AI and blockchain education
+- [Coursera & Udemy Alternative](https://edunode.org/alternatives/coursera-udemy): Hands-on coding, IT & blockchain courses vs video-lecture platforms
+- [360Learning Alternative](https://edunode.org/alternatives/360learning): Ready-made technical curriculum vs empty LMS authoring for team training
+- [Pricing](https://edunode.org/pricing): Free tier vs Pro (€6.99/mo) vs Enterprise — what's included
 
 ## Insights
 

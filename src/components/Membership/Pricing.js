@@ -16,6 +16,10 @@ import { styled } from '@mui/material/styles';
 import NavBar from '../NavBar';
 import Footer from '../Footer/Footer';
 import PageMeta from '../PageMeta';
+import JsonLd from '../JsonLd';
+import TrustSignals from '../TrustSignals';
+import PricingValueInfographic from '../Infographics/PricingValueInfographic';
+import { Faq } from '../Commercial/shared';
 //import { Redirect, BrowserRouter } from "react-router-dom";
 
 const API_URL = 'https://edunode.herokuapp.com/api';
@@ -27,7 +31,7 @@ const tiers = [
     description: [
       'Up to 1 User',
       'Access to FREE educational content and courses',
-      'First 20% of every IT masterclass',
+      'First 2 lessons (20%) of all 27 masterclasses',
       'Email support',
     ],
     buttonText: 'Get Started',
@@ -41,8 +45,8 @@ const tiers = [
     description: [
       'All of Free tier features',
       'Access to all Pro courses',
-      'Full access to every IT masterclass',
-      'NFT certification for course completion',
+      'All 27 IT, AI & Web3 masterclasses',
+      'Downloadable PDF & blockchain certificates',
       'Priority email support',
       'Exclusive Discord Role',
       'Advanced course materials',
@@ -57,7 +61,7 @@ const tiers = [
     price: 'Custom',
     description: [
       'Tailored courses for employees',
-      'Custom NFT certification',
+      'Verifiable team certificates',
       'Help center access',
       'Phone & email priority support',
       'Dedicated account manager',
@@ -68,6 +72,51 @@ const tiers = [
     buttonLink: 'mailto:hi@ogtechnologies.co?subject=Enterprise Membership Inquiry'
   },
 ];
+
+const pricingFaqs = [
+  {
+    q: 'What can I do for free?',
+    a: 'The first two lessons — 20% — of all 27 masterclasses are free without an account or card, plus all blog guides, the glossary, and journal articles.',
+  },
+  {
+    q: 'What does Pro include?',
+    a: 'Full access to all 270+ masterclass lessons, all six Pro blockchain courses, final projects, and downloadable PDF certificates anchored on-chain for €6.99 per month.',
+  },
+  {
+    q: 'Can I cancel anytime?',
+    a: 'Yes. Pro is a rolling monthly subscription with no lock-in — cancel anytime and keep access until the end of the paid period.',
+  },
+  {
+    q: 'Do you offer team or enterprise plans?',
+    a: 'Yes. Enterprise adds tailored curriculum, verifiable team certificates, priority support and a dedicated account manager via OG Technologies EU — contact sales for a quote.',
+  },
+];
+
+const pricingLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'EduNode Pro Membership',
+  description: 'Monthly subscription unlocking all 27 IT, AI, coding and Web3 masterclasses, six Pro blockchain courses, and verifiable certificates of completion.',
+  brand: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
+  offers: {
+    '@type': 'Offer',
+    price: '6.99',
+    priceCurrency: 'EUR',
+    url: 'https://edunode.org/pricing',
+    availability: 'https://schema.org/InStock',
+    priceValidUntil: '2027-12-31',
+  },
+};
+
+const pricingFaqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: pricingFaqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 
 // const footers = [
 //   {
@@ -197,11 +246,13 @@ function PricingContent({ embedded = false }) {
       {!embedded && <NavBar />}
       {!embedded && (
         <PageMeta
-          title="Pricing — EduNode"
-          description="Explore EduNode Free and Pro plans. Start 20% of every IT masterclass free; Pro unlocks all ten classes covering Python, JavaScript, SQL, AI, security, Docker, Git, and more."
+          title="Buy EduNode Pro (€6.99/mo) — IT, Coding & Web3 Courses"
+          description="Unlock all 27 IT, AI, coding & Web3 masterclasses plus 6 Pro blockchain courses and verifiable certificates for €6.99/mo. Start 2 lessons per class free."
           path="/pricing"
         />
       )}
+      {!embedded && <JsonLd data={pricingLd} />}
+      {!embedded && <JsonLd data={pricingFaqLd} />}
       <PricingContainer>
         <ContentContainer maxWidth="md" component="main">
           <SectionTitle
@@ -315,6 +366,33 @@ function PricingContent({ embedded = false }) {
               </Grid>
             ))}
           </Grid>
+
+          {!embedded && (
+            <>
+              <TrustSignals />
+              <SectionTitle
+                component="h2"
+                variant="h4"
+                sx={{ mt: 6 }}
+              >
+                What EduNode Pro costs next to the alternatives
+              </SectionTitle>
+              <PricingValueInfographic />
+              <SectionTitle
+                component="h2"
+                variant="h4"
+                sx={{ mt: 6, mb: 2 }}
+              >
+                Common questions
+              </SectionTitle>
+              {pricingFaqs.map((f) => (
+                <Faq key={f.q}>
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </Faq>
+              ))}
+            </>
+          )}
         </ContentContainer>
       </PricingContainer>
       {!embedded && <Footer />}

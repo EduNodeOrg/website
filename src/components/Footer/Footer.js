@@ -89,6 +89,7 @@ export default function Footer() {
                 <p className='text-uppercase fw-bold mb-4' style={headingStyle}>Products</p>
                 <FooterLink href='/courses'>Courses</FooterLink>
                 <FooterLink href='/masterclasses'>Masterclasses</FooterLink>
+                <FooterLink href='/certified-courses'>Certified Courses</FooterLink>
                 <FooterLink href='/challenges'>Challenges</FooterLink>
                 <FooterLink href='/pricing'>Pricing</FooterLink>
                 <FooterLink href='/membership'>Membership</FooterLink>
@@ -120,6 +121,7 @@ export default function Footer() {
               <div className='col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4'>
                 <p className='text-uppercase fw-bold mb-4' style={headingStyle}>Company</p>
                 <FooterLink href='/about'>About</FooterLink>
+                <FooterLink href='/alternatives'>Compare Platforms</FooterLink>
                 <FooterLink href='/contactus'>Contact</FooterLink>
                 <FooterLink href='https://www.ogtechnologies.co/'>Consulting — OG Tech</FooterLink>
                 <FooterLink href='/releases'>Releases</FooterLink>

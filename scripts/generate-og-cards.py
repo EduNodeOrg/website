@@ -61,6 +61,10 @@ CARDS = [
     ("what-is-a-liquidity-pool", "Article", "What Is a Liquidity Pool? AMMs and DeFi Trading Explained"),
     ("zero-knowledge-proofs-explained", "Article", "Zero-Knowledge Proofs, Explained Simply"),
     ("what-is-the-evm", "Article", "What Is the EVM? Ethereum’s Virtual Machine Explained"),
+    ("certified-courses", "WorkspacePremium", "IT, Coding & Blockchain Courses with Certificates"),
+    ("alternatives", "CompareArrows", "Coursera, Udemy & 360Learning Alternatives (2026)"),
+    ("alternatives-coursera-udemy", "CompareArrows", "Coursera & Udemy Alternative for Coding & IT"),
+    ("alternatives-360learning", "Business", "360Learning Alternative for Tech Team Training"),
 ]
 
 def icon_ds(name):

@@ -14,6 +14,7 @@ import NavBar from "../NavBar";
 import { isConnected, requestAccess } from "@stellar/varial-sdk";
 import jwt_decode from 'jwt-decode'
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { Helmet } from 'react-helmet-async';
 import Alert from '@mui/material/Alert';
 import { Navigate } from "react-router-dom";
 import albedo from '@albedo-link/intent';
@@ -361,6 +362,7 @@ class Login extends Component {
     return (
       <GoogleOAuthProvider clientId="463653089707-knhj5ovu0jkdetb0a10h7r9c2rcjl2l7.apps.googleusercontent.com">
       <PageContainer>
+        <Helmet><meta name="robots" content="noindex, nofollow" /></Helmet>
         <NavBar />
         <Box
           sx={{

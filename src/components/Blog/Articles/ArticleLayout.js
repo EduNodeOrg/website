@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import NavBar from '../../NavBar';
 import profilePicImg from '../mepic.png';
 import {
@@ -248,7 +249,10 @@ export default function ArticleLayout({
         <div style={s.meta}>
           <img src={profilePicImg} style={{ ...s.avatar, border: `2px solid ${color}` }} alt="Olvis Gil" />
           <span>
-            <strong>Olvis Gil</strong> &nbsp;·&nbsp; {date} &nbsp;·&nbsp; {readTime}
+            <Link to="/about#founder" style={{ color: 'inherit', textDecoration: 'underline' }}>
+              <strong>Olvis Gil</strong>
+            </Link>
+            &nbsp;·&nbsp; {date} &nbsp;·&nbsp; {readTime} &nbsp;·&nbsp; reviewed by the author
           </span>
         </div>
         <hr style={s.divider} />
@@ -284,12 +288,15 @@ export default function ArticleLayout({
         <div style={s.authorCard}>
           <img src={profilePicImg} style={{ ...s.authorAvatar, border: `3px solid ${color}` }} alt="Olvis Gil" />
           <div>
-            <div style={s.authorName}>Olvis Gil</div>
+            <div style={s.authorName}>
+              <Link to="/about#founder" style={{ color: 'inherit', textDecoration: 'none' }}>Olvis Gil</Link>
+            </div>
             <p style={s.authorBio}>
               Founder of EduNode and{' '}
               <a href="https://www.ogtechnologies.co/" target="_blank" rel="noopener noreferrer" style={{ color: '#6B48FF' }}>OG Technologies EU</a>{' '}
               — a Vienna consultancy for blockchain payments, tokenization, digital
-              identity, and ISO 20022.
+              identity, and ISO 20022. Written and reviewed by the author; articles are
+              updated when the underlying protocols or tools change.
             </p>
           </div>
         </div>

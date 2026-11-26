@@ -6,8 +6,8 @@ export default function Course115() {
   return (
     <>
       <PageMeta
-        title="NFT Marketplace Development | EduNode"
-        description="Create complete NFT marketplaces with minting, trading, and royalty features."
+        title="NFT Marketplace Course with Certificate | EduNode"
+        description="Create a complete NFT marketplace: minting, trading, royalties & auctions. Finish with a verifiable certificate — included with EduNode Pro (€6.99/mo)."
         path="/courses/115"
       />
       <ProCourseLanding courseId="115" />

@@ -4,8 +4,8 @@ import EuroIcon from '@mui/icons-material/Euro';
 import ArticleLayout, { articleStyles as s } from './ArticleLayout';
 
 const shareUrl = 'https://edunode.org/blog/usdc-vs-eurc';
-const title = 'USDC vs EURC: Circle’s Dollar and Euro Stablecoins Compared';
-const description = 'USDC and EURC are both fully-reserved Circle stablecoins — one pegged to the US dollar, one to the euro. How they differ, where each is used, and why Stellar hosts both.';
+const title = 'USDC vs EURC (2026): Fees, MiCA, Chains & When to Use Each';
+const description = 'USDC vs EURC compared: Circle Mint liquidity, MiCA compliance, supported chains (Stellar, Ethereum, Solana, Base), transfer fees, and when to hold each.';
 const image = 'https://edunode.org/og/usdc-vs-eurc.png';
 const accent = 'linear-gradient(135deg,#04121f 0%,#143d5c 55%,#2775ca 100%)';
 const color = '#2775ca';
@@ -19,7 +19,9 @@ const articleLd = {
   description,
   image,
   url: shareUrl,
-  author: { '@type': 'Person', name: 'Olvis Gil' },
+  datePublished: '2026-10-25',
+  dateModified: '2026-11-26',
+  author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org/about#founder', jobTitle: 'Founder, EduNode & OG Technologies EU' },
   publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
   mainEntityOfPage: shareUrl,
 };

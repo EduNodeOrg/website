@@ -51,6 +51,12 @@
     <priority>0.5</priority>
   </url>
 
+  <!-- Commercial & comparison pages -->
+  <url><loc>https://edunode.org/certified-courses</loc><lastmod>2026-11-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://edunode.org/alternatives</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/alternatives/coursera-udemy</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edunode.org/alternatives/360learning</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
   <!-- Masterclasses: public overviews and the first two free lessons only -->
   <url><loc>https://edunode.org/masterclasses</loc><lastmod>2026-10-24</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://edunode.org/masterclasses/python-automation</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>

@@ -1,9 +1,11 @@
 import React from 'react';
-import { Typography, Container, Box } from '@mui/material';
+import { Typography, Container, Box, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import ModernNavbar from '../Dashboard/layout/ModernNavbar';
 import PageMeta from '../PageMeta';
+import Footer from '../Footer/Footer';
+import CertificateRoadmapInfographic from '../Infographics/CertificateRoadmapInfographic';
 
 // Modern styled components matching dashboard theme
 const DashboardContainer = styled(Box)(({ theme }) => ({
@@ -81,8 +83,8 @@ class CertificatePage extends React.Component {
     return (
       <DashboardContainer>
         <PageMeta
-          title="About EduNode Certificates"
-          description="How EduNode certificates work: verifiable, blockchain-anchored proof of course completion you can share with employers."
+          title="Verifiable Blockchain & PDF Course Certificates | EduNode"
+          description="EduNode certificates are blockchain-anchored, publicly verifiable proof of course completion. See how they work and how employers check them."
           path="/about-certificates"
         />
         {/* Floating Particles */}
@@ -169,6 +171,34 @@ class CertificatePage extends React.Component {
               </ContentText>
             </ContentCard>
 
+            <CertificateRoadmapInfographic />
+
+            <ContentCard>
+              <SubsectionTitle variant="h4" component="h2">
+                Verify a certificate
+              </SubsectionTitle>
+              <ContentText>
+                Every certificate carries a unique certificate number. Employers and clients can
+                confirm it instantly — no account needed.
+              </ContentText>
+              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                <Button
+                  href="/validCertificate"
+                  variant="contained"
+                  sx={{ background: 'linear-gradient(45deg,#00d4ff,#7b2ff7)', fontWeight: 'bold' }}
+                >
+                  Verify a certificate number
+                </Button>
+                <Button
+                  href="/certified-courses"
+                  variant="outlined"
+                  sx={{ borderColor: 'rgba(123,47,247,0.5)', color: '#00d4ff' }}
+                >
+                  Browse certified courses
+                </Button>
+              </Box>
+            </ContentCard>
+
             <ContentCard>
               <ContentText sx={{ textAlign: 'center', fontStyle: 'italic' }}>
                 EduNode Certificates are more than just a digital representation of your course completion; they are a testament to your dedication to continuous learning and professional development. They're your passport to success in digital world. Enroll in an EduNode course today and start your journey towards achieving your career goals!
@@ -176,6 +206,7 @@ class CertificatePage extends React.Component {
             </ContentCard>
           </motion.div>
         </ContentContainer>
+        <Footer />
       </DashboardContainer>
     );
   }

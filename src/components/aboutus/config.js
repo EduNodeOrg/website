@@ -3,6 +3,6 @@ export const aboutUs = {
     representedBy: "Olvis E. Gil Rios",
     address: "Widerhofergasse 6, 1090 Vienna, Austria",
     email: "hi@edunode.org",
-    website: "http://www.edunode.org",
+    website: "https://edunode.org",
     businessType: "Einzelunternehmen: Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik (IT-Services), Wirtschaftskammer Wien."
   }

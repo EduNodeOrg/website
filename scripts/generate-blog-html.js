@@ -140,8 +140,35 @@ function extractMeta(file) {
     return attrs;
   };
 
+  // evaluate every `const *Ld = {...}` as a JSON-LD object, with the consts in scope
+  const collectLd = () => {
+    const lds = [];
+    const ldRe = new RegExp(`const ${ident}Ld\\s*=\\s*\\{`, 'g');
+    for (const m of src.matchAll(ldRe)) {
+      let i = m.index + m[0].length - 1;
+      let depth = 0;
+      const start = i;
+      for (; i < src.length; i++) {
+        if (src[i] === '{') depth++;
+        else if (src[i] === '}') {
+          depth--;
+          if (depth === 0) break;
+        }
+      }
+      const literal = src.slice(start, i + 1);
+      try {
+        lds.push(evalWithScope(literal));
+      } catch (e) {
+        console.warn(`  warn: could not evaluate JSON-LD in ${file}: ${e.message}`);
+      }
+    }
+    return lds;
+  };
+
   // <PageMeta title="..." description="..." path="..." /> — shared
-  // meta component for non-article pages (src/components/PageMeta)
+  // meta component for non-article pages (src/components/PageMeta).
+  // PageMeta pages may still declare `const *Ld` objects (rendered through a
+  // JSON-LD component at runtime) — collect them for the baked HTML too.
   const pm = src.match(/<PageMeta([\s\S]*?)\/>/);
   if (pm && !/<Helmet>/.test(src)) {
     const a = parseAttrs(pm[1]);
@@ -153,7 +180,7 @@ function extractMeta(file) {
       canonical: url,
       og: { type: 'website', title: a.title, description: a.description, url, image: img },
       twitter: { card: 'summary_large_image', title: a.title, description: a.description, image: img },
-      ld: [],
+      ld: collectLd(),
     };
   }
 
@@ -179,27 +206,7 @@ function extractMeta(file) {
     }
   }
 
-  // evaluate every `const *Ld = {...}` as a JSON-LD object, with the consts in scope
-  const ldRe = new RegExp(`const ${ident}Ld\\s*=\\s*\\{`, 'g');
-  for (const m of src.matchAll(ldRe)) {
-    let i = m.index + m[0].length - 1;
-    let depth = 0;
-    const start = i;
-    for (; i < src.length; i++) {
-      if (src[i] === '{') depth++;
-      else if (src[i] === '}') {
-        depth--;
-        if (depth === 0) break;
-      }
-    }
-    const literal = src.slice(start, i + 1);
-    try {
-      const fn = new Function(...Object.keys(consts), `return (${literal});`);
-      meta.ld.push(fn(...Object.values(consts)));
-    } catch (e) {
-      console.warn(`  warn: could not evaluate JSON-LD in ${file}: ${e.message}`);
-    }
-  }
+  meta.ld = collectLd();
   return meta;
 }
 
@@ -257,12 +264,22 @@ function buildPage(route, meta) {
   }
 
   // Real words in the initial HTML: replace the homepage fallback copy in
-  // #root with this page's own heading and description. Styled like the
-  // shell's dark splash so the pre-React paint looks like the app loading,
-  // not an unstyled text page.
+  // #root with this page's own heading and description. #root runs to
+  // </body>, so match to </body> — nested markup inside the shell's fallback
+  // (spans, noscript articles) must not truncate the match early and leak
+  // the homepage <h1> into every baked page.
   html = html.replace(
-    /<div id="root">[\s\S]*?<\/div>/,
-    `<div id="root">${LOADING_HTML}<noscript><main><h1>${escHtml(title)}</h1><p>${escHtml(desc)}</p></main></noscript></div>`
+    /<div id="root">[\s\S]*<\/body>/,
+    `<div id="root">${LOADING_HTML}<noscript><main><h1>${escHtml(title)}</h1><p>${escHtml(desc)}</p></main></noscript></div>\n</body>`
+  );
+
+  // The shell's SoftwareApplication JSON-LD describes the homepage app —
+  // strip it from sub-routes so articles, glossary terms, and course pages
+  // don't inherit product/offers schema meant only for /. JSON-LD bodies
+  // contain no '<', so [^<]* confines the match to that one script block.
+  html = html.replace(
+    /\s*<script type="application\/ld\+json">[^<]*SoftwareApplication[^<]*<\/script>/,
+    ''
   );
 
   let inject = '';
@@ -325,10 +342,11 @@ function writeMasterclassPage(route, title, description, content, ld) {
   };
   const html = buildPage(route, meta)
     // Full public content in the initial HTML, replacing the title +
-    // description stub that buildPage wrote into #root.
+    // description stub that buildPage wrote into #root. Match to </body>
+    // for the same reason as buildPage.
     .replace(
-      /<div id="root">[\s\S]*?<\/div>/,
-      `<div id="root">${LOADING_HTML}<noscript><main style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:760px;margin:0 auto;padding:2.5rem 1.25rem;line-height:1.7;color:#1c1c1e">${content}</main></noscript></div>`
+      /<div id="root">[\s\S]*<\/body>/,
+      `<div id="root">${LOADING_HTML}<noscript><main style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:760px;margin:0 auto;padding:2.5rem 1.25rem;line-height:1.7;color:#1c1c1e">${content}</main></noscript></div>\n</body>`
     );
   const out = path.join(BUILD, route + '.html');
   fs.mkdirSync(path.dirname(out), { recursive: true });
@@ -338,12 +356,14 @@ function writeMasterclassPage(route, title, description, content, ld) {
   console.log(`✓ ${route} (public masterclass content)`);
 }
 
+// Title/description mirror <PageMeta> in src/components/Masterclasses/index.js —
+// keep them in sync so the baked HTML and the client-side tags never diverge.
 writeMasterclassPage(
   '/masterclasses',
-  'Masterclasses: Coding, Data, AI, Security, Cloud & Web3 | EduNode',
-  'Build practical skills with twenty-four detailed masterclasses. Explore Python, JavaScript, SQL, Git, AI, cybersecurity, Docker, IT support, stablecoins, Ethereum, Stellar, zero-knowledge proofs, crypto, Bitcoin, and AI assistants. The first 20% of every class is free.',
+  'Masterclasses: Learn the Skills That Actually Get You Hired | EduNode',
+  '27 deep-dive masterclasses that take you from curious to job-ready — Python, JavaScript, SQL, Git, AI, cybersecurity, rollups, smart contract auditing, Ethereum, Stellar, ZK proofs, and more. Finish one and earn a downloadable certificate. The first 20% of every class is free.',
   '<h1>Masterclasses: practical IT and Web3 skills with real projects</h1>' +
-  paragraph('Twenty-four self-paced masterclasses, 240 lessons, and twenty-four final projects. Lessons 1–2 of each class are free without an account (20%). Lessons 3–10 require an active Pro membership (80%).') +
+  paragraph(`${masterclasses.length} self-paced masterclasses, ${masterclasses.reduce((sum, course) => sum + course.lessons.length, 0)} lessons, and ${masterclasses.length} final projects — each ending in a downloadable PDF certificate of completion. Lessons 1–2 of each class are free without an account (20%). Lessons 3–10 require an active Pro membership (80%).`) +
   masterclasses.map((course) => `<article><h2>${linkHtml(coursePath(course), course.title)}</h2>${paragraph(course.description)}${paragraph(course.project)}${listHtml(course.outcomes)}</article>`).join('') +
   linkHtml('/pricing', 'Explore Pro membership'),
   {
@@ -387,7 +407,7 @@ for (const course of masterclasses) {
     const metadata = course.lessons[index];
     const lesson = freeLessons[course.slug][index];
     writeMasterclassPage(
-      lessonPath(course, metadata), `${metadata.title} | ${course.shortTitle} | EduNode`, metadata.summary,
+      lessonPath(course, metadata), `${metadata.title} — Free Lesson | ${course.shortTitle} | EduNode`, metadata.summary,
       `<nav>${linkHtml(coursePath(course), course.title)}</nav><h1>${escHtml(metadata.title)}</h1>` +
       paragraph(metadata.summary) + paragraph(`Free lesson ${index + 1} of 10. No account required.`) +
       '<h2>Learning objectives</h2>' + listHtml(lesson.objectives) +
@@ -406,6 +426,87 @@ for (const course of masterclasses) {
       }
     );
   }
+}
+
+// ─── Pro course landing pages (/courses/112–117) ────────────────────────────
+// The CourseXXX.js route files only carry <PageMeta>; their public syllabus
+// lives in ProCourses/data/*.js as `const course = {...}` literals. Baking the
+// full syllabus plus Course + Offer JSON-LD lets these pages rank for
+// "… course with certificate" queries instead of a two-line stub.
+const PRO_COURSE_FILES = {
+  '/courses/112': 'web3Fundamentals.js',
+  '/courses/113': 'smartContractDev.js',
+  '/courses/114': 'defiProtocolEngineering.js',
+  '/courses/115': 'nftMarketplace.js',
+  '/courses/116': 'securityAuditing.js',
+  '/courses/117': 'crossChain.js',
+};
+const routeFileByRoute = {};
+for (const r of routes) routeFileByRoute[r.route] = r.file;
+const isoWorkload = (d) => {
+  const w = String(d || '').match(/(\d+)\s*week/i);
+  if (w) return `P${w[1]}W`;
+  const h = String(d || '').match(/(\d+)\s*hour/i);
+  if (h) return `PT${h[1]}H`;
+  return undefined;
+};
+for (const [route, dataFile] of Object.entries(PRO_COURSE_FILES)) {
+  let course;
+  try {
+    const src = fs.readFileSync(path.join(ROOT, 'src/components/ProCourses/data', dataFile), 'utf8');
+    const at = src.indexOf('const course = {');
+    if (at === -1) throw new Error('no `const course` literal');
+    const open = src.indexOf('{', at);
+    let depth = 0;
+    let end = -1;
+    for (let i = open; i < src.length; i++) {
+      const c = src[i];
+      if (c === "'" || c === '"' || c === '`') {
+        i++;
+        while (i < src.length && src[i] !== c) i += src[i] === '\\' ? 2 : 1;
+      } else if (c === '{') depth++;
+      else if (c === '}' && --depth === 0) { end = i; break; }
+    }
+    course = eval(`(${src.slice(open, end + 1)})`); // eslint-disable-line no-eval
+  } catch (e) {
+    console.warn(`  warn: could not load ${dataFile}: ${e.message}`);
+    continue;
+  }
+  let meta;
+  try {
+    meta = extractMeta(routeFileByRoute[route]);
+  } catch {
+    meta = { title: `${course.title} | EduNode`, description: course.description };
+  }
+  const courseLd = {
+    '@context': 'https://schema.org', '@type': 'Course',
+    name: course.title, description: course.description, url: ORIGIN + route,
+    provider: { '@type': 'Organization', name: 'EduNode', url: ORIGIN },
+    educationalLevel: course.difficulty,
+    isAccessibleForFree: false,
+    offers: {
+      '@type': 'Offer', category: 'Paid', price: '6.99', priceCurrency: 'EUR',
+      url: ORIGIN + '/pricing', description: 'Included with the EduNode Pro membership.',
+    },
+    hasCourseInstance: {
+      '@type': 'CourseInstance', courseMode: 'online',
+      ...(isoWorkload(course.duration) ? { courseWorkload: isoWorkload(course.duration) } : {}),
+    },
+    syllabusSections: (course.modules || []).map((mod, index) => ({
+      '@type': 'Syllabus', position: index + 1, name: mod.title, description: mod.summary,
+    })),
+  };
+  writeMasterclassPage(
+    route, meta.title || `${course.title} | EduNode`, meta.description || course.description,
+    `<h1>${escHtml(course.title)}</h1>` +
+    paragraph(course.description) +
+    paragraph(`${course.modules.length} modules · ${course.duration} · level: ${course.difficulty}. Finishing the course earns a verifiable certificate of completion. Included with EduNode Pro (€6.99/month).`) +
+    '<h2>Syllabus</h2><ol>' +
+    course.modules.map((mod) => `<li><strong>${escHtml(mod.title)}</strong>${paragraph(mod.summary)}</li>`).join('') +
+    '</ol>' +
+    `<p>${linkHtml('/pricing', 'See Pro membership')} · ${linkHtml('/certified-courses', 'All courses with certificates')}</p>`,
+    courseLd
+  );
 }
 
 // ─── Glossary term pages (/glossary/<slug>) ─────────────────────────────────
@@ -463,10 +564,16 @@ for (const entry of GLOSSARY_TERMS) {
       url: ORIGIN + '/glossary',
     },
   };
+  // Snippet copy: definition first, then the longer "about" text, cut at a
+  // word boundary near 155 chars so nothing truncates mid-sentence.
+  const fullDesc = `${entry.definition} ${entry.about || ''}`.trim();
+  const termDesc = fullDesc.length <= 158
+    ? fullDesc
+    : `${fullDesc.slice(0, 155).replace(/\s+\S*$/, '')}…`;
   writeMasterclassPage(
     route,
-    `What Is ${entry.term}? | EduNode Glossary`,
-    entry.definition,
+    `${entry.term} Meaning & Examples (Web3 Reference) | EduNode`,
+    termDesc,
     content,
     termLd
   );
@@ -490,6 +597,13 @@ function jTags(t) {
 }
 function jStrip(h) { return String(h || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(); }
 const jParagraph = (t) => (t ? `<p>${escHtml(t)}</p>` : '');
+// Stub/test posts (e.g. a literal "test" title or a near-empty body) must
+// never reach the sitemap, llms.txt, or baked HTML — they dilute crawl
+// budget and surface in Search Console as zero-value impressions.
+const isStubPost = (p) =>
+  !p || !p._id || !p.title ||
+  /^test\b/i.test(String(p.title).trim()) ||
+  jStrip(p.description).length < 80;
 
 async function bakeJournal() {
   let posts = [];
@@ -504,7 +618,7 @@ async function bakeJournal() {
   const postUrls = [], authorUrls = [], tagUrls = [];
   const byAuthor = new Map(), byTag = new Map();
   for (const post of posts) {
-    if (!post || !post._id || !post.title) continue;
+    if (isStubPost(post)) continue;
     const handle = jHandle(post.email);
     const slug = `${jSlugify(post.title)}-${post._id}`;
     const route = `/journal/@${handle}/${slug}`;
@@ -553,7 +667,7 @@ async function bakeJournal() {
     tagUrls.push(route); written++;
   }
   // Journal index page
-  const idx = postUrls.length ? posts.filter((p) => p && p._id && p.title)
+  const idx = postUrls.length ? posts.filter((p) => !isStubPost(p))
     .map((p) => `<h3><a href="/journal/@${jHandle(p.email)}/${jSlugify(p.title)}-${p._id}">${escHtml(p.title)}</a></h3><p>${escHtml(jStrip(p.description).slice(0, 140))}</p>`).join('') : '';
   writeMasterclassPage('/journal', 'EduNode Journal — Web3, Stellar & Developer Articles by Builders',
     'Community-written journals on Stellar, Soroban, Web3 development, and software — connected to courses, masterclasses, and the glossary.',
@@ -571,7 +685,7 @@ async function bakeJournal() {
     const lines = ['\n## Community Journal', ...postUrls.map((u) => `- [Post](${ORIGIN}${u})`), ...authorUrls.map((u) => `- [Author](${ORIGIN}${u})`)].join('\n');
     fs.writeFileSync(lm, fs.readFileSync(lm, 'utf8') + lines + '\n');
   }
-  const full = posts.filter((p) => p && p._id && p.title).map((p) =>
+  const full = posts.filter((p) => !isStubPost(p)).map((p) =>
     `\n# ${p.title}\n> ${ORIGIN}/journal/@${jHandle(p.email)}/${jSlugify(p.title)}-${p._id}\n\n${jStrip(p.description)}\n`).join('');
   fs.writeFileSync(path.join(BUILD, 'llms-full.txt'), `EduNode — full content index\n${full}`);
   console.log(`+ journal: ${postUrls.length} posts, ${authorUrls.length} authors, ${tagUrls.length} tags baked`);

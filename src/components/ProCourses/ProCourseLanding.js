@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import {
   Box,
   Container,
@@ -94,22 +94,39 @@ function ProCourseLanding({ courseId, auth }) {
     navigate(`/courses/${course.id}/1`);
   };
 
-  const canonical = `https://edunode.org/courses/${course.id}`;
+  // Title/canonical/description come from each CourseXXX.js <PageMeta> —
+  // this Helmet only injects the Course + Offer schema so the two systems
+  // never fight over the same tags.
+  const courseLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: course.title,
+    description: course.description,
+    url: `https://edunode.org/courses/${course.id}`,
+    provider: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
+    educationalLevel: course.difficulty,
+    isAccessibleForFree: false,
+    offers: {
+      '@type': 'Offer',
+      category: 'Paid',
+      price: '6.99',
+      priceCurrency: 'EUR',
+      url: 'https://edunode.org/pricing',
+      description: 'Included with the EduNode Pro membership.',
+    },
+    hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online' },
+    syllabusSections: course.modules.map((mod, i) => ({
+      '@type': 'Syllabus',
+      position: i + 1,
+      name: mod.title,
+      description: mod.summary,
+    })),
+  };
 
   return (
     <PageContainer>
       <Helmet>
-        <meta charSet="utf-8" />
-        <title>{course.title} | EduNode</title>
-        <link rel="canonical" href={canonical} />
-        <meta name="description" content={course.description} />
-        <meta property="og:title" content={`${course.title} | EduNode`} />
-        <meta property="og:description" content={course.description} />
-        <meta property="og:url" content={canonical} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content={`${course.title} | EduNode`} />
-        <meta name="twitter:description" content={course.description} />
+        <script type="application/ld+json">{JSON.stringify(courseLd)}</script>
       </Helmet>
       <NavBar />
       <ContentContainer maxWidth="md">

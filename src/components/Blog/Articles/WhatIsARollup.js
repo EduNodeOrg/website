@@ -4,8 +4,8 @@ import LayersIcon from '@mui/icons-material/Layers';
 import ArticleLayout, { articleStyles as s } from './ArticleLayout';
 
 const shareUrl = 'https://edunode.org/blog/what-is-a-rollup';
-const title = 'What Is a Rollup? The Trick That Made Ethereum Usable Again';
-const description = 'Rollups quietly moved billions of dollars of activity off Ethereum without losing its security. How optimistic and ZK rollups actually work, what “certified” means — and how to get certified yourself.';
+const title = 'What Is a Rollup in Ethereum? Optimistic vs ZK & L2 Audits';
+const description = 'How Ethereum Layer 2 rollups work (Arbitrum, Base, zkSync), optimistic vs ZK proofs, what L2BEAT rollup certification means, plus a free L2 course.';
 const image = 'https://edunode.org/og/what-is-a-rollup.png';
 const accent = 'linear-gradient(135deg,#0a0e27 0%,#232a6b 55%,#627eea 100%)';
 const color = '#627eea';
@@ -19,7 +19,9 @@ const articleLd = {
   description,
   image,
   url: shareUrl,
-  author: { '@type': 'Person', name: 'Olvis Gil' },
+  datePublished: '2026-10-31',
+  dateModified: '2026-11-26',
+  author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org/about#founder', jobTitle: 'Founder, EduNode & OG Technologies EU' },
   publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
   mainEntityOfPage: shareUrl,
 };
@@ -69,6 +71,12 @@ export default function WhatIsARollup() {
           answer — a Layer 2 chain that executes transactions in a cheaper environment, compresses
           the results, and settles them to Ethereum so the security guarantee is never abandoned.
         </p>
+        <div style={s.callout}>
+          <strong>Want a rollup certificate?</strong> The{' '}
+          <a href="/masterclasses/rollups-in-practice">Rollups &amp; Layer 2 masterclass</a> walks you
+          through sequencers, bridges, data availability and a final L2 project — the first two
+          lessons are free, no account needed.
+        </div>
         <h4 style={{ ...s.h4, borderBottom: `3px solid ${color}` }}>How a rollup works</h4>
         <p>
           Users transact on the rollup (an L2 sequencer orders and executes the transactions), and the

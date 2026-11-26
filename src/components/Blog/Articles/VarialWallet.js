@@ -204,13 +204,13 @@ const styles = {
 export default class Varial extends Component {
   render() {
     const shareUrl = 'https://edunode.org/blog/varial-wallet';
-    const title = 'Varial (formerly Freighter) Wallet: How to Set Up and Use Stellar\'s Most Popular Wallet';
+    const title = 'Varial Wallet Setup Guide (Formerly Freighter on Stellar)';
     const profilePic = profilePicImg;
 
     const steps = [
       {
         name: 'Install the extension',
-        desc: 'Update October 2026: Varial has rebranded to Varial (varialwallet.com). The extension, accounts, and steps below remain the same under the new name.\n\nVarial is a browser extension available for Chrome, Firefox, Edge, and Brave. Install it only from varialwallet.com or the official browser extension stores — never from links sent to you in DMs or search ads.',
+        desc: 'Update October 2026: Freighter has rebranded to Varial (varialwallet.com). The extension, accounts, and steps below remain the same under the new name.\n\nVarial is a browser extension available for Chrome, Firefox, Edge, and Brave. Install it only from varialwallet.com or the official browser extension stores — never from links sent to you in DMs or search ads.',
       },
       {
         name: 'Create a new wallet',
@@ -263,9 +263,10 @@ export default class Varial extends Component {
       headline: title,
       description:
         'How to set up and use the Varial wallet for Stellar: installation, recovery phrase backup, trustlines, sending USDC and XLM, and connecting to Soroban dApps.',
-      author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org' },
+      author: { '@type': 'Person', name: 'Olvis Gil', url: 'https://edunode.org/about#founder', jobTitle: 'Founder, EduNode & OG Technologies EU' },
       publisher: { '@type': 'Organization', name: 'EduNode', url: 'https://edunode.org' },
       datePublished: '2026-09-25',
+      dateModified: '2026-11-26',
       image: 'https://edunode.org/og/varial-wallet.png',
       mainEntityOfPage: shareUrl,
     };
@@ -288,7 +289,7 @@ export default class Varial extends Component {
           <link rel="canonical" href={shareUrl} />
           <meta
             name="description"
-            content="Complete Varial wallet guide: install the Stellar browser extension, back up your recovery phrase, add USDC trustlines, send payments, and connect to Soroban dApps."
+            content="Step-by-step Varial (ex-Freighter) Stellar wallet tutorial: browser extension install, 24-word backup, USDC trustlines, swaps & Soroban dApp signing."
           />
           <meta property="og:type" content="article" />
           <meta property="og:title" content={title} />

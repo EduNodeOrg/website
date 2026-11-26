@@ -825,7 +825,7 @@ const catalog = [
     ],
     lessons: [
       { slug: 'why-rollups', title: 'Why Ethereum needed rollups', summary: 'The fee pain that started it all — and the one idea that fixed it.' },
-      { slug: 'how-rollups-work', title: 'How a rollup actually works', summary: 'Execution off-chain, settlement on-chain: sequencers, state roots, and proofs.' },
+      { slug: 'how-rollups-work', title: 'How a Rollup Works — Free L2 Tutorial', summary: 'Free lesson: sequencers, state roots, batch compression and posting to Ethereum — with a worked example and a short knowledge check at the end.' },
       { slug: 'optimistic-rollups', title: 'Optimistic rollups and the challenge window', summary: 'Assume honest, allow disputes — how fraud proofs keep sequencers in line.', paid: true },
       { slug: 'zk-rollups', title: 'ZK rollups and validity proofs', summary: 'Prove it happened correctly — how math replaces the waiting period.', paid: true },
       { slug: 'data-availability', title: 'Data availability: the real security question', summary: 'Why “can anyone reconstruct the state?” decides whether a rollup is safe.', paid: true },
